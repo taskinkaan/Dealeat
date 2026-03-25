@@ -5210,6 +5210,10 @@ function filteredRests() {
   if (S.sort === 'dist-asc')    list.sort((a,b) => a.distKm - b.distKm);
   if (S.sort === 'dist-desc')   list.sort((a,b) => b.distKm - a.distKm);
   if (S.sort === 'rating-desc') list.sort((a,b) => b.rating - a.rating);
+  // Category-exact restaurants bubble to top (stable: preserves sort order within groups)
+  if (S.cat !== 'Tümü' && S.cat !== 'Zincir') {
+    list.sort((a, b) => (a.cat === S.cat ? 0 : 1) - (b.cat === S.cat ? 0 : 1));
+  }
   return list;
 }
 
