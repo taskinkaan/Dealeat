@@ -3090,27 +3090,27 @@ input:focus-visible { outline: none; }
     <div class="search-wrap" id="searchWrap">
       <div class="search-row">
         <span class="si">🔍</span>
-        <input id="searchInput" type="text" placeholder="Burger, pizza, latte, kebab, tatlı ara..." autocomplete="off">
-        <button class="s-clear" id="sClear">✕</button>
+        <input id="searchInput" type="text" placeholder="Burger, pizza, latte, kebab, tatlı ara..." autocomplete="off" aria-label="Restoran ve yemek ara">
+        <button class="s-clear" id="sClear" aria-label="Arama temizle">✕</button>
       </div>
       <div class="search-dd" id="searchDD"></div>
     </div>
-    <button class="loc-pill" id="locPill" onclick="openLocPicker()" title="Konumunu seç">📍 <strong id="locLabel">Konum seç</strong> ▾</button>
+    <button class="loc-pill" id="locPill" onclick="openLocPicker()" title="Konumunu seç" aria-label="Konum seçimi">📍 <strong id="locLabel">Konum seç</strong> ▾</button>
     <!-- Adreslerim button: opens saved address manager panel -->
-    <button class="addr-mgr-btn" id="addrMgrBtn" onclick="openAddrManager()" title="Kayıtlı adreslerim">
+    <button class="addr-mgr-btn" id="addrMgrBtn" onclick="openAddrManager()" title="Kayıtlı adreslerim" aria-label="Kayıtlı adreslerim">
       🏠 <span class="addr-mgr-btn-label">Adreslerim</span>
       <span class="addr-mgr-badge" id="addrMgrBadge">0</span>
     </button>
     <!-- MODE TOGGLE -->
     <div class="mode-toggle">
-      <button class="mode-btn active" id="modeMap" onclick="switchMode('map')">🗺️ Harita</button>
-      <button class="mode-btn" id="modeMenu" onclick="switchMode('menu')">🍽️ Menü</button>
+      <button class="mode-btn active" id="modeMap" onclick="switchMode('map')" aria-pressed="true" aria-label="Harita görünümü">🗺️ Harita</button>
+      <button class="mode-btn" id="modeMenu" onclick="switchMode('menu')" aria-pressed="false" aria-label="Menü görünümü">🍽️ Menü</button>
     </div>
     <button class="deploy-btn" style="background:var(--blue)" onclick="shareCurrentURL()">🔗 Paylaş</button>
 
     <!-- CART button in topbar -->
-    <button id="topbarCartBtn" onclick="btabSwitch('cart')" style="position:relative;background:var(--bg2);border:1.5px solid var(--line2);border-radius:var(--rp);padding:6px 10px;font-size:18px;cursor:pointer;display:flex;align-items:center;gap:4px;transition:all .15s;flex-shrink:0" title="Sepetim">
-      🛒<span id="topbarCartBadge" style="display:none;position:absolute;top:-4px;right:-4px;background:var(--acc);color:#fff;font-size:9px;font-weight:800;min-width:16px;height:16px;border-radius:8px;align-items:center;justify-content:center;padding:0 3px"></span>
+    <button id="topbarCartBtn" onclick="btabSwitch('cart')" style="position:relative;background:var(--bg2);border:1.5px solid var(--line2);border-radius:var(--rp);padding:6px 10px;font-size:18px;cursor:pointer;display:flex;align-items:center;gap:4px;transition:all .15s;flex-shrink:0" title="Sepetim" aria-label="Alışveriş sepeti">
+      🛒<span id="topbarCartBadge" style="display:none;position:absolute;top:-4px;right:-4px;background:var(--acc);color:#fff;font-size:9px;font-weight:800;min-width:16px;height:16px;border-radius:8px;align-items:center;justify-content:center;padding:0 3px" aria-hidden="true"></span>
     </button>
 
     <!-- AUTH: logged-out state — shows "Giriş Yap" -->
@@ -5168,7 +5168,9 @@ function setCenter(lat, lng, label) {
   }
   CENTER[0] = lat;
   CENTER[1] = lng;
-  currentLocationLabel = label || (lat.toFixed(4) + ', ' + lng.toFixed(4));
+  // Validate and sanitize label to prevent UI layout issues
+  let safeLabel = label ? String(label).trim().slice(0, 60) : null;  // Max 60 chars
+  currentLocationLabel = safeLabel || (lat.toFixed(4) + ', ' + lng.toFixed(4));
   userLocationSet = true;
   try { localStorage.setItem('dealeat_location', JSON.stringify({lat, lng, label: currentLocationLabel, timestamp: Date.now()})); } catch(e) { console.warn('[DealEat] localStorage yazma hatası (konum):', e?.message); }
 
@@ -6641,7 +6643,7 @@ function renderCatBar() {
   document.getElementById('catBar').innerHTML = visibleList.map(c => {
     const active = S.cat === c;
     const icon = c === 'Tümü' ? '✨' : (CATEGORIES[c]?.emoji || '');
-    return `<button class="cpill ${active ? 'active' : ''}" onclick="setFilter('${c.replace(/'/g, "&#39;")}')">${icon} ${c}</button>`;
+    return `<button class="cpill ${active ? 'active' : ''}" onclick="setFilter('${c.replace(/'/g, "&#39;")}')" aria-label="${c} kategorisini seç">${icon} ${c}</button>`;
   }).join('');
 }
 
@@ -7184,8 +7186,8 @@ function switchMode(mode) {
     app.classList.add('map-mode-active');
     mapSec.classList.remove('hidden');
     menuSec.classList.remove('active');
-    if (btnMap)  btnMap.classList.add('active');
-    if (btnMenu) btnMenu.classList.remove('active');
+    if (btnMap)  { btnMap.classList.add('active'); btnMap.setAttribute('aria-pressed', 'true'); }
+    if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
     setTimeout(() => { if (map) { map.invalidateSize(false); } }, 80);
     setTimeout(() => {
       if (map) {
@@ -7197,8 +7199,8 @@ function switchMode(mode) {
     app.classList.remove('map-mode-active');
     mapSec.classList.add('hidden');
     menuSec.classList.add('active');
-    if (btnMap)  btnMap.classList.remove('active');
-    if (btnMenu) btnMenu.classList.add('active');
+    if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
+    if (btnMenu) { btnMenu.classList.add('active'); btnMenu.setAttribute('aria-pressed', 'true'); }
     renderMMCats();
     renderMenuMode();
   } else if (mode === 'cart') {
@@ -7206,8 +7208,8 @@ function switchMode(mode) {
     mapSec.classList.add('hidden');
     menuSec.classList.remove('active');
     if (cartSec) cartSec.classList.add('active');
-    if (btnMap)  btnMap.classList.remove('active');
-    if (btnMenu) btnMenu.classList.remove('active');
+    if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
+    if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
     renderCart();
   } else {
     // 'feed' — default discovery feed
@@ -7266,7 +7268,7 @@ function renderMMCats() {
   const cats = ['Tümü', ...[...new Set(allRests().map(r => r.cat).filter(Boolean))].sort()];
   document.getElementById('mmCats').innerHTML = cats.map(c => {
     const em = c === 'Tümü' ? '✨' : (CATEGORIES[c]?.emoji || '');
-    return `<button class="mm-cat ${mmCat===c?'active':''}" onclick="setMMCat('${c.replace(/'/g, "&#39;")}')">${em} ${c}</button>`;
+    return `<button class="mm-cat ${mmCat===c?'active':''}" onclick="setMMCat('${c.replace(/'/g, "&#39;")}')" aria-label="${c} kategorisini seç">${em} ${c}</button>`;
   }).join('');
 }
 
@@ -7291,7 +7293,8 @@ function renderMenuMode() {
   // Collect all valid items
   const items = [];
   allRests().forEach(r => {
-    r.distKm = distKm(r.lat, r.lng);
+    // Don't mutate r.distKm here — use setCenter() for that. Just read the cached value.
+    const d = r.distKm || (r.lat && r.lng ? distKm(r.lat, r.lng) : 99);
     Object.entries(r.menu || {}).forEach(([cat, catItems]) => {
       if (!Array.isArray(catItems)) return;
       if (skipCat(cat)) return;  // skip sauces, drinks, extras

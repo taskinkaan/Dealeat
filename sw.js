@@ -64,7 +64,7 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // Always network for live data APIs
+  // Always network for live data APIs (with timeout)
   if (
     url.hostname.includes('overpass-api') ||
     url.hostname.includes('nominatim') ||
@@ -73,7 +73,10 @@ self.addEventListener('fetch', e => {
     url.pathname.includes('/search')
   ) {
     e.respondWith(
-      fetch(e.request).catch(() => new Response('', { status: 503 }))
+      Promise.race([
+        fetch(e.request),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 5000))  // 5s timeout
+      ]).catch(() => new Response('', { status: 503 }))
     );
     return;
   }
