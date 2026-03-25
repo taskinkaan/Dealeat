@@ -4936,8 +4936,6 @@ const _SKIP_CATS_EXACT = new Set([
   'Midye Dolmalar','Midye',
   // Cold appetizers
   'Soğuk Mezeler','Soğuk Meze',
-  // Side favorites (distinct from already-skipped "Yanlar")
-  'Yan Lezzetler',
 ]);
 
 // ── 6b. PRICE CACHE — Pre-compute min prices for all restaurants ────────────────
@@ -5164,7 +5162,7 @@ function restMinPrice(r) {
   if (min === Infinity) {
     for (const [cat, catItems] of Object.entries(r.menu)) {
       if (!Array.isArray(catItems)) continue;
-      if (_SKIP_CATS_EXACT.has(cat)) continue;
+      if (skipCat(cat)) continue;
       for (const it of catItems) {
         if (!it || !it.p) continue;
         const mp = minPrice(it);
@@ -5191,7 +5189,7 @@ function restMinItem(r) {
   if (min === Infinity) {
     for (const [cat, catItems] of Object.entries(r.menu)) {
       if (!Array.isArray(catItems)) continue;
-      if (_SKIP_CATS_EXACT.has(cat)) continue;
+      if (skipCat(cat)) continue;
       for (const it of catItems) {
         if (!it || !it.n || !it.p) continue;
         const mp = minPrice(it);
@@ -6742,8 +6740,10 @@ function renderPanel() {
     title.textContent = '💸 En Ucuz Ürünler';
     const items = Object.keys(MENU_CONFIG).map(cat => {
       const candidates = allRests().filter(r => r.cat === cat)
-        .flatMap(r => Object.values(r.menu || {}).flat()
-          .filter(it => it?.p)
+        .flatMap(r => Object.entries(r.menu || {})
+          .filter(([mCat]) => !skipCat(mCat))
+          .flatMap(([, catItems]) => (Array.isArray(catItems) ? catItems : []))
+          .filter(it => it?.p && !skipItemByName(it.n) && minPrice(it) > PRICE_FLOOR_MENU)
           .map(it => ({ ...it, rid: r.id, rn: r.n, rcat: cat, rdist: r.distKm })));
       if (!candidates.length) return null;
       return candidates.sort((a,b) => minPrice(a) - minPrice(b))[0];
@@ -7180,8 +7180,10 @@ function handleMBg(e)  { if (e.target === document.getElementById('modalBg')) cl
 function allMenuItems() {
   if (_menuItemsCache) return _menuItemsCache;
   _menuItemsCache = allRests().flatMap(r =>
-    Object.values(r.menu || {}).flat()
-      .filter(it => it?.p)
+    Object.entries(r.menu || {})
+      .filter(([cat]) => !skipCat(cat))
+      .flatMap(([, catItems]) => (Array.isArray(catItems) ? catItems : []))
+      .filter(it => it?.p && !skipItemByName(it.n))
       .map(it => ({ ...it, rid: r.id, rn: r.n }))
   );
   return _menuItemsCache;
@@ -7375,7 +7377,7 @@ function renderMenuMode() {
         const prices = Object.values(item.p).filter(v => typeof v === 'number');
         if (!prices.length) return;
         const minP = Math.min(...prices);
-        if (!q && minP <= PRICE_FLOOR_MENU) return;  // hide condiment prices at/below floor
+        if (minP <= PRICE_FLOOR_MENU) return;  // hide condiment prices at/below floor
         if (mmCat !== 'Tümü' && r.cat !== mmCat) return;
         if (q && !(matchesTR(item.n, q) || matchesTR(item.d || '', q) || matchesTR(r.n, q))) return;
         items.push({ item, rest: r, minP });
