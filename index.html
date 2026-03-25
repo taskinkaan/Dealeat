@@ -4928,6 +4928,16 @@ const _SKIP_CATS_EXACT = new Set([
   // Coffee — restaurants may have coffees but we show food as representative item
   'Kahveler','Kahve Çeşitleri','Sıcak Kahveler','Soğuk Kahveler',
   'Sıcak Kahve','Soğuk Kahve','Filtre Kahve',
+  // Soups — never a representative main dish
+  'Çorbalar','Çorba',
+  // Fried side dishes (ÇITIRR = branded fried snack category in Turkish delivery apps)
+  'ÇITIRR LEZZETLER','ÇITIRR TAVUK LEZZETLER','Çıtır Lezzetler',
+  // Mussel/seafood appetizers
+  'Midye Dolmalar','Midye',
+  // Cold appetizers
+  'Soğuk Mezeler','Soğuk Meze',
+  // Side favorites (distinct from already-skipped "Yanlar")
+  'Yan Lezzetler',
 ]);
 
 // ── 6b. PRICE CACHE — Pre-compute min prices for all restaurants ────────────────
@@ -5122,6 +5132,9 @@ function skipCat(cat) {
   if (lo.includes('tatli') || lo.includes('dondurma')) return true;  // desserts & ice cream
   if (lo.includes('atistirmalik') || lo === 'cips' || lo === 'cipsler') return true;  // snacks & chips
   if (lo.includes('kahve') || lo.includes('coffee')) return true;  // coffee categories
+  if (lo.includes('\u00e7orba')) return true;  // soup categories (Çorbalar, Çorba & Ramen vb.)
+  if (lo.includes('midye')) return true;       // mussel appetizers
+  if (lo.includes('meze')) return true;        // cold/warm appetizers
   return false;
 }
 
@@ -5130,7 +5143,8 @@ function skipItemByName(name) {
   const lo = name.toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
   return /\bsos(lar)?\b/.test(lo) || lo.includes('ket\u00e7ap') || lo.includes('mayonez') ||
          lo.includes('hardal') || lo.includes('sauce') || lo.includes('ekstra') ||
-         lo.includes('cips') || lo.includes('chips');  // chip snacks by name (Karides Cipsi, Doritos vb.)
+         lo.includes('cips') || lo.includes('chips') ||  // chip snacks (Karides Cipsi, Doritos vb.)
+         lo.includes('garnitur') || lo.includes('garnitür');  // garnish items (Karışık Garnitür vb.)
 }
 
 function restMinPrice(r) {
