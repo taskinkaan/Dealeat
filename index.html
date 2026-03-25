@@ -882,7 +882,7 @@ input[type=range]#distMax { accent-color: var(--grn); }
   font-size: 13px; color: var(--txt3);
 }
 .mm-results-header strong { color: var(--txt); }
-.mm-body { flex: 1; overflow-y: auto; padding: 8px 12px 24px; }
+.mm-body { flex: 1; overflow-y: auto; padding: 8px 12px 80px; }
 .mm-body::-webkit-scrollbar { width: 3px; }
 .mm-body::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
 
@@ -986,7 +986,7 @@ input[type=range]#distMax { accent-color: var(--grn); }
   border-radius: var(--rp); transition: all .15s;
 }
 .cart-clear-btn:hover { color: var(--err, #ff4444); background: rgba(255,68,68,.08); }
-.cart-body { flex: 1; overflow-y: auto; padding: 8px 12px 0; }
+.cart-body { flex: 1; overflow-y: auto; padding: 8px 12px 80px; }
 .cart-body::-webkit-scrollbar { width: 3px; }
 .cart-body::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
 .cart-item {
@@ -7666,20 +7666,26 @@ function updateFilterCount() {
   if (btn) btn.classList.toggle('has-active', n > 0);
 }
 
+let _filterTimer = null;
+function _debouncedApplyFilters() {
+  clearTimeout(_filterTimer);
+  _filterTimer = setTimeout(() => { renderPanel(); refreshMarkers(); }, 150);
+}
+
 function updatePriceFilter() {
   let mn = parseInt(document.getElementById('priceMin').value);
   let mx = parseInt(document.getElementById('priceMax').value);
   if (mn > mx) [mn, mx] = [mx, mn];
   S.priceMin = mn; S.priceMax = mx;
   document.getElementById('priceRangeLabel').textContent = mn + ' – ' + mx + ' TL';
-  updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers();
+  updateFilterCount(); renderActiveTags(); _debouncedApplyFilters();
 }
 
 function updateDistFilter() {
   const v = parseFloat(document.getElementById('distMax').value);
   S.distMax = v;
   document.getElementById('distLabel').textContent = v.toFixed(1) + ' km';
-  updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers();
+  updateFilterCount(); renderActiveTags(); _debouncedApplyFilters();
 }
 
 function renderActiveTags() {
@@ -7752,11 +7758,15 @@ function waitAndInit(n) {
     renderCatBar();
     renderPanel();
     initMap();
-    // lpBody permanent delegation
-    document.getElementById('lpBody').addEventListener('click', e => {
-      const card = e.target.closest('[data-id]');
-      if (card?.dataset.id) openRest(card.dataset.id);
-    });
+    // lpBody permanent delegation (guard prevents duplicate listeners on re-entry)
+    const _lpBody = document.getElementById('lpBody');
+    if (_lpBody && !_lpBody._clickBound) {
+      _lpBody._clickBound = true;
+      _lpBody.addEventListener('click', e => {
+        const card = e.target.closest('[data-id]');
+        if (card?.dataset.id) openRest(card.dataset.id);
+      });
+    }
   } else if (n < 50) {
     setTimeout(() => waitAndInit(n + 1), 150);
   } else {
@@ -8501,6 +8511,9 @@ function openSwipeMode(cat) {
   const screen = document.getElementById('swipeScreen');
   if (screen) screen.classList.remove('sw-hidden');
 
+  const tabBar = document.getElementById('bottomTabBar');
+  if (tabBar) tabBar.style.display = 'none';
+
   _renderSwipeCatBar();
   _renderSwipeCard();
   document.addEventListener('keydown', _swipeKeyHandler);
@@ -8511,6 +8524,10 @@ function closeSwipeMode() {
   swipeState.active = false;
   const screen = document.getElementById('swipeScreen');
   if (screen) screen.classList.add('sw-hidden');
+
+  const tabBar = document.getElementById('bottomTabBar');
+  if (tabBar) tabBar.style.display = '';
+
   document.removeEventListener('keydown', _swipeKeyHandler);
 }
 
@@ -9138,7 +9155,7 @@ function wlcForgotPwd() {
     </div>
 
     <!-- Primary CTA: go straight to the map -->
-    <button class="hs-start-btn" onclick="document.getElementById('homeScreen').classList.add('hidden')">
+    <button class="hs-start-btn" onclick="document.getElementById('homeScreen').classList.add('hidden'); btabSwitch('feed');">
       🗺️ Restoranları Keşfet
       <span class="hs-start-btn-arrow">→</span>
     </button>
