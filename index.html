@@ -3102,6 +3102,12 @@ input:focus-visible { outline: none; }
       🏠 <span class="addr-mgr-btn-label">Adreslerim</span>
       <span class="addr-mgr-badge" id="addrMgrBadge">0</span>
     </button>
+    <!-- MODE TOGGLE — desktop only (hidden on mobile via .mode-toggle CSS) -->
+    <div class="mode-toggle">
+      <button class="mode-btn active" id="modeFeed" onclick="btabSwitch('feed')" aria-pressed="true" aria-label="Restoranlar">🏪 Restoranlar</button>
+      <button class="mode-btn" id="modeMenu" onclick="btabSwitch('menu')" aria-pressed="false" aria-label="Menü">🍽️ Menü</button>
+      <button class="mode-btn" id="modeMap"  onclick="btabSwitch('map')"  aria-pressed="false" aria-label="Harita">🗺️ Harita</button>
+    </div>
     <button class="deploy-btn" style="background:var(--blue)" onclick="shareCurrentURL()">🔗 Paylaş</button>
 
     <!-- CART button in topbar -->
@@ -7240,6 +7246,7 @@ function switchMode(mode) {
   const cartSec = document.getElementById('cartMode');
   const btnMap  = document.getElementById('modeMap');
   const btnMenu = document.getElementById('modeMenu');
+  const btnFeed = document.getElementById('modeFeed');
 
   // Hide cart by default; show only when mode === 'cart'
   if (cartSec) cartSec.classList.remove('active');
@@ -7250,6 +7257,7 @@ function switchMode(mode) {
     menuSec.classList.remove('active');
     if (btnMap)  { btnMap.classList.add('active'); btnMap.setAttribute('aria-pressed', 'true'); }
     if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
+    if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
     setTimeout(() => { if (map) { map.invalidateSize(false); } }, 80);
     setTimeout(() => {
       if (map) {
@@ -7263,6 +7271,7 @@ function switchMode(mode) {
     menuSec.classList.add('active');
     if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
     if (btnMenu) { btnMenu.classList.add('active'); btnMenu.setAttribute('aria-pressed', 'true'); }
+    if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
     renderMMCats();
     renderMenuMode();
   } else if (mode === 'cart') {
@@ -7272,14 +7281,16 @@ function switchMode(mode) {
     if (cartSec) cartSec.classList.add('active');
     if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
     if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
+    if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
     renderCart();
   } else {
     // 'feed' — default discovery feed
     app.classList.remove('map-mode-active');
     mapSec.classList.remove('hidden');
     menuSec.classList.remove('active');
-    if (btnMap)  btnMap.classList.remove('active');
-    if (btnMenu) btnMenu.classList.remove('active');
+    if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
+    if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
+    if (btnFeed) { btnFeed.classList.add('active');   btnFeed.setAttribute('aria-pressed', 'true'); }
   }
 }
 
