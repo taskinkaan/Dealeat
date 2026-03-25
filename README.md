@@ -51,15 +51,12 @@ Dealeat/
 ├── dealeat_prices.json         # Runtime price data
 ├── manifest.json               # PWA manifest
 ├── sw.js                       # Service worker (offline caching)
-├── dealeat_scraper/            # Price scraping pipeline
-│   ├── playwright_scraper.py   # Scrapes Trendyol menu prices
-│   ├── db.py                   # SQLite abstraction
-│   ├── export_json.py          # Exports DB → dealeat_prices.json
-│   ├── gen_static_restaurants.py  # Embeds DB data into index.html
-│   ├── prices.db               # SQLite database
-│   └── ...
+├── README.md                   # This file
 └── CLAUDE.md                   # Development context (Claude Code)
 ```
+
+> **Note:** `dealeat_scraper/` (price scraping pipeline) is **private** and not published to GitHub. The scraper, database, and related tools are kept local for legal compliance reasons.
+> The app itself and all public data are open source.
 
 ## How It Works
 
@@ -78,26 +75,14 @@ dealeat_prices.json (runtime price updates)
 STATIC_RESTAURANTS (embedded in index.html)
 ```
 
-### Scraping
+### Data Updates
 
-Run the scraper to update prices:
+Price data is manually scraped and updated every ~2 weeks using a **private** Python + Playwright pipeline. The scraper codebase is not published to GitHub for legal compliance reasons, but updates are reflected in:
+- `dealeat_prices.json` — runtime price patches
+- `STATIC_RESTAURANTS` in `index.html` — embedded restaurant & menu data
 
-```bash
-cd dealeat_scraper
-
-# Scrape all restaurants
-py playwright_scraper.py
-
-# Quick test (first 3 restaurants only)
-py playwright_scraper.py --test
-
-# Export to JSON and embed in HTML
-py export_json.py
-py gen_static_restaurants.py
-```
-
-**Currently supported:** Trendyol Go (tgoyemek.com)
-**In progress:** Yemeksepeti, Getir scrapers
+**Automatically updated platforms:** Trendyol Go (tgoyemek.com)
+**Planned:** Yemeksepeti, Getir
 
 ## Key Features Explained
 
