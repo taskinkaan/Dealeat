@@ -62,6 +62,9 @@ Thumbs.db
 .Spotlight-V100
 .Trashes
 
+# Playwright MCP temp files
+.playwright-mcp/
+
 # Logs
 *.log
 logs/
@@ -71,3 +74,4 @@ yarn-error.log*
 # Misc
 .claude/settings.local.json
 .cache/
+.vercel
