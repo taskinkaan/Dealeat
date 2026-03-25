@@ -1,6 +1,70 @@
-.vercel
-.netlify/
-*.zip
-*.pyc
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+venv/
 __pycache__/
+*.egg-info/
+.Python
+
+# Deployment
+.vercel/
+.netlify/
+.vercel.json
+
+# Database
 dealeat_scraper/prices.db
+*.db
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Build/Dist
+dist/
+build/
+*.egg
+*.whl
+
+# Archives & Backups
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.bak
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-error.log*
+
+# Misc
+.claude/settings.local.json
+.cache/
