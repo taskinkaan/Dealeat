@@ -4925,6 +4925,9 @@ const _SKIP_CATS_EXACT = new Set([
   'Atıştırmalıklar','Atıştırmalık',
   // Chips/crisps
   'Cipsler','Cips',
+  // Coffee — restaurants may have coffees but we show food as representative item
+  'Kahveler','Kahve Çeşitleri','Sıcak Kahveler','Soğuk Kahveler',
+  'Sıcak Kahve','Soğuk Kahve','Filtre Kahve',
 ]);
 
 // ── 6b. PRICE CACHE — Pre-compute min prices for all restaurants ────────────────
@@ -5118,6 +5121,7 @@ function skipCat(cat) {
   if (lo.includes('\u00e7ecek') || lo.includes('drink') || lo.includes('sauce')) return true;
   if (lo.includes('tatli') || lo.includes('dondurma')) return true;  // desserts & ice cream
   if (lo.includes('atistirmalik') || lo === 'cips' || lo === 'cipsler') return true;  // snacks & chips
+  if (lo.includes('kahve') || lo.includes('coffee')) return true;  // coffee categories
   return false;
 }
 
@@ -5125,7 +5129,8 @@ function skipItemByName(name) {
   if (!name) return false;
   const lo = name.toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
   return /\bsos(lar)?\b/.test(lo) || lo.includes('ket\u00e7ap') || lo.includes('mayonez') ||
-         lo.includes('hardal') || lo.includes('sauce') || lo.includes('ekstra');
+         lo.includes('hardal') || lo.includes('sauce') || lo.includes('ekstra') ||
+         lo.includes('cips') || lo.includes('chips');  // chip snacks by name (Karides Cipsi, Doritos vb.)
 }
 
 function restMinPrice(r) {
@@ -5136,6 +5141,7 @@ function restMinPrice(r) {
     if (skipCat(cat)) continue;
     for (const it of catItems) {
       if (!it || !it.p) continue;
+      if (skipItemByName(it.n)) continue;
       const mp = minPrice(it);
       if (mp > PRICE_FLOOR_CARD && mp < min) min = mp;  // ignore cheap side items under threshold
     }
@@ -5163,6 +5169,7 @@ function restMinItem(r) {
     if (skipCat(cat)) continue;
     for (const it of catItems) {
       if (!it || !it.n || !it.p) continue;
+      if (skipItemByName(it.n)) continue;
       const mp = minPrice(it);
       if (mp > PRICE_FLOOR_CARD && mp < min) { min = mp; minName = it.n; }
     }
@@ -7350,10 +7357,11 @@ function renderMenuMode() {
       if (skipCat(cat)) return;  // skip sauces, drinks, extras
       catItems.forEach(item => {
         if (!item?.n || !item?.p) return;
+        if (skipItemByName(item.n)) return;  // skip chip/sauce items by name
         const prices = Object.values(item.p).filter(v => typeof v === 'number');
         if (!prices.length) return;
         const minP = Math.min(...prices);
-        if (!q && minP < PRICE_FLOOR_MENU) return;  // hide tiny condiment prices unless searching
+        if (!q && minP <= PRICE_FLOOR_MENU) return;  // hide condiment prices at/below floor
         if (mmCat !== 'Tümü' && r.cat !== mmCat) return;
         if (q && !(matchesTR(item.n, q) || matchesTR(item.d || '', q) || matchesTR(r.n, q))) return;
         items.push({ item, rest: r, minP });
