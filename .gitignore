@@ -1,0 +1,6 @@
+.vercel
+.netlify/
+*.zip
+*.pyc
+__pycache__/
+dealeat_scraper/prices.db

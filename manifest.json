@@ -1,0 +1,15 @@
+{
+  "name": "DealEat",
+  "short_name": "DealEat",
+  "description": "İstanbul'da en ucuz yemeği bul",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0e0f11",
+  "theme_color": "#ff6b2b",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
