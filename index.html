@@ -829,7 +829,7 @@ input[type=range]#distMax { accent-color: var(--grn); }
 ═══════════════════════════════════════ */
 .menu-mode {
   display: none; flex-direction: column;
-  flex: 1; overflow: hidden; background: var(--bg);
+  flex: 1; overflow: hidden; background: var(--bg1);
 }
 .menu-mode.active { display: flex; }
 
@@ -2146,7 +2146,8 @@ input:focus-visible { outline: none; }
   .mode-toggle,
   .deploy-btn,
   #authLoginBtn,
-  #authUserBtn { display: none !important; }
+  #authUserBtn,
+  #topbarCartBtn { display: none !important; }
 
   /* Search bar takes full width */
   .search-wrap { flex: 1; }
@@ -3156,6 +3157,9 @@ input:focus-visible { outline: none; }
     </div>
   </div>
 
+  <!-- DATA FRESHNESS BANNER — shown after prices load -->
+  <div id="dataFreshBanner" style="display:none;padding:5px 14px;font-size:11px;color:var(--txt3);background:#fff8f0;border-bottom:1px solid var(--line);text-align:center"></div>
+
   <!-- MAP MODE SECTIONS -->
   <div class="map-sections" id="mapSections">
 
@@ -3502,6 +3506,10 @@ vercel --prod</div>
 let CENTER = [41.0082, 28.9784]; // mutable — changes with user location (Istanbul center)
 let currentLocationLabel = '';
 let userLocationSet = false; // true only after geolocation or address confirmation
+
+const PRICE_FLOOR_CARD   = 75;   // restoran kartı min fiyatı (restMinPrice/restMinItem)
+const PRICE_FLOOR_SEARCH = 50;   // arama sonuçları filtresi
+const PRICE_FLOOR_MENU   = 30;   // menu mode condiment filtresi
 
 const PLAT = {
   yemeksepeti: { n: 'Yemeksepeti', c: '#FF6000', url: 'https://www.yemeksepeti.com' },
@@ -4057,6 +4065,8 @@ const MENU_CONFIG = {
 
 // ── 4. STATIC RESTAURANTS ────────────────────────────────────────────────────
 // Real Istanbul restaurants with verified coordinates
+
+const DATA_SCRAPED_AT = '2026-03-21';
 
 const STATIC_RESTAURANTS = [
   {
@@ -4894,13 +4904,39 @@ const RESTAURANTS = STATIC_RESTAURANTS.map(r => ({
 // Chain restaurant IDs — built from chain:true flag in STATIC_RESTAURANTS
 const CHAIN_IDS = new Set(STATIC_RESTAURANTS.filter(r => r.chain).map(r => r.id));
 
-// ── 6a. PRICE CACHE — Pre-compute min prices for all restaurants ────────────────
+// ── 6a. SKIP CATS — Must be declared before cacheRestPrices() call ───────────────
+// Categories that are side items / condiments / drinks — excluded from "itibaren" price
+const _SKIP_CATS_EXACT = new Set([
+  // Sauces
+  'Soslar','SOSLAR','Sos','Ücretli Soslar','Soslar - Sauces',
+  // Drinks
+  'İçecekler','İçecek','İçecekler - Drinks',
+  'SICAK İÇECEKLER','SOĞUK İÇECEKLER','Soğuk İçecekler','Sıcak İçecekler',
+  'Paketli Kahveler',
+  // Extras
+  'Ekstralar','Ekstra',
+  // Small sides (not yan lezzetler which has 235+ TL food)
+  'Yanlar','Yan Ürünler',
+  // Desserts — tatlı restoranlar fallback ile kendi min'ini bulur
+  'Tatlılar','Tatlı','Tatlı Çeşitleri','Tatlılar & Dondurmalar',
+  // Ice cream
+  'Dondurmalar','Dondurma',
+  // Packaged snacks (Eti, branded items)
+  'Atıştırmalıklar','Atıştırmalık',
+  // Chips/crisps
+  'Cipsler','Cips',
+]);
+
+// ── 6b. PRICE CACHE — Pre-compute min prices for all restaurants ────────────────
 // This avoids recalculating prices repeatedly during filtering/sorting
+let _menuItemsCache = null;
+
 function cacheRestPrices() {
   RESTAURANTS.forEach(r => {
     r._minPrice = restMinPrice(r);
     r._minItem = restMinItem(r);
   });
+  _menuItemsCache = null;  // invalidate allMenuItems cache on price update
 }
 cacheRestPrices();  // Cache on startup
 
@@ -4941,6 +4977,17 @@ async function loadRealPrices() {
 
     if (updated > 0) {
       cacheRestPrices();  // Refresh cached prices
+      // Show data freshness banner
+      const scrapedDate = data?.meta?.generated_at || DATA_SCRAPED_AT;
+      const daysSince = Math.floor((Date.now() - new Date(scrapedDate)) / 86400000);
+      const freshBanner = document.getElementById('dataFreshBanner');
+      if (freshBanner) {
+        freshBanner.textContent = daysSince > 14
+          ? `⚠️ Fiyatlar ${daysSince} gün önce güncellendi — yakında yenilenecek`
+          : `✓ Fiyatlar ${daysSince} gün önce güncellendi (${scrapedDate})`;
+        freshBanner.style.display = 'block';
+        freshBanner.style.color = daysSince > 14 ? 'var(--acc)' : 'var(--txt3)';
+      }
       // Refresh UI
       if (typeof renderPanel === 'function') renderPanel();
       if (typeof refreshMarkers === 'function') refreshMarkers();
@@ -5063,23 +5110,22 @@ function calcTotal(item, extras, pid) {
 
 // Categories that are side items / condiments / drinks — excluded from "itibaren" price
 // Uses exact set + keyword fallback for case-insensitive matching
-const _SKIP_CATS_EXACT = new Set([
-  // Sauces
-  'Soslar','SOSLAR','Sos','Ücretli Soslar','Soslar - Sauces',
-  // Drinks
-  'İçecekler','İçecek','İçecekler - Drinks',
-  'SICAK İÇECEKLER','SOĞUK İÇECEKLER','Soğuk İçecekler','Sıcak İçecekler',
-  'Paketli Kahveler',
-  // Extras
-  'Ekstralar','Ekstra',
-  // Small sides (not yan lezzetler which has 235+ TL food)
-  'Yanlar','Yan Ürünler',
-]);
+// NOTE: _SKIP_CATS_EXACT is now declared earlier (before cacheRestPrices call) to avoid TDZ error
 function skipCat(cat) {
   if (!cat) return false;
   if (_SKIP_CATS_EXACT.has(cat)) return true;
   const lo = cat.toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
-  return lo.includes('\u00e7ecek') || lo.includes('drink') || lo.includes('sauce');
+  if (lo.includes('\u00e7ecek') || lo.includes('drink') || lo.includes('sauce')) return true;
+  if (lo.includes('tatli') || lo.includes('dondurma')) return true;  // desserts & ice cream
+  if (lo.includes('atistirmalik') || lo === 'cips' || lo === 'cipsler') return true;  // snacks & chips
+  return false;
+}
+
+function skipItemByName(name) {
+  if (!name) return false;
+  const lo = name.toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
+  return /\bsos(lar)?\b/.test(lo) || lo.includes('ket\u00e7ap') || lo.includes('mayonez') ||
+         lo.includes('hardal') || lo.includes('sauce') || lo.includes('ekstra');
 }
 
 function restMinPrice(r) {
@@ -5091,13 +5137,14 @@ function restMinPrice(r) {
     for (const it of catItems) {
       if (!it || !it.p) continue;
       const mp = minPrice(it);
-      if (mp > 50 && mp < min) min = mp;  // ignore small snacks/condiments under 50 TL
+      if (mp > PRICE_FLOOR_CARD && mp < min) min = mp;  // ignore cheap side items under threshold
     }
   }
-  // Fallback: if nothing over 50 TL found, use global min without category filter
+  // Fallback: skip exact known-bad cats, skip pattern-matched desserts/drinks too
   if (min === Infinity) {
-    for (const catItems of Object.values(r.menu)) {
+    for (const [cat, catItems] of Object.entries(r.menu)) {
       if (!Array.isArray(catItems)) continue;
+      if (_SKIP_CATS_EXACT.has(cat)) continue;
       for (const it of catItems) {
         if (!it || !it.p) continue;
         const mp = minPrice(it);
@@ -5117,12 +5164,13 @@ function restMinItem(r) {
     for (const it of catItems) {
       if (!it || !it.n || !it.p) continue;
       const mp = minPrice(it);
-      if (mp > 50 && mp < min) { min = mp; minName = it.n; }
+      if (mp > PRICE_FLOOR_CARD && mp < min) { min = mp; minName = it.n; }
     }
   }
   if (min === Infinity) {
-    for (const catItems of Object.values(r.menu)) {
+    for (const [cat, catItems] of Object.entries(r.menu)) {
       if (!Array.isArray(catItems)) continue;
+      if (_SKIP_CATS_EXACT.has(cat)) continue;
       for (const it of catItems) {
         if (!it || !it.n || !it.p) continue;
         const mp = minPrice(it);
@@ -7109,11 +7157,13 @@ function handleMBg(e)  { if (e.target === document.getElementById('modalBg')) cl
 // ── 14. SEARCH ────────────────────────────────────────────────────────────────
 
 function allMenuItems() {
-  return allRests().flatMap(r =>
+  if (_menuItemsCache) return _menuItemsCache;
+  _menuItemsCache = allRests().flatMap(r =>
     Object.values(r.menu || {}).flat()
       .filter(it => it?.p)
       .map(it => ({ ...it, rid: r.id, rn: r.n }))
   );
+  return _menuItemsCache;
 }
 
 function renderSearchDD(q) {
@@ -7303,7 +7353,7 @@ function renderMenuMode() {
         const prices = Object.values(item.p).filter(v => typeof v === 'number');
         if (!prices.length) return;
         const minP = Math.min(...prices);
-        if (!q && minP < 30) return;  // hide tiny condiment prices unless searching
+        if (!q && minP < PRICE_FLOOR_MENU) return;  // hide tiny condiment prices unless searching
         if (mmCat !== 'Tümü' && r.cat !== mmCat) return;
         if (q && !(matchesTR(item.n, q) || matchesTR(item.d || '', q) || matchesTR(r.n, q))) return;
         items.push({ item, rest: r, minP });
@@ -8036,25 +8086,18 @@ function renderSearchResults(q) {
     // Helper: iterate only real food categories (skip sauces/drinks/extras)
     const menuEntries = Object.entries(r.menu || {}).filter(([cat]) => !skipCat(cat));
 
-    // Helper: skip item if its own name is a condiment/sauce word
-    function isCondimentItem(name) {
-      const n = (name || '').toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
-      return /\bsos(lar)?\b/.test(n) || n.includes('ketçap') || n.includes('mayonez') ||
-             n.includes('hardal') || n.includes('sauce') || n.includes('ekstra');
-    }
-
-    // 1. Item adı sorguyla eşleşiyor mu? → en ucuz eşleşen item'ı seç (50 TL+ floor)
+    // 1. Item adı sorguyla eşleşiyor mu? → en ucuz eşleşen item'ı seç (PRICE_FLOOR_SEARCH TL+ floor)
     menuEntries.forEach(([, catItems]) => {
       if (!Array.isArray(catItems)) return;
       catItems.forEach(it => {
         if (!it?.p) return;
-        if (isCondimentItem(it.n)) return;  // skip sauce/condiment items by name
+        if (skipItemByName(it.n)) return;  // skip sauce/condiment items by name
         const itemMatch = matchesTR(it.n || '', qLow) || matchesTR(it.d || '', qLow);
         if (!itemMatch) return;
         const vals = Object.values(it.p).filter(v => typeof v === 'number');
         if (!vals.length) return;
         const mp = Math.min(...vals);
-        if (mp < 50) return;
+        if (mp < PRICE_FLOOR_SEARCH) return;
         if (!bestItem || mp < bestItemP) { bestItem = it; bestItemP = mp; }
       });
     });
@@ -8063,7 +8106,7 @@ function renderSearchResults(q) {
     if (!bestItem && rMatch) {
       const mainCat = menuEntries.find(([, items]) => Array.isArray(items) && items.length > 0);
       if (mainCat) {
-        const flagship = mainCat[1].find(it => it?.p && Math.min(...Object.values(it.p).filter(v => typeof v === 'number')) >= 50);
+        const flagship = mainCat[1].find(it => it?.p && Math.min(...Object.values(it.p).filter(v => typeof v === 'number')) >= PRICE_FLOOR_SEARCH);
         if (flagship) {
           const vals = Object.values(flagship.p).filter(v => typeof v === 'number');
           if (vals.length) { bestItem = flagship; bestItemP = Math.min(...vals); }
@@ -8071,7 +8114,7 @@ function renderSearchResults(q) {
       }
     }
 
-    // 3. Fallback: en ucuz non-sauce item (50 TL+)
+    // 3. Fallback: en ucuz non-sauce item (PRICE_FLOOR_SEARCH TL+)
     if (rMatch && !bestItem) {
       menuEntries.forEach(([, catItems]) => {
         if (!Array.isArray(catItems)) return;
@@ -8080,7 +8123,7 @@ function renderSearchResults(q) {
           const vals = Object.values(it.p).filter(v => typeof v === 'number');
           if (!vals.length) return;
           const mp = Math.min(...vals);
-          if (mp < 50) return;
+          if (mp < PRICE_FLOOR_SEARCH) return;
           if (!bestItem || mp < bestItemP) { bestItem = it; bestItemP = mp; }
         });
       });
