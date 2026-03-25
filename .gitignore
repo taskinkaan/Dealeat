@@ -28,6 +28,9 @@ __pycache__/
 dealeat_scraper/prices.db
 *.db
 
+# Scraper (private)
+dealeat_scraper/
+
 # Python
 *.pyc
 *.pyo
