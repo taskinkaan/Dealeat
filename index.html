@@ -4894,6 +4894,16 @@ const RESTAURANTS = STATIC_RESTAURANTS.map(r => ({
 // Chain restaurant IDs — built from chain:true flag in STATIC_RESTAURANTS
 const CHAIN_IDS = new Set(STATIC_RESTAURANTS.filter(r => r.chain).map(r => r.id));
 
+// ── 6a. PRICE CACHE — Pre-compute min prices for all restaurants ────────────────
+// This avoids recalculating prices repeatedly during filtering/sorting
+function cacheRestPrices() {
+  RESTAURANTS.forEach(r => {
+    r._minPrice = restMinPrice(r);
+    r._minItem = restMinItem(r);
+  });
+}
+cacheRestPrices();  // Cache on startup
+
 // ── 6b. REAL PRICE DATA INTEGRATION ──────────────────────────────────────────
 // Fetches dealeat_prices.json — silently falls back if missing or unavailable.
 // JSON format: { "restaurants": [{ "id": "bk", "menu": { "Burgerlar": [{ "n": "Klasik Burger", "p": { "yemeksepeti": 145, "trendyol": 140 } }] } }] }
@@ -4909,11 +4919,13 @@ async function loadRealPrices() {
     for (const entry of data.restaurants) {
       const r = RESTAURANTS.find(r => r.id === entry.id);
       if (!r) continue;
-      // Merge real prices into matching menu items by name
+      // Merge real prices into matching menu items by name (case-insensitive category matching)
       if (entry.menu && typeof entry.menu === 'object') {
         for (const [catName, realItems] of Object.entries(entry.menu)) {
           if (!Array.isArray(realItems)) continue;
-          const existingCat = r.menu[catName];
+          // Find category with case-insensitive match
+          const catNameNorm = catName.toLowerCase().trim();
+          const existingCat = Object.entries(r.menu).find(([cName]) => cName.toLowerCase().trim() === catNameNorm)?.[1];
           if (!Array.isArray(existingCat)) continue;
           for (const ri of realItems) {
             if (!ri?.n || !ri?.p || typeof ri.p !== 'object') continue;
@@ -4928,6 +4940,7 @@ async function loadRealPrices() {
     }
 
     if (updated > 0) {
+      cacheRestPrices();  // Refresh cached prices
       // Refresh UI
       if (typeof renderPanel === 'function') renderPanel();
       if (typeof refreshMarkers === 'function') refreshMarkers();
@@ -5128,7 +5141,7 @@ function filteredRests() {
     const q   = S.query.toLowerCase().trim();
     const mq  = !q || matchesTR(r.n, q) || matchesTR(r.cat, q) ||
       Object.values(r.menu || {}).flat().some(it => it && it.n && matchesTR(it.n, q));
-    const mp  = restMinPrice(r);
+    const mp  = r._minPrice || restMinPrice(r);  // Use cached value
     const pp  = (S.priceMin === 0 && S.priceMax === 1000) || (mp >= S.priceMin && mp <= S.priceMax);
     const dd  = r.distKm <= S.distMax;
     if (S.view === 'luxury')  return r.premium && mc && pf && mq && pp && dd;
@@ -5136,8 +5149,8 @@ function filteredRests() {
     return mc && pf && mq && pp && dd;
   });
 
-  if (S.sort === 'price-asc')   list.sort((a,b) => restMinPrice(a) - restMinPrice(b));
-  if (S.sort === 'price-desc')  list.sort((a,b) => restMinPrice(b) - restMinPrice(a));
+  if (S.sort === 'price-asc')   list.sort((a,b) => (a._minPrice || restMinPrice(a)) - (b._minPrice || restMinPrice(b)));
+  if (S.sort === 'price-desc')  list.sort((a,b) => (b._minPrice || restMinPrice(b)) - (a._minPrice || restMinPrice(a)));
   if (S.sort === 'dist-asc')    list.sort((a,b) => a.distKm - b.distKm);
   if (S.sort === 'dist-desc')   list.sort((a,b) => b.distKm - a.distKm);
   if (S.sort === 'rating-desc') list.sort((a,b) => b.rating - a.rating);
@@ -6560,8 +6573,8 @@ function makeIcon(r, active = false) {
 function makePopup(r) {
   const mp = restMinPrice(r);
   return `<div class="mpopup">
-    <div class="mp-name">${r.e || ''} ${r.n}</div>
-    <div class="mp-meta">${r.cat} · ⭐ ${r.rating} · 📍 ${r.distKm} km</div>
+    <div class="mp-name">${r.e || ''} ${escHtml(r.n)}</div>
+    <div class="mp-meta">${escHtml(r.cat)} · ⭐ ${r.rating} · 📍 ${r.distKm} km</div>
     <div class="mp-plats">${r.plats.map(pid => `<span class="mp-ptag" style="background:${PLAT[pid].c}">${PLAT[pid].n}</span>`).join('')}</div>
     ${mp > 0 ? `<div class="mp-minp"><strong>${mp} TL</strong>'den başlıyor</div>` : ''}
     <button class="mp-btn" data-restid="${r.id}">Menüyü Gör →</button>
@@ -6628,7 +6641,7 @@ function renderCatBar() {
   document.getElementById('catBar').innerHTML = visibleList.map(c => {
     const active = S.cat === c;
     const icon = c === 'Tümü' ? '✨' : (CATEGORIES[c]?.emoji || '');
-    return `<button class="cpill ${active ? 'active' : ''}" onclick="setFilter('${c}')">${icon} ${c}</button>`;
+    return `<button class="cpill ${active ? 'active' : ''}" onclick="setFilter('${c.replace(/'/g, "&#39;")}')">${icon} ${c}</button>`;
   }).join('');
 }
 
@@ -6671,7 +6684,7 @@ function renderPanel() {
       return `<div class="deal-card" data-rid="${it.rid}" data-iid="${it.id}">
         <div class="dc-top">
           <div class="dc-em">${it.e || '🍽️'}</div>
-          <div><div class="dc-name">${it.n}</div><div class="dc-rest">${it.rn} · ${it.rcat}</div></div>
+          <div><div class="dc-name">${escHtml(it.n)}</div><div class="dc-rest">${escHtml(it.rn)} · ${escHtml(it.rcat)}</div></div>
           <span class="dc-badge" style="background:var(--grn);color:#000">EN UCUZ</span>
         </div>
         <div class="dc-bottom">
@@ -6701,7 +6714,7 @@ function renderPanel() {
       return `<div class="deal-card" data-rid="${it.rid}" data-iid="${it.id}">
         <div class="dc-top">
           <div class="dc-em">${it.e || '🍽️'}</div>
-          <div><div class="dc-name">${it.n}</div><div class="dc-rest">${it.rn}</div></div>
+          <div><div class="dc-name">${escHtml(it.n)}</div><div class="dc-rest">${escHtml(it.rn)}</div></div>
           <span class="dc-badge" style="background:var(--acc);color:#fff">TREND</span>
         </div>
         <div class="dc-bottom">
@@ -6734,8 +6747,8 @@ function renderPanel() {
         const platDots = r.plats.map(pid => PLAT[pid] ? `<span class="chain-card-pdot" style="background:${PLAT[pid].c}"></span>` : '').join('');
         return `<div class="chain-card" data-rid="${r.id}">
           <div class="chain-card-em">${r.e || '🍽️'}</div>
-          <div class="chain-card-name">${r.n}</div>
-          <div class="chain-card-cat">${r.cat}</div>
+          <div class="chain-card-name">${escHtml(r.n)}</div>
+          <div class="chain-card-cat">${escHtml(r.cat)}</div>
           <div class="chain-card-meta">
             <span class="chain-card-rating">⭐ ${r.rating}</span>
             <span>📍 ${r.distKm}km</span>
@@ -6763,8 +6776,8 @@ function renderPanel() {
     return `<div class="feed-rcard ${r.id === S.activeRest ? 'active' : ''}" data-id="${r.id}">
       <div class="feed-rcard-em">${r.e || '🍽️'}${r.premium ? '<span style="font-size:9px;position:absolute;top:-2px;right:-2px">✨</span>' : ''}</div>
       <div class="feed-rcard-mid">
-        <div class="feed-rcard-name">${r.n}</div>
-        <div class="feed-rcard-sub">${r.cat}${r.premium ? ' · ✨ Premium' : ''}</div>
+        <div class="feed-rcard-name">${escHtml(r.n)}</div>
+        <div class="feed-rcard-sub">${escHtml(r.cat)}${r.premium ? ' · ✨ Premium' : ''}</div>
         <div class="feed-rcard-meta">
           <span class="feed-rcard-rating">⭐ ${r.rating}</span>
           <span class="feed-rcard-dist">📍 ${r.distKm} km</span>
@@ -6818,14 +6831,14 @@ function openRest(id) {
       <div class="dp-banner-em">${r.e || '🍽️'}</div>
     </div>
     <div class="dp-info" style="flex-shrink:0">
-      <div class="dp-name">${r.n}${existingNote ? '<span class="note-dot" title="Notun var"></span>' : ''}</div>
-      <div class="dp-cat-pill">${(CATEGORIES[r.cat]?.emoji || '')} ${r.cat}${r.premium ? ' · ✨ Premium' : ''}</div>
+      <div class="dp-name">${escHtml(r.n)}${existingNote ? '<span class="note-dot" title="Notun var"></span>' : ''}</div>
+      <div class="dp-cat-pill">${(CATEGORIES[r.cat]?.emoji || '')} ${escHtml(r.cat)}${r.premium ? ' · ✨ Premium' : ''}</div>
       <div class="dp-stats">
         <div class="dp-stat">⭐ <strong>${r.rating}</strong></div>
         <div class="dp-stat">📍 <strong>${r.distKm} km</strong></div>
         <div class="dp-stat">🍽️ <strong>${totalItems} ürün</strong></div>
       </div>
-      ${r.addr ? `<div style="font-size:11px;color:var(--txt3);margin-bottom:8px">📌 ${r.addr}</div>` : ''}
+      ${r.addr ? `<div style="font-size:11px;color:var(--txt3);margin-bottom:8px">📌 ${escHtml(r.addr)}</div>` : ''}
       <div class="dp-plats">${r.plats.map(pid => PLAT[pid] ? `<span class="dp-ptag" style="background:${PLAT[pid].c}">${PLAT[pid].n}</span>` : '').join('')}
         <button onclick="shareRest('${id}','${r.n.replace(/'/g,"\\'")}') " style="margin-left:auto;background:var(--bg3);border:1px solid var(--line2);color:var(--txt3);border-radius:var(--rp);padding:3px 10px;font-size:10px;font-weight:700;cursor:pointer;font-family:var(--font)">🔗 Paylaş</button>
       </div>
@@ -7253,7 +7266,7 @@ function renderMMCats() {
   const cats = ['Tümü', ...[...new Set(allRests().map(r => r.cat).filter(Boolean))].sort()];
   document.getElementById('mmCats').innerHTML = cats.map(c => {
     const em = c === 'Tümü' ? '✨' : (CATEGORIES[c]?.emoji || '');
-    return `<button class="mm-cat ${mmCat===c?'active':''}" onclick="setMMCat('${c}')">${em} ${c}</button>`;
+    return `<button class="mm-cat ${mmCat===c?'active':''}" onclick="setMMCat('${c.replace(/'/g, "&#39;")}')">${em} ${c}</button>`;
   }).join('');
 }
 
@@ -7348,9 +7361,9 @@ function renderMenuMode() {
       <div class="fcard-top">
         <div class="fcard-em">${item.e||'🍽️'}</div>
         <div class="fcard-info">
-          <div class="fcard-name">${item.n}</div>
-          <div class="fcard-rest">${rest.n}</div>
-          <div class="fcard-desc">${item.d||''}</div>
+          <div class="fcard-name">${escHtml(item.n)}</div>
+          <div class="fcard-rest">${escHtml(rest.n)}</div>
+          <div class="fcard-desc">${escHtml(item.d||'')}</div>
           <div class="fcard-meta">
             <span class="fcard-rating">⭐ ${rest.rating}</span>
             <span class="fcard-dist">📍 ${rest.distKm} km</span>
@@ -7475,8 +7488,8 @@ function renderCart() {
     return `<div class="cart-item">
       <div class="cart-item-em">${x.e}</div>
       <div class="cart-item-info">
-        <div class="cart-item-name">${x.n}</div>
-        <div class="cart-item-rest">${x.restName}</div>
+        <div class="cart-item-name">${escHtml(x.n)}</div>
+        <div class="cart-item-rest">${escHtml(x.restName)}</div>
         <div class="cart-item-price">${(minP * x.qty).toFixed(0)} TL</div>
       </div>
       <div class="cart-qty">
