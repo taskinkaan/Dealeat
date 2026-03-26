@@ -60,7 +60,7 @@
   --font:   'Plus Jakarta Sans', sans-serif;
   --panel:  320px;
   --topbar: 56px;
-  --catbar: 46px;
+  --catbar: 56px;
 }
 html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--txt); -webkit-font-smoothing: antialiased; overflow: hidden; }
 button { font-family: var(--font); cursor: pointer; }
@@ -174,11 +174,12 @@ button { font-family: var(--font); cursor: pointer; }
 }
 .cat-bar::-webkit-scrollbar { display: none; }
 .cpill {
-  display: flex; align-items: center; gap: 4px; white-space: nowrap;
-  background: var(--bg2); border: 1px solid var(--line); padding: 5px 13px;
-  border-radius: var(--rp); font-size: 12px; font-weight: 500; transition: all 0.15s;
+  display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  background: var(--bg2); border: 1px solid var(--line); padding: 8px 16px;
+  border-radius: var(--rp); font-size: 13px; font-weight: 600; transition: all 0.15s;
   color: var(--txt2); flex-shrink: 0;
 }
+.cpill-icon { font-size: 16px; line-height: 1; }
 .cpill:hover { border-color: var(--acc); color: var(--acc); }
 .cpill.active { background: var(--acc); border-color: var(--acc); color: #fff; }
 
@@ -231,7 +232,7 @@ button { font-family: var(--font); cursor: pointer; }
 .feed-rcard:hover { border-color: var(--acc); box-shadow: 0 4px 16px rgba(255,94,31,0.10); }
 .feed-rcard:active { transform: scale(0.98); }
 .feed-rcard.active { border-color: var(--acc); box-shadow: 0 0 0 2px var(--acc-s); }
-.feed-rcard-em { width: 52px; height: 52px; border-radius: 12px; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+.feed-rcard-em { width: 64px; height: 64px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; position: relative; }
 .feed-rcard-mid { flex: 1; min-width: 0; }
 .feed-rcard-name { font-size: 15px; font-weight: 700; color: var(--txt); margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .feed-rcard-sub { font-size: 12px; color: var(--txt3); margin-bottom: 5px; }
@@ -239,7 +240,7 @@ button { font-family: var(--font); cursor: pointer; }
 .feed-rcard-rating { font-size: 11px; font-weight: 600; color: var(--amb); }
 .feed-rcard-dist { font-size: 11px; color: var(--txt3); }
 .feed-rcard-right { flex-shrink: 0; text-align: right; }
-.feed-rcard-price { font-size: 18px; font-weight: 800; color: var(--grn); line-height: 1; }
+.feed-rcard-price { font-size: 22px; font-weight: 900; line-height: 1; }
 .feed-rcard-price-lbl { font-size: 9px; color: var(--txt3); margin-bottom: 3px; }
 .feed-rcard-plats { display: flex; justify-content: flex-end; gap: 3px; margin-top: 5px; }
 
@@ -347,11 +348,17 @@ button { font-family: var(--font); cursor: pointer; }
 @media (prefers-color-scheme: dark) {
   .app.map-mode-active .cat-bar { background: rgba(30,24,48,0.92); }
 }
-/* On desktop (no bottom tab bar): map goes edge to edge below topbar */
+/* Desktop: bottom tab bar görünür, mode toggle gizli */
+.mode-toggle { display: none !important; }
+#bottomTabBar { display: flex !important; }
+
 @media (min-width: 768px) {
+  /* Bottom tab bar için içerik padding */
+  body { padding-bottom: calc(60px + 8px); }
+  /* Map: topbar + bottom tab bar yüksekliği kadar küçült */
   .app.map-mode-active #map {
-    top: var(--topbar); bottom: 0;
-    height: calc(100vh - var(--topbar)) !important;
+    top: var(--topbar); bottom: calc(60px + env(safe-area-inset-bottom));
+    height: calc(100vh - var(--topbar) - 60px - env(safe-area-inset-bottom)) !important;
   }
 }
 
@@ -2119,7 +2126,7 @@ input[type=range]#distMax { accent-color: var(--grn); }
   .mpin { width: 28px; height: 28px; }
   .mpin span { font-size: 15px; }
   /* Touch-friendly pills */
-  .cpill { padding: 7px 14px; font-size: 13px; min-height: 36px; }
+  .cpill { padding: 9px 16px; font-size: 14px; min-height: 40px; }
   .hs-steps { display: none; }
   .hs-logo { font-size: clamp(36px, 10vw, 56px); }
   /* Prevent scroll bounce on map */
@@ -2164,7 +2171,7 @@ input:focus-visible { outline: none; }
   /* Body: prevent content hiding behind bottom tab bar */
   body { padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
 
-  /* Bottom tab bar: visible on mobile */
+  /* Bottom tab bar: visible on mobile (also set globally above) */
   #bottomTabBar { display: flex !important; }
 
   /* Prevent horizontal scroll */
@@ -6710,6 +6717,13 @@ function refreshMarkers() {
 
 const CAT_LIST = ['Tümü', ...Object.keys(CATEGORIES)];
 
+function priceColor(p) {
+  if (!p || p <= 0) return 'var(--txt3)';
+  if (p < 120) return 'var(--grn)';
+  if (p < 280) return 'var(--amb)';
+  return 'var(--red)';
+}
+
 function renderCatBar() {
   // catMatchesRest ile tutarlı: r.cat + section adı + item keyword kontrolü
   const activeCats = new Set();
@@ -6720,7 +6734,9 @@ function renderCatBar() {
   document.getElementById('catBar').innerHTML = visibleList.map(c => {
     const active = S.cat === c;
     const icon = c === 'Tümü' ? '✨' : (CATEGORIES[c]?.emoji || '');
-    return `<button class="cpill ${active ? 'active' : ''}" onclick="setFilter('${c.replace(/'/g, "&#39;")}')" aria-label="${c} kategorisini seç">${icon} ${c}</button>`;
+    const catColor = CATEGORIES[c]?.color;
+    const activeStyle = active && catColor ? ` style="background:${catColor};border-color:${catColor}"` : '';
+    return `<button class="cpill ${active ? 'active' : ''}"${activeStyle} onclick="setFilter('${c.replace(/'/g, "&#39;")}')" aria-label="${c} kategorisini seç"><span class="cpill-icon">${icon}</span>${c}</button>`;
   }).join('');
 }
 
@@ -6825,7 +6841,7 @@ function renderPanel() {
     const mpName = mi.name ? mi.name.slice(0, 18) + (mi.name.length > 18 ? '…' : '') : '';
     const platDots = r.plats.map(pid => PLAT[pid] ? `<span class="chain-card-pdot" style="background:${PLAT[pid].c}"></span>` : '').join('');
     return `<div class="feed-rcard ${r.id === S.activeRest ? 'active' : ''}" data-id="${r.id}">
-      <div class="feed-rcard-em">${r.e || '🍽️'}${r.premium ? '<span style="font-size:9px;position:absolute;top:-2px;right:-2px">✨</span>' : ''}</div>
+      <div class="feed-rcard-em" style="background:${(CATEGORIES[r.cat]?.color||'#8b5cf6')+'18'};border:1.5px solid ${(CATEGORIES[r.cat]?.color||'#8b5cf6')+'30'}">${r.e || CATEGORIES[r.cat]?.emoji || '🍽️'}${r.premium ? '<span style="font-size:9px;position:absolute;top:-2px;right:-2px">✨</span>' : ''}</div>
       <div class="feed-rcard-mid">
         <div class="feed-rcard-name">${escHtml(r.n)}</div>
         <div class="feed-rcard-sub">${escHtml(r.cat)}${r.premium ? ' · ✨ Premium' : ''}</div>
@@ -6835,7 +6851,7 @@ function renderPanel() {
         </div>
       </div>
       <div class="feed-rcard-right">
-        ${mp > 0 ? `<div class="feed-rcard-price-lbl" title="${escHtml(mi.name)}">${escHtml(mpName) || 'itibaren'}</div><div class="feed-rcard-price">${mp} TL</div>` : '<div class="feed-rcard-price" style="color:var(--txt3);font-size:13px">—</div>'}
+        ${mp > 0 ? `<div class="feed-rcard-price-lbl" title="${escHtml(mi.name)}">${escHtml(mpName) || 'itibaren'}</div><div class="feed-rcard-price" style="color:${priceColor(mp)}">${mp} TL</div>` : '<div class="feed-rcard-price" style="color:var(--txt3);font-size:13px">—</div>'}
         <div class="feed-rcard-plats">${platDots}</div>
       </div>
     </div>`;
