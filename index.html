@@ -1752,6 +1752,14 @@ input[type=range]#distMax { accent-color: var(--grn); }
   border-radius: 3px; margin-left: 5px; vertical-align: middle;
   letter-spacing: 0.2px;
 }
+.rc-badge {
+  display: inline-block; font-size: 9px; font-weight: 700;
+  padding: 2px 6px; border-radius: 4px; line-height: 1.3;
+}
+.rc-badge-far  { background: rgba(245,158,11,0.13); color: #b45309; border: 1px solid rgba(245,158,11,0.3); }
+.rc-badge-solo { background: rgba(107,114,128,0.12); color: #6b7280; border: 1px solid rgba(107,114,128,0.25); }
+.rc-badge-thin { background: rgba(239,68,68,0.10); color: #dc2626; border: 1px solid rgba(239,68,68,0.25); }
+.feed-rcard-badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
 
 /* ══════════════════════════════════════════════════════════════
    DELIVERY ADDRESS FLOW — Step 1 (Form) + Step 2 (Map Confirm)
@@ -3238,7 +3246,7 @@ input:focus-visible { outline: none; }
                 <span class="fd-slider-val" id="distLabel">5.0 km</span>
                 <span class="fd-slider-label">10 km</span>
               </div>
-              <input type="range" class="fd-range" id="distMax" min="0.1" max="10.0" value="5.0" step="0.1" oninput="updateDistFilter()">
+              <input type="range" class="fd-range" id="distMax" min="0.1" max="10.0" value="4.0" step="0.1" oninput="updateDistFilter()">
             </div>
           </div>
           <button class="fd-reset" onclick="resetAllFilters()">↺ Sıfırla</button>
@@ -3498,7 +3506,7 @@ vercel --prod</div>
 
 // ── 1. CONSTANTS ─────────────────────────────────────────────────────────────
 
-let CENTER = [41.0082, 28.9784]; // mutable — changes with user location (Istanbul center)
+let CENTER = [41.0085, 28.9086]; // mutable — changes with user location (Zeytinburnu center)
 let currentLocationLabel = '';
 let userLocationSet = false; // true only after geolocation or address confirmation
 
@@ -5929,7 +5937,7 @@ const S = {
   platFilter: '',
   priceMin: 0,
   priceMax: 1000,
-  distMax: 5.0,
+  distMax: 4.0,
   cs: null,
 };
 
@@ -6055,7 +6063,7 @@ function restMinPrice(r) {
       if (!it || !it.p) continue;
       if (skipItemByName(it.n)) continue;
       const mp = minPrice(it);
-      if (mp > PRICE_FLOOR_CARD && mp < min) min = mp;  // ignore cheap side items under threshold
+      if (mp > PRICE_FLOOR_CARD && mp < 1500 && mp < min) min = mp;  // ignore cheap side items and family packs
     }
   }
   // Fallback: skip exact known-bad cats, skip pattern-matched desserts/drinks too
@@ -6066,7 +6074,7 @@ function restMinPrice(r) {
       for (const it of catItems) {
         if (!it || !it.p) continue;
         const mp = minPrice(it);
-        if (mp > 0 && mp < min) min = mp;
+        if (mp >= 10 && mp < 1500 && mp < min) min = mp;
       }
     }
   }
@@ -6083,7 +6091,7 @@ function restMinItem(r) {
       if (!it || !it.n || !it.p) continue;
       if (skipItemByName(it.n)) continue;
       const mp = minPrice(it);
-      if (mp > PRICE_FLOOR_CARD && mp < min) { min = mp; minName = it.n; }
+      if (mp > PRICE_FLOOR_CARD && mp < 1500 && mp < min) { min = mp; minName = it.n; }
     }
   }
   if (min === Infinity) {
@@ -6093,14 +6101,25 @@ function restMinItem(r) {
       for (const it of catItems) {
         if (!it || !it.n || !it.p) continue;
         const mp = minPrice(it);
-        if (mp > 0 && mp < min) { min = mp; minName = it.n; }
+        if (mp >= 10 && mp < 1500 && mp < min) { min = mp; minName = it.n; }
       }
     }
   }
   return { price: min === Infinity ? 0 : min, name: minName };
 }
 
+function restScore(r) {
+  const items = Object.values(r.menu || {}).flat()
+    .filter(it => it?.p && minPrice(it) > PRICE_FLOOR_CARD && minPrice(it) < 1500).length;
+  const platPts  = Math.min(r.plats.length * 15, 30);       // max 30 (2 platforms)
+  const menuPts  = Math.min(items / 5, 20);                  // max 20 (100 items)
+  const distPts  = Math.max(0, (1 - r.distKm / 4)) * 30;    // max 30 (0 km), 0 at 4 km
+  const farPenalty = r.distKm > 2 ? -10 : 0;
+  return platPts + menuPts + distPts + farPenalty;
+}
+
 function filteredRests() {
+  const distCap = userLocationSet ? S.distMax : 3.0;
   let list = allRests().filter(r => {
     const mc  = S.cat === 'Tümü' ||
       (S.cat === 'Zincir' ? CHAIN_IDS.has(r.id) : catMatchesRest(S.cat, r));
@@ -6110,17 +6129,22 @@ function filteredRests() {
       Object.values(r.menu || {}).flat().some(it => it && it.n && matchesTR(it.n, q));
     const mp  = r._minPrice || restMinPrice(r);  // Use cached value
     const pp  = (S.priceMin === 0 && S.priceMax === 1000) || (mp >= S.priceMin && mp <= S.priceMax);
-    const dd  = r.distKm <= S.distMax;
+    const dd  = r.distKm <= distCap;
     if (S.view === 'luxury')  return r.premium && mc && pf && mq && pp && dd;
     if (S.view === 'nearby')  return r.distKm <= 1.0 && mc && pf && mq && pp;
     return mc && pf && mq && pp && dd;
   });
+
+  // Tag each result with distance zone for UI labeling
+  list.forEach(r => { r._distLabel = r.distKm > 2 ? 'uzak' : ''; });
 
   if (S.sort === 'price-asc')   list.sort((a,b) => (a._minPrice || restMinPrice(a)) - (b._minPrice || restMinPrice(b)));
   if (S.sort === 'price-desc')  list.sort((a,b) => (b._minPrice || restMinPrice(b)) - (a._minPrice || restMinPrice(a)));
   if (S.sort === 'dist-asc')    list.sort((a,b) => a.distKm - b.distKm);
   if (S.sort === 'dist-desc')   list.sort((a,b) => b.distKm - a.distKm);
   if (S.sort === 'rating-desc') list.sort((a,b) => b.rating - a.rating);
+  // Default sort: score-based (platform count + menu density + distance)
+  if (!S.sort) list.sort((a, b) => restScore(b) - restScore(a));
   // Category-exact restaurants bubble to top (stable: preserves sort order within groups)
   if (S.cat !== 'Tümü' && S.cat !== 'Zincir') {
     list.sort((a, b) => (a.cat === S.cat ? 0 : 1) - (b.cat === S.cat ? 0 : 1));
@@ -7194,10 +7218,10 @@ function clearAddressFilter() {
     localStorage.removeItem('dealeat_delivery_addr');
     localStorage.removeItem('dealeat_location');
   } catch(e) {}
-  CENTER[0] = 41.0082; CENTER[1] = 28.9784;
+  CENTER[0] = 41.0085; CENTER[1] = 28.9086;
   currentLocationLabel = 'İstanbul';
   if (map) {
-    map.flyTo([41.0082, 28.9784], 12, { duration: 0.8 });
+    map.flyTo([41.0085, 28.9086], 14, { duration: 0.8 });
     drawUserMarker();
   }
   const locLabel = document.getElementById('locLabel');
@@ -7293,7 +7317,7 @@ function buildShareURL(extra) {
   const params = new URLSearchParams();
   if (extra?.q) params.set('q', extra.q);
   if (extra?.rest) params.set('rest', extra.rest);
-  const isDefaultCenter = Math.abs(CENTER[0] - 41.0082) < 0.0001 && Math.abs(CENTER[1] - 28.9784) < 0.0001;
+  const isDefaultCenter = Math.abs(CENTER[0] - 41.0085) < 0.0001 && Math.abs(CENTER[1] - 28.9086) < 0.0001;
   if (!isDefaultCenter) {
     params.set('lat', CENTER[0].toFixed(6));
     params.set('lng', CENTER[1].toFixed(6));
@@ -7803,6 +7827,11 @@ function renderPanel() {
     const mp = mi.price;
     const mpName = mi.name ? mi.name.slice(0, 18) + (mi.name.length > 18 ? '…' : '') : '';
     const platDots = r.plats.map(pid => PLAT[pid] ? `<span class="chain-card-pdot" style="background:${PLAT[pid].c}"></span>` : '').join('');
+    const itemCount = Object.values(r.menu || {}).flat().filter(it => it?.p).length;
+    const badgeFar  = r._distLabel === 'uzak' ? `<span class="rc-badge rc-badge-far">Uzak</span>` : '';
+    const badgeSolo = r.plats.length === 1 ? `<span class="rc-badge rc-badge-solo">Tek platform</span>` : '';
+    const badgeThin = itemCount < 20 && itemCount > 0 ? `<span class="rc-badge rc-badge-thin">Sınırlı menü</span>` : '';
+    const badges = (badgeFar || badgeSolo || badgeThin) ? `<div class="feed-rcard-badges">${badgeFar}${badgeSolo}${badgeThin}</div>` : '';
     return `<div class="feed-rcard ${r.id === S.activeRest ? 'active' : ''}" data-id="${r.id}">
       <div class="feed-rcard-em" style="background:${(CATEGORIES[r.cat]?.color||'#8b5cf6')+'18'};border:1.5px solid ${(CATEGORIES[r.cat]?.color||'#8b5cf6')+'30'}">${r.e || CATEGORIES[r.cat]?.emoji || '🍽️'}${r.premium ? '<span style="font-size:9px;position:absolute;top:-2px;right:-2px">✨</span>' : ''}</div>
       <div class="feed-rcard-mid">
@@ -7812,6 +7841,7 @@ function renderPanel() {
           <span class="feed-rcard-rating">⭐ ${r.rating}</span>
           <span class="feed-rcard-dist">📍 ${r.distKm} km</span>
         </div>
+        ${badges}
       </div>
       <div class="feed-rcard-right">
         ${mp > 0 ? `<div class="feed-rcard-price-lbl" title="${escHtml(mi.name)}">${escHtml(mpName) || 'itibaren'}</div><div class="feed-rcard-price" style="color:${priceColor(mp)}">${mp} TL</div>` : '<div class="feed-rcard-price" style="color:var(--txt3);font-size:13px">—</div>'}
@@ -8621,11 +8651,11 @@ function toggleFilterDrawer() {
 }
 
 function resetAllFilters() {
-  S.sort = ''; S.platFilter = ''; S.priceMin = 0; S.priceMax = 1000; S.distMax = 5.0;
+  S.sort = ''; S.platFilter = ''; S.priceMin = 0; S.priceMax = 1000; S.distMax = 4.0;
   ['sortSelect','platSelect'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
   const pmin = document.getElementById('priceMin'); if (pmin) pmin.value = 0;
   const pmax = document.getElementById('priceMax'); if (pmax) pmax.value = 1000;
-  const dmax = document.getElementById('distMax');  if (dmax) dmax.value = 5.0;
+  const dmax = document.getElementById('distMax');  if (dmax) dmax.value = 4.0;
   const prl = document.getElementById('priceRangeLabel'); if (prl) prl.textContent = '0 – 1000 TL';
   const dl = document.getElementById('distLabel'); if (dl) dl.textContent = '5.0 km';
   updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers();
@@ -8677,7 +8707,7 @@ function renderActiveTags() {
 function clearSort()  { S.sort='';      document.getElementById('sortSelect').value=''; updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers(); }
 function clearPlat()  { S.platFilter='';document.getElementById('platSelect').value=''; updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers(); }
 function clearPrice() { S.priceMin=0; S.priceMax=1000; document.getElementById('priceMin').value=0; document.getElementById('priceMax').value=1000; document.getElementById('priceRangeLabel').textContent='0 – 1000 TL'; updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers(); }
-function clearDist()  { S.distMax=5.0; document.getElementById('distMax').value=5.0; document.getElementById('distLabel').textContent='5.0 km'; updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers(); }
+function clearDist()  { S.distMax=4.0; document.getElementById('distMax').value=4.0; document.getElementById('distLabel').textContent='4.0 km'; updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers(); }
 
 function setFilter(cat) {
   S.cat = cat; S.view = 'restaurants';
