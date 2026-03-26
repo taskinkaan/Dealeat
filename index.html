@@ -6104,7 +6104,7 @@ function closeUserMenu() {
 function openAuthModal(mode) {
   document.getElementById('authOverlay')?.classList.add('open');
   if (mode === 'profile') {
-    switchAuthTab(window.currentUser ? 'profile' : 'login');
+    switchAuthTab(currentUser ? 'profile' : 'login');
   } else {
     switchAuthTab(mode === 'register' ? 'register' : 'login');
   }
@@ -6134,7 +6134,7 @@ function switchAuthTab(tab) {
   document.getElementById('authPanelRegister')?.classList.toggle('active', tab === 'register');
   document.getElementById('authPanelProfile')?.classList.toggle('active',  tab === 'profile');
 
-  if (tab === 'profile' && window.currentUser) {
+  if (tab === 'profile' && currentUser) {
     document.getElementById('profileFirstName').value = currentUser.firstName || '';
     document.getElementById('profileLastName').value  = currentUser.lastName  || '';
     document.getElementById('profileDisplayName').textContent  = currentUser.name  || '';
