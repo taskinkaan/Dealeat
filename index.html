@@ -4910,7 +4910,7 @@ function distKm(lat, lng) {
 
 const RESTAURANTS = STATIC_RESTAURANTS.map(r => ({
   ...r,
-  distKm: r.lat && r.lng ? distKm(r.lat, r.lng) : 99,
+  distKm: r.lat && r.lng ? parseFloat(distKm(r.lat, r.lng).toFixed(1)) : 99,
   premium: r.premium || false,
   menu: r.menu,
 }));
@@ -5260,7 +5260,7 @@ function setCenter(lat, lng, label) {
   try { localStorage.setItem('dealeat_location', JSON.stringify({lat, lng, label: currentLocationLabel, timestamp: Date.now()})); } catch(e) { console.warn('[DealEat] localStorage yazma hatası (konum):', e?.message); }
 
   // Recalculate distances for static restaurants; clear stale search cache
-  RESTAURANTS.forEach(r => { r.distKm = distKm(r.lat, r.lng); });
+  RESTAURANTS.forEach(r => { r.distKm = parseFloat(distKm(r.lat, r.lng).toFixed(1)); });
   if (typeof _srCache !== 'undefined') _srCache = {};;
 
   // Update UI labels
@@ -5679,7 +5679,7 @@ function restoreSavedLocation() {
     // Recalculate distances for all static restaurants now that CENTER has changed.
     // RESTAURANTS is built at parse time using default Istanbul CENTER, so without
     // this call every r.distKm is stale → filteredRests() returns nothing on refresh.
-    RESTAURANTS.forEach(r => { r.distKm = distKm(r.lat, r.lng); });
+    RESTAURANTS.forEach(r => { r.distKm = parseFloat(distKm(r.lat, r.lng).toFixed(1)); });
     // Check staleness: if timestamp exists and is older than 2 hours, flag it
     if (loc.timestamp) {
       locationIsStale = (Date.now() - loc.timestamp) > (2 * 60 * 60 * 1000);
@@ -6316,7 +6316,7 @@ function clearAddressFilter() {
   }
   const locLabel = document.getElementById('locLabel');
   if (locLabel) locLabel.textContent = 'İstanbul';
-  RESTAURANTS.forEach(r => { r.distKm = distKm(r.lat, r.lng); });
+  RESTAURANTS.forEach(r => { r.distKm = parseFloat(distKm(r.lat, r.lng).toFixed(1)); });
   renderPanel();
   refreshMarkers();
   _updateAddressFilterBar();
@@ -7033,7 +7033,7 @@ function openRest(id) {
 
 function renderMenuCat(r, cat) {
   const items = (r?.menu?.[cat] || []).filter(it => it?.p && Object.keys(it.p).length > 0);
-  if (!items.length) return '<div style="padding:20px;color:var(--txt3)">Menü yükleniyor...</div>';
+  if (!items.length) return '<div style="padding:20px;color:var(--txt3)">Bu kategoride ürün bulunamadı.</div>';
 
   return items.map(it => {
     const prices = Object.entries(it.p).filter(([,v]) => typeof v === 'number').sort((a,b) => a[1]-b[1]);
@@ -7274,7 +7274,11 @@ function renderSearchDD(q) {
   const ql = q.toLowerCase();
   const rests = allRests().filter(r => matchesTR(r.n, ql) || matchesTR(r.cat, ql)).slice(0, 3);
   const items = allMenuItems().filter(it => matchesTR(it.n, ql) || matchesTR(it.d || '', ql)).slice(0, 5);
-  if (!rests.length && !items.length) { dd.classList.remove('open'); return; }
+  if (!rests.length && !items.length) {
+    dd.innerHTML = '<div class="dd-sec" style="padding:14px 16px;text-align:center;color:var(--txt3)">🤔 Sonuç bulunamadı</div>';
+    dd.classList.add('open');
+    return;
+  }
   let html = '';
   if (rests.length) {
     html += '<div class="dd-sec">Restoranlar</div>';
@@ -7389,7 +7393,7 @@ function btabSwitch(mode) {
     t.classList.remove('active');
     if (lbl) lbl.style.color = 'var(--txt3)';
   });
-  const idMap = { feed: 'btabFeed', map: 'btabMap', menu: 'btabMenu' };
+  const idMap = { feed: 'btabFeed', map: 'btabMap', menu: 'btabMenu', cart: 'btabMenu' };
   const activeId = idMap[mode] || null;
   if (activeId) {
     const el = document.getElementById(activeId);
