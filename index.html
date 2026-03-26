@@ -3549,6 +3549,16 @@ const CAT_ITEM_KEYWORDS = {
   'Deniz Ürünleri': ['karides', 'midye', 'kalamar', 'ahtapot', 'deniz mahsulleri'],
 };
 
+// Karar Ver swipe modu için geniş tematik gruplar
+const SWIPE_GROUPS = {
+  'Tümü':         { emoji: '🍽️', cats: null },
+  'Et & Kebap':   { emoji: '🔥', cats: ['Kebap', 'Döner', 'Steakhouse'] },
+  'Türk Mutfağı': { emoji: '🇹🇷', cats: ['Pide', 'Börek', 'Çiğ Köfte', 'Yemek'] },
+  'Fast Food':    { emoji: '🍕', cats: ['Burger', 'Pizza', 'Fast Food'] },
+  'Asya & Deniz': { emoji: '🍣', cats: ['Asya Mutfağı', 'Balık', 'Deniz Ürünleri'] },
+  'Tatlılar':     { emoji: '🍰', cats: ['Tatlı', 'Waffle', 'Fırın', 'Kahve'] },
+};
+
 // Kategori eşleşme yardımcısı: r.cat, section adı VEYA item keyword kontrolü
 function catMatchesRest(cat, r) {
   if (r.cat === cat) return true;
@@ -8560,7 +8570,13 @@ function _buildSwipeQueue(cat) {
   allRests().forEach(r => {
     if (!r.menu) return;
     if (userLocationSet && typeof r.distKm === 'number' && r.distKm > 10) return;
-    if (cat !== 'Tümü' && r.cat !== cat) return;
+    if (cat !== 'Tümü') {
+      const groupCats = SWIPE_GROUPS[cat]?.cats;
+      if (groupCats) {
+        const matches = groupCats.some(c => r.cat === c || catMatchesRest(c, r));
+        if (!matches) return;
+      }
+    }
     for (const catItems of Object.values(r.menu)) {
       if (!Array.isArray(catItems)) continue;
       for (const item of catItems) {
@@ -8802,13 +8818,10 @@ function _doSwipeLeft() {
 function _renderSwipeCatBar() {
   const bar = document.getElementById('swCatBar');
   if (!bar) return;
-  const cats = ['Tümü', ...Object.keys(CATEGORIES)];
-  bar.innerHTML = cats.map(c => {
-    const em     = c === 'Tümü' ? '✨' : (CATEGORIES[c]?.emoji || '');
-    const active = c === swipeState.category ? ' active' : '';
-    return `<button class="sw-cat-pill${active}" onclick="openSwipeMode('${c.replace(/'/g,'\\\'')}')">${em} ${c}</button>`;
+  bar.innerHTML = Object.entries(SWIPE_GROUPS).map(([name, g]) => {
+    const active = name === swipeState.category ? ' active' : '';
+    return `<button class="sw-cat-pill${active}" onclick="openSwipeMode('${name.replace(/'/g,"\\'")}')">${g.emoji} ${name}</button>`;
   }).join('');
-  // Scroll active pill into view
   setTimeout(() => {
     const ap = bar.querySelector('.sw-cat-pill.active');
     if (ap) ap.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
