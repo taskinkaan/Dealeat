@@ -3168,8 +3168,6 @@ input:focus-visible { outline: none; }
   <div class="disc-bar">
     <button class="dtab active" onclick="setView('restaurants',this)">🏪 Restoranlar</button>
     <button class="dtab" onclick="setView('cheapest',this)">💸 En Ucuz <span class="dtab-badge g">YENİ</span></button>
-    <button class="dtab" onclick="setView('trending',this)">🔥 Trend <span class="dtab-badge a">HOT</span></button>
-    <button class="dtab" onclick="setView('luxury',this)">✨ Premium</button>
     <button class="dtab" onclick="setView('nearby',this)">📍 Yakınımda</button>
     <button class="dtab" onclick="openSwipeMode('Tümü')">🎲 Karar Ver</button>
   </div>
@@ -3532,6 +3530,11 @@ const CATEGORIES = {
   'Dünya Mutfağı': { emoji: '🍜', color: '#16a085' },
   Steakhouse:    { emoji: '🥩', color: '#922b21' },
   Restoran:      { emoji: '🍽️', color: '#555' },
+  'Çiğ Köfte':      { emoji: '🌶️', color: '#e74c3c' },
+  'Waffle':         { emoji: '🧇', color: '#e67e22' },
+  'Börek':          { emoji: '🥐', color: '#8d6e63' },
+  'Asya Mutfağı':   { emoji: '🍣', color: '#16a085' },
+  'Deniz Ürünleri': { emoji: '🌊', color: '#2471a3' },
 };
 
 // Bazı kategoriler için section adı eşleşmesi yetmez — item adına da bakılır
@@ -3540,6 +3543,10 @@ const CAT_ITEM_KEYWORDS = {
   'Kahve': ['kahve', 'latte', 'cappuccino', 'americano', 'espresso', 'macchiato', 'mocha'],
   'Balık': ['balık', 'levrek', 'çupra', 'uskumru', 'hamsi', 'alabalık', 'somon'],
   'Tatlı': ['baklava', 'künefe', 'dondurma', 'cheesecake'],
+  'Waffle': ['waffle', 'wafel', 'gofret'],
+  'Börek': ['börek', 'su böreği', 'sigara böreği', 'kol böreği'],
+  'Asya Mutfağı': ['sushi', 'ramen', 'wok', 'maki', 'nigiri', 'tempura', 'noodle'],
+  'Deniz Ürünleri': ['karides', 'midye', 'kalamar', 'ahtapot', 'deniz mahsulleri'],
 };
 
 // Kategori eşleşme yardımcısı: r.cat, section adı VEYA item keyword kontrolü
@@ -6750,36 +6757,6 @@ function renderPanel() {
           <div class="dc-em">${it.e || '🍽️'}</div>
           <div><div class="dc-name">${escHtml(it.n)}</div><div class="dc-rest">${escHtml(it.rn)} · ${escHtml(it.rcat)}</div></div>
           <span class="dc-badge" style="background:var(--grn);color:#000">EN UCUZ</span>
-        </div>
-        <div class="dc-bottom">
-          <span class="dc-price">${price} TL</span>
-          <span class="dc-plat" style="background:${pl.c}">${pl.n}</span>
-        </div>
-      </div>`;
-    }).join('');
-    bindBodyClicks(body);
-    return;
-  }
-
-  if (S.view === 'trending') {
-    title.textContent = '🔥 Trend Ürünler';
-    const items = allRests()
-      .filter(r => r.rating >= 4.5)
-      .sort((a,b) => b.rating - a.rating)
-      .slice(0, 5)
-      .flatMap(r => Object.values(r.menu || {}).flat()
-        .filter(it => it?.p)
-        .slice(0, 2)
-        .map(it => ({ ...it, rid: r.id, rn: r.n })));
-    sub.textContent = 'Yüksek puanlı mekanların önerileri';
-    body.innerHTML = items.map(it => {
-      const [pid, price] = cheapOf(it.p);
-      const pl = PLAT[pid] || { c: '#888', n: pid };
-      return `<div class="deal-card" data-rid="${it.rid}" data-iid="${it.id}">
-        <div class="dc-top">
-          <div class="dc-em">${it.e || '🍽️'}</div>
-          <div><div class="dc-name">${escHtml(it.n)}</div><div class="dc-rest">${escHtml(it.rn)}</div></div>
-          <span class="dc-badge" style="background:var(--acc);color:#fff">TREND</span>
         </div>
         <div class="dc-bottom">
           <span class="dc-price">${price} TL</span>
