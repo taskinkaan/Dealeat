@@ -6104,7 +6104,7 @@ function closeUserMenu() {
 function openAuthModal(mode) {
   document.getElementById('authOverlay')?.classList.add('open');
   if (mode === 'profile') {
-    switchAuthTab('profile');
+    switchAuthTab(window.currentUser ? 'profile' : 'login');
   } else {
     switchAuthTab(mode === 'register' ? 'register' : 'login');
   }
@@ -6117,7 +6117,7 @@ function closeAuthModal() {
   // Clear form errors
   ['loginError','loginSuccess','registerError','registerSuccess','profileError','profileSuccess'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) { el.className = el.className.replace(' show',''); el.textContent = ''; }
+    if (el) { el.className = el.className.replace(/ show/g,''); el.textContent = ''; }
   });
 }
 function switchAuthTab(tab) {
@@ -6125,6 +6125,8 @@ function switchAuthTab(tab) {
   card?.classList.toggle('profile-mode', tab === 'profile');
   const title = document.getElementById('authCardTitle');
   if (title) title.textContent = tab === 'profile' ? '⚙️ Hesap Ayarları' : 'Hoş Geldin! 👋';
+  const sub = document.getElementById('authCardSub');
+  if (sub) sub.textContent = tab === 'profile' ? 'Bilgilerini güncelleyebilirsin.' : 'Giriş yap veya hesap oluştur.';
 
   document.getElementById('authTabLogin')?.classList.toggle('active',    tab === 'login');
   document.getElementById('authTabRegister')?.classList.toggle('active', tab === 'register');
@@ -6149,6 +6151,7 @@ function switchAuthTab(tab) {
   }
 }
 function submitProfileName() {
+  if (!currentUser) return;
   const first = (document.getElementById('profileFirstName')?.value || '').trim();
   const last  = (document.getElementById('profileLastName')?.value  || '').trim();
   if (!first || !last) {
@@ -6171,6 +6174,7 @@ function submitProfileName() {
   _showAuthMsg('profileSuccess', 'Ad/soyad güncellendi ✓', 'success');
 }
 function submitProfilePassword() {
+  if (!currentUser) return;
   const cur = document.getElementById('profilePwdCurrent')?.value || '';
   const nw  = document.getElementById('profilePwdNew')?.value || '';
   const nw2 = document.getElementById('profilePwdNew2')?.value || '';
@@ -9454,7 +9458,7 @@ function wlcForgotPwd() {
         <label>Soyad</label>
         <input class="auth-input" id="profileLastName" type="text" placeholder="Soyadın" autocomplete="family-name">
       </div>
-      <button class="auth-submit-btn" onclick="submitProfileName()" style="margin-bottom:24px">Ad/Soyad Güncelle</button>
+      <button class="auth-submit" onclick="submitProfileName()" style="margin-bottom:24px">Ad/Soyad Güncelle</button>
       <hr style="border:none;border-top:1px solid var(--line);margin-bottom:20px">
       <div class="auth-field">
         <label>Mevcut Şifre</label>
@@ -9470,7 +9474,7 @@ function wlcForgotPwd() {
       </div>
       <div class="auth-error"   id="profileError"></div>
       <div class="auth-success" id="profileSuccess"></div>
-      <button class="auth-submit-btn" onclick="submitProfilePassword()">Şifreyi Değiştir</button>
+      <button class="auth-submit" onclick="submitProfilePassword()">Şifreyi Değiştir</button>
     </div><!-- /#authPanelProfile -->
 
   </div><!-- /.auth-card -->
