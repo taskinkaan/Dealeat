@@ -3506,7 +3506,7 @@ vercel --prod</div>
 
 // ── 1. CONSTANTS ─────────────────────────────────────────────────────────────
 
-let CENTER = [41.0085, 28.9086]; // mutable — changes with user location (Zeytinburnu center)
+let CENTER = [41.0135, 28.9550]; // mutable — changes with user location (Istanbul fallback)
 let currentLocationLabel = '';
 let userLocationSet = false; // true only after geolocation or address confirmation
 
@@ -7218,10 +7218,10 @@ function clearAddressFilter() {
     localStorage.removeItem('dealeat_delivery_addr');
     localStorage.removeItem('dealeat_location');
   } catch(e) {}
-  CENTER[0] = 41.0085; CENTER[1] = 28.9086;
+  CENTER[0] = 41.0135; CENTER[1] = 28.9550;
   currentLocationLabel = 'İstanbul';
   if (map) {
-    map.flyTo([41.0085, 28.9086], 14, { duration: 0.8 });
+    map.flyTo([41.0135, 28.9550], 12, { duration: 0.8 });
     drawUserMarker();
   }
   const locLabel = document.getElementById('locLabel');
@@ -7317,7 +7317,7 @@ function buildShareURL(extra) {
   const params = new URLSearchParams();
   if (extra?.q) params.set('q', extra.q);
   if (extra?.rest) params.set('rest', extra.rest);
-  const isDefaultCenter = Math.abs(CENTER[0] - 41.0085) < 0.0001 && Math.abs(CENTER[1] - 28.9086) < 0.0001;
+  const isDefaultCenter = Math.abs(CENTER[0] - 41.0135) < 0.0001 && Math.abs(CENTER[1] - 28.9550) < 0.0001;
   if (!isDefaultCenter) {
     params.set('lat', CENTER[0].toFixed(6));
     params.set('lng', CENTER[1].toFixed(6));
