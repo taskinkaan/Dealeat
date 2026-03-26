@@ -71,7 +71,17 @@ logs/
 npm-debug.log*
 yarn-error.log*
 
+# Claude Code (dev context — contains internal implementation details)
+CLAUDE.md
+.claude/
+
+# Research/dev screenshots (not for public repo)
+*_captcha.png
+getir_yemek_*.png
+trendyol_go_*.png
+dealeat_current.png
+dealeat_feed.png
+
 # Misc
-.claude/settings.local.json
 .cache/
 .vercel

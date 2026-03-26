@@ -1,107 +1,54 @@
 # Contributing to DealEat
 
-Thank you for your interest in contributing to DealEat! We welcome all contributions.
+Contributions are welcome. This guide covers how to get involved.
 
-## Getting Started
-
-1. **Fork the repository** on GitHub
-2. **Clone your fork** locally
-3. **Create a branch** for your feature or bug fix:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-## Development
-
-### Prerequisites
-- Python 3.10+
-- Playwright installed (`pip install playwright`)
-
-### Local Development Server
+## Local Setup
 
 ```bash
-cd C:\Users\necat\Desktop\dealeat
+git clone https://github.com/taskinkaan/Dealeat.git
+cd Dealeat
 py -m http.server 8081
+# Open http://localhost:8081
 ```
 
-Then open http://localhost:8081
+## What you can contribute
 
-### Running the Scraper
+### UI / Frontend
+- Bug fixes in `index.html`
+- CSS improvements and responsive layout fixes
+- New UI components or interaction patterns
+- Performance improvements
 
-```bash
-cd dealeat_scraper
+### Documentation
+- Improve README clarity
+- Add usage screenshots
+- Fix typos or outdated information
 
-# Test scraper (first 3 restaurants)
-py playwright_scraper.py --test
+### Bug Reports
+Open a GitHub Issue with:
+- Browser and device info
+- Steps to reproduce
+- Screenshot or error message if available
 
-# Full scrape
-py playwright_scraper.py
+### Feature Requests
+Open a GitHub Issue labeled `enhancement`. Describe the use case and expected behavior.
 
-# Export and embed data
-py export_json.py
-py gen_static_restaurants.py
-```
+## Submitting a Pull Request
+
+1. Fork the repo and create a branch:
+   ```bash
+   git checkout -b fix/your-fix-name
+   ```
+2. Make your changes in `index.html` (or other files as needed)
+3. Test locally with the dev server
+4. Commit with a clear message and open a PR
 
 ## Code Style
 
-- **JavaScript**: Vanilla JS, no frameworks
-- **Python**: Follow PEP 8
-- **HTML/CSS**: Semantic HTML, CSS variables for theming
+- Vanilla JS — no frameworks
+- CSS variables for theming (defined at top of `<style>` block)
+- Turkish UI strings stay in Turkish
 
-## Submitting Changes
+## Questions
 
-1. **Commit your changes** with a clear message:
-   ```bash
-   git commit -m "Add feature: description"
-   ```
-
-2. **Push to your fork**:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-3. **Create a Pull Request** on GitHub with:
-   - Clear title and description
-   - Reference any related issues
-   - Screenshots if UI changes
-
-## Types of Contributions
-
-### Bug Reports
-- Use GitHub Issues
-- Include browser/device info
-- Describe steps to reproduce
-- Share error messages if any
-
-### Feature Requests
-- Use GitHub Issues labeled `enhancement`
-- Explain the use case
-- Provide examples or mockups if relevant
-
-### Code Contributions
-- Scrapers for new platforms (Yemeksepeti, Getir)
-- UI improvements
-- Performance optimizations
-- Bug fixes
-
-### Documentation
-- Improve README
-- Add code comments
-- Update project structure docs
-- Tutorial or how-to guides
-
-## Reporting Issues
-
-Please use GitHub Issues to report:
-- Bugs (broken features)
-- Performance problems
-- Missing or incorrect data
-- Deployment issues
-
-## Questions?
-
-Feel free to open a GitHub Discussion or Issue if you have questions!
-
----
-
-Thanks for helping make DealEat better! 🍕
+Open a GitHub Issue or Discussion.
