@@ -3523,8 +3523,12 @@ function platRestUrl(platId, restId) {
   }
   if (platId === 'getir') {
     const r = findRest(restId);
-    const slug = r?.gr_slug || (restId?.startsWith('gr_') ? restId.slice(3) : null);
-    if (slug) return `https://getir.com/yemek/restoran/${slug}/`;
+    let slug = r?.gr_slug || (restId?.startsWith('gr_') ? restId.slice(3) : null);
+    if (slug) {
+      if (!slug.includes('istanbul') && !slug.includes('ankara') && !slug.includes('izmir'))
+        slug += '-istanbul';
+      return `https://getir.com/yemek/restoran/${slug}/`;
+    }
     return PLAT.getir.url;
   }
   return PLAT[platId]?.url || '#';
