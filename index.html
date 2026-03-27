@@ -11337,7 +11337,7 @@ async function loadRealPrices() {
     }
   } catch (e) {
     // Silently ignore file:// protocol and missing-file errors; log real network failures
-    if (e instanceof TypeError || (e?.message && !e.message.includes('NetworkError'))) return;
+    if (e instanceof TypeError || (e?.message && e.message.includes('NetworkError'))) return;
     console.warn('[DealEat] loadRealPrices hata:', e?.message || e);
   }
 }
@@ -11543,7 +11543,7 @@ function filteredRests() {
     const q   = S.query.toLowerCase().trim();
     const mq  = !q || matchesTR(r.n, q) || matchesTR(r.cat, q) ||
       Object.values(r.menu || {}).flat().some(it => it && it.n && matchesTR(it.n, q));
-    const mp  = r._minPrice || restMinPrice(r);  // Use cached value
+    const mp  = r._minPrice !== undefined ? r._minPrice : restMinPrice(r);  // Use cached value
     const pp  = (S.priceMin === 0 && S.priceMax === 1000) || (mp >= S.priceMin && mp <= S.priceMax);
     const dd  = r.distKm <= distCap;
     if (S.view === 'luxury')  return r.premium && mc && pf && mq && pp && dd;
@@ -11554,8 +11554,8 @@ function filteredRests() {
   // Tag each result with distance zone for UI labeling
   list.forEach(r => { r._distLabel = r.distKm > 2 ? 'uzak' : ''; });
 
-  if (S.sort === 'price-asc')   list.sort((a,b) => (a._minPrice || restMinPrice(a)) - (b._minPrice || restMinPrice(b)));
-  if (S.sort === 'price-desc')  list.sort((a,b) => (b._minPrice || restMinPrice(b)) - (a._minPrice || restMinPrice(a)));
+  if (S.sort === 'price-asc')   list.sort((a,b) => (a._minPrice !== undefined ? a._minPrice : restMinPrice(a)) - (b._minPrice !== undefined ? b._minPrice : restMinPrice(b)));
+  if (S.sort === 'price-desc')  list.sort((a,b) => (b._minPrice !== undefined ? b._minPrice : restMinPrice(b)) - (a._minPrice !== undefined ? a._minPrice : restMinPrice(a)));
   if (S.sort === 'dist-asc')    list.sort((a,b) => a.distKm - b.distKm);
   if (S.sort === 'dist-desc')   list.sort((a,b) => b.distKm - a.distKm);
   if (S.sort === 'rating-desc') list.sort((a,b) => b.rating - a.rating);
@@ -13064,13 +13064,14 @@ function makePopup(r) {
   return `<div class="mpopup">
     <div class="mp-name">${r.e || ''} ${escHtml(r.n)}</div>
     <div class="mp-meta">${escHtml(r.cat)} · ⭐ ${r.rating} · 📍 ${r.distKm} km</div>
-    <div class="mp-plats">${r.plats.map(pid => `<span class="mp-ptag" style="background:${PLAT[pid].c}">${PLAT[pid].n}</span>`).join('')}</div>
+    <div class="mp-plats">${r.plats.map(pid => PLAT[pid] ? `<span class="mp-ptag" style="background:${PLAT[pid].c}">${PLAT[pid].n}</span>` : '').join('')}</div>
     ${mp > 0 ? `<div class="mp-minp"><strong>${mp} TL</strong>'den başlıyor</div>` : ''}
     <button class="mp-btn" data-restid="${r.id}">Menüyü Gör →</button>
   </div>`;
 }
 
 function addMarker(r) {
+  if (r.lat == null || r.lng == null) return;
   const m = L.marker([r.lat, r.lng], { icon: makeIcon(r) });
   m.bindPopup(makePopup(r), { maxWidth: 240, minWidth: 215, autoPan: true });
   m.on('popupopen', () => {
@@ -13338,19 +13339,23 @@ function openRest(id) {
   if (map) {
     const app = document.querySelector('.app');
     if (app && app.classList.contains('map-mode-active')) {
-      map.flyTo([r.lat, r.lng], 16, { duration: 0.8 });
+      if (r.lat != null && r.lng != null) map.flyTo([r.lat, r.lng], 16, { duration: 0.8 });
     }
   }
 
-  // Tab delegation
-  document.getElementById('dpTabs')?.addEventListener('click', e => {
-    const btn = e.target.closest('.mtab');
-    if (!btn) return;
-    document.querySelectorAll('#dpTabs .mtab').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const tabR = findRest(btn.dataset.rid);
-    if (tabR) document.getElementById('menuList').innerHTML = renderMenuCat(tabR, btn.dataset.cat);
-  });
+  // Tab delegation — attach once via detailPanel to survive innerHTML replacements
+  const dpTabsHost = document.getElementById('detailPanel');
+  if (dpTabsHost && !dpTabsHost._tabsBound) {
+    dpTabsHost._tabsBound = true;
+    dpTabsHost.addEventListener('click', e => {
+      const btn = e.target.closest('.mtab');
+      if (!btn) return;
+      document.querySelectorAll('#dpTabs .mtab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tabR = findRest(btn.dataset.rid);
+      if (tabR) document.getElementById('menuList').innerHTML = renderMenuCat(tabR, btn.dataset.cat);
+    });
+  }
 
   // Menu item delegation — on detailPanel to survive innerHTML replacements
   const dp = document.getElementById('detailPanel');
@@ -14095,8 +14100,8 @@ function _debouncedApplyFilters() {
 }
 
 function updatePriceFilter() {
-  let mn = parseInt(document.getElementById('priceMin').value);
-  let mx = parseInt(document.getElementById('priceMax').value);
+  let mn = parseInt(document.getElementById('priceMin').value) || 0;
+  let mx = parseInt(document.getElementById('priceMax').value) || 1000;
   if (mn > mx) [mn, mx] = [mx, mn];
   S.priceMin = mn; S.priceMax = mx;
   document.getElementById('priceRangeLabel').textContent = mn + ' – ' + mx + ' TL';
@@ -15111,9 +15116,13 @@ function _makeSwipeCardEl(entry, stackPos) {
   }).join('');
 
   // Gradient: lighten the category color for the top of the visual
-  const r = parseInt(color.slice(1,3),16), g = parseInt(color.slice(3,5),16), b = parseInt(color.slice(5,7),16);
+  // Expand 3-digit hex (#abc → #aabbcc) before parsing channels
+  const hexFull = color.length === 4
+    ? '#' + color[1]+color[1] + color[2]+color[2] + color[3]+color[3]
+    : color;
+  const r = parseInt(hexFull.slice(1,3),16), g = parseInt(hexFull.slice(3,5),16), b = parseInt(hexFull.slice(5,7),16);
   const lc = `rgb(${Math.min(255,r+55)},${Math.min(255,g+55)},${Math.min(255,b+55)})`;
-  const gradient = `linear-gradient(160deg, ${lc} 0%, ${color} 100%)`;
+  const gradient = `linear-gradient(160deg, ${lc} 0%, ${hexFull} 100%)`;
 
   const div = document.createElement('div');
   div.className = `sw-card sw-card-${stackPos}`;
@@ -15134,7 +15143,7 @@ function _makeSwipeCardEl(entry, stackPos) {
       <div class="sw-card-rest">${rest.n}</div>
       ${metaHTML}
       <div class="sw-card-platforms">${platHTML}</div>
-      <button class="sw-card-cta" onclick="event.stopPropagation();_swipeCTA('${rest.id}','${item.id}')">
+      <button class="sw-card-cta" onclick="event.stopPropagation();_swipeCTA('${rest.id}','${item.id || item.n}')">
         Sipariş Ver →
       </button>
     </div>`;
