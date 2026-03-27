@@ -11763,30 +11763,69 @@ function handleLocPickerBg(e) {
 function startMapPinDrop() {
   closeLocPicker();
   if (!map) return;
+  // Switch to map mode so the map is visible
+  btabSwitch('map');
+
+  // Show crosshair overlay hint
+  let hint = document.getElementById('mapPinHint');
+  if (!hint) {
+    hint = document.createElement('div');
+    hint.id = 'mapPinHint';
+    hint.innerHTML = '📍 Konumu seçmek için haritaya dokun';
+    hint.style.cssText = 'position:fixed;top:calc(var(--topbar,52px)+56px);left:50%;transform:translateX(-50%);' +
+      'background:rgba(0,0,0,0.72);color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;font-weight:600;' +
+      'z-index:620;pointer-events:none;white-space:nowrap;';
+    document.body.appendChild(hint);
+  }
+  hint.style.display = 'block';
+
   const container = map.getContainer();
   container.style.cursor = 'crosshair';
-  map.once('click', async function(e) {
+
+  map.once('click', function(e) {
     container.style.cursor = '';
+    if (hint) hint.style.display = 'none';
     const {lat, lng} = e.latlng;
-    const label = await reverseGeocode(lat, lng);
-    L.popup({ closeButton: true })
+
+    // Show popup immediately with loading state — no waiting for geocode
+    let currentLabel = '...';
+    const popupId = 'pd_' + Date.now();
+    const btnHtml = (lbl) =>
+      `<button onclick="window._confirmPinDrop(${lat},${lng},'${lbl.replace(/'/g,"\\'")}',this)" ` +
+      `style="background:#ff6b2b;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600">✅ Kullan</button>`;
+    const cancelHtml =
+      `<button onclick="map.closePopup()" ` +
+      `style="background:#eee;color:#333;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-size:13px">İptal</button>`;
+
+    const popup = L.popup({ closeButton: false, className: 'pin-drop-popup' })
       .setLatLng(e.latlng)
-      .setContent(`
-        <div style="font-family:sans-serif;padding:4px 0">
-          <div style="font-size:13px;font-weight:600;margin-bottom:8px">📍 ${label}</div>
-          <div style="display:flex;gap:8px">
-            <button onclick="window._confirmPinDrop(${lat},${lng},'${label.replace(/'/g,"\\'")}',this)" style="background:#ff6b2b;color:#fff;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px">✅ Kullan</button>
-            <button onclick="this.closest('.leaflet-popup-content-wrapper').closest('.leaflet-popup').remove(); document.querySelector('#map').style && (map.closePopup())" style="background:#eee;color:#333;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px">İptal</button>
-          </div>
-        </div>
-      `)
+      .setContent(`<div id="${popupId}" style="font-family:sans-serif;padding:4px 0;min-width:200px">
+        <div style="font-size:13px;font-weight:600;margin-bottom:10px">📍 Adres yükleniyor...</div>
+        <div style="display:flex;gap:8px">${btnHtml('Bu Konum')}${cancelHtml}</div>
+      </div>`)
       .openOn(map);
+
+    // Geocode in background — update popup when done
+    reverseGeocode(lat, lng).then(label => {
+      currentLabel = label;
+      const el = document.getElementById(popupId);
+      if (el) {
+        el.innerHTML = `
+          <div style="font-size:13px;font-weight:600;margin-bottom:10px">📍 ${label}</div>
+          <div style="display:flex;gap:8px">${btnHtml(label)}${cancelHtml}</div>`;
+      }
+      // Also stash so _confirmPinDrop can use it even if popup el is gone
+      window._pinDropLabel = label;
+    });
+
+    window._pinDropLabel = 'Bu Konum';
   });
 }
 
 window._confirmPinDrop = function(lat, lng, label, btn) {
   map.closePopup();
-  setCenter(lat, lng, label);
+  const finalLabel = window._pinDropLabel || label;
+  setCenter(lat, lng, finalLabel);
 };
 
 // ── 8e. DELIVERY ADDRESS FLOW ─────────────────────────────────────────────────
