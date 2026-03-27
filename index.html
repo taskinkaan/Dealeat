@@ -59,7 +59,7 @@
   --rp:     999px;
   --font:   'Plus Jakarta Sans', sans-serif;
   --panel:  320px;
-  --topbar: 56px;
+  --topbar: 52px;
   --catbar: 56px;
 }
 html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--txt); -webkit-font-smoothing: antialiased; overflow: hidden; }
@@ -324,8 +324,10 @@ button { font-family: var(--font); cursor: pointer; }
   height: calc(100dvh - 52px - 56px - env(safe-area-inset-bottom)) !important;
 }
 /* In map mode: hide the feed bars and panel, float cat-bar over map */
-.app.map-mode-active .disc-bar { display: none !important; }
-.app.map-mode-active .lpanel   { display: none !important; }
+.app.map-mode-active .disc-bar        { display: none !important; }
+.app.map-mode-active .lpanel          { display: none !important; }
+.app.map-mode-active #staleBanner     { display: none !important; }
+.app.map-mode-active #dataFreshBanner { display: none !important; }
 .app.map-mode-active .cat-bar  {
   display: flex !important;
   position: fixed;
