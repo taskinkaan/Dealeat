@@ -3525,6 +3525,8 @@ function platRestUrl(platId, restId) {
     const r = findRest(restId);
     let slug = r?.gr_slug || (restId?.startsWith('gr_') ? restId.slice(3) : null);
     if (slug) {
+      // Slugs ending with -mah are truncated (missing district) — can't build valid URL
+      if (slug.endsWith('-mah')) return PLAT.getir.url;
       if (!slug.includes('istanbul') && !slug.includes('ankara') && !slug.includes('izmir'))
         slug += '-istanbul';
       return `https://getir.com/yemek/restoran/${slug}/`;
