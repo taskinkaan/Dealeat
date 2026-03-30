@@ -81,6 +81,15 @@ getir_yemek_*.png
 trendyol_go_*.png
 dealeat_current.png
 dealeat_feed.png
+snap*.md
+anim_*.png
+*_new.png
+*_new2.png
+*_final.png
+*_fixed.png
+*_screenshot.png
+mobile_anim_*.png
+site_screenshot.png
 
 # Misc
 .cache/
