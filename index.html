@@ -4961,6 +4961,9 @@ function skipCat(cat) {
   return false;
 }
 
+// Keywords that signal an item is a MAIN dish (protein/carb centred) — used to rescue ambiguous items
+const _MAIN_DISH_RE = /\b(d[oö]ner|k[oö]fte|tavuk|pili[cç]|dana|kuzu|kaburga|kebap|kebab|[iı]zgara|karides|bal[iı]k|ahtapot|sucuk|sosis|pastirma|burger|hamburger|d[uü]r[uü]m|wrap|sandvi[cç]|lahmacun|pide(?! ekme)|pizza|makarna|mantı|manti)\b/;
+
 function skipItemByName(name) {
   if (!name) return false;
   const lo = name.toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
@@ -4968,6 +4971,12 @@ function skipItemByName(name) {
   if (lo.includes('ket\u00e7ap') || lo.includes('ketchup') || lo.includes('mayonez') || lo.includes('hardal') || lo.includes('sauce')) return true;
   if (/\bpo\u015fet\b/.test(lo)) return true;  // poşet = condiment sachet
   if (lo.includes('ekstra')) return true;
+  // Bread as side dish — skip if name ends with "ekmek" and has no main protein
+  if (/\bekmek(ler)?\b/.test(lo) && !_MAIN_DISH_RE.test(lo)) return true;
+  // Standalone plain rice (side)
+  if (/^(beyaz |sade |tere ?ya[gğ]l[iı] |f[iı]r[iı]n )?pilav$/.test(lo.trim())) return true;
+  // Standalone meze/side salads
+  if (/^(sade |mevsim |taze )?salata$/.test(lo.trim())) return true;
   if (lo.includes('cips') || lo.includes('chips')) return true;
   if (lo.includes('garnitur') || lo.includes('garnitür')) return true;
   // Breakfast / bakery items by name
@@ -8719,8 +8728,7 @@ function _buildSwipeQueue(cat) {
       for (const item of catItems) {
         if (!item || !item.n) continue;
         if (skipItemByName(item.n)) continue;
-        const p = minPrice(item);
-        if (!p || p < PRICE_FLOOR_CARD) continue;
+        if (!minPrice(item)) continue;
         items.push({ item, rest: r });
       }
     }
