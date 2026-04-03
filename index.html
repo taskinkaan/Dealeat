@@ -4965,7 +4965,8 @@ function skipItemByName(name) {
   if (!name) return false;
   const lo = name.toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
   if (/\bsos(lar)?\b/.test(lo)) return true;
-  if (lo.includes('ket\u00e7ap') || lo.includes('mayonez') || lo.includes('hardal') || lo.includes('sauce')) return true;
+  if (lo.includes('ket\u00e7ap') || lo.includes('ketchup') || lo.includes('mayonez') || lo.includes('hardal') || lo.includes('sauce')) return true;
+  if (/\bpo\u015fet\b/.test(lo)) return true;  // poşet = condiment sachet
   if (lo.includes('ekstra')) return true;
   if (lo.includes('cips') || lo.includes('chips')) return true;
   if (lo.includes('garnitur') || lo.includes('garnitür')) return true;
@@ -8712,11 +8713,14 @@ function _buildSwipeQueue(cat) {
         if (!matches) return;
       }
     }
-    for (const catItems of Object.values(r.menu)) {
+    for (const [mCat, catItems] of Object.entries(r.menu)) {
       if (!Array.isArray(catItems)) continue;
+      if (skipCat(mCat)) continue;
       for (const item of catItems) {
         if (!item || !item.n) continue;
-        if (!minPrice(item)) continue;
+        if (skipItemByName(item.n)) continue;
+        const p = minPrice(item);
+        if (!p || p < PRICE_FLOOR_CARD) continue;
         items.push({ item, rest: r });
       }
     }
