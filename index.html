@@ -6745,7 +6745,7 @@ function renderPanel() {
   // Discovery views
   if (S.view === 'cheapest') {
     title.textContent = '💸 En Ucuz Ürünler';
-    const items = Object.keys(MENU_CONFIG).map(cat => {
+    const items = Object.keys(MENU_CONFIG).filter(cat => S.cat === 'Tümü' || cat === S.cat).map(cat => {
       const candidates = allRests().filter(r => r.cat === cat)
         .flatMap(r => Object.entries(r.menu || {})
           .filter(([mCat]) => !skipCat(mCat))
@@ -6755,7 +6755,7 @@ function renderPanel() {
       if (!candidates.length) return null;
       return candidates.sort((a,b) => minPrice(a) - minPrice(b))[0];
     }).filter(Boolean);
-    sub.textContent = `${items.length} kategoride en ucuz`;
+    sub.textContent = S.cat !== 'Tümü' ? `${escHtml(S.cat)} · ${items.length} ürün` : `${items.length} kategoride en ucuz`;
     body.innerHTML = items.map(it => {
       const [pid, price] = cheapOf(it.p);
       const pl = PLAT[pid] || { c: '#888', n: pid };
@@ -7823,12 +7823,6 @@ function clearDist()  { S.distMax=4.0; document.getElementById('distMax').value=
 
 function setFilter(cat) {
   S.cat = cat;
-  // Preserve current view (Yakınımda, etc.) — only reset to restaurants if in the
-  // item-discovery 'cheapest' view, which doesn't use S.cat for its own panel.
-  if (S.view === 'cheapest') {
-    S.view = 'restaurants';
-    document.querySelectorAll('.dtab').forEach((t,i) => t.classList.toggle('active', i===0));
-  }
   renderCatBar(); renderPanel(); refreshMarkers();
   // Kategori seçilince haritayı o marker'lara fit et
   if (cat !== 'Tümü' && map) {
