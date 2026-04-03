@@ -155,6 +155,8 @@ button { font-family: var(--font); cursor: pointer; }
   height: 44px; display: flex; align-items: center; gap: 0; overflow-x: auto; overscroll-behavior-x: contain;
   background: var(--bg1); border-bottom: 1px solid var(--line); flex-shrink: 0;
   padding: 0 16px;
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
 }
 .disc-bar::-webkit-scrollbar { display: none; }
 .dtab {
@@ -175,6 +177,8 @@ button { font-family: var(--font); cursor: pointer; }
   overflow-x: auto; flex-shrink: 0; padding: 0 16px;
   background: var(--bg); border-bottom: 2px solid var(--bg2);
   overscroll-behavior-x: contain;
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
 }
 .cat-bar::-webkit-scrollbar { display: none; }
 .cpill {
@@ -263,6 +267,7 @@ button { font-family: var(--font); cursor: pointer; }
 .feed-rcard-meta { display: flex; align-items: center; gap: 8px; }
 .feed-rcard-rating { font-size: 11px; font-weight: 700; color: var(--amb); }
 .feed-rcard-dist { font-size: 11px; color: var(--txt3); }
+.feed-rcard-delivery { font-size: 10px; color: var(--txt3); margin-top: 3px; }
 .feed-rcard-right { flex-shrink: 0; text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
 .feed-rcard-price { font-size: 22px; font-weight: 900; line-height: 1; color: var(--acc); letter-spacing: -1px; font-family: 'Space Grotesk', var(--font); }
 .feed-rcard-price-lbl { font-size: 9px; color: var(--txt3); font-weight: 500; max-width: 72px; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -1138,6 +1143,12 @@ input[type=range]#distMax { accent-color: var(--grn); }
 .fcard-meta { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
 .fcard-rating { font-size: 11px; color: var(--amb); font-weight: 800; }
 .fcard-dist { font-size: 11px; color: var(--txt3); font-weight: 500; }
+.fcard-saving { font-size: 11px; color: var(--grn); font-weight: 800; margin-left: auto; }
+.fcard-rank { position: absolute; top: 10px; right: 12px; font-size: 18px; line-height: 1; }
+.fcard-diff-tag {
+  font-size: 10px; font-weight: 700; color: var(--txt3);
+  background: var(--bg2); padding: 2px 7px; border-radius: 6px;
+}
 
 /* Price rows — redesigned as bold comparison blocks */
 .fcard-prices {
@@ -3114,6 +3125,8 @@ input:focus-visible { outline: none; }
   width: 100%; display: flex; gap: 8px;
   padding: 4px 18px 12px; overflow-x: auto; flex-shrink: 0; scrollbar-width: none;
   position: relative; z-index: 1;
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
 }
 .sw-catbar::-webkit-scrollbar { display: none; }
 .sw-cat-pill {
@@ -3695,7 +3708,7 @@ input:focus-visible { outline: none; }
   </div>
 
   <!-- DATA FRESHNESS BANNER — shown after prices load -->
-  <div id="dataFreshBanner" style="display:none;padding:5px 14px;font-size:11px;color:var(--txt3);background:#fff8f0;border-bottom:1px solid var(--line);text-align:center"></div>
+  <div id="dataFreshBanner" style="display:none;padding:5px 14px;font-size:11px;color:var(--txt3);background:var(--bg1);border-bottom:1px solid var(--line);text-align:center"></div>
 
   <!-- MAP MODE SECTIONS -->
   <div class="map-sections" id="mapSections">
@@ -3759,7 +3772,7 @@ input:focus-visible { outline: none; }
             </div>
           </div>
           <div class="fd-section">
-            <div class="fd-section-label">Maksimum Mesafe</div>
+            <div class="fd-section-label">Mesafe Limiti <span style="font-size:10px;font-weight:400;opacity:0.6">(teslimat alanı bilinmeyenler için)</span></div>
             <div class="fd-slider-wrap">
               <div class="fd-slider-top">
                 <span class="fd-slider-label">0.1 km</span>
@@ -4792,7 +4805,7 @@ async function loadRealPrices() {
           ? `⚠️ Fiyatlar ${daysSince} gün önce güncellendi — yakında yenilenecek`
           : `✓ Fiyatlar ${daysSince} gün önce güncellendi (${scrapedDate})`;
         freshBanner.style.display = 'block';
-        freshBanner.style.color = daysSince > 14 ? 'var(--acc)' : 'var(--txt3)';
+        freshBanner.style.color = daysSince > 14 ? 'var(--amb)' : 'var(--txt3)';
       }
       // Refresh UI
       if (typeof renderPanel === 'function') renderPanel();
@@ -5052,7 +5065,6 @@ function restScore(r) {
 }
 
 function filteredRests() {
-  const distCap = userLocationSet ? S.distMax : 3.0;
   let list = allRests().filter(r => {
     const mc  = S.cat === 'Tümü' ||
       (S.cat === 'Zincir' ? CHAIN_IDS.has(r.id) : catMatchesRest(S.cat, r));
@@ -5062,6 +5074,10 @@ function filteredRests() {
       Object.values(r.menu || {}).flat().some(it => it && it.n && matchesTR(it.n, q));
     const mp  = r._minPrice !== undefined ? r._minPrice : restMinPrice(r);  // Use cached value
     const pp  = (S.priceMin === 0 && S.priceMax === 1000) || (mp >= S.priceMin && mp <= S.priceMax);
+    // Delivery filter: use actual delivery_radius if available; fall back to manual S.distMax slider
+    const distCap = userLocationSet
+      ? (r.delivery_radius || S.distMax)
+      : 50.0;  // no location → show all
     const dd  = r.distKm <= distCap;
     if (S.view === 'luxury')  return r.premium && mc && pf && mq && pp && dd;
     if (S.view === 'nearby')  return r.distKm <= 1.0 && mc && pf && mq && pp;
@@ -6626,6 +6642,7 @@ function makePopup(r) {
   return `<div class="mpopup">
     <div class="mp-name">${r.e || ''} ${escHtml(r.n)}</div>
     <div class="mp-meta">${escHtml(r.cat)} · ⭐ ${r.rating} · 📍 ${r.distKm} km</div>
+    ${(r.min_order || r.delivery_fee) ? `<div class="mp-meta" style="margin-top:2px;color:var(--txt3)">${[r.min_order ? `Min ${r.min_order} TL` : '', r.delivery_fee ? `Teslimat ${r.delivery_fee} TL` : ''].filter(Boolean).join(' · ')}</div>` : ''}
     <div class="mp-plats">${r.plats.map(pid => PLAT[pid] ? `<span class="mp-ptag" style="background:${PLAT[pid].c}">${PLAT[pid].n}</span>` : '').join('')}</div>
     ${mp > 0 ? `<div class="mp-minp"><strong>${mp} TL</strong>'den başlıyor</div>` : ''}
     <button class="mp-btn" data-restid="${r.id}">Menüyü Gör →</button>
@@ -6685,9 +6702,7 @@ const CAT_LIST = ['Tümü', ...Object.keys(CATEGORIES)];
 
 function priceColor(p) {
   if (!p || p <= 0) return 'var(--txt3)';
-  if (p < 120) return 'var(--grn)';
-  if (p < 280) return 'var(--amb)';
-  return 'var(--red)';
+  return 'var(--acc)';
 }
 
 function renderCatBar() {
@@ -6763,7 +6778,9 @@ function renderPanel() {
   // Default: restaurants list
   const rests = filteredRests();
   title.textContent = S.cat === 'Tümü' ? 'Yakındaki Restoranlar' : S.cat === 'Zincir' ? '🏪 Zincir Restoranlar' : S.cat + ' Restoranları';
-  sub.textContent = `${rests.length} mekan · ${S.distMax.toFixed(1)}km çevresinde`;
+  sub.textContent = userLocationSet
+    ? `${rests.length} mekan teslimat alanında`
+    : `${rests.length} mekan`;
 
   if (!rests.length) {
     body.innerHTML = `<div class="empty-s"><div class="ee">🤔</div><h3>Sonuç bulunamadı</h3><p>Filtreni değiştir veya farklı bir şey ara</p></div>`;
@@ -6811,18 +6828,23 @@ function renderPanel() {
     const badgeSolo = r.plats.length === 1 ? `<span class="rc-badge rc-badge-solo">Tek platform</span>` : '';
     const badgeThin = itemCount < 20 && itemCount > 0 ? `<span class="rc-badge rc-badge-thin">Sınırlı menü</span>` : '';
     const badges = (badgeFar || badgeSolo || badgeThin) ? `<div class="feed-rcard-badges">${badgeFar}${badgeSolo}${badgeThin}</div>` : '';
+    const delivParts = [];
+    if (r.min_order)   delivParts.push(`Min ${r.min_order} TL`);
+    if (r.delivery_fee) delivParts.push(`Teslimat ${r.delivery_fee} TL`);
+    const delivInfo = delivParts.length ? `<div class="feed-rcard-delivery">${delivParts.join(' · ')}</div>` : '';
     const catColor = CATEGORIES[r.cat]?.color || '#ea580c';
     const catBg = catColor + '18';
     return `<div class="feed-rcard ${r.id === S.activeRest ? 'active' : ''}" data-id="${r.id}" style="--cat-color:${catColor};--cat-bg:${catBg};animation-delay:${Math.min(idx,12)*38}ms">
       <div class="feed-rcard-inner">
         <div class="feed-rcard-em">${r.e || CATEGORIES[r.cat]?.emoji || '🍽️'}${r.premium ? '<span style="font-size:9px;position:absolute;top:-2px;right:-2px">✨</span>' : ''}</div>
         <div class="feed-rcard-mid">
-          <div class="feed-rcard-name">${escHtml(r.n)}</div>
+          <div class="feed-rcard-name" title="${escHtml(r.n)}">${escHtml(r.n)}</div>
           <div class="feed-rcard-sub">${escHtml(r.cat)}${r.premium ? ' · ✨' : ''}</div>
           <div class="feed-rcard-meta">
             <span class="feed-rcard-rating">⭐ ${r.rating}</span>
             <span class="feed-rcard-dist">📍 ${r.distKm} km</span>
           </div>
+          ${delivInfo}
           ${badges}
         </div>
         <div class="feed-rcard-right">
@@ -7251,15 +7273,18 @@ function renderSearchDD(q) {
       </div>`;
     }).join('');
   }
-  dd.innerHTML = html;
-  dd.classList.add('open');
-  dd.addEventListener('click', e => {
+  // cloneNode ile eski listener'ları temizle (her render'da birikmesin)
+  const fresh = dd.cloneNode(false);
+  fresh.innerHTML = html;
+  dd.parentNode.replaceChild(fresh, dd);
+  fresh.classList.add('open');
+  fresh.addEventListener('click', e => {
     const item = e.target.closest('.dd-item');
     if (!item) return;
     if (item.dataset.iid) openRestAndItem(item.dataset.rid, item.dataset.iid);
     else openRest(item.dataset.rid);
     clearSearch();
-  }, { once: true });
+  });
 }
 
 function clearSearch() {
@@ -7353,6 +7378,12 @@ function btabSwitch(mode) {
     t.classList.remove('active');
     if (lbl) lbl.style.color = '';
   });
+  // Topbar cart button: reset accent on non-cart modes, set on cart mode
+  const cartTopBtn = document.getElementById('topbarCartBtn');
+  if (cartTopBtn) {
+    cartTopBtn.style.borderColor = mode === 'cart' ? 'var(--acc)' : '';
+    cartTopBtn.style.color       = mode === 'cart' ? 'var(--acc)' : '';
+  }
   const idMap = { feed: 'btabFeed', map: 'btabMap', menu: 'btabMenu', cart: null };
   const activeId = idMap[mode] || null;
   if (activeId) {
@@ -7453,7 +7484,13 @@ function renderMenuMode() {
         if (!prices.length) return;
         const minP = Math.min(...prices);
         if (minP <= PRICE_FLOOR_MENU) return;  // hide condiment prices at/below floor
-        if (mmCat !== 'Tümü' && r.cat !== mmCat) return;
+        if (mmCat !== 'Tümü' && r.cat !== mmCat) {
+          // Also match by menu section name or item keywords
+          const secMatch = !(/paketli/i.test(cat)) && matchesTR(cat, mmCat.toLowerCase());
+          const kws = CAT_ITEM_KEYWORDS[mmCat];
+          const kwMatch = kws && kws.some(kw => matchesTR(item.n, kw));
+          if (!secMatch && !kwMatch) return;
+        }
         if (q && !(matchesTR(item.n, q) || matchesTR(item.d || '', q) || matchesTR(r.n, q))) return;
         items.push({ item, rest: r, minP });
       });
@@ -7490,42 +7527,48 @@ function renderMenuMode() {
     return;
   }
 
-  newBody.innerHTML = items.slice(0, 50).map(({ item, rest, minP }) => {
+  newBody.innerHTML = items.slice(0, 60).map(({ item, rest, minP }, idx) => {
     const entries = Object.entries(item.p).filter(([,v]) => typeof v === 'number').sort((a,b)=>a[1]-b[1]);
     if (!entries.length) return '';
     const cheapId = entries[0][0];
     const cheapPrice = entries[0][1];
+    const isMultiPlat = entries.length > 1;
+    const savings = isMultiPlat ? entries[entries.length-1][1] - cheapPrice : 0;
+    const rankEmoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : '';
 
     const priceRows = entries.map(([pid, price]) => {
       const pl = PLAT[pid];
       if (!pl) return '';
       const best = pid === cheapId;
+      const diff = !best && savings > 0 ? savings : 0;
       return `<div class="fcard-prow ${best?'best':''}" data-pid="${pid}">
         <div class="fcard-plat"><span class="fcard-pdot" style="background:${pl.c}"></span>${pl.n}</div>
         <div class="fcard-price-wrap">
           <span class="fcard-price ${best?'cheapest':''}">${price} TL</span>
-          ${best ? '<span class="fcard-best-tag">En Ucuz</span>' : ''}
+          ${best && isMultiPlat ? '<span class="fcard-best-tag">En Ucuz</span>' : ''}
+          ${diff > 0 ? `<span class="fcard-diff-tag">+${diff} TL</span>` : ''}
         </div>
       </div>`;
     }).join('');
 
     return `<div class="fcard" data-rid="${rest.id}" data-iid="${item.id||item.n}">
+      ${rankEmoji ? `<span class="fcard-rank">${rankEmoji}</span>` : ''}
       <div class="fcard-top">
         <div class="fcard-em">${item.e||'🍽️'}</div>
         <div class="fcard-info">
           <div class="fcard-name">${escHtml(item.n)}</div>
           <div class="fcard-rest">${escHtml(rest.n)}</div>
-          <div class="fcard-desc">${escHtml(item.d||'')}</div>
+          ${item.d ? `<div class="fcard-desc">${escHtml(item.d)}</div>` : ''}
           <div class="fcard-meta">
             <span class="fcard-rating">⭐ ${rest.rating}</span>
             <span class="fcard-dist">📍 ${rest.distKm} km</span>
-            <span style="margin-left:auto;font-size:11px;color:var(--grn);font-weight:700">${cheapPrice} TL</span>
+            ${isMultiPlat && savings > 0 ? `<span class="fcard-saving">💚 ${savings} TL ucuz</span>` : ''}
           </div>
         </div>
       </div>
       <div class="fcard-prices">${priceRows}</div>
       <div class="fcard-actions">
-        <button class="fcard-order-btn">Özelleştir &amp; Sipariş Ver →</button>
+        <button class="fcard-order-btn">Sipariş Ver →</button>
         <button class="fcard-cart-btn" data-rid="${rest.id}" data-iid="${item.id||item.n}" title="Sepete Ekle">🛒</button>
       </div>
     </div>`;
@@ -7726,7 +7769,7 @@ function resetAllFilters() {
   const pmax = document.getElementById('priceMax'); if (pmax) pmax.value = 1000;
   const dmax = document.getElementById('distMax');  if (dmax) dmax.value = 4.0;
   const prl = document.getElementById('priceRangeLabel'); if (prl) prl.textContent = '0 – 1000 TL';
-  const dl = document.getElementById('distLabel'); if (dl) dl.textContent = '5.0 km';
+  const dl = document.getElementById('distLabel'); if (dl) dl.textContent = '4.0 km';
   updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers();
 }
 
@@ -7779,8 +7822,13 @@ function clearPrice() { S.priceMin=0; S.priceMax=1000; document.getElementById('
 function clearDist()  { S.distMax=4.0; document.getElementById('distMax').value=4.0; document.getElementById('distLabel').textContent='4.0 km'; updateFilterCount(); renderActiveTags(); renderPanel(); refreshMarkers(); }
 
 function setFilter(cat) {
-  S.cat = cat; S.view = 'restaurants';
-  document.querySelectorAll('.dtab').forEach((t,i) => t.classList.toggle('active', i===0));
+  S.cat = cat;
+  // Preserve current view (Yakınımda, etc.) — only reset to restaurants if in the
+  // item-discovery 'cheapest' view, which doesn't use S.cat for its own panel.
+  if (S.view === 'cheapest') {
+    S.view = 'restaurants';
+    document.querySelectorAll('.dtab').forEach((t,i) => t.classList.toggle('active', i===0));
+  }
   renderCatBar(); renderPanel(); refreshMarkers();
   // Kategori seçilince haritayı o marker'lara fit et
   if (cat !== 'Tümü' && map) {
@@ -8019,19 +8067,13 @@ function initHomeScreen() {
   const hsPEl = document.getElementById('hsStatPlats');
   if (hsPEl) hsPEl.textContent = totalPlats;
 
-  // Category pill clicks
+  // Category pill clicks — go directly to filtered feed (consistent with cat-bar)
   document.getElementById('hsCats').addEventListener('click', e => {
     const pill = e.target.closest('.hs-cat-pill');
     if (!pill) return;
     const q = pill.dataset.q;
-    // Toggle active state
-    document.querySelectorAll('.hs-cat-pill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    document.getElementById('hsInput').value = q;
-    document.getElementById('hsClear').classList.add('visible');
-    hsQuery = q;
     hsActiveCat = q;
-    runHomeSearch(q);
+    openMapWithFilter(q, 'home');
   });
 
   // Search input
@@ -8144,7 +8186,9 @@ function openMapWithFilter(q, fromScreen) {
   // Set topbar back button label based on origin
   const backLabel = comingFrom === 'results'
     ? '← Sonuçlar'
-    : '← Arama';
+    : comingFrom === 'home'
+      ? '← Ana Sayfa'
+      : '← Arama';
   setTopbarBack(comingFrom, backLabel);
 
   // Dismiss overlays
@@ -9593,7 +9637,7 @@ function wlcForgotPwd() {
           🔑 Giriş Yap
         </button>
         <div class="ws-divider">veya</div>
-        <button class="ws-btn-google" onclick="wlcGoogle()">
+        <button class="ws-btn-google" onclick="wlcGoogle()" style="display:none">
           <span class="ws-google-g">G</span>
           Google ile devam et
         </button>
