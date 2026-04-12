@@ -280,6 +280,39 @@ button:not(.btab):not(.feed-rcard):not([class*="qty-btn"]):active {
               opacity 0.32s ease, padding 0.36s ease;
 }
 
+/* ── Menu expanded: title + cats collapse on scroll ── */
+#menuMode .mm-title {
+  transition: max-height 0.38s cubic-bezier(0.22,1,0.36,1),
+              opacity 0.28s ease,
+              margin-bottom 0.32s ease,
+              padding-top 0.32s ease,
+              padding-bottom 0.32s ease;
+  max-height: 60px; overflow: hidden;
+}
+#menuMode .mm-cats {
+  transition: max-height 0.42s cubic-bezier(0.22,1,0.36,1),
+              opacity 0.32s ease,
+              padding-top 0.32s ease,
+              padding-bottom 0.32s ease;
+  max-height: 60px; overflow: hidden;
+}
+#menuMode.mm-scrolled .mm-title {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+}
+#menuMode.mm-scrolled .mm-cats {
+  max-height: 0 !important;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  pointer-events: none;
+}
+#menuMode.mm-scrolled .mm-header {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
 /* ── Feed expanded: headers collapse, list takes full screen ── */
 #mapSections.feed-expanded .disc-bar {
   max-height: 0 !important;
@@ -372,7 +405,21 @@ button:not(.btab):not(.feed-rcard):not([class*="qty-btn"]):active {
   display: flex; align-items: center; gap: 6px;
   font-size: 11px; color: var(--txt3); flex-wrap: wrap; margin-top: 3px;
 }
-.frc-plats { display: flex; gap: 4px; margin-top: 5px; }
+.frc-plats { display: flex; gap: 4px; margin-top: 5px; flex-wrap: wrap; }
+.frc-plat-badge { display: inline-flex; align-items: center; gap: 3px; padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 800; letter-spacing: 0.2px; }
+.frc-plat-badge-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.frc-plat-cheapest { outline: 1.5px solid currentColor; }
+/* Platform comparison summary in menu mode */
+.mm-plat-summary { display: flex; gap: 8px; margin: 0 0 12px 0; flex-wrap: wrap; }
+.mm-plat-pill { display: flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 10px; font-size: 12px; font-weight: 700; background: var(--bg2); border: 1px solid var(--line); flex: 1; min-width: 120px; }
+.mm-plat-pill-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.mm-plat-pill-name { color: var(--txt3); font-weight: 600; }
+.mm-plat-pill-price { margin-left: auto; font-size: 14px; font-weight: 900; font-family: 'Space Grotesk', var(--font); letter-spacing: -0.5px; }
+.mm-plat-pill.winner { border-color: var(--grn); background: rgba(34,199,122,0.08); }
+.mm-plat-pill.winner .mm-plat-pill-price { color: var(--grn); }
+.mm-plat-pill-tag { font-size: 9px; font-weight: 800; color: var(--grn); text-transform: uppercase; }
+/* Legal disclaimer */
+.legal-note { font-size: 10px; color: var(--txt3); text-align: center; padding: 8px 16px 16px; opacity: 0.7; line-height: 1.5; }
 
 /* ── Price column ── */
 .frc-price-col {
@@ -1321,6 +1368,7 @@ input[type=range]#distMax { accent-color: var(--grn); }
   background: linear-gradient(160deg, #FFF5EC 0%, var(--bg) 100%);
   border-bottom: 1.5px solid var(--line);
   position: relative;
+  transition: padding-top 0.32s ease, padding-bottom 0.32s ease;
 }
 .mm-header::after {
   content: '';
@@ -4146,6 +4194,7 @@ input:focus-visible { outline: none; }
         <div class="lp-sub" id="lpSub">5 km içinde restoran ve kafeler</div>
       </div>
       <div class="lp-body" id="lpBody"></div>
+      <div class="legal-note">Fiyatlar değişmiş olabilir · Resmi platform değildir</div>
     </div>
 
     <!-- MAP — single container, 3 states managed by showMapState(n) -->
@@ -4309,7 +4358,9 @@ input:focus-visible { outline: none; }
     </div>
     <div class="mm-cats" id="mmCats"></div>
     <div class="mm-results-header" id="mmResultsHeader"></div>
+    <div id="mmPlatSummary" style="display:none"></div>
     <div class="mm-body" id="mmBody"></div>
+    <div class="legal-note">Fiyatlar değişmiş olabilir · Resmi platform değildir · <a href="https://tgoyemek.com" target="_blank" style="color:inherit;opacity:0.8">Trendyol Go</a> · <a href="https://getir.com/yemek" target="_blank" style="color:inherit;opacity:0.8">Getir</a></div>
   </div>
 
   <!-- ══════════════════════════════════════════════════════════════
@@ -7237,7 +7288,14 @@ function renderPanel() {
     try { mi = restMinItem(r); } catch(e) {}
     const mp = mi.price;
     const mpName = mi.name ? mi.name.slice(0, 16) + (mi.name.length > 16 ? '…' : '') : '';
-    const platDots = r.plats.map(pid => PLAT[pid] ? `<span class="chain-card-pdot" style="background:${PLAT[pid].c}"></span>` : '').join('');
+    const isMultiR = r.plats.length > 1;
+    const platDots = r.plats.map(pid => {
+      const pl = PLAT[pid]; if (!pl) return '';
+      const abbr = pid === 'trendyol' ? 'TY' : pid === 'getir' ? 'GR' : pid === 'yemeksepeti' ? 'YS' : pid.toUpperCase().slice(0,2);
+      return `<span class="frc-plat-badge" style="background:${pl.c}22;color:${pl.c}">
+        <span class="frc-plat-badge-dot" style="background:${pl.c}"></span>${abbr}
+      </span>`;
+    }).join('');
     const itemCount = Object.values(r.menu || {}).flat().filter(it => it?.p).length;
     const badgeFar  = r._distLabel === 'uzak' ? `<span class="rc-badge rc-badge-far">Uzak</span>` : '';
     const badgeSolo = r.plats.length === 1 ? `<span class="rc-badge rc-badge-solo">Tek platform</span>` : '';
@@ -7680,6 +7738,9 @@ function handleMBg(e)  { if (e.target === document.getElementById('modalBg')) cl
         }
       }, { passive: true });
     }
+
+    // Menu scroll listener is attached per-render inside renderMenuMode()
+    // (because #mmBody is replaced on each render via cloneNode)
   });
 })();
 
@@ -7962,6 +8023,39 @@ function renderMenuMode() {
         : `Yakınındaki <strong>${items.length}</strong> ürün · en ucuzdan pahalıya`;
   }
 
+  // Platform comparison summary — show cheapest per platform
+  const platSummaryEl = document.getElementById('mmPlatSummary');
+  if (platSummaryEl && items.length > 1) {
+    const platBests = {};
+    items.forEach(({ item, minP }) => {
+      Object.entries(item.p || {}).forEach(([pid, price]) => {
+        if (typeof price !== 'number') return;
+        if (!platBests[pid] || price < platBests[pid]) platBests[pid] = price;
+      });
+    });
+    const platEntries = Object.entries(platBests).sort((a,b) => a[1]-b[1]);
+    if (platEntries.length > 1) {
+      const lowestPrice = platEntries[0][1];
+      platSummaryEl.innerHTML = `<div class="mm-plat-summary">` +
+        platEntries.map(([pid, price]) => {
+          const pl = PLAT[pid]; if (!pl) return '';
+          const isWinner = price === lowestPrice;
+          return `<div class="mm-plat-pill${isWinner ? ' winner' : ''}">
+            <span class="mm-plat-pill-dot" style="background:${pl.c}"></span>
+            <span class="mm-plat-pill-name">${pl.n}</span>
+            ${isWinner ? '<span class="mm-plat-pill-tag">En Ucuz</span>' : ''}
+            <span class="mm-plat-pill-price">${price} TL</span>
+          </div>`;
+        }).join('') +
+        `</div>`;
+      platSummaryEl.style.display = '';
+    } else {
+      platSummaryEl.style.display = 'none';
+    }
+  } else if (platSummaryEl) {
+    platSummaryEl.style.display = 'none';
+  }
+
   const bodyEl = document.getElementById('mmBody');
   const newBody = bodyEl.cloneNode(false);
   newBody.id = 'mmBody';
@@ -8056,6 +8150,22 @@ function renderMenuMode() {
     const card = e.target.closest('.fcard');
     if (card?.dataset.rid) openRest(card.dataset.rid);
   });
+
+  // Re-attach scroll listener on the new body (old body was replaced)
+  const menuMode = document.getElementById('menuMode');
+  if (menuMode) {
+    let mmExp = menuMode.classList.contains('mm-scrolled');
+    const topbar = document.querySelector('.topbar');
+    newBody.addEventListener('scroll', () => {
+      const st = newBody.scrollTop;
+      if (topbar) topbar.classList.toggle('scrolled', st > 8);
+      const shouldExp = st > 12;
+      if (shouldExp !== mmExp) {
+        menuMode.classList.toggle('mm-scrolled', shouldExp);
+        mmExp = shouldExp;
+      }
+    }, { passive: true });
+  }
 }
 
 // ── 15b. CART ─────────────────────────────────────────────────────────────────
