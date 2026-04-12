@@ -59,6 +59,24 @@
   --blue:   #2563EB;
   --sh:     0 2px 12px rgba(15,23,42,0.07);
   --sh-lg:  0 8px 32px rgba(15,23,42,0.12);
+  /* Elevation scale */
+  --sh-xs:  0 1px 4px rgba(15,23,42,0.06);
+  --sh-sm:  0 2px 12px rgba(15,23,42,0.08);
+  --sh-md:  0 4px 20px rgba(15,23,42,0.12);
+  --sh-xl:  0 16px 48px rgba(15,23,42,0.20);
+  /* Glow */
+  --glow-acc:  0 4px 24px rgba(234,88,12,0.28);
+  --glow-grn:  0 4px 16px rgba(22,163,74,0.22);
+  --glow-blue: 0 4px 16px rgba(37,99,235,0.22);
+  /* Timing */
+  --ease-spring: cubic-bezier(0.34,1.56,0.64,1);
+  --ease-out:    cubic-bezier(0.22,1,0.36,1);
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 340ms;
+  /* Card */
+  --card-radius: 18px;
+  --card-border: rgba(234,88,12,0.08);
   --r:      14px;
   --rs:     8px;
   --rp:     999px;
@@ -69,6 +87,11 @@
 }
 html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--txt); -webkit-font-smoothing: antialiased; overflow: hidden; }
 button { font-family: var(--font); cursor: pointer; }
+/* Global button press feedback — scale down on active */
+button:not(.btab):not(.feed-rcard):not([class*="qty-btn"]):active {
+  transform: scale(0.96);
+  transition: transform 80ms ease !important;
+}
 ::-webkit-scrollbar { width: 3px; height: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
@@ -84,6 +107,15 @@ button { font-family: var(--font); cursor: pointer; }
   padding: 0 16px; background: var(--bg);
   border-bottom: 2px solid var(--bg2);
   flex-shrink: 0; z-index: 500;
+  transition: box-shadow var(--dur-base) ease, backdrop-filter var(--dur-base) ease;
+}
+.topbar { transition: box-shadow 0.28s ease, background 0.28s ease; }
+.topbar.scrolled {
+  background: rgba(255,251,245,0.94);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 2px 16px rgba(15,23,42,0.09), 0 1px 0 rgba(234,88,12,0.06);
+  border-bottom-color: transparent;
 }
 /* Back button — shown when navigated from search */
 #topbarBack {
@@ -183,15 +215,24 @@ button { font-family: var(--font); cursor: pointer; }
 .cat-bar::-webkit-scrollbar { display: none; }
 .cpill {
   display: flex; align-items: center; gap: 5px; white-space: nowrap;
-  background: var(--bg1); border: 1.5px solid var(--line); padding: 8px 16px;
+  background: #fff; border: 1.5px solid rgba(234,88,12,0.12); padding: 8px 16px;
   border-radius: var(--rp); font-size: 13px; font-weight: 700;
-  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), background 0.18s, border-color 0.18s, color 0.18s, box-shadow 0.18s;
+  transition: transform var(--dur-base) var(--ease-spring),
+              background var(--dur-fast) ease,
+              border-color var(--dur-fast) ease,
+              color var(--dur-fast) ease,
+              box-shadow var(--dur-base) ease;
   color: var(--txt2); flex-shrink: 0; cursor: pointer;
+  box-shadow: var(--sh-xs);
 }
 .cpill-icon { font-size: 15px; line-height: 1; }
-.cpill:hover { border-color: var(--acc); color: var(--acc); background: var(--acc-s); transform: translateY(-1px) scale(1.03); }
-.cpill:active { transform: scale(0.94); }
-.cpill.active { background: var(--acc); border-color: var(--acc); color: #fff; transform: scale(1.04); box-shadow: 0 3px 12px rgba(234,88,12,0.3); }
+.cpill:hover { border-color: var(--acc); color: var(--acc); background: var(--acc-s); transform: translateY(-2px) scale(1.03); box-shadow: var(--sh-sm); }
+.cpill:active { transform: scale(0.93); transition-duration: 80ms; }
+.cpill.active {
+  background: var(--grad); border-color: transparent; color: #fff;
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: var(--glow-acc);
+}
 
 /* BODY — feed mode: single column */
 .body { flex: 1; display: flex; overflow: hidden; position: relative; }
@@ -230,37 +271,97 @@ button { font-family: var(--font); cursor: pointer; }
 .lp-sub { font-size: 11px; color: var(--txt3); margin-top: 2px; font-weight: 500; }
 .lp-body { flex: 1; overflow-y: auto; padding: 4px 0 80px; -webkit-overflow-scrolling: touch; }
 
-/* ═══════════════ FEED RESTAURANT CARDS ═══════════════ */
+/* ═══════════════ FEED RESTAURANT CARDS — Gradient Band Redesign ═══════════════ */
 @keyframes cardSlideUp {
   from { opacity: 0; transform: translateY(22px) scale(0.97); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 .feed-rcard {
-  display: flex; align-items: center; gap: 14px;
-  padding: 0; background: #fff;
-  border: 1.5px solid var(--line); border-radius: 20px;
+  display: flex; align-items: stretch;
+  background: #fff;
+  border: 1.5px solid var(--card-border); border-radius: 20px;
   margin: 0 12px 10px; cursor: pointer;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  transition: border-color 0.22s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s;
+  box-shadow: var(--sh-xs);
+  min-height: 100px;
+  transition: border-color var(--dur-base) ease,
+              transform var(--dur-base) var(--ease-spring),
+              box-shadow var(--dur-base) ease;
   overflow: hidden; position: relative;
   animation: cardSlideUp 0.38s cubic-bezier(0.22,1,0.36,1) both;
 }
-.feed-rcard::before {
-  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-  background: var(--cat-color, var(--acc));
-  border-radius: 0;
+.feed-rcard:hover {
+  border-color: rgba(234,88,12,0.30);
+  box-shadow: var(--sh-lg), 0 0 0 1px rgba(234,88,12,0.12);
+  transform: translateY(-8px) scale(1.02);
 }
-.feed-rcard:hover { border-color: var(--acc); box-shadow: 0 8px 28px rgba(234,88,12,0.14); transform: translateY(-2px) scale(1.01); }
-.feed-rcard:active { transform: scale(0.97); transition-duration: 0.1s; }
-.feed-rcard.active { border-color: var(--acc); box-shadow: 0 0 0 2px var(--acc), 0 6px 24px rgba(234,88,12,0.15); }
+.feed-rcard:active { transform: translateY(-2px) scale(0.97); transition-duration: 80ms; }
+.frc-em { transition: transform 0.22s ease; display: block; }
+.feed-rcard:hover .frc-em { transform: translateY(-4px) scale(1.14); transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1); }
+.feed-rcard.active { border-color: var(--acc); box-shadow: 0 0 0 2px var(--acc), var(--sh-sm); }
+
+/* ── Gradient left band — category color ── */
+.frc-left {
+  width: 90px; flex-shrink: 0;
+  background: linear-gradient(160deg, var(--cat-color, #ea580c) 0%, rgba(255,255,255,0.05) 140%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px; padding: 14px 8px;
+  position: relative; overflow: hidden;
+}
+.frc-left::before {
+  content: '';
+  position: absolute; width: 88px; height: 88px;
+  border-radius: 50%; background: rgba(255,255,255,0.18);
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.frc-em { font-size: 34px; position: relative; z-index: 1; line-height: 1; }
+.frc-rating {
+  font-size: 11px; font-weight: 800;
+  color: rgba(255,255,255,0.95);
+  background: rgba(0,0,0,0.18); border-radius: 99px;
+  padding: 2px 7px; position: relative; z-index: 1;
+  white-space: nowrap;
+}
+
+/* ── Card content body ── */
+.frc-body {
+  flex: 1; min-width: 0;
+  padding: 14px 8px 12px 14px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.frc-name {
+  font-size: 14px; font-weight: 800; color: var(--txt);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  letter-spacing: -0.3px; font-family: 'Space Grotesk', var(--font);
+}
+.frc-cat { font-size: 11px; color: var(--txt3); font-weight: 500; }
+.frc-meta {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--txt3); flex-wrap: wrap; margin-top: 3px;
+}
+.frc-plats { display: flex; gap: 4px; margin-top: 5px; }
+
+/* ── Price column ── */
+.frc-price-col {
+  flex-shrink: 0; display: flex; flex-direction: column;
+  align-items: flex-end; justify-content: center;
+  padding: 12px 14px 12px 6px; gap: 3px; min-width: 76px;
+}
+.frc-price {
+  font-size: 20px; font-weight: 900; line-height: 1;
+  letter-spacing: -0.8px; font-family: 'Space Grotesk', var(--font);
+}
+.frc-price small { font-size: 11px; font-weight: 700; }
+.frc-price-lbl {
+  font-size: 9px; color: var(--txt3); font-weight: 500;
+  max-width: 72px; text-align: right;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Legacy class refs (still used in non-refactored paths) */
 .feed-rcard-inner { display: flex; align-items: center; gap: 14px; padding: 14px 14px 14px 18px; width: 100%; }
-.feed-rcard-em {
-  width: 62px; height: 62px; border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 30px; flex-shrink: 0; position: relative;
-  background: var(--cat-bg, var(--bg1));
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
+.feed-rcard-em { width: 62px; height: 62px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 30px; flex-shrink: 0; position: relative; background: var(--cat-bg, var(--bg1)); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 .feed-rcard-mid { flex: 1; min-width: 0; }
 .feed-rcard-name { font-size: 15px; font-weight: 800; color: var(--txt); margin-bottom: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: -0.3px; font-family: 'Space Grotesk', var(--font); }
 .feed-rcard-sub { font-size: 11px; color: var(--txt3); margin-bottom: 5px; font-weight: 500; }
@@ -310,6 +411,99 @@ button { font-family: var(--font); cursor: pointer; }
 .dc-save { font-size: 10px; color: var(--grn); font-weight: 600; background: var(--grn-s); padding: 2px 7px; border-radius: var(--rp); }
 
 /* Chain card section */
+/* ── Discovery Page — Featured Banner + Category Grid + Nearby ── */
+.disc-feat {
+  margin: 0 12px 14px;
+  border-radius: 22px; overflow: hidden; cursor: pointer; position: relative;
+  min-height: 280px; display: flex; flex-direction: column; justify-content: flex-end;
+  box-shadow: var(--sh-lg);
+  transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base) ease;
+  animation: cardSlideUp 0.42s cubic-bezier(0.22,1,0.36,1) both;
+}
+.disc-feat:hover { transform: translateY(-4px) scale(1.01); box-shadow: var(--sh-xl); }
+.disc-feat:active { transform: scale(0.98); transition-duration: 80ms; }
+.disc-feat-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(145deg, var(--feat-color, #ea580c) 0%, rgba(15,23,42,0.70) 100%);
+}
+.disc-feat-em {
+  position: absolute; right: 18px; top: 50%; transform: translateY(-50%);
+  font-size: 72px; line-height: 1; opacity: 0.50;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.20));
+  pointer-events: none;
+}
+.disc-feat-body {
+  position: relative; z-index: 1; padding: 20px 20px 18px;
+  background: linear-gradient(to top, rgba(0,0,0,0.60) 0%, transparent 100%);
+}
+.disc-feat-badge {
+  display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.5px;
+  color: #fff; background: rgba(255,255,255,0.20); border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 99px; padding: 3px 10px; margin-bottom: 8px; backdrop-filter: blur(4px);
+}
+.disc-feat-name {
+  font-size: 19px; font-weight: 900; color: #fff; letter-spacing: -0.5px;
+  font-family: 'Space Grotesk', var(--font); margin-bottom: 7px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.30);
+}
+.disc-feat-meta { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.88); flex-wrap: wrap; }
+.disc-feat-price { margin-left: auto; font-size: 18px; font-weight: 900; color: #fff; font-family: 'Space Grotesk', var(--font); letter-spacing: -0.5px; }
+
+/* ── Category Icon Grid ── */
+.disc-cat-grid {
+  display: flex; gap: 12px;
+  overflow-x: auto; padding: 2px 12px 14px;
+  scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.disc-cat-grid::-webkit-scrollbar { display: none; }
+.disc-cat-btn {
+  flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  cursor: pointer; background: none; border: none; padding: 0; font-family: var(--font);
+  transition: transform var(--dur-base) var(--ease-spring);
+}
+.disc-cat-btn:hover { transform: translateY(-4px); }
+.disc-cat-btn:active { transform: scale(0.88); transition-duration: 80ms; }
+.disc-cat-circle {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-size: 24px;
+  box-shadow: var(--sh-sm); transition: box-shadow var(--dur-base) ease, transform var(--dur-base) var(--ease-spring);
+}
+.disc-cat-btn:hover .disc-cat-circle { box-shadow: var(--sh-md); transform: scale(1.08); }
+.disc-cat-label { font-size: 10px; font-weight: 700; color: var(--txt2); white-space: nowrap; }
+
+/* ── Section Header ── */
+.disc-sec-hdr {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 2px 12px 8px;
+}
+.disc-sec-title { font-size: 14px; font-weight: 800; color: var(--txt); font-family: 'Space Grotesk', var(--font); letter-spacing: -0.3px; }
+.disc-sec-count { font-size: 11px; font-weight: 600; color: var(--txt3); background: var(--bg2); border-radius: 99px; padding: 2px 9px; border: 1px solid var(--line); }
+
+/* ── Nearby Horizontal Cards ── */
+.disc-near-row {
+  display: flex; gap: 10px;
+  overflow-x: auto; padding: 0 12px 16px;
+  scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.disc-near-row::-webkit-scrollbar { display: none; }
+.disc-ncard {
+  flex-shrink: 0; width: 128px;
+  background: #fff; border: 1.5px solid var(--card-border);
+  border-radius: 16px; overflow: hidden; cursor: pointer;
+  box-shadow: var(--sh-xs);
+  transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base) ease, border-color var(--dur-fast) ease;
+  animation: cardSlideUp 0.35s cubic-bezier(0.22,1,0.36,1) both;
+}
+.disc-ncard:hover { transform: translateY(-5px); box-shadow: var(--sh-md); border-color: rgba(234,88,12,0.25); }
+.disc-ncard:active { transform: scale(0.95); transition-duration: 80ms; }
+.disc-ncard-top {
+  height: 60px; display: flex; align-items: center; justify-content: center; font-size: 28px;
+}
+.disc-ncard-body { padding: 8px 9px 10px; }
+.disc-ncard-name { font-size: 11px; font-weight: 800; color: var(--txt); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: 'Space Grotesk', var(--font); margin-bottom: 3px; }
+.disc-ncard-dist { font-size: 10px; color: var(--txt3); font-weight: 500; }
+.disc-ncard-price { font-size: 13px; font-weight: 900; color: var(--acc); font-family: 'Space Grotesk', var(--font); letter-spacing: -0.3px; margin-top: 4px; }
+
 .chain-section { margin-bottom: 14px; }
 .chain-section-hdr { display:flex; align-items:center; justify-content:space-between; padding:0 0 8px; }
 .chain-section-title { font-size:13px; font-weight:700; color:var(--txt); }
@@ -442,6 +636,63 @@ button { font-family: var(--font); cursor: pointer; }
   to   { transform: translateY(0); opacity: 1; }
 }
 #bottomTabBar { animation: tabBarIn 0.5s 0.15s cubic-bezier(0.34,1.2,0.64,1) both; }
+
+/* ── Yeni animasyonlar: Discovery, Chip Bounce, Detail Panel, Mode Exit ── */
+@keyframes catBtnIn {
+  from { opacity: 0; transform: translateY(14px) scale(0.82); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes featCardIn {
+  from { opacity: 0; transform: translateY(22px) scale(0.95); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes chipBounce {
+  0%   { transform: scale(1) translateY(-1px); }
+  35%  { transform: scale(0.86) translateY(0); }
+  65%  { transform: scale(1.14) translateY(-2px); }
+  100% { transform: scale(1.05) translateY(-1px); }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.55; }
+  50%       { opacity: 0; }
+}
+@keyframes dpEmojiPop {
+  from { opacity: 0; transform: scale(0.25) rotate(-18deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes dpBgReveal {
+  from { opacity: 0; transform: scale(1.08); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes modeExitFade {
+  to { opacity: 0; transform: scale(0.97) translateY(8px); }
+}
+/* Discovery section animasyonları */
+.disc-feat { animation: featCardIn 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+.disc-cat-btn { animation: catBtnIn 0.38s cubic-bezier(0.22,1,0.36,1) both; }
+.disc-cat-btn:nth-child(1)  { animation-delay: 0.02s; }
+.disc-cat-btn:nth-child(2)  { animation-delay: 0.05s; }
+.disc-cat-btn:nth-child(3)  { animation-delay: 0.08s; }
+.disc-cat-btn:nth-child(4)  { animation-delay: 0.11s; }
+.disc-cat-btn:nth-child(5)  { animation-delay: 0.14s; }
+.disc-cat-btn:nth-child(6)  { animation-delay: 0.17s; }
+.disc-cat-btn:nth-child(7)  { animation-delay: 0.20s; }
+.disc-cat-btn:nth-child(8)  { animation-delay: 0.23s; }
+.disc-cat-btn:nth-child(n+9){ animation-delay: 0.26s; }
+/* Kategori chip bounce */
+.cpill.active { animation: chipBounce 0.38s cubic-bezier(0.34,1.56,0.64,1) both; }
+.cpill { position: relative; overflow: visible; }
+.cpill.active::after {
+  content: ''; position: absolute; inset: -3px;
+  border-radius: var(--rp); pointer-events: none;
+  background: rgba(234,88,12,0.12);
+  animation: glowPulse 2.2s ease infinite;
+}
+/* Detail panel banner animasyonları */
+.dp-banner-em { animation: dpEmojiPop 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.08s both; }
+.dp-banner-bg { animation: dpBgReveal 0.42s ease both; }
+.dp-info { transition: box-shadow 0.22s ease; }
+.dp-info.scrolled { box-shadow: 0 4px 16px rgba(15,23,42,0.10); }
 
 /* Disc-bar (sort tabs) hover */
 .disc-btn, .sort-btn {
@@ -751,9 +1002,20 @@ button { font-family: var(--font); cursor: pointer; }
 
 /* Menu items */
 .menu-list { flex: 1; overflow-y: auto; padding: 8px 16px 24px; }
-.mitem { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); cursor: pointer; transition: background 0.1s; }
+.mitem {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 8px; border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  border-radius: 10px; margin: 0 -8px;
+  transition: background var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
 .mitem:last-child { border-bottom: none; }
-.mitem:hover { margin: 0 -6px; padding: 10px 6px; border-radius: var(--rs); background: var(--bg2); }
+.mitem:hover {
+  background: var(--acc-s);
+  transform: translateX(3px);
+  border-bottom-color: transparent;
+}
+.mitem:active { transform: translateX(1px) scale(0.99); }
 .mi-left { flex: 1; min-width: 0; }
 .mi-name { font-size: 13px; font-weight: 600; color: var(--txt); }
 .mi-desc { font-size: 11px; color: var(--txt3); margin-top: 2px; line-height: 1.4; }
@@ -762,7 +1024,7 @@ button { font-family: var(--font); cursor: pointer; }
 .mi-right { flex-shrink: 0; text-align: right; }
 .mpr { display: flex; align-items: center; justify-content: flex-end; gap: 4px; font-size: 10px; margin-bottom: 2px; color: var(--txt3); }
 .mpr.best { color: var(--grn); font-weight: 700; }
-.mbest { font-size: 10px; background: var(--grn); color: #000; padding: 1px 5px; border-radius: var(--rp); font-weight: 700; }
+.mbest { font-size: 10px; background: var(--grn); color: #fff; padding: 2px 7px; border-radius: var(--rp); font-weight: 700; }
 
 /* ═══════════════ CUSTOMIZE MODAL ═══════════════ */
 
@@ -908,21 +1170,22 @@ button { font-family: var(--font); cursor: pointer; }
 
 /* ── FILTER DRAWER ── */
 .filter-toggle-bar {
-  display: flex; align-items: center; gap: 8px;
-  padding: 10px 14px 8px; flex-shrink: 0;
+  display: flex; align-items: center; gap: 6px;
+  padding: 4px 14px 6px; flex-shrink: 0;
 }
 .filter-toggle-btn {
-  display: flex; align-items: center; gap: 6px;
-  background: var(--bg2); border: 1.5px solid var(--line2);
-  color: var(--txt2); font-size: 12px; font-weight: 600;
-  padding: 8px 14px; border-radius: var(--rp);
-  font-family: var(--font); transition: all 0.18s; cursor: pointer; flex: 1;
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--bg2); border: 1.5px solid var(--line);
+  color: var(--txt3); font-size: 11px; font-weight: 600;
+  padding: 5px 12px; border-radius: 99px;
+  font-family: var(--font); transition: all 0.18s; cursor: pointer;
+  white-space: nowrap;
 }
 .filter-toggle-btn:hover { border-color: var(--acc); color: var(--acc); }
-.filter-toggle-btn.has-active { border-color: var(--acc); color: var(--acc); background: var(--acc-s); }
+.filter-toggle-btn.has-active { border-color: var(--acc); color: var(--acc); background: var(--acc-s); font-weight: 700; }
 .ftb-count {
-  margin-left: auto; background: var(--acc); color: #fff;
-  font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: var(--rp);
+  background: var(--acc); color: #fff;
+  font-size: 9px; font-weight: 800; padding: 1px 5px; border-radius: 99px;
   display: none;
 }
 .fetch-pill {
@@ -1083,8 +1346,8 @@ input[type=range]#distMax { accent-color: var(--grn); }
 .mm-cat:hover { border-color: var(--acc); color: var(--acc); transform: translateY(-1px); box-shadow: 0 3px 10px var(--acc-s); }
 .mm-cat.active {
   background: var(--grad); border-color: transparent; color: #fff;
-  box-shadow: 0 4px 12px rgba(234,88,12,0.3);
-  transform: translateY(-1px);
+  box-shadow: var(--glow-acc);
+  transform: translateY(-2px) scale(1.04);
 }
 
 /* Results header */
@@ -1099,18 +1362,20 @@ input[type=range]#distMax { accent-color: var(--grn); }
 
 /* Food item card — Menu Mode — vibrant redesign */
 @keyframes fcardIn {
-  from { opacity: 0; transform: translateY(18px) scale(0.96); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateX(-14px) translateY(10px) scale(0.96); }
+  to   { opacity: 1; transform: none; }
 }
 .fcard {
   background: #fff;
-  border: 1.5px solid var(--line);
+  border: 1.5px solid var(--card-border);
   border-radius: 20px;
   margin-bottom: 14px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(15,23,42,0.07);
-  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s, border-color 0.18s;
+  box-shadow: var(--sh-sm);
+  transition: transform var(--dur-base) var(--ease-spring),
+              box-shadow var(--dur-base) ease,
+              border-color var(--dur-fast) ease;
   animation: fcardIn 0.35s cubic-bezier(0.22,1,0.36,1) both;
   position: relative;
 }
@@ -1120,8 +1385,12 @@ input[type=range]#distMax { accent-color: var(--grn); }
 .fcard:nth-child(4)  { animation-delay: 0.15s; }
 .fcard:nth-child(5)  { animation-delay: 0.19s; }
 .fcard:nth-child(n+6){ animation-delay: 0.22s; }
-.fcard:hover { transform: translateY(-4px) scale(1.01); box-shadow: 0 14px 36px rgba(234,88,12,0.16); border-color: var(--acc); }
-.fcard:active { transform: scale(0.975); transition-duration: 0.1s; }
+.fcard:hover {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow: var(--sh-lg), 0 0 0 1px rgba(234,88,12,0.15);
+  border-color: rgba(234,88,12,0.30);
+}
+.fcard:active { transform: scale(0.975); transition-duration: 80ms; }
 
 /* Card header — food item info */
 .fcard-top {
@@ -1191,12 +1460,16 @@ input[type=range]#distMax { accent-color: var(--grn); }
   padding: 14px; background: var(--grad); color: #fff; border: none;
   border-radius: 14px; font-size: 14px; font-weight: 900;
   font-family: var(--font); cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s, opacity 0.15s;
+  transition: transform var(--dur-base) var(--ease-spring),
+              box-shadow var(--dur-base) ease;
   text-align: center; letter-spacing: 0.3px;
-  box-shadow: 0 6px 18px rgba(234,88,12,0.35);
+  box-shadow: var(--glow-acc);
 }
-.fcard-order-btn:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 10px 24px rgba(234,88,12,0.45); }
-.fcard-order-btn:active { transform: scale(0.96); opacity: 0.9; }
+.fcard-order-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(234,88,12,0.48);
+}
+.fcard-order-btn:active { transform: scale(0.96); transition-duration: 80ms; }
 
 /* Empty state */
 .mm-empty { text-align: center; padding: 60px 20px; color: var(--txt3); }
@@ -1678,6 +1951,18 @@ input[type=range]#distMax { accent-color: var(--grn); }
   padding:2px 6px; border-radius:4px;
   color:#fff;
 }
+
+/* ── LOCATION ONBOARDING BUTTONS ── */
+#hsGpsBtn {
+  background: var(--grad) !important;
+  box-shadow: var(--glow-acc) !important;
+  transition: transform var(--dur-base) var(--ease-spring), box-shadow var(--dur-base) ease !important;
+}
+#hsGpsBtn:hover {
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 8px 28px rgba(234,88,12,0.40) !important;
+}
+#hsGpsBtn:active { transform: scale(0.97) !important; }
 
 /* ── MAP CTA ── */
 .sr-map-cta {
@@ -2306,16 +2591,18 @@ input[type=range]#distMax { accent-color: var(--grn); }
   padding: 15px 36px; border-radius: var(--rp);
   font-size: 15px; font-weight: 700; font-family: var(--font);
   cursor: pointer; letter-spacing: 0.2px;
-  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
-  box-shadow: 0 4px 20px rgba(124,58,237,0.22), 0 2px 8px rgba(255,94,31,0.16);
+  transition: transform var(--dur-base) var(--ease-spring),
+              box-shadow var(--dur-base) ease,
+              filter var(--dur-fast) ease;
+  box-shadow: var(--glow-acc);
   animation: hs-fade-up 0.5s ease 0.32s both;
 }
 .hs-start-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 36px rgba(124,58,237,0.32), 0 4px 16px rgba(255,94,31,0.22);
-  filter: brightness(1.06);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(234,88,12,0.42), 0 4px 16px rgba(234,88,12,0.20);
+  filter: brightness(1.05);
 }
-.hs-start-btn:active { transform: translateY(-1px); }
+.hs-start-btn:active { transform: translateY(-1px) scale(0.98); }
 .hs-start-btn-arrow { font-size: 17px; transition: transform 0.2s; }
 .hs-start-btn:hover .hs-start-btn-arrow { transform: translateX(3px); }
 
@@ -3007,62 +3294,63 @@ input:focus-visible { outline: none; }
 #bottomTabBar {
   display: none;
   position: fixed;
-  bottom: calc(12px + env(safe-area-inset-bottom));
-  left: 12px; right: 12px;
+  bottom: calc(10px + env(safe-area-inset-bottom));
+  left: 14px; right: 14px;
   z-index: 4500;
-  height: 62px;
-  background: rgba(15, 8, 2, 0.88);
-  border-radius: 20px;
-  border: 1px solid rgba(234,88,12,0.25);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.28), 0 2px 8px rgba(234,88,12,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+  height: 54px;
+  background: rgba(12, 6, 2, 0.92);
+  border-radius: 18px;
+  border: 1px solid rgba(234,88,12,0.18);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.05);
   align-items: stretch;
 }
 .btab {
   flex: 1; display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  gap: 3px; background: none; border: none; cursor: pointer; padding: 0;
+  gap: 2px; background: none; border: none; cursor: pointer; padding: 0;
   position: relative;
   transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1);
   -webkit-tap-highlight-color: transparent;
 }
-.btab-icon { font-size: 20px; display: inline-block; }
-.btab-label { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 0.3px; transition: color 0.2s; font-family: 'Space Grotesk', sans-serif; }
-.btab.active .btab-label { color: #F97316; }
-.btab-special .btab-label { color: rgba(255,255,255,0.6); }
-.btab-special.active .btab-label { color: #F97316; }
-.btab:active { transform: scale(0.88); }
-
-/* Active pill glow */
-.btab.active::before {
-  content: '';
-  position: absolute;
-  inset: 8px 8px;
-  background: rgba(249,115,22,0.18);
-  border-radius: 12px;
-  animation: tabPillIn 0.28s cubic-bezier(0.34,1.56,0.64,1) forwards;
+/* Renkli daire ikonlar */
+.btab-circle {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--tc, #EA580C);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.35;
+  transition: opacity var(--dur-base) ease,
+              transform var(--dur-base) var(--ease-spring),
+              box-shadow var(--dur-base) ease;
 }
-/* Active bottom dot */
+.btab-circle svg { width: 17px; height: 17px; flex-shrink: 0; }
+.btab.active .btab-circle {
+  opacity: 1;
+  transform: translateY(-5px) scale(1.10);
+  box-shadow: 0 6px 18px var(--tg, rgba(234,88,12,0.45));
+}
+.btab:active .btab-circle { transform: scale(0.88); opacity: 0.80; }
+.btab-label {
+  font-size: 9px; font-weight: 700;
+  color: rgba(255,255,255,0.35); letter-spacing: 0.2px;
+  transition: color var(--dur-base) ease, opacity var(--dur-base) ease;
+  font-family: 'Space Grotesk', sans-serif;
+  margin-top: 1px;
+}
+.btab.active .btab-label { color: rgba(255,255,255,0.90); }
+
+/* Active dot indicator at bottom */
 .btab.active::after {
   content: '';
   position: absolute;
-  bottom: 6px; left: 50%;
+  bottom: 4px; left: 50%;
   transform: translateX(-50%);
-  width: 4px; height: 4px;
-  background: #F97316;
-  border-radius: 50%;
-  box-shadow: 0 0 6px rgba(249,115,22,0.8);
+  width: 14px; height: 2.5px;
+  background: rgba(255,255,255,0.45);
+  border-radius: 99px;
   animation: tabDotIn 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards;
-}
-.btab.active .btab-icon {
-  transform: translateY(-2px) scale(1.18);
-  display: inline-block;
-  filter: drop-shadow(0 0 8px rgba(249,115,22,0.6));
-  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), filter 0.2s;
-}
-.btab .btab-icon {
-  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), filter 0.2s;
 }
 @keyframes tabPillIn {
   from { opacity: 0; transform: scale(0.7); }
@@ -3140,14 +3428,16 @@ input:focus-visible { outline: none; }
 .sw-cat-pill:hover { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.3); transform: translateY(-1px); }
 .sw-cat-pill.active { background: var(--acc); border-color: var(--acc); color: #fff; transform: scale(1.06); box-shadow: 0 4px 14px rgba(234,88,12,0.5); }
 
-/* Progress dots bar */
+/* Progress bar */
 .sw-progress {
-  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5);
-  flex-shrink: 0; margin-bottom: 10px;
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  position: relative; z-index: 1;
+  flex-shrink: 0; margin-bottom: 10px; width: 100%;
+  display: flex; flex-direction: column; align-items: stretch; gap: 5px;
+  padding: 0 20px; position: relative; z-index: 1;
 }
 .sw-progress:empty { display: none; }
+.sw-prog-bar-wrap { width: 100%; height: 4px; background: rgba(255,255,255,0.12); border-radius: 2px; }
+.sw-prog-bar { height: 100%; background: var(--acc); border-radius: 2px; transition: width 0.35s cubic-bezier(0.22,1,0.36,1); }
+.sw-prog-text { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); text-align: center; }
 
 .sw-stack {
   flex: 1; width: 100%; max-width: 420px; position: relative;
@@ -3169,7 +3459,15 @@ input:focus-visible { outline: none; }
   user-select: none; touch-action: none; will-change: transform;
   transform-origin: center bottom; position: relative;
 }
+@keyframes swHint {
+  0%   { transform: translateX(0) rotate(0); }
+  20%  { transform: translateX(18px) rotate(2.5deg); }
+  45%  { transform: translateX(-14px) rotate(-2deg); }
+  70%  { transform: translateX(8px) rotate(1deg); }
+  100% { transform: translateX(0) rotate(0); }
+}
 .sw-card-0 { z-index: 3; cursor: grab; flex-shrink: 0; animation: sw-card-enter 0.38s cubic-bezier(0.34,1.4,0.64,1) both; }
+.sw-card-0.sw-hint { animation: sw-card-enter 0.38s cubic-bezier(0.34,1.4,0.64,1) both, swHint 0.9s cubic-bezier(0.34,1.2,0.64,1) 0.55s both; }
 .sw-card-0:active { cursor: grabbing; }
 .sw-card-1 {
   position: absolute; top: 12px; left: 16px; right: 16px; max-width: none;
@@ -3184,7 +3482,7 @@ input:focus-visible { outline: none; }
 
 /* Card visual — gradient hero area */
 .sw-card-visual {
-  height: 200px; display: flex; align-items: center; justify-content: center;
+  height: 220px; display: flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
   background: linear-gradient(160deg, #FFF3E8 0%, #FFE0C0 60%, #FFD0A0 100%);
 }
@@ -3192,7 +3490,12 @@ input:focus-visible { outline: none; }
   content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
   background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%);
 }
-.sw-card-visual-emoji { font-size: 96px; line-height: 1; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2)) drop-shadow(0 2px 6px rgba(234,88,12,0.2)); position: relative; z-index: 1; }
+@keyframes swEmojiFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  40%       { transform: translateY(-8px) rotate(3deg); }
+  70%       { transform: translateY(-4px) rotate(-2deg); }
+}
+.sw-card-visual-emoji { font-size: 108px; line-height: 1; filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2)) drop-shadow(0 2px 6px rgba(234,88,12,0.2)); position: relative; z-index: 1; animation: swEmojiFloat 3.5s ease-in-out infinite; }
 
 /* Card body */
 .sw-card-body { padding: 12px 18px 20px; background: #fff; }
@@ -3209,7 +3512,13 @@ input:focus-visible { outline: none; }
   transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
 }
 .sw-card-platform-row.cheapest {
-  background: rgba(22,163,74,0.08); border: 1.5px solid rgba(22,163,74,0.25); color: #16a34a;
+  background: rgba(22,163,74,0.10); border: 1.5px solid rgba(22,163,74,0.30); color: #16a34a;
+  transform: scale(1.02);
+}
+.sw-cheap-badge {
+  margin-left: auto; font-size: 9px; font-weight: 900; letter-spacing: 0.8px;
+  color: #16a34a; background: rgba(22,163,74,0.12);
+  padding: 2px 6px; border-radius: 4px; text-transform: uppercase;
 }
 .sw-card-platform-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 0 2px rgba(255,255,255,0.8); }
 .sw-card-platform-name { flex: 1; }
@@ -3270,7 +3579,7 @@ input:focus-visible { outline: none; }
   justify-content: center; gap: 14px; padding: 32px; text-align: center;
   position: relative; z-index: 1;
 }
-.sw-empty-icon { font-size: 64px; filter: drop-shadow(0 4px 16px rgba(234,88,12,0.3)); }
+.sw-empty-icon { font-size: 64px; filter: drop-shadow(0 4px 16px rgba(234,88,12,0.3)); animation: swEmojiFloat 2.5s ease-in-out infinite; }
 .sw-empty-title { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: -0.5px; font-family: 'Space Grotesk', var(--font); }
 .sw-empty-sub { font-size: 14px; color: rgba(255,255,255,0.45); max-width: 260px; }
 .sw-empty-btn {
@@ -3290,7 +3599,12 @@ input:focus-visible { outline: none; }
   position: relative; z-index: 1;
 }
 @media (min-width: 768px) { .sw-results { padding-bottom: 28px; } }
-.sw-results-title { font-size: 24px; font-weight: 900; color: #fff; text-align: center; padding: 16px 0 20px; letter-spacing: -0.5px; font-family: 'Space Grotesk', var(--font); }
+@keyframes swResultsIn {
+  from { opacity:0; transform: scale(0.7) translateY(-20px); }
+  to   { opacity:1; transform: none; }
+}
+.sw-results-title { font-size: 28px; font-weight: 900; color: #fff; text-align: center; padding: 16px 0 20px; letter-spacing: -0.5px; font-family: 'Space Grotesk', var(--font); animation: swResultsIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+.sw-result-medal { font-size: 22px; flex-shrink: 0; }
 @keyframes sw-result-in {
   from { opacity: 0; transform: translateY(18px) scale(0.96); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -3732,7 +4046,8 @@ input:focus-visible { outline: none; }
       <!-- FILTER TOGGLE BAR -->
       <div class="filter-toggle-bar">
         <button class="filter-toggle-btn" id="filterToggleBtn" onclick="toggleFilterDrawer()">
-          <span>⚙️ Filtreler</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+          Filtreler
           <span class="ftb-count" id="filterCount">0</span>
         </button>
       </div>
@@ -3969,20 +4284,36 @@ input:focus-visible { outline: none; }
        BOTTOM TAB BAR — mobile only (display:none on desktop)
   ══════════════════════════════════════════════════════════════ -->
   <div id="bottomTabBar">
-    <button class="btab active" id="btabFeed" onclick="btabSwitch('feed')">
-      <span class="btab-icon">🏪</span>
+    <button class="btab active" id="btabFeed" onclick="btabSwitch('feed')" aria-label="Restoranlar">
+      <span class="btab-circle" style="--tc:#EA580C;--tg:rgba(234,88,12,0.45)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </span>
       <span class="btab-label">Restoranlar</span>
     </button>
-    <button class="btab" id="btabMenu" onclick="btabSwitch('menu')">
-      <span class="btab-icon">🍽️</span>
+    <button class="btab" id="btabMenu" onclick="btabSwitch('menu')" aria-label="Menü">
+      <span class="btab-circle" style="--tc:#2563EB;--tg:rgba(37,99,235,0.45)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+        </svg>
+      </span>
       <span class="btab-label">Menü</span>
     </button>
-    <button class="btab" id="btabMap" onclick="btabSwitch('map')">
-      <span class="btab-icon">🗺️</span>
+    <button class="btab" id="btabMap" onclick="btabSwitch('map')" aria-label="Harita">
+      <span class="btab-circle" style="--tc:#16a34a;--tg:rgba(22,163,74,0.45)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+      </span>
       <span class="btab-label">Harita</span>
     </button>
-    <button class="btab btab-special" id="btabSwipe" onclick="openSwipeMode('Tümü')">
-      <span class="btab-icon">🎲</span>
+    <button class="btab btab-special" id="btabSwipe" onclick="openSwipeMode('Tümü')" aria-label="Karar Ver">
+      <span class="btab-circle" style="--tc:#9333ea;--tg:rgba(147,51,234,0.45)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
+        </svg>
+      </span>
       <span class="btab-label">Karar Ver</span>
     </button>
   </div>
@@ -4089,7 +4420,7 @@ const CAT_ITEM_KEYWORDS = {
 const SWIPE_GROUPS = {
   'Tümü':         { emoji: '🍽️', cats: null },
   'Et & Kebap':   { emoji: '🔥', cats: ['Kebap', 'Döner', 'Steakhouse'] },
-  'Türk Mutfağı': { emoji: '🇹🇷', cats: ['Pide', 'Börek', 'Çiğ Köfte', 'Yemek'] },
+  'Türk Mutfağı': { emoji: '🇹🇷', cats: ['Pide', 'Börek', 'Çiğ Köfte'] },
   'Fast Food':    { emoji: '🍕', cats: ['Burger', 'Pizza', 'Fast Food'] },
   'Asya & Deniz': { emoji: '🍣', cats: ['Asya Mutfağı', 'Balık', 'Deniz Ürünleri'] },
   'Tatlılar':     { emoji: '🍰', cats: ['Tatlı', 'Waffle', 'Fırın', 'Kahve'] },
@@ -6731,6 +7062,19 @@ function renderCatBar() {
   }).join('');
 }
 
+function renderSkeletonCards(n = 5) {
+  return Array.from({length: n}, (_, i) => `
+    <div class="feed-rcard" style="animation-delay:${i*55}ms;pointer-events:none;cursor:default">
+      <div class="frc-left skeleton" style="width:90px;flex-shrink:0"></div>
+      <div class="frc-body" style="gap:10px;justify-content:center">
+        <div class="skeleton" style="height:13px;width:68%;border-radius:7px"></div>
+        <div class="skeleton" style="height:10px;width:42%;border-radius:7px"></div>
+        <div class="skeleton" style="height:10px;width:55%;border-radius:7px"></div>
+      </div>
+      <div class="frc-price-col"><div class="skeleton" style="height:22px;width:52px;border-radius:7px"></div></div>
+    </div>`).join('');
+}
+
 function _renderLocationEmptyState() {
   const body = document.getElementById('lpBody');
   if (!body) return;
@@ -6745,13 +7089,69 @@ function _renderLocationEmptyState() {
   `;
 }
 
+function renderDiscoveryFeed(rests) {
+  // Featured: highest-rated restaurant
+  const byRating = [...rests].sort((a,b) => (b.rating||0) - (a.rating||0) || a.distKm - b.distKm);
+  const feat = byRating[0];
+  let featHTML = '';
+  if (feat) {
+    let mp = 0, mpName = '';
+    try { const mi = restMinItem(feat); mp = mi.price; mpName = mi.name || ''; } catch(e) {}
+    const fc = CATEGORIES[feat.cat]?.color || '#ea580c';
+    featHTML = `<div class="disc-feat" data-id="${feat.id}" style="--feat-color:${fc}">
+      <div class="disc-feat-bg"></div>
+      <div class="disc-feat-em">${feat.e || CATEGORIES[feat.cat]?.emoji || '🍽️'}</div>
+      <div class="disc-feat-body">
+        <div class="disc-feat-badge">⭐ ${feat.rating} · ${escHtml(feat.cat)}</div>
+        <div class="disc-feat-name">${escHtml(feat.n)}</div>
+        <div class="disc-feat-meta">
+          <span>📍 ${feat.distKm} km</span>
+          ${feat.min_order ? `<span>Min ${feat.min_order} TL</span>` : ''}
+          ${mp > 0 ? `<span class="disc-feat-price">${mp} TL'den</span>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }
+
+  // Category grid
+  const catHTML = `<div class="disc-cat-grid">${Object.entries(CATEGORIES).map(([name, cfg]) =>
+    `<button class="disc-cat-btn" onclick="setFilter(${JSON.stringify(name)})">
+      <span class="disc-cat-circle" style="background:${cfg.color}22;border:2px solid ${cfg.color}40">${cfg.emoji}</span>
+      <span class="disc-cat-label">${escHtml(name)}</span>
+    </button>`).join('')}</div>`;
+
+  // Nearby: 8 closest
+  const nearby = [...rests].sort((a,b) => a.distKm - b.distKm).slice(0, 8);
+  const nearCards = nearby.map((r, i) => {
+    let mp = 0; try { mp = restMinPrice(r); } catch(e) {}
+    const cc = CATEGORIES[r.cat]?.color || '#ea580c';
+    return `<div class="disc-ncard" data-id="${r.id}" style="animation-delay:${i*45}ms">
+      <div class="disc-ncard-top" style="background:linear-gradient(160deg,${cc}28 0%,${cc}08 100%)">${r.e || CATEGORIES[r.cat]?.emoji || '🍽️'}</div>
+      <div class="disc-ncard-body">
+        <div class="disc-ncard-name">${escHtml(r.n)}</div>
+        <div class="disc-ncard-dist">📍 ${r.distKm} km</div>
+        ${mp > 0 ? `<div class="disc-ncard-price">${mp} TL</div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+  const nearHTML = `<div class="disc-sec-hdr"><span class="disc-sec-title">📍 Yakınındaki</span></div>
+    <div class="disc-near-row">${nearCards}</div>`;
+
+  // All restaurants header
+  const allHdr = `<div class="disc-sec-hdr">
+    <span class="disc-sec-title">Tüm Restoranlar</span>
+    <span class="disc-sec-count">${rests.length}</span>
+  </div>`;
+
+  return featHTML + catHTML + nearHTML + allHdr;
+}
+
 function renderPanel() {
   if (!userLocationSet) { _renderLocationEmptyState(); return; }
 
   const title = document.getElementById('lpTitle');
   const sub   = document.getElementById('lpSub');
   const body  = document.getElementById('lpBody');
-
   // Discovery views
   if (S.view === 'cheapest') {
     title.textContent = '💸 En Ucuz Ürünler';
@@ -6787,51 +7187,24 @@ function renderPanel() {
 
   // Default: restaurants list
   const rests = filteredRests();
-  title.textContent = S.cat === 'Tümü' ? 'Yakındaki Restoranlar' : S.cat === 'Zincir' ? '🏪 Zincir Restoranlar' : S.cat + ' Restoranları';
-  sub.textContent = userLocationSet
-    ? `${rests.length} mekan teslimat alanında`
-    : `${rests.length} mekan`;
+  const isDiscovery = S.cat === 'Tümü' && !S.query.trim();
+  title.textContent = isDiscovery ? 'Keşfet' : S.cat === 'Zincir' ? '🏪 Zincir Restoranlar' : S.cat + ' Restoranları';
+  sub.textContent = isDiscovery
+    ? 'Yakınındaki en iyi mekanlar'
+    : `${rests.length} mekan${userLocationSet ? ' teslimat alanında' : ''}`;
 
   if (!rests.length) {
     body.innerHTML = `<div class="empty-s"><div class="ee">🤔</div><h3>Sonuç bulunamadı</h3><p>Filtreni değiştir veya farklı bir şey ara</p></div>`;
     return;
   }
 
-  // Chain section — shown only when viewing all categories with no text query
-  let chainHTML = '';
-  if (S.cat === 'Tümü' && !S.query.trim()) {
-    const chains = RESTAURANTS.filter(r => CHAIN_IDS.has(r.id));
-    if (chains.length) {
-      const cards = chains.map(r => {
-        let mp = 0; try { mp = restMinPrice(r); } catch(e) {}
-        const platDots = r.plats.map(pid => PLAT[pid] ? `<span class="chain-card-pdot" style="background:${PLAT[pid].c}"></span>` : '').join('');
-        return `<div class="chain-card" data-rid="${r.id}">
-          <div class="chain-card-em">${r.e || '🍽️'}</div>
-          <div class="chain-card-name">${escHtml(r.n)}</div>
-          <div class="chain-card-cat">${escHtml(r.cat)}</div>
-          <div class="chain-card-meta">
-            <span class="chain-card-rating">⭐ ${r.rating}</span>
-            <span>📍 ${r.distKm}km</span>
-          </div>
-          <div class="chain-card-price">${mp > 0 ? mp + ' TL' : '—'}</div>
-          <div class="chain-card-plats">${platDots}</div>
-        </div>`;
-      }).join('');
-      chainHTML = `<div class="chain-section">
-        <div class="chain-section-hdr">
-          <span class="chain-section-title">🏪 Zincir Restoranlar</span>
-          <button class="chain-see-all" onclick="setFilter('Zincir')">Tümünü Gör →</button>
-        </div>
-        <div class="chain-row">${cards}</div>
-      </div>`;
-    }
-  }
+  const prefixHTML = isDiscovery ? renderDiscoveryFeed(rests) : '';
 
-  body.innerHTML = chainHTML + rests.map((r, idx) => {
+  body.innerHTML = prefixHTML + rests.map((r, idx) => {
     let mi = { price: 0, name: '' };
     try { mi = restMinItem(r); } catch(e) {}
     const mp = mi.price;
-    const mpName = mi.name ? mi.name.slice(0, 18) + (mi.name.length > 18 ? '…' : '') : '';
+    const mpName = mi.name ? mi.name.slice(0, 16) + (mi.name.length > 16 ? '…' : '') : '';
     const platDots = r.plats.map(pid => PLAT[pid] ? `<span class="chain-card-pdot" style="background:${PLAT[pid].c}"></span>` : '').join('');
     const itemCount = Object.values(r.menu || {}).flat().filter(it => it?.p).length;
     const badgeFar  = r._distLabel === 'uzak' ? `<span class="rc-badge rc-badge-far">Uzak</span>` : '';
@@ -6839,28 +7212,27 @@ function renderPanel() {
     const badgeThin = itemCount < 20 && itemCount > 0 ? `<span class="rc-badge rc-badge-thin">Sınırlı menü</span>` : '';
     const badges = (badgeFar || badgeSolo || badgeThin) ? `<div class="feed-rcard-badges">${badgeFar}${badgeSolo}${badgeThin}</div>` : '';
     const delivParts = [];
-    if (r.min_order)   delivParts.push(`Min ${r.min_order} TL`);
-    if (r.delivery_fee) delivParts.push(`Teslimat ${r.delivery_fee} TL`);
-    const delivInfo = delivParts.length ? `<div class="feed-rcard-delivery">${delivParts.join(' · ')}</div>` : '';
+    if (r.min_order)    delivParts.push(`Min ${r.min_order} TL`);
+    if (r.delivery_fee) delivParts.push(`${r.delivery_fee} TL teslimat`);
     const catColor = CATEGORIES[r.cat]?.color || '#ea580c';
     const catBg = catColor + '18';
+    const metaParts = [`📍 ${r.distKm} km`, ...delivParts].join(' · ');
     return `<div class="feed-rcard ${r.id === S.activeRest ? 'active' : ''}" data-id="${r.id}" style="--cat-color:${catColor};--cat-bg:${catBg};animation-delay:${Math.min(idx,12)*38}ms">
-      <div class="feed-rcard-inner">
-        <div class="feed-rcard-em">${r.e || CATEGORIES[r.cat]?.emoji || '🍽️'}${r.premium ? '<span style="font-size:9px;position:absolute;top:-2px;right:-2px">✨</span>' : ''}</div>
-        <div class="feed-rcard-mid">
-          <div class="feed-rcard-name" title="${escHtml(r.n)}">${escHtml(r.n)}</div>
-          <div class="feed-rcard-sub">${escHtml(r.cat)}${r.premium ? ' · ✨' : ''}</div>
-          <div class="feed-rcard-meta">
-            <span class="feed-rcard-rating">⭐ ${r.rating}</span>
-            <span class="feed-rcard-dist">📍 ${r.distKm} km</span>
-          </div>
-          ${delivInfo}
-          ${badges}
-        </div>
-        <div class="feed-rcard-right">
-          ${mp > 0 ? `<div class="feed-rcard-price" style="color:${priceColor(mp)}">${mp}<span style="font-size:12px;font-weight:700"> TL</span></div><div class="feed-rcard-price-lbl" title="${escHtml(mi.name)}">${escHtml(mpName) || 'itibaren'}</div>` : '<div class="feed-rcard-price" style="color:var(--txt3);font-size:13px">—</div>'}
-          <div class="feed-rcard-plats">${platDots}</div>
-        </div>
+      <div class="frc-left">
+        <span class="frc-em">${r.e || CATEGORIES[r.cat]?.emoji || '🍽️'}</span>
+        <span class="frc-rating">⭐ ${r.rating}</span>
+      </div>
+      <div class="frc-body">
+        <div class="frc-name" title="${escHtml(r.n)}">${escHtml(r.n)}</div>
+        <div class="frc-cat">${escHtml(r.cat)}${r.premium ? ' · ✨' : ''}</div>
+        <div class="frc-meta">${escHtml(metaParts)}</div>
+        ${badges}
+        <div class="frc-plats">${platDots}</div>
+      </div>
+      <div class="frc-price-col">
+        ${mp > 0
+          ? `<div class="frc-price" style="color:${priceColor(mp)}">${mp}<small> TL</small></div><div class="frc-price-lbl">${escHtml(mpName) || 'itibaren'}</div>`
+          : `<div class="frc-price" style="color:var(--txt3);font-size:13px">—</div>`}
       </div>
     </div>`;
   }).join('');
@@ -6905,6 +7277,10 @@ function bindBodyClicks(body) {
     if (dc?.dataset.rid) { openRest(dc.dataset.rid); return; }
     const cc = e.target.closest('.chain-card');
     if (cc?.dataset.rid) { openRest(cc.dataset.rid); return; }
+    const df = e.target.closest('.disc-feat');
+    if (df?.dataset.id) { openRest(df.dataset.id); return; }
+    const nc = e.target.closest('.disc-ncard');
+    if (nc?.dataset.id) { openRest(nc.dataset.id); return; }
   });
 }
 
@@ -6917,7 +7293,11 @@ function openRest(id) {
 
   S.activeRest = id;
   refreshMarkers();
-  renderPanel();
+  // Animasyonları tekrar tetiklememek için full re-render yapmıyoruz,
+  // sadece aktif card'ın border'ını güncelliyoruz
+  document.querySelectorAll('.feed-rcard').forEach(el => {
+    el.classList.toggle('active', el.dataset.id === id);
+  });
 
   const cats = Object.keys(r.menu || {});
   const dpContent = document.getElementById('dpContent');
@@ -7024,7 +7404,8 @@ function closeDetail() {
   const bk = document.getElementById('dpBackdrop'); if (bk) bk.style.display = 'none';
   setTopbarBack(null);
   refreshMarkers();
-  renderPanel();
+  // Sadece active class'ı kaldır, full re-render yapma
+  document.querySelectorAll('.feed-rcard.active').forEach(el => el.classList.remove('active'));
 }
 
 // ── 13. CUSTOMIZATION MODAL ───────────────────────────────────────────────────
@@ -7191,6 +7572,16 @@ function renderCustomize() {
   if (mbodyEl && _savedScrollTop) {
     requestAnimationFrame(() => { mbodyEl.scrollTop = _savedScrollTop; });
   }
+  // dp-info scroll shadow
+  if (mbodyEl && !mbodyEl._scrollShadowBound) {
+    mbodyEl._scrollShadowBound = true;
+    const dpInfo = mc.querySelector('.dp-info');
+    if (dpInfo) {
+      mbodyEl.addEventListener('scroll', () => {
+        dpInfo.classList.toggle('scrolled', mbodyEl.scrollTop > 12);
+      }, { passive: true });
+    }
+  }
 
   mc.addEventListener('click', e => {
     const btn = e.target.closest('button');
@@ -7236,6 +7627,15 @@ function handleMBg(e)  { if (e.target === document.getElementById('modalBg')) cl
     const sheet  = document.getElementById('msheet');
     if (handle) { handle.addEventListener('touchstart', onTouchStart, {passive:true}); handle.addEventListener('touchend', onTouchEnd, {passive:true}); }
     if (sheet)  { sheet.addEventListener('touchstart', onTouchStart, {passive:true}); sheet.addEventListener('touchend', onTouchEnd, {passive:true}); }
+
+    // Topbar scroll effect — listen on the feed body scroll
+    const lpBody = document.getElementById('lpBody');
+    const topbar = document.querySelector('.topbar');
+    if (lpBody && topbar) {
+      lpBody.addEventListener('scroll', () => {
+        topbar.classList.toggle('scrolled', lpBody.scrollTop > 8);
+      }, { passive: true });
+    }
   });
 })();
 
@@ -8634,6 +9034,7 @@ let swipeState = {
   category: 'Tümü',
   sort: 'shuffle',  // 'shuffle' | 'cheapest' | 'nearest'
   active: false,
+  hintShown: false,
 };
 
 // ── Open / Close ─────────────────────────────────────────────────────────────
@@ -8710,6 +9111,17 @@ function _swipeKeyHandler(e) {
 
 // ── Queue builder ─────────────────────────────────────────────────────────────
 
+// Returns which swipe group a menu section name belongs to, or null if generic.
+// Used to filter out off-group sections (e.g. dessert sections in Türk Mutfağı).
+function _swipeSectionGroup(secName) {
+  if (/tatlı|magnolia|brownie|algida|cheesecake|cake\s*box|eker tatlı/i.test(secName)) return 'Tatlılar';
+  if (/burger|pizza/i.test(secName)) return 'Fast Food';
+  if (/kebap|döner/i.test(secName)) return 'Et & Kebap';
+  if (/sushi|ramen|wok|asya mutfağı|japon|çin mutfağı/i.test(secName)) return 'Asya & Deniz';
+  if (/\bbalık\b|deniz ürün/i.test(secName)) return 'Asya & Deniz';
+  return null;
+}
+
 function _buildSwipeQueue(cat) {
   const items = [];
   allRests().forEach(r => {
@@ -8718,13 +9130,18 @@ function _buildSwipeQueue(cat) {
     if (cat !== 'Tümü') {
       const groupCats = SWIPE_GROUPS[cat]?.cats;
       if (groupCats) {
-        const matches = groupCats.some(c => r.cat === c || catMatchesRest(c, r));
+        const matches = groupCats.some(c => r.cat === c);
         if (!matches) return;
       }
     }
     for (const [mCat, catItems] of Object.entries(r.menu)) {
       if (!Array.isArray(catItems)) continue;
       if (skipCat(mCat)) continue;
+      // Skip sections that clearly belong to a different swipe group
+      if (cat !== 'Tümü') {
+        const secGroup = _swipeSectionGroup(mCat);
+        if (secGroup && secGroup !== cat) continue;
+      }
       for (const item of catItems) {
         if (!item || !item.n) continue;
         if (skipItemByName(item.n)) continue;
@@ -8784,7 +9201,12 @@ function _renderSwipeCard() {
   }
 
   const likedCount = swipeState.liked.length;
-  if (progress) progress.textContent = remaining + ' kart kaldı' + (likedCount > 0 ? '  ·  ❤️ ' + likedCount : '');
+  if (progress) {
+    const pct = q.length > 0 ? ((cur / q.length) * 100).toFixed(0) : 0;
+    progress.innerHTML = `
+      <div class="sw-prog-bar-wrap"><div class="sw-prog-bar" style="width:${pct}%"></div></div>
+      <div class="sw-prog-text">${remaining} kart kaldı${likedCount > 0 ? ' · ❤️ ' + likedCount : ''}</div>`;
+  }
   if (actions)  actions.style.display = 'flex';
 
   stack.classList.add('sw-stack-cards');
@@ -8799,7 +9221,13 @@ function _renderSwipeCard() {
 
   // Attach drag to top card
   const topCard = stack.querySelector('.sw-card-0');
-  if (topCard) _attachSwipeDrag(topCard);
+  if (topCard) {
+    _attachSwipeDrag(topCard);
+    if (!swipeState.hintShown) {
+      swipeState.hintShown = true;
+      topCard.classList.add('sw-hint');
+    }
+  }
 }
 
 function _makeSwipeCardEl(entry, stackPos) {
@@ -8817,6 +9245,7 @@ function _makeSwipeCardEl(entry, stackPos) {
     .slice(0, 3);
   const cheapPid = priceEntries.length ? priceEntries[0][0] : null;
 
+  const cheapPrice = priceEntries.length ? priceEntries[0][1] : null;
   const platHTML = priceEntries.map(([pid, price]) => {
     const pl = PLAT[pid];
     const cheap = pid === cheapPid;
@@ -8824,7 +9253,7 @@ function _makeSwipeCardEl(entry, stackPos) {
       <span class="sw-card-platform-dot" style="background:${pl.c}"></span>
       <span class="sw-card-platform-name">${pl.n}</span>
       <span class="sw-card-platform-price">${price} TL</span>
-      ${cheap ? '<span class="sw-card-platform-check">✓</span>' : ''}
+      ${cheap ? '<span class="sw-cheap-badge">En Ucuz</span>' : ''}
     </div>`;
   }).join('');
 
@@ -8857,7 +9286,7 @@ function _makeSwipeCardEl(entry, stackPos) {
       ${metaHTML}
       <div class="sw-card-platforms">${platHTML}</div>
       <button class="sw-card-cta" onclick="event.stopPropagation();_swipeCTA('${rest.id}','${item.id || item.n}')">
-        Sipariş Ver →
+        Sipariş Ver${cheapPrice ? ` · ${cheapPrice} TL` : ''} →
       </button>
     </div>`;
   return div;
@@ -8887,6 +9316,8 @@ function _attachSwipeDrag(card) {
     const nope = card.querySelector('.sw-badge-nope');
     if (curX > 0) { if (like) like.style.opacity = ratio; if (nope) nope.style.opacity = 0; }
     else           { if (nope) nope.style.opacity = ratio; if (like) like.style.opacity = 0; }
+    const glowColor = curX > 0 ? `rgba(22,163,74,${(ratio * 0.55).toFixed(2)})` : `rgba(220,38,38,${(ratio * 0.55).toFixed(2)})`;
+    card.style.boxShadow = `0 16px 48px rgba(0,0,0,0.6), 0 0 0 3px ${glowColor}`;
   }
   function onEnd() {
     if (!isDragging) return;
@@ -8894,8 +9325,9 @@ function _attachSwipeDrag(card) {
     if      (curX >  THRESHOLD) _animateSwipeCard(card, 'right');
     else if (curX < -THRESHOLD) _animateSwipeCard(card, 'left');
     else {
-      card.style.transition = 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1)';
+      card.style.transition = 'transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease';
       card.style.transform  = 'translateX(0) rotate(0)';
+      card.style.boxShadow  = '';
       const like = card.querySelector('.sw-badge-like');
       const nope = card.querySelector('.sw-badge-nope');
       if (like) like.style.opacity = 0;
@@ -9006,19 +9438,19 @@ function _showSwipeResults() {
       </div>`;
     return;
   }
+  const medals = ['🥇', '🥈', '🥉'];
   const itemsHTML = swipeState.liked.map(({ item, rest, pid }, idx) => {
     const price    = (pid && item.p && item.p[pid]) ? item.p[pid] : minPrice(item);
     const platName = (pid && PLAT[pid]) ? PLAT[pid].n : '';
-    const emoji    = rest.e || CATEGORIES[rest.cat]?.emoji || '🍽️';
     return `
-      <div class="sw-result-card" style="animation-delay:${idx * 0.07}s">
-        <div class="sw-result-emoji">${emoji}</div>
+      <div class="sw-result-card" style="animation-delay:${idx * 0.08}s">
+        <div class="sw-result-medal">${medals[idx] || '❤️'}</div>
         <div class="sw-result-info">
           <div class="sw-result-name">${item.n}</div>
           <div class="sw-result-rest">${rest.n}${platName ? ' · ' + platName : ''}</div>
           <div class="sw-result-price">${price} TL</div>
         </div>
-        <button class="sw-result-order-btn" onclick="_swipeCTA('${rest.id}','${item.id}')">
+        <button class="sw-result-order-btn" onclick="_swipeCTA('${rest.id}','${item.id || item.n}')">
           Sipariş Ver
         </button>
       </div>`;
@@ -9026,7 +9458,7 @@ function _showSwipeResults() {
 
   stack.innerHTML = `
     <div class="sw-results">
-      <div class="sw-results-title">Beğendiklerin 🎉</div>
+      <div class="sw-results-title">Seçtiklerin 🎉</div>
       ${itemsHTML}
       <div class="sw-results-retry">
         <button class="sw-results-retry-btn" onclick="resetSwipeMode()">🔄 Tekrar Oyna</button>
