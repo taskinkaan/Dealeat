@@ -3380,12 +3380,12 @@ input:focus-visible { outline: none; }
   left: 14px; right: 14px;
   z-index: 4500;
   height: 54px;
-  background: rgba(12, 6, 2, 0.92);
-  border-radius: 18px;
-  border: 1px solid rgba(234,88,12,0.18);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.05);
+  background: rgba(255, 252, 249, 0.94);
+  border-radius: 20px;
+  border: 1.5px solid rgba(0,0,0,0.07);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 -1px 0 rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.06);
   align-items: stretch;
 }
 .btab {
@@ -3416,12 +3416,12 @@ input:focus-visible { outline: none; }
 .btab:active .btab-circle { transform: scale(0.88); opacity: 0.80; }
 .btab-label {
   font-size: 9px; font-weight: 700;
-  color: rgba(255,255,255,0.35); letter-spacing: 0.2px;
+  color: rgba(15,23,42,0.35); letter-spacing: 0.2px;
   transition: color var(--dur-base) ease, opacity var(--dur-base) ease;
   font-family: 'Space Grotesk', sans-serif;
   margin-top: 1px;
 }
-.btab.active .btab-label { color: rgba(255,255,255,0.90); }
+.btab.active .btab-label { color: rgba(15,23,42,0.85); }
 
 /* Active dot indicator at bottom */
 .btab.active::after {
@@ -3430,7 +3430,7 @@ input:focus-visible { outline: none; }
   bottom: 4px; left: 50%;
   transform: translateX(-50%);
   width: 14px; height: 2.5px;
-  background: rgba(255,255,255,0.45);
+  background: var(--tc, #EA580C);
   border-radius: 99px;
   animation: tabDotIn 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards;
 }
