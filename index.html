@@ -4022,7 +4022,36 @@ input:focus-visible { outline: none; }
 /* hs-cat-pill: warm */
 .hs-cat-pill { background: #fff; box-shadow: 0 1px 4px rgba(15,23,42,0.07); }
 .hs-cat-pill:hover { box-shadow: 0 3px 12px rgba(234,88,12,0.10); }
+
+/* ── AI MODE ── */
+.ai-mode { display:none; flex-direction:column; height:100%; background:var(--bg); }
+.ai-mode.active { display:flex; }
+.ai-hero { padding:28px 20px 12px; text-align:center; }
+.ai-hero-title { font-size:22px; font-weight:800; letter-spacing:-.5px; }
+.ai-hero-sub { font-size:13px; color:var(--txt2); margin-top:4px; }
+.ai-results-wrap { flex:1; overflow-y:auto; padding:12px 16px 8px; display:flex; flex-direction:column; gap:10px; }
+.ai-empty { text-align:center; color:var(--txt2); font-size:14px; padding:40px 20px; }
+.ai-summary { background:linear-gradient(135deg,#fef3c7,#fff7ed); border:1px solid #fde68a; border-radius:12px; padding:12px 14px; font-size:13px; color:#92400e; font-weight:500; }
+.ai-card { background:var(--bg2); border:1px solid var(--line2); border-radius:14px; padding:13px 14px; display:flex; align-items:center; gap:12px; cursor:pointer; transition:box-shadow .15s,transform .1s; }
+.ai-card:active { transform:scale(.98); }
+.ai-card:hover { box-shadow:0 4px 16px rgba(234,88,12,.10); }
+.ai-card-left { flex:1; min-width:0; }
+.ai-card-name { font-size:14px; font-weight:700; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.ai-card-rest { font-size:12px; color:var(--txt2); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.ai-card-reason { font-size:11px; color:#ea580c; margin-top:4px; font-style:italic; }
+.ai-card-price { font-size:16px; font-weight:800; color:var(--acc); white-space:nowrap; }
+.ai-input-bar { display:flex; align-items:center; gap:8px; padding:12px 16px; padding-bottom:calc(12px + env(safe-area-inset-bottom)); background:var(--bg); border-top:1px solid var(--line2); }
+.ai-input { flex:1; background:var(--bg2); border:1.5px solid var(--line2); border-radius:24px; padding:10px 16px; font-size:14px; color:var(--txt); outline:none; transition:border-color .15s; }
+.ai-input:focus { border-color:var(--acc); }
+.ai-send-btn { width:42px; height:42px; border-radius:50%; background:var(--acc); color:#fff; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; transition:opacity .15s; }
+.ai-send-btn:disabled { opacity:.5; cursor:default; }
+.ai-loading { display:flex; align-items:center; gap:8px; color:var(--txt2); font-size:13px; padding:16px 0; justify-content:center; }
+.ai-dot { width:7px; height:7px; border-radius:50%; background:var(--acc); animation:aiPulse 1.2s ease-in-out infinite; }
+.ai-dot:nth-child(2) { animation-delay:.2s; }
+.ai-dot:nth-child(3) { animation-delay:.4s; }
+@keyframes aiPulse { 0%,100%{opacity:.3;transform:scale(.8)} 50%{opacity:1;transform:scale(1)} }
 </style>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <div class="app">
@@ -4335,6 +4364,21 @@ input:focus-visible { outline: none; }
     <div id="dpContent" style="display:flex;flex-direction:column;height:100%;overflow:hidden"></div>
   </div>
 
+  <!-- AI MODE -->
+  <div class="ai-mode" id="aiMode">
+    <div class="ai-hero">
+      <div class="ai-hero-title">✨ AI Asistan</div>
+      <div class="ai-hero-sub">Ne yemek istiyorsun? Türkçe yaz, ben bulurum.</div>
+    </div>
+    <div class="ai-results-wrap" id="aiResults"></div>
+    <div class="ai-input-bar">
+      <input id="aiInput" class="ai-input" type="text" placeholder="20 TL altı tavuklu bir şey…" autocomplete="off" />
+      <button class="ai-send-btn" id="aiSendBtn" onclick="sendAIQuery()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+
   <!-- CART MODE -->
   <div class="cart-mode" id="cartMode">
     <div class="cart-header">
@@ -4393,6 +4437,14 @@ input:focus-visible { outline: none; }
         </svg>
       </span>
       <span class="btab-label">Harita</span>
+    </button>
+    <button class="btab" id="btabAI" onclick="btabSwitch('ai')" aria-label="AI Ara">
+      <span class="btab-circle" style="--tc:#e11d48;--tg:rgba(225,29,72,0.45)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L9.09 8.26 2 9.27l5 4.87L5.82 21 12 17.77 18.18 21 17 14.14l5-4.87-7.09-1.01L12 2z"/>
+        </svg>
+      </span>
+      <span class="btab-label">AI Ara</span>
     </button>
     <button class="btab btab-special" id="btabSwipe" onclick="openSwipeMode('Tümü')" aria-label="Karar Ver">
       <span class="btab-circle" style="--tc:#9333ea;--tg:rgba(147,51,234,0.45)">
@@ -7866,16 +7918,29 @@ function switchMode(mode) {
     app.classList.remove('map-mode-active');
     mapSec.classList.add('hidden');
     menuSec.classList.remove('active');
+    document.getElementById('aiMode').classList.remove('active');
     if (cartSec) cartSec.classList.add('active');
     if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
     if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
     if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
     renderCart();
+  } else if (mode === 'ai') {
+    app.classList.remove('map-mode-active');
+    mapSec.classList.add('hidden');
+    menuSec.classList.remove('active');
+    if (cartSec) cartSec.classList.remove('active');
+    document.getElementById('aiMode').classList.add('active');
+    if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
+    if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
+    if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
+    setTimeout(() => document.getElementById('aiInput').focus(), 150);
   } else {
     // 'feed' — default discovery feed
     app.classList.remove('map-mode-active');
     mapSec.classList.remove('hidden');
     menuSec.classList.remove('active');
+    document.getElementById('aiMode').classList.remove('active');
+    if (cartSec) cartSec.classList.remove('active');
     if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
     if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
     if (btnFeed) { btnFeed.classList.add('active');   btnFeed.setAttribute('aria-pressed', 'true'); }
@@ -7906,7 +7971,7 @@ function btabSwitch(mode) {
     cartTopBtn.style.borderColor = mode === 'cart' ? 'var(--acc)' : '';
     cartTopBtn.style.color       = mode === 'cart' ? 'var(--acc)' : '';
   }
-  const idMap = { feed: 'btabFeed', map: 'btabMap', menu: 'btabMenu', cart: null };
+  const idMap = { feed: 'btabFeed', map: 'btabMap', menu: 'btabMenu', cart: null, ai: 'btabAI' };
   const activeId = idMap[mode] || null;
   if (activeId) {
     const el = document.getElementById(activeId);
@@ -9801,6 +9866,95 @@ function wlcForgotPwd() {
   _wlcError('wsLoginError', '');
   _wlcSuccess('wsLoginSuccess', 'Şifrenizi sıfırlamak için destek@dealeat.app adresine yazın 📩');
 }
+
+/* ── AI SEARCH ── */
+async function sendAIQuery() {
+  const input = document.getElementById('aiInput');
+  const btn   = document.getElementById('aiSendBtn');
+  const query = input.value.trim();
+  if (!query) return;
+
+  btn.disabled = true;
+  _renderAILoading();
+
+  const allItems = allMenuItems();
+  const withPrice = allItems.map(it => ({
+    ...it,
+    minP: Math.min(...Object.values(it.p || {}).filter(v => v > 0))
+  })).filter(it => it.minP > 0 && it.minP < 9999);
+
+  // Keyword pre-filter
+  const keywords = query.toLowerCase().replace(/[^a-z0-9ğüşıöçĞÜŞİÖÇ\s]/g,'').split(/\s+/).filter(k => k.length > 1);
+  let candidates = withPrice;
+  if (keywords.length) {
+    const filtered = withPrice.filter(it =>
+      keywords.some(k => it.n.toLowerCase().includes(k) || it.rn.toLowerCase().includes(k))
+    );
+    if (filtered.length >= 5) candidates = filtered;
+  }
+
+  // Price ceiling from query ("X TL altı / under / max")
+  const priceM = query.match(/(\d+)\s*tl?\s*(alt[ıi]|under|max|kadar)/i);
+  if (priceM) candidates = candidates.filter(it => it.minP <= parseInt(priceM[1]));
+
+  candidates.sort((a, b) => a.minP - b.minP);
+  const top = candidates.slice(0, 80);
+
+  if (!top.length) {
+    _renderAIResults([], [], 'Menüde eşleşen ürün bulunamadı.');
+    btn.disabled = false;
+    return;
+  }
+
+  try {
+    const resp = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, candidates: top.map(it => ({ n: it.n, rn: it.rn, minP: it.minP })) })
+    });
+    if (!resp.ok) throw new Error('API hatası');
+    const data = await resp.json();
+    const results = (data.items || [])
+      .map(r => ({ item: top[r.idx - 1], reason: r.reason }))
+      .filter(r => r.item);
+    _renderAIResults(results, top, data.summary || '');
+  } catch (e) {
+    _renderAIResults([], [], 'Bir hata oluştu, tekrar dene.');
+  }
+  btn.disabled = false;
+}
+
+function _renderAILoading() {
+  document.getElementById('aiResults').innerHTML =
+    '<div class="ai-loading"><div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div><span>Düşünüyor…</span></div>';
+}
+
+function _renderAIResults(results, _top, summary) {
+  const el = document.getElementById('aiResults');
+  if (!results.length) {
+    el.innerHTML = `<div class="ai-empty">😕 ${summary || 'Sonuç bulunamadı.'}</div>`;
+    return;
+  }
+  const sumHtml = summary ? `<div class="ai-summary">💡 ${summary}</div>` : '';
+  const cards = results.map(({ item, reason }) => {
+    const rest = allRests().find(r => r.id === item.rid);
+    return `<div class="ai-card" onclick="openDpanel('${item.rid}')">
+      <div class="ai-card-left">
+        <div class="ai-card-name">${item.n}</div>
+        <div class="ai-card-rest">${item.rn}</div>
+        ${reason ? `<div class="ai-card-reason">${reason}</div>` : ''}
+      </div>
+      <div class="ai-card-price">${item.minP} TL</div>
+    </div>`;
+  }).join('');
+  el.innerHTML = sumHtml + cards;
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('aiMode').classList.contains('active')) {
+    sendAIQuery();
+  }
+});
 </script>
 
 <!-- ══════════════════════════════════════════════════════════════
