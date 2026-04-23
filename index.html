@@ -7050,11 +7050,11 @@ function initMap() {
   // Marker cluster
   if (typeof L.markerClusterGroup === 'function') {
     clusterGroup = L.markerClusterGroup({
-      maxClusterRadius: 55,
+      maxClusterRadius: 38,
       showCoverageOnHover: false,
       zoomToBoundsOnClick: true,
       spiderfyOnMaxZoom: true,
-      disableClusteringAtZoom: 17,
+      disableClusteringAtZoom: 15,
       animateAddingMarkers: false,
       chunkedLoading: true,
       spiderfyDistanceMultiplier: 1.4,
@@ -7155,14 +7155,23 @@ function addMarker(r) {
 function refreshMarkers() {
   if (!map) return;
   if (!userLocationSet) {
+    // Location not set yet — hide pins from map but KEEP the markers dict so
+    // they can be re-attached when location arrives. Previously we wiped
+    // `markers = {}` here, which made the later re-show path (which iterates
+    // `allRests().forEach(r => markers[r.id])`) silently no-op forever.
     clusterGroup?.clearLayers();
-    markers = {};
     return;
   }
   const visible = new Set(filteredRests().map(r => r.id));
   allRests().forEach(r => {
-    const m = markers[r.id];
-    if (!m) return;
+    let m = markers[r.id];
+    if (!m) {
+      // Marker missing (e.g. cleared earlier or added after init) — recreate it.
+      if (r.lat == null || r.lng == null) return;
+      addMarker(r);
+      m = markers[r.id];
+      if (!m) return;
+    }
     m.setIcon(makeIcon(r, r.id === S.activeRest));
     const inCluster = clusterGroup?.hasLayer(m);
     if (visible.has(r.id) && !inCluster) {
