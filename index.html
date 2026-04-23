@@ -4141,7 +4141,7 @@ input:focus-visible { outline: none; }
   <!-- DISCOVERY TABS -->
   <div class="disc-bar">
     <button class="dtab active" onclick="setView('restaurants',this)">🏪 Restoranlar</button>
-    <button class="dtab" onclick="setView('cheapest',this)">💸 En Ucuz <span class="dtab-badge g">YENİ</span></button>
+    <button class="dtab" onclick="setView('cheapest',this)">🍽️ En Ucuz Menü <span class="dtab-badge g">YENİ</span></button>
     <button class="dtab" onclick="setView('nearby',this)">📍 Yakınımda</button>
     <button class="dtab" onclick="openSwipeMode('Tümü')">🎲 Karar Ver</button>
   </div>
@@ -5431,7 +5431,7 @@ function skipCat(cat) {
   if (lo.includes('pasta') && !lo.includes('makarna')) return true;       // pasta/cake (not "makarna")
   if (lo.includes('unlu')) return true;         // unlu mamuller
   if (lo.includes('pastane')) return true;
-  if (lo.includes('aksesuar') || lo.includes('ekipman')) return true;     // non-food accessories
+  if (lo.includes('aksesuar') || lo.includes('ekipman') || lo.includes('oyuncak')) return true;  // non-food accessories & toys
   if (lo === 'draje' || lo === 'drajeler') return true;                   // candy dragees
   if (lo === 'lokum' || lo === 'lokumlar') return true;                   // Turkish delight (as standalone category)
   if (lo.includes('makaron') && !lo.includes('makarna')) return true;     // French macarons (not pasta)
@@ -5447,7 +5447,9 @@ const _MAIN_DISH_RE = /\b(d[oö]ner|k[oö]fte|tavuk|pili[cç]|dana|kuzu|kaburga|
 function skipItemByName(name) {
   if (!name) return false;
   const lo = name.toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
-  if (/\bsos(lar)?\b/.test(lo)) return true;
+  if (/\bsos(lar|u)?\b/.test(lo)) return true;
+  // Concatenated sauce names without space (e.g. "BuffaloSos", "RanchSosu", "BbqSoslar")
+  if (/sos(u|lar)?$/.test(lo) && !_MAIN_DISH_RE.test(lo)) return true;
   if (lo.includes('ket\u00e7ap') || lo.includes('ketchup') || lo.includes('mayonez') || lo.includes('hardal') || lo.includes('sauce')) return true;
   if (/\bpo\u015fet\b/.test(lo)) return true;  // poşet = condiment sachet
   if (lo.includes('ekstra')) return true;
@@ -5470,8 +5472,9 @@ function skipItemByName(name) {
   if (/^(eker |piknik |sek\u015fer |pinar |danone )/.test(lo)) return true;  // branded dairy
   if (/\byo\u011furt\b/.test(lo) && !/lu\b/.test(lo.split('yo\u011furt')[1] || '')) return true; // yoğurt not yoğurtlu
   if (/\bzeytin\b/.test(lo) && !lo.includes('zeytinli')) return true;    // siyah zeytin etc, not zeytinli pizza
-  // Non-food accessories
+  // Non-food accessories & toys
   if (lo.includes('aparat') || lo.includes('aksesuar') || lo.includes('o\u011fretici') || lo.includes('ekipman')) return true;
+  if (lo.includes('anahtarl\u0131k') || lo.includes('oyuncak')) return true;  // keychain/toy promo items
   // Standalone side condiments / meze by item name
   if (/\btur\u015fu\b/.test(lo) || /\btursu\b/.test(lo)) return true;   // turşu (pickles)
   if (/\bcac\u0131k\b/.test(lo) || /\bcacik\b/.test(lo)) return true;   // cacık (yogurt dip)
@@ -5489,6 +5492,22 @@ function skipItemByName(name) {
   return false;
 }
 
+// ── "En Ucuz Menü" predicate — hybrid: explicit menu tokens OR strong-main with floor
+const MENU_PRICE_MIN = 80;   // explicit menu items: anti-spam floor
+const MAIN_PRICE_MIN = 150;  // strong-main fallback: must be full portion (not tek tender/kanat)
+function isMenuOrMeal(it, mCat) {
+  const p = minPrice(it);
+  if (!p || p <= 0) return false;
+  const norm = s => (s || '').toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
+  const name = norm(it.n);
+  const cat  = norm(mCat);
+  const hasMenuToken = /\b(men[uü]|men[uü]s[uü]|men[uü]l[uü]|men[uü]ler|combo|kombo|ikili|ikil[iı]|öğün|ogun)\b/.test(name);
+  const hasMenuCat   = /\b(men[uü]|men[uü]ler|combo|kombo|öğünler|ogunler)\b/.test(cat);
+  if ((hasMenuToken || hasMenuCat) && p >= MENU_PRICE_MIN) return true;
+  if (_MAIN_DISH_RE.test(name) && p >= MAIN_PRICE_MIN) return true;
+  return false;
+}
+
 // ── Menu noise filter (sauces / drinks / extras flagged in gen_static) ─────
 // Items with `x:1` are side-noise. Default: hide. Bypass with ?showAll=1.
 const __SHOW_ALL_MENU = new URLSearchParams(location.search).has('showAll');
@@ -5497,7 +5516,7 @@ function isNoiseItem(it) {
 }
 function filterMenuItems(items) {
   if (__SHOW_ALL_MENU) return items || [];
-  return (items || []).filter(it => !it.x);
+  return (items || []).filter(it => !it.x && !skipItemByName(it.n));
 }
 function countMenuNoise(menu) {
   let main = 0, noise = 0;
@@ -7335,18 +7354,18 @@ function renderPanel() {
   const body  = document.getElementById('lpBody');
   // Discovery views
   if (S.view === 'cheapest') {
-    title.textContent = '💸 En Ucuz Ürünler';
+    title.textContent = '🍽️ En Ucuz Menü';
     const items = Object.keys(MENU_CONFIG).filter(cat => S.cat === 'Tümü' || cat === S.cat).map(cat => {
       const candidates = allRests().filter(r => r.cat === cat)
         .flatMap(r => Object.entries(r.menu || {})
           .filter(([mCat]) => !skipCat(mCat))
-          .flatMap(([, catItems]) => (Array.isArray(catItems) ? catItems : []))
-          .filter(it => it?.p && !it.x && !skipItemByName(it.n) && minPrice(it) > PRICE_FLOOR_MENU)
-          .map(it => ({ ...it, rid: r.id, rn: r.n, rcat: cat, rdist: r.distKm })));
+          .flatMap(([mCat, catItems]) => (Array.isArray(catItems) ? catItems : []).map(it => ({ it, mCat })))
+          .filter(({ it, mCat }) => it?.p && !it.x && !skipItemByName(it.n) && isMenuOrMeal(it, mCat))
+          .map(({ it, mCat }) => ({ ...it, rid: r.id, rn: r.n, rcat: cat, rdist: r.distKm, mCat })));
       if (!candidates.length) return null;
       return candidates.sort((a,b) => minPrice(a) - minPrice(b))[0];
     }).filter(Boolean);
-    sub.textContent = S.cat !== 'Tümü' ? `${escHtml(S.cat)} · ${items.length} ürün` : `${items.length} kategoride en ucuz`;
+    sub.textContent = S.cat !== 'Tümü' ? `${escHtml(S.cat)} · ${items.length} menü` : `${items.length} kategoride en ucuz menü`;
     body.innerHTML = items.map(it => {
       const [pid, price] = cheapOf(it.p);
       const pl = PLAT[pid] || { c: '#888', n: pid };
@@ -7354,7 +7373,7 @@ function renderPanel() {
         <div class="dc-top">
           <div class="dc-em">${it.e || '🍽️'}</div>
           <div><div class="dc-name">${escHtml(it.n)}</div><div class="dc-rest">${escHtml(it.rn)} · ${escHtml(it.rcat)}</div></div>
-          <span class="dc-badge" style="background:var(--grn);color:#000">EN UCUZ</span>
+          <span class="dc-badge" style="background:var(--grn);color:#000">EN UCUZ MENÜ</span>
         </div>
         <div class="dc-bottom">
           <span class="dc-price">${price} TL</span>
@@ -7520,10 +7539,6 @@ function openRest(id) {
       <div class="dp-plats">${r.plats.map(pid => PLAT[pid] ? `<span class="dp-ptag" style="background:${PLAT[pid].c}">${PLAT[pid].n}</span>` : '').join('')}
         <button onclick="shareRest('${id}','${r.n.replace(/'/g,"\\'")}') " style="margin-left:auto;background:var(--bg3);border:1px solid var(--line2);color:var(--txt3);border-radius:var(--rp);padding:3px 10px;font-size:10px;font-weight:700;cursor:pointer;font-family:var(--font)">🔗 Paylaş</button>
       </div>
-      ${noiseItems > 0 ? `<div class="dp-noise-chip" style="margin-top:8px;padding:7px 10px;background:var(--bg2);border:1px solid var(--line2);border-radius:var(--rp);font-size:11px;color:var(--txt2);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-        <span>🍔 <strong>${mainItems}</strong> ana yemek${__SHOW_ALL_MENU ? ` · <strong>${noiseItems}</strong> yan ürün gösteriliyor` : ` · <strong>${noiseItems}</strong> yan ürün gizli`}</span>
-        <a href="${__SHOW_ALL_MENU ? location.pathname + location.hash : '?showAll=1' + location.hash}" style="margin-left:auto;color:var(--acc);text-decoration:none;font-weight:700">${__SHOW_ALL_MENU ? 'sadece ana yemekler' : 'tümünü göster'}</a>
-      </div>` : ''}
     </div>
     <div class="mtabs-wrap">
       <div class="mtabs" id="dpTabs">
@@ -7578,10 +7593,6 @@ function renderMenuCat(r, cat) {
   const allItems = (r?.menu?.[cat] || []).filter(it => it?.p && Object.keys(it.p).length > 0);
   const items = filterMenuItems(allItems);
   if (!items.length) {
-    const hiddenCount = allItems.length - items.length;
-    if (hiddenCount > 0) {
-      return `<div style="padding:20px;color:var(--txt3)">Bu kategoride ana yemek yok.<br><small>${hiddenCount} yan ürün gizlendi · <a href="?showAll=1" style="color:var(--acc)">tümünü göster</a></small></div>`;
-    }
     return '<div style="padding:20px;color:var(--txt3)">Bu kategoride ürün bulunamadı.</div>';
   }
 
@@ -9422,11 +9433,26 @@ function _swipeKeyHandler(e) {
 // Returns which swipe group a menu section name belongs to, or null if generic.
 // Used to filter out off-group sections (e.g. dessert sections in Türk Mutfağı).
 function _swipeSectionGroup(secName) {
-  if (/tatlı|magnolia|brownie|algida|cheesecake|cake\s*box|eker tatlı/i.test(secName)) return 'Tatlılar';
+  if (/tatlı|magnolia|brownie|algida|cheesecake|cake\s*box|eker tatlı|waffle|k[uü]nefe/i.test(secName)) return 'Tatlılar';
   if (/burger|pizza/i.test(secName)) return 'Fast Food';
-  if (/kebap|döner/i.test(secName)) return 'Et & Kebap';
+  if (/kebap|döner|steakhouse|\bet\b.*(ızgara|kebap)|bonfile|pirzola/i.test(secName)) return 'Et & Kebap';
   if (/sushi|ramen|wok|asya mutfağı|japon|çin mutfağı/i.test(secName)) return 'Asya & Deniz';
   if (/\bbalık\b|deniz ürün/i.test(secName)) return 'Asya & Deniz';
+  if (/çi[ğg] k[oö]fte|lahmacun|\bpide\b|börek|tantuni|gözleme|mantı/i.test(secName)) return 'Türk Mutfağı';
+  return null;
+}
+
+// Item-name göre doğal swipe grubu — section null-group ise (Menüler, Ana Yemekler vb.)
+// item adının kendisinden grup belirle. Off-topic item'lar seçilen grupta çıkmasın.
+function _swipeItemGroup(name) {
+  const n = (name || '').toLowerCase().replace(/\u0130/g,'i').replace(/\u0131/g,'i');
+  if (/\bçi[ğg] k[oö]fte\b/.test(n)) return 'Türk Mutfağı';
+  if (/\blahmacun\b/.test(n)) return 'Türk Mutfağı';
+  if (/\btantuni\b/.test(n)) return 'Türk Mutfağı';
+  if (/\bgözleme\b/.test(n) || /\bgozleme\b/.test(n)) return 'Türk Mutfağı';
+  if (/\bmantı\b/.test(n) || /\bmanti\b/.test(n)) return 'Türk Mutfağı';
+  if (/\bsushi\b|\bramen\b|\bwok\b/.test(n)) return 'Asya & Deniz';
+  if (/\bwaffle\b|\bk[uü]nefe\b|\bmagnolia\b|\bbrownie\b|\bcheesecake\b/.test(n)) return 'Tatlılar';
   return null;
 }
 
@@ -9455,6 +9481,12 @@ function _buildSwipeQueue(cat) {
         if (isNoiseItem(item)) continue;  // server-tagged sauce/drink/prep/extra
         if (skipItemByName(item.n)) continue;
         if (!minPrice(item)) continue;
+        // Item-level swipe group check: section null-group ise (Menüler, Ana Yemekler vb.)
+        // item adının kendi grubu off-topic'se skip et (örn. "Çiğ Köfte Dürüm Menü" Et & Kebap'ta görünmesin)
+        if (cat !== 'Tümü') {
+          const itemGroup = _swipeItemGroup(item.n);
+          if (itemGroup && itemGroup !== cat) continue;
+        }
         items.push({ item, rest: r });
       }
     }
