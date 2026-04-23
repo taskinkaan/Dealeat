@@ -5489,6 +5489,25 @@ function skipItemByName(name) {
   return false;
 }
 
+// ── Menu noise filter (sauces / drinks / extras flagged in gen_static) ─────
+// Items with `x:1` are side-noise. Default: hide. Bypass with ?showAll=1.
+const __SHOW_ALL_MENU = new URLSearchParams(location.search).has('showAll');
+function isNoiseItem(it) {
+  return !__SHOW_ALL_MENU && !!(it && it.x);
+}
+function filterMenuItems(items) {
+  if (__SHOW_ALL_MENU) return items || [];
+  return (items || []).filter(it => !it.x);
+}
+function countMenuNoise(menu) {
+  let main = 0, noise = 0;
+  for (const items of Object.values(menu || {})) {
+    if (!Array.isArray(items)) continue;
+    for (const it of items) { if (it && it.x) noise++; else if (it) main++; }
+  }
+  return { main, noise };
+}
+
 function restMinPrice(r) {
   if (!r || !r.menu) return 0;
   let min = Infinity;
@@ -5497,6 +5516,7 @@ function restMinPrice(r) {
     if (skipCat(cat)) continue;
     for (const it of catItems) {
       if (!it || !it.p) continue;
+      if (it.x) continue;  // server-tagged noise (sauce/drink/prep/extra)
       if (skipItemByName(it.n)) continue;
       const mp = minPrice(it);
       if (mp > PRICE_FLOOR_CARD && mp < 1500 && mp < min) min = mp;  // ignore cheap side items and family packs
@@ -5509,6 +5529,7 @@ function restMinPrice(r) {
       if (skipCat(cat)) continue;
       for (const it of catItems) {
         if (!it || !it.p) continue;
+        if (it.x) continue;
         const mp = minPrice(it);
         if (mp >= 10 && mp < 1500 && mp < min) min = mp;
       }
@@ -5525,6 +5546,7 @@ function restMinItem(r) {
     if (skipCat(cat)) continue;
     for (const it of catItems) {
       if (!it || !it.n || !it.p) continue;
+      if (it.x) continue;  // server-tagged noise
       if (skipItemByName(it.n)) continue;
       const mp = minPrice(it);
       if (mp > PRICE_FLOOR_CARD && mp < 1500 && mp < min) { min = mp; minName = it.n; }
@@ -5536,6 +5558,7 @@ function restMinItem(r) {
       if (skipCat(cat)) continue;
       for (const it of catItems) {
         if (!it || !it.n || !it.p) continue;
+        if (it.x) continue;
         const mp = minPrice(it);
         if (mp >= 10 && mp < 1500 && mp < min) { min = mp; minName = it.n; }
       }
@@ -7318,7 +7341,7 @@ function renderPanel() {
         .flatMap(r => Object.entries(r.menu || {})
           .filter(([mCat]) => !skipCat(mCat))
           .flatMap(([, catItems]) => (Array.isArray(catItems) ? catItems : []))
-          .filter(it => it?.p && !skipItemByName(it.n) && minPrice(it) > PRICE_FLOOR_MENU)
+          .filter(it => it?.p && !it.x && !skipItemByName(it.n) && minPrice(it) > PRICE_FLOOR_MENU)
           .map(it => ({ ...it, rid: r.id, rn: r.n, rcat: cat, rdist: r.distKm })));
       if (!candidates.length) return null;
       return candidates.sort((a,b) => minPrice(a) - minPrice(b))[0];
@@ -7467,10 +7490,16 @@ function openRest(id) {
     el.classList.toggle('active', el.dataset.id === id);
   });
 
-  const cats = Object.keys(r.menu || {});
+  // Filter: hide categories that are 100% noise (all items have x:1)
+  const cats = Object.keys(r.menu || {}).filter(c => {
+    const items = r.menu[c] || [];
+    if (__SHOW_ALL_MENU) return true;
+    return items.some(it => !it.x);
+  });
   const dpContent = document.getElementById('dpContent');
 
-  const totalItems = Object.values(r.menu || {}).reduce((s, a) => s + (Array.isArray(a) ? a.length : 0), 0);
+  const { main: mainItems, noise: noiseItems } = countMenuNoise(r.menu);
+  const totalItems = __SHOW_ALL_MENU ? (mainItems + noiseItems) : mainItems;
 
   const existingNote = getNotes(id);
   dpContent.innerHTML = `
@@ -7491,6 +7520,10 @@ function openRest(id) {
       <div class="dp-plats">${r.plats.map(pid => PLAT[pid] ? `<span class="dp-ptag" style="background:${PLAT[pid].c}">${PLAT[pid].n}</span>` : '').join('')}
         <button onclick="shareRest('${id}','${r.n.replace(/'/g,"\\'")}') " style="margin-left:auto;background:var(--bg3);border:1px solid var(--line2);color:var(--txt3);border-radius:var(--rp);padding:3px 10px;font-size:10px;font-weight:700;cursor:pointer;font-family:var(--font)">🔗 Paylaş</button>
       </div>
+      ${noiseItems > 0 ? `<div class="dp-noise-chip" style="margin-top:8px;padding:7px 10px;background:var(--bg2);border:1px solid var(--line2);border-radius:var(--rp);font-size:11px;color:var(--txt2);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span>🍔 <strong>${mainItems}</strong> ana yemek${__SHOW_ALL_MENU ? ` · <strong>${noiseItems}</strong> yan ürün gösteriliyor` : ` · <strong>${noiseItems}</strong> yan ürün gizli`}</span>
+        <a href="${__SHOW_ALL_MENU ? location.pathname + location.hash : '?showAll=1' + location.hash}" style="margin-left:auto;color:var(--acc);text-decoration:none;font-weight:700">${__SHOW_ALL_MENU ? 'sadece ana yemekler' : 'tümünü göster'}</a>
+      </div>` : ''}
     </div>
     <div class="mtabs-wrap">
       <div class="mtabs" id="dpTabs">
@@ -7542,8 +7575,15 @@ function openRest(id) {
 }
 
 function renderMenuCat(r, cat) {
-  const items = (r?.menu?.[cat] || []).filter(it => it?.p && Object.keys(it.p).length > 0);
-  if (!items.length) return '<div style="padding:20px;color:var(--txt3)">Bu kategoride ürün bulunamadı.</div>';
+  const allItems = (r?.menu?.[cat] || []).filter(it => it?.p && Object.keys(it.p).length > 0);
+  const items = filterMenuItems(allItems);
+  if (!items.length) {
+    const hiddenCount = allItems.length - items.length;
+    if (hiddenCount > 0) {
+      return `<div style="padding:20px;color:var(--txt3)">Bu kategoride ana yemek yok.<br><small>${hiddenCount} yan ürün gizlendi · <a href="?showAll=1" style="color:var(--acc)">tümünü göster</a></small></div>`;
+    }
+    return '<div style="padding:20px;color:var(--txt3)">Bu kategoride ürün bulunamadı.</div>';
+  }
 
   return items.map(it => {
     const prices = Object.entries(it.p).filter(([,v]) => typeof v === 'number').sort((a,b) => a[1]-b[1]);
@@ -7831,7 +7871,7 @@ function allMenuItems() {
     Object.entries(r.menu || {})
       .filter(([cat]) => !skipCat(cat))
       .flatMap(([, catItems]) => (Array.isArray(catItems) ? catItems : []))
-      .filter(it => it?.p && !skipItemByName(it.n))
+      .filter(it => it?.p && !it.x && !skipItemByName(it.n))
       .map(it => ({ ...it, rid: r.id, rn: r.n }))
   );
   return _menuItemsCache;
@@ -8086,6 +8126,7 @@ function renderMenuMode() {
       if (skipCat(cat)) return;  // skip sauces, drinks, extras
       catItems.forEach(item => {
         if (!item?.n || !item?.p) return;
+        if (isNoiseItem(item)) return;  // skip sauce/drink/prep/extra (server-tagged)
         if (skipItemByName(item.n)) return;  // skip chip/sauce items by name
         const prices = Object.values(item.p).filter(v => typeof v === 'number');
         if (!prices.length) return;
@@ -8928,6 +8969,7 @@ function renderSearchResults(q) {
       if (!Array.isArray(catItems)) return;
       catItems.forEach(it => {
         if (!it?.p) return;
+        if (isNoiseItem(it)) return;  // server-tagged noise
         if (skipItemByName(it.n)) return;  // skip sauce/condiment items by name
         const itemMatch = matchesTR(it.n || '', qLow) || matchesTR(it.d || '', qLow);
         if (!itemMatch) return;
