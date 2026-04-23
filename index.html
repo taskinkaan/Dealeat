@@ -9452,6 +9452,7 @@ function _buildSwipeQueue(cat) {
       }
       for (const item of catItems) {
         if (!item || !item.n) continue;
+        if (isNoiseItem(item)) continue;  // server-tagged sauce/drink/prep/extra
         if (skipItemByName(item.n)) continue;
         if (!minPrice(item)) continue;
         items.push({ item, rest: r });
