@@ -5290,9 +5290,9 @@ async function loadRealPrices() {
       // Refresh UI
       if (typeof renderPanel === 'function') renderPanel();
       if (typeof refreshMarkers === 'function') refreshMarkers();
-      // Update home screen stats
+      // Update home screen stats — exclude noise (unless ?showAll=1)
       const totalItems = RESTAURANTS.reduce((s, r) =>
-        s + Object.values(r.menu || {}).flat().filter(it => it?.p).length, 0);
+        s + Object.values(r.menu || {}).flat().filter(it => it?.p && (__SHOW_ALL_MENU || !it.x)).length, 0);
       const hsIEl = document.getElementById('hsStatItems');
       if (hsIEl) hsIEl.textContent = totalItems + '+';
       const hsREl = document.getElementById('hsStatRests');
@@ -8765,10 +8765,10 @@ async function hsSelectAddr(lat, lng, label, btn) {
 
 // ── INIT ───────────────────────────────────────────────────────────────
 function initHomeScreen() {
-  // Update stats from real data
+  // Update stats from real data — exclude noise (unless ?showAll=1)
   const totalRests = RESTAURANTS.length;
   const totalItems = RESTAURANTS.reduce((s, r) =>
-    s + Object.values(r.menu || {}).flat().filter(it => it?.p).length, 0);
+    s + Object.values(r.menu || {}).flat().filter(it => it?.p && (__SHOW_ALL_MENU || !it.x)).length, 0);
   const hsREl = document.getElementById('hsStatRests');
   const hsIEl = document.getElementById('hsStatItems');
   const totalPlats = new Set(RESTAURANTS.flatMap(r => r.plats || [])).size;
