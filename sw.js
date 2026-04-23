@@ -1,4 +1,4 @@
-const CACHE = 'dealeat-v17';
+const CACHE = 'dealeat-v18';
 const STATIC = [
   'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css',
   'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js',
