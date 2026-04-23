@@ -5154,6 +5154,25 @@ function _initRestaurantsFromData(data) {
   cacheRestPrices();
 }
 
+// Reads restaurants.json's meta.generated_at (set by gen_static_restaurants.py)
+// and paints the freshness banner. Runs once right after bootstrap; also safe
+// to re-run if meta is later updated.
+function _applyFreshnessBanner() {
+  const meta = window.__DEALEAT_META__;
+  const scrapedDate = meta?.generated_at || DATA_SCRAPED_AT;
+  const daysSince = Math.floor((Date.now() - new Date(scrapedDate)) / 86400000);
+  const banner = document.getElementById('dataFreshBanner');
+  if (!banner) return;
+  const prettyDate = meta?.generated_at_date || String(scrapedDate).slice(0, 10);
+  banner.textContent = daysSince > 14
+    ? `⚠️ Fiyatlar ${daysSince} gün önce güncellendi — yakında yenilenecek`
+    : daysSince <= 0
+      ? `✓ Fiyatlar bugün güncellendi (${prettyDate})`
+      : `✓ Fiyatlar ${daysSince} gün önce güncellendi (${prettyDate})`;
+  banner.style.display = 'block';
+  banner.style.color = daysSince > 14 ? 'var(--amb)' : 'var(--txt3)';
+}
+
 // ── 6a. SKIP CATS — Must be declared before cacheRestPrices() call ───────────────
 // Categories that are side items / condiments / drinks — excluded from "itibaren" price
 const _SKIP_CATS_EXACT = new Set([
@@ -5265,17 +5284,9 @@ async function loadRealPrices() {
 
     if (updated > 0) {
       cacheRestPrices();  // Refresh cached prices
-      // Show data freshness banner
-      const scrapedDate = data?.meta?.generated_at || DATA_SCRAPED_AT;
-      const daysSince = Math.floor((Date.now() - new Date(scrapedDate)) / 86400000);
-      const freshBanner = document.getElementById('dataFreshBanner');
-      if (freshBanner) {
-        freshBanner.textContent = daysSince > 14
-          ? `⚠️ Fiyatlar ${daysSince} gün önce güncellendi — yakında yenilenecek`
-          : `✓ Fiyatlar ${daysSince} gün önce güncellendi (${scrapedDate})`;
-        freshBanner.style.display = 'block';
-        freshBanner.style.color = daysSince > 14 ? 'var(--amb)' : 'var(--txt3)';
-      }
+      // Freshness banner is owned by _applyFreshnessBanner(), fed from
+      // restaurants.json's meta.generated_at (always truthful). Do not
+      // override with dealeat_prices.json's stale meta here.
       // Refresh UI
       if (typeof renderPanel === 'function') renderPanel();
       if (typeof refreshMarkers === 'function') refreshMarkers();
@@ -8557,11 +8568,17 @@ async function _bootstrapApp() {
   const loader = document.getElementById('appLoader');
   if (loader) loader.style.display = 'flex';
   try {
-    const data = await fetch('restaurants.json').then(r => {
+    const payload = await fetch('restaurants.json', { cache: 'no-cache' }).then(r => {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     });
-    _initRestaurantsFromData(data);
+    // Support both legacy bare-array and new {meta, restaurants} shapes.
+    const list = Array.isArray(payload) ? payload : payload.restaurants;
+    if (payload && !Array.isArray(payload) && payload.meta) {
+      window.__DEALEAT_META__ = payload.meta;
+    }
+    _initRestaurantsFromData(list);
+    _applyFreshnessBanner();
   } catch(e) {
     console.error('[DealEat] restaurants.json yüklenemedi:', e);
     // Show error — user can still retry
