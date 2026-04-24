@@ -16,7 +16,7 @@ DealEat is a comparison and discovery layer on top of food delivery platforms. I
 - Search any menu item across all restaurants at once
 - Works offline after first load (PWA)
 
-**Current coverage:** Zeytinburnu, Istanbul
+**Current coverage:** Istanbul (European side + parts of Asian side)
 
 ---
 
@@ -61,10 +61,10 @@ Dealeat/
 
 ## Data
 
-Price and menu data is collected from food delivery platforms operating in Istanbul and updated on a regular basis.
+Restaurant and menu data is aggregated from publicly accessible delivery platform listings and refreshed periodically.
 
-- **Coverage:** 90+ restaurants in Zeytinburnu
-- **Products:** 7,000+ menu items
+- **Coverage:** 400+ restaurants across Istanbul
+- **Products:** 35,000+ menu items
 - **Platforms:** Trendyol Go, Getir Yemek
 - **Update frequency:** Periodic (approximately every 2 weeks)
 
@@ -85,7 +85,7 @@ Price and menu data is collected from food delivery platforms operating in Istan
 - [x] Trendyol Go coverage
 - [x] Getir Yemek coverage
 - [ ] Yemeksepeti coverage
-- [ ] Additional Istanbul districts
+- [ ] Wider Istanbul coverage (Asian side)
 - [ ] Price history tracking
 - [ ] Price drop alerts
 

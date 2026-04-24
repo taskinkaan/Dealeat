@@ -25,10 +25,11 @@ __pycache__/
 .vercel.json
 
 # Database
-dealeat_scraper/prices.db
 *.db
 
-# Scraper (private)
+# Local-only working directories
+_local/
+_private/
 dealeat_scraper/
 
 # Python
