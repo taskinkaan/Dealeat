@@ -1,4 +1,4 @@
-const CACHE = 'dealeat-v20';
+const CACHE = 'dealeat-v21';
 const STATIC = [
   'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css',
   'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js',
@@ -49,7 +49,7 @@ self.addEventListener('fetch', e => {
   }
 
   // Network-first for JSON data files — cache as offline fallback
-  if (url.pathname.endsWith('restaurants.json') || url.pathname.endsWith('dealeat_prices.json')) {
+  if (url.pathname.endsWith('restaurants.json')) {
     e.respondWith(
       fetch(e.request)
         .then(resp => {
@@ -59,7 +59,7 @@ self.addEventListener('fetch', e => {
           }
           return resp;
         })
-        .catch(() => caches.match(e.request).then(c => c || new Response(url.pathname.endsWith('restaurants.json') ? '[]' : '{}', { status: 200, headers: { 'Content-Type': 'application/json' } })))
+        .catch(() => caches.match(e.request).then(c => c || new Response('[]', { status: 200, headers: { 'Content-Type': 'application/json' } })))
     );
     return;
   }

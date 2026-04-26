@@ -5247,65 +5247,6 @@ function cacheRestPrices() {
 }
 // cacheRestPrices() called inside _initRestaurantsFromData() after async load
 
-// ── 6b. REAL PRICE DATA INTEGRATION ──────────────────────────────────────────
-// Fetches dealeat_prices.json — silently falls back if missing or unavailable.
-// JSON format: { "restaurants": [{ "id": "bk", "menu": { "Burgerlar": [{ "n": "Klasik Burger", "p": { "yemeksepeti": 145, "trendyol": 140 } }] } }] }
-
-async function loadRealPrices() {
-  try {
-    const res = await fetch('dealeat_prices.json');
-    if (!res.ok) return;
-    const data = await res.json();
-    if (!Array.isArray(data?.restaurants) || !data.restaurants.length) return;
-
-    let updated = 0;
-    for (const entry of data.restaurants) {
-      const r = RESTAURANTS.find(r => r.id === entry.id);
-      if (!r) continue;
-      // Merge real prices into matching menu items by name (case-insensitive category matching)
-      if (entry.menu && typeof entry.menu === 'object') {
-        for (const [catName, realItems] of Object.entries(entry.menu)) {
-          if (!Array.isArray(realItems)) continue;
-          // Find category with case-insensitive match
-          const catNameNorm = catName.toLowerCase().trim();
-          const existingCat = Object.entries(r.menu).find(([cName]) => cName.toLowerCase().trim() === catNameNorm)?.[1];
-          if (!Array.isArray(existingCat)) continue;
-          for (const ri of realItems) {
-            if (!ri?.n || !ri?.p || typeof ri.p !== 'object') continue;
-            const riNorm = ri.n.toLowerCase().trim();
-            const existing = existingCat.find(it => it.n && it.n.toLowerCase().trim() === riNorm);
-            if (existing) existing.p = { ...existing.p, ...ri.p };
-          }
-        }
-      }
-      r.realData = true;
-      updated++;
-    }
-
-    if (updated > 0) {
-      cacheRestPrices();  // Refresh cached prices
-      // Freshness banner is owned by _applyFreshnessBanner(), fed from
-      // restaurants.json's meta.generated_at (always truthful). Do not
-      // override with dealeat_prices.json's stale meta here.
-      // Refresh UI
-      if (typeof renderPanel === 'function') renderPanel();
-      if (typeof refreshMarkers === 'function') refreshMarkers();
-      // Update home screen stats — exclude noise (unless ?showAll=1)
-      const totalItems = RESTAURANTS.reduce((s, r) =>
-        s + Object.values(r.menu || {}).flat().filter(it => it?.p && (__SHOW_ALL_MENU || !it.x)).length, 0);
-      const hsIEl = document.getElementById('hsStatItems');
-      if (hsIEl) hsIEl.textContent = totalItems + '+';
-      const hsREl = document.getElementById('hsStatRests');
-      if (hsREl) hsREl.textContent = RESTAURANTS.length;
-      console.log('[DealEat] Gerçek fiyat verisi yüklendi:', updated, 'restoran');
-    }
-  } catch (e) {
-    // Silently ignore file:// protocol and missing-file errors; log real network failures
-    if (e instanceof TypeError || (e?.message && e.message.includes('NetworkError'))) return;
-    console.warn('[DealEat] loadRealPrices hata:', e?.message || e);
-  }
-}
-
 // ── 7. STATE ──────────────────────────────────────────────────────────────────
 
 const S = {
@@ -8653,7 +8594,6 @@ async function _bootstrapApp() {
   initAddrManager();
   initAuth();
   initWelcomeScreen();
-  loadRealPrices();
 }
 
 if (document.readyState === 'loading') {
