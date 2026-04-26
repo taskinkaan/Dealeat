@@ -4023,6 +4023,36 @@ input:focus-visible { outline: none; }
 .hs-cat-pill { background: #fff; box-shadow: 0 1px 4px rgba(15,23,42,0.07); }
 .hs-cat-pill:hover { box-shadow: 0 3px 12px rgba(234,88,12,0.10); }
 
+/* ── KIND CHIP FILTER ── */
+.kind-chips {
+  display: flex; gap: 6px; overflow-x: auto; padding: 8px 12px;
+  border-bottom: 1px solid var(--bdr, var(--line));
+  flex-shrink: 0;
+}
+.kind-chips::-webkit-scrollbar { display: none; }
+.kind-chip {
+  padding: 6px 12px;
+  border-radius: 16px;
+  border: 1px solid var(--line2);
+  background: var(--bg2);
+  color: var(--txt2);
+  font-size: 13px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: var(--font);
+  transition: background var(--dur-fast) ease, color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+  flex-shrink: 0;
+}
+.kind-chip.active {
+  background: var(--acc);
+  color: var(--bg);
+  border-color: var(--acc);
+}
+.kind-chip:hover:not(.active) {
+  border-color: var(--acc);
+  color: var(--acc);
+}
+
 /* ── AI MODE ── */
 .ai-mode { display:none; flex-direction:column; flex:1; background:var(--bg); min-height:0; }
 .ai-mode.active { display:flex; }
@@ -5452,18 +5482,41 @@ function isMenuOrMeal(it, mCat) {
 // ── Menu noise filter (sauces / drinks / extras flagged in gen_static) ─────
 // Items with `x:1` are side-noise. Default: hide. Bypass with ?showAll=1.
 const __SHOW_ALL_MENU = new URLSearchParams(location.search).has('showAll');
+
+// ── KIND CHIP FILTER ──────────────────────────────────────────────────────────
+const SAVED_KINDS_KEY = 'dealeat_visible_kinds';
+const DEFAULT_VISIBLE_KINDS = new Set(['main', 'combo', 'breakfast', 'bakery']);
+
+// Initialize S.visibleKinds from localStorage, then URL override
+S.visibleKinds = (() => {
+  let kinds = new Set(DEFAULT_VISIBLE_KINDS);
+  try {
+    const saved = JSON.parse(localStorage.getItem(SAVED_KINDS_KEY) || '[]');
+    if (Array.isArray(saved) && saved.length) kinds = new Set(saved);
+  } catch {}
+  const urlKinds = new URLSearchParams(location.search).get('kinds');
+  if (urlKinds) kinds = new Set(urlKinds.split(',').map(k => k.trim()).filter(Boolean));
+  return kinds;
+})();
+
+function isItemVisible(it) {
+  if (__SHOW_ALL_MENU) return true;
+  if (!it.k) return it.x !== 1;   // no kind field (old JSON) — fall back to x flag
+  return S.visibleKinds.has(it.k);
+}
+
 function isNoiseItem(it) {
-  return !__SHOW_ALL_MENU && !!(it && it.x);
+  return !isItemVisible(it);
 }
 function filterMenuItems(items) {
   if (__SHOW_ALL_MENU) return items || [];
-  return (items || []).filter(it => !it.x && !skipItemByName(it.n));
+  return (items || []).filter(it => isItemVisible(it) && !skipItemByName(it.n));
 }
 function countMenuNoise(menu) {
   let main = 0, noise = 0;
   for (const items of Object.values(menu || {})) {
     if (!Array.isArray(items)) continue;
-    for (const it of items) { if (it && it.x) noise++; else if (it) main++; }
+    for (const it of items) { if (it && !isItemVisible(it)) noise++; else if (it) main++; }
   }
   return { main, noise };
 }
@@ -5476,7 +5529,7 @@ function restMinPrice(r) {
     if (skipCat(cat)) continue;
     for (const it of catItems) {
       if (!it || !it.p) continue;
-      if (it.x) continue;  // server-tagged noise (sauce/drink/prep/extra)
+      if (!isItemVisible(it)) continue;  // kind filter
       if (skipItemByName(it.n)) continue;
       const mp = minPrice(it);
       if (mp > PRICE_FLOOR_CARD && mp < 1500 && mp < min) min = mp;  // ignore cheap side items and family packs
@@ -5489,7 +5542,7 @@ function restMinPrice(r) {
       if (skipCat(cat)) continue;
       for (const it of catItems) {
         if (!it || !it.p) continue;
-        if (it.x) continue;
+        if (!isItemVisible(it)) continue;
         const mp = minPrice(it);
         if (mp >= 10 && mp < 1500 && mp < min) min = mp;
       }
@@ -5506,7 +5559,7 @@ function restMinItem(r) {
     if (skipCat(cat)) continue;
     for (const it of catItems) {
       if (!it || !it.n || !it.p) continue;
-      if (it.x) continue;  // server-tagged noise
+      if (!isItemVisible(it)) continue;  // kind filter
       if (skipItemByName(it.n)) continue;
       const mp = minPrice(it);
       if (mp > PRICE_FLOOR_CARD && mp < 1500 && mp < min) { min = mp; minName = it.n; }
@@ -5518,7 +5571,7 @@ function restMinItem(r) {
       if (skipCat(cat)) continue;
       for (const it of catItems) {
         if (!it || !it.n || !it.p) continue;
-        if (it.x) continue;
+        if (!isItemVisible(it)) continue;
         const mp = minPrice(it);
         if (mp >= 10 && mp < 1500 && mp < min) { min = mp; minName = it.n; }
       }
@@ -7301,7 +7354,7 @@ function renderPanel() {
         .flatMap(r => Object.entries(r.menu || {})
           .filter(([mCat]) => !skipCat(mCat))
           .flatMap(([mCat, catItems]) => (Array.isArray(catItems) ? catItems : []).map(it => ({ it, mCat })))
-          .filter(({ it, mCat }) => it?.p && !it.x && !skipItemByName(it.n) && isMenuOrMeal(it, mCat))
+          .filter(({ it, mCat }) => it?.p && isItemVisible(it) && !skipItemByName(it.n) && isMenuOrMeal(it, mCat))
           .map(({ it, mCat }) => ({ ...it, rid: r.id, rn: r.n, rcat: cat, rdist: r.distKm, mCat })));
       if (!candidates.length) return null;
       return candidates.sort((a,b) => minPrice(a) - minPrice(b))[0];
@@ -7454,7 +7507,7 @@ function openRest(id) {
   const cats = Object.keys(r.menu || {}).filter(c => {
     const items = r.menu[c] || [];
     if (__SHOW_ALL_MENU) return true;
-    return items.some(it => !it.x);
+    return items.some(it => isItemVisible(it));
   });
   const dpContent = document.getElementById('dpContent');
 
@@ -7823,7 +7876,7 @@ function allMenuItems() {
     Object.entries(r.menu || {})
       .filter(([cat]) => !skipCat(cat))
       .flatMap(([, catItems]) => (Array.isArray(catItems) ? catItems : []))
-      .filter(it => it?.p && !it.x && !skipItemByName(it.n))
+      .filter(it => it?.p && isItemVisible(it) && !skipItemByName(it.n))
       .map(it => ({ ...it, rid: r.id, rn: r.n }))
   );
   return _menuItemsCache;
@@ -8715,11 +8768,10 @@ async function hsSelectAddr(lat, lng, label, btn) {
 }
 
 // ── INIT ───────────────────────────────────────────────────────────────
-function initHomeScreen() {
-  // Update stats from real data — exclude noise (unless ?showAll=1)
+function updateHomeStats() {
   const totalRests = RESTAURANTS.length;
   const totalItems = RESTAURANTS.reduce((s, r) =>
-    s + Object.values(r.menu || {}).flat().filter(it => it?.p && (__SHOW_ALL_MENU || !it.x)).length, 0);
+    s + Object.values(r.menu || {}).flat().filter(it => it?.p && isItemVisible(it)).length, 0);
   const hsREl = document.getElementById('hsStatRests');
   const hsIEl = document.getElementById('hsStatItems');
   const totalPlats = new Set(RESTAURANTS.flatMap(r => r.plats || [])).size;
@@ -8727,6 +8779,10 @@ function initHomeScreen() {
   if (hsIEl) hsIEl.textContent = totalItems + '+';
   const hsPEl = document.getElementById('hsStatPlats');
   if (hsPEl) hsPEl.textContent = totalPlats;
+}
+
+function initHomeScreen() {
+  updateHomeStats();
 
   // Category pill clicks — go directly to filtered feed (consistent with cat-bar)
   document.getElementById('hsCats').addEventListener('click', e => {
@@ -8810,6 +8866,29 @@ function initHomeScreen() {
 
   // Parse URL params for deep links and shared locations
   parseURLParams();
+
+  // ── Kind chip filter bootstrap ──
+  function applyKindChipStates() {
+    document.querySelectorAll('.kind-chip').forEach(chip => {
+      chip.classList.toggle('active', S.visibleKinds.has(chip.dataset.kind));
+    });
+  }
+  document.querySelectorAll('.kind-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const k = chip.dataset.kind;
+      if (S.visibleKinds.has(k)) S.visibleKinds.delete(k);
+      else S.visibleKinds.add(k);
+      try {
+        localStorage.setItem(SAVED_KINDS_KEY, JSON.stringify([...S.visibleKinds]));
+      } catch {}
+      _menuItemsCache = null;  // invalidate search cache
+      applyKindChipStates();
+      if (typeof renderPanel === 'function') renderPanel();
+      if (typeof refreshMarkers === 'function') refreshMarkers();
+      updateHomeStats();
+    });
+  });
+  applyKindChipStates();
 
   // Sync home screen state based on whether location is set
   _syncHomeScreenState();
@@ -10100,6 +10179,18 @@ document.addEventListener('keydown', e => {
       <button class="hs-cat-pill" data-q="Fırın">🥖 Fırın</button>
       <button class="hs-cat-pill" data-q="Balık">🐟 Balık</button>
       <button class="hs-cat-pill" data-q="Tavuk">🍗 Tavuk</button>
+    </div>
+
+    <div class="kind-chips" id="kindChips">
+      <button class="kind-chip" data-kind="main">🍽️ Ana yemek</button>
+      <button class="kind-chip" data-kind="combo">🍱 Menü</button>
+      <button class="kind-chip" data-kind="breakfast">🥞 Kahvaltı</button>
+      <button class="kind-chip" data-kind="bakery">🥐 Hamur işi</button>
+      <button class="kind-chip" data-kind="drink">☕ İçecek</button>
+      <button class="kind-chip" data-kind="dessert">🍰 Tatlı</button>
+      <button class="kind-chip" data-kind="side">🥗 Yan</button>
+      <button class="kind-chip" data-kind="retail">🛒 Paket ürün</button>
+      <button class="kind-chip" data-kind="other">❓ Diğer</button>
     </div>
 
     <div class="hs-stats">
