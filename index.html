@@ -5483,25 +5483,28 @@ function isMenuOrMeal(it, mCat) {
 // Items with `x:1` are side-noise. Default: hide. Bypass with ?showAll=1.
 const __SHOW_ALL_MENU = new URLSearchParams(location.search).has('showAll');
 
-// ── KIND CHIP FILTER ──────────────────────────────────────────────────────────
+// ── KIND FILTER (advanced — URL-only, no UI by default) ──────────────────────
+// Default: show everything except x:1 (sauces/drinks/desserts auto-hidden by gen_static).
+// Power users can pass ?kinds=main,combo,breakfast to restrict visibility.
 const SAVED_KINDS_KEY = 'dealeat_visible_kinds';
-const DEFAULT_VISIBLE_KINDS = new Set(['main', 'combo', 'breakfast', 'bakery']);
 
-// Initialize S.visibleKinds from localStorage, then URL override
 S.visibleKinds = (() => {
-  let kinds = new Set(DEFAULT_VISIBLE_KINDS);
-  try {
-    const saved = JSON.parse(localStorage.getItem(SAVED_KINDS_KEY) || '[]');
-    if (Array.isArray(saved) && saved.length) kinds = new Set(saved);
-  } catch {}
+  // URL override has highest priority
   const urlKinds = new URLSearchParams(location.search).get('kinds');
-  if (urlKinds) kinds = new Set(urlKinds.split(',').map(k => k.trim()).filter(Boolean));
-  return kinds;
+  if (urlKinds) return new Set(urlKinds.split(',').map(k => k.trim()).filter(Boolean));
+  // Saved override (localStorage) if explicitly set
+  try {
+    const saved = JSON.parse(localStorage.getItem(SAVED_KINDS_KEY) || 'null');
+    if (Array.isArray(saved) && saved.length) return new Set(saved);
+  } catch {}
+  // Default: null = no kind filtering, fall through to x:1 logic
+  return null;
 })();
 
 function isItemVisible(it) {
   if (__SHOW_ALL_MENU) return true;
-  if (!it.k) return it.x !== 1;   // no kind field (old JSON) — fall back to x flag
+  // If no kind filter active OR item has no k field → fall back to x:1 (legacy, post-Faz-2 auto-hide)
+  if (!S.visibleKinds || !it.k) return it.x !== 1;
   return S.visibleKinds.has(it.k);
 }
 
@@ -8867,28 +8870,8 @@ function initHomeScreen() {
   // Parse URL params for deep links and shared locations
   parseURLParams();
 
-  // ── Kind chip filter bootstrap ──
-  function applyKindChipStates() {
-    document.querySelectorAll('.kind-chip').forEach(chip => {
-      chip.classList.toggle('active', S.visibleKinds.has(chip.dataset.kind));
-    });
-  }
-  document.querySelectorAll('.kind-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const k = chip.dataset.kind;
-      if (S.visibleKinds.has(k)) S.visibleKinds.delete(k);
-      else S.visibleKinds.add(k);
-      try {
-        localStorage.setItem(SAVED_KINDS_KEY, JSON.stringify([...S.visibleKinds]));
-      } catch {}
-      _menuItemsCache = null;  // invalidate search cache
-      applyKindChipStates();
-      if (typeof renderPanel === 'function') renderPanel();
-      if (typeof refreshMarkers === 'function') refreshMarkers();
-      updateHomeStats();
-    });
-  });
-  applyKindChipStates();
+  // Kind chip filter UI removed from home screen — power users use ?kinds=URL param
+  // Default: x:1 hide (post-Faz-2 auto-hide for drink/dessert/retail) is sufficient
 
   // Sync home screen state based on whether location is set
   _syncHomeScreenState();
@@ -10187,18 +10170,6 @@ document.addEventListener('keydown', e => {
       <button class="hs-cat-pill" data-q="Fırın">🥖 Fırın</button>
       <button class="hs-cat-pill" data-q="Balık">🐟 Balık</button>
       <button class="hs-cat-pill" data-q="Tavuk">🍗 Tavuk</button>
-    </div>
-
-    <div class="kind-chips" id="kindChips">
-      <button class="kind-chip" data-kind="main">🍽️ Ana yemek</button>
-      <button class="kind-chip" data-kind="combo">🍱 Menü</button>
-      <button class="kind-chip" data-kind="breakfast">🥞 Kahvaltı</button>
-      <button class="kind-chip" data-kind="bakery">🥐 Hamur işi</button>
-      <button class="kind-chip" data-kind="drink">☕ İçecek</button>
-      <button class="kind-chip" data-kind="dessert">🍰 Tatlı</button>
-      <button class="kind-chip" data-kind="side">🥗 Yan</button>
-      <button class="kind-chip" data-kind="retail">🛒 Paket ürün</button>
-      <button class="kind-chip" data-kind="other">❓ Diğer</button>
     </div>
 
     <div class="hs-stats">
