@@ -9511,7 +9511,15 @@ function _buildSwipeQueue(cat) {
     }
   });
   if (swipeState.sort === 'cheapest') {
-    items.sort((a, b) => (minPrice(a.item) || Infinity) - (minPrice(b.item) || Infinity));
+    // Sadece gerçek öğün: main + combo + breakfast (ekmek/pide/yan kalmasın)
+    // legacy items (k field yok) backward compat: dahil edilir
+    const MEAL_KINDS = new Set(['main', 'combo', 'breakfast']);
+    const filtered = items.filter(x => {
+      const k = x.item.k;
+      return !k || MEAL_KINDS.has(k);
+    });
+    filtered.sort((a, b) => (minPrice(a.item) || Infinity) - (minPrice(b.item) || Infinity));
+    return filtered.slice(0, 30);
   } else if (swipeState.sort === 'nearest') {
     items.sort((a, b) => (a.rest.distKm || 99) - (b.rest.distKm || 99));
   } else {
