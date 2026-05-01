@@ -5435,20 +5435,33 @@ function _stableHash(s) {
   return h >>> 0; // unsigned
 }
 
-// Snap Getir-only restaurant to district centroid + small deterministic jitter
+// Coord override map — populated from /coord_overrides.json (Nominatim batch geocoding)
+// Format: { 'gr_xxx': { lat, lng, src: 'nominatim'|'no_district'|'geocode_failed' } }
+let _COORD_OVERRIDES = {};
+
+// Snap Getir-only restaurant to BEST coord using priority:
+// 1. Trendyol coord (real lat/lng from Trendyol API)
+// 2. Nominatim override (real geocoded mahalle/district from coord_overrides.json)
+// 3. Frontend ilçe centroid + jitter (slug parser fallback)
+// 4. Eski estimation (legacy scraper bearing-based fallback)
 function _correctedCoords(restaurant) {
-  // Trendyol-only veya merged: gerçek coord var, dokunma
+  // 1) Trendyol-only veya merged: gerçek coord var
   const plats = restaurant.plats || [];
   if (plats.includes('trendyol')) {
     return [restaurant.lat, restaurant.lng];
   }
-  // Getir-only: slug'tan ilçe çıkar
+  // 2) Nominatim override
+  const ov = _COORD_OVERRIDES[restaurant.id];
+  if (ov && typeof ov.lat === 'number' && typeof ov.lng === 'number') {
+    return [ov.lat, ov.lng];
+  }
+  // 3) Frontend district snap fallback
   const slug = restaurant.gr_slug || (restaurant.id || '').replace(/^gr_/, '');
   const district = _districtFromSlug(slug);
-  if (!district) return [restaurant.lat, restaurant.lng]; // bilinmiyor → mevcut tahmin kullanılır
+  if (!district) return [restaurant.lat, restaurant.lng]; // 4) eski estimation
 
   const centroid = _DISTRICT_COORDS[district];
-  // Deterministic jitter: ±0.006 deg (~600m lat × ~500m lng) — restoranlar üst üste binmesin
+  // Deterministic jitter: ±0.006 deg (~600m) — üst üste binmesin
   const h = _stableHash(restaurant.id || slug);
   const jLat = ((h & 0xffff) / 0xffff - 0.5) * 0.012;
   const jLng = (((h >> 16) & 0xffff) / 0xffff - 0.5) * 0.012;
@@ -5487,14 +5500,28 @@ function _isInSea(lat, lng) {
   return dAdalar > 0.04;
 }
 
+// Coord overrides fetcher — Nominatim batch sonucu coord_overrides.json
+// (1300+ Getir-only restoran için real geocoded mahalle koord'u).
+// Async fetch — ana data load'unu bloke etmesin, gelince re-process.
+async function _loadCoordOverrides() {
+  try {
+    const resp = await fetch('/coord_overrides.json', { cache: 'force-cache' });
+    if (!resp.ok) return {};
+    const data = await resp.json();
+    return data || {};
+  } catch (e) {
+    console.warn('[coord overrides] fetch failed:', e.message);
+    return {};
+  }
+}
+
 function _initRestaurantsFromData(data) {
-  // 1) Coord düzeltme: Getir-only restoranlar için slug'tan ilçe çıkar,
-  //    centroid'e snap + deterministic jitter
+  // 1) Coord düzeltme: priority Trendyol > Nominatim override > District snap > Eski tahmin
   const corrected = data.map(r => {
     const [lat, lng] = _correctedCoords(r);
     return { ...r, lat, lng };
   });
-  // 2) Marmara Denizi fallback: hala denize düşenler (ilçe match yok) gizle
+  // 2) Marmara Denizi fallback: hala denize düşenler gizle
   const filtered = corrected.filter(r => !_isInSea(r.lat, r.lng));
 
   RESTAURANTS = filtered.map(r => ({
@@ -5505,9 +5532,27 @@ function _initRestaurantsFromData(data) {
   }));
   CHAIN_IDS = new Set(filtered.filter(r => r.chain).map(r => r.id));
   cacheRestPrices();
-  // Smart Rec — load after data is ready (cache hit instant, miss async)
+
+  // Smart Rec — load after data is ready
   if (typeof loadRecommendations === 'function') {
     setTimeout(() => loadRecommendations(false), 200);
+  }
+
+  // Async: coord_overrides.json gelince re-process (Nominatim verisi eklendiğinde)
+  // Sadece ilk init'te bir kere yap (re-init loop önle)
+  if (!window._OVERRIDES_LOADED) {
+    window._OVERRIDES_LOADED = true;
+    _loadCoordOverrides().then(overrides => {
+      if (overrides && Object.keys(overrides).length > 0) {
+        _COORD_OVERRIDES = overrides;
+        // Re-init with corrected coords (without re-fetching the JSON data)
+        _initRestaurantsFromData(data);
+        // Refresh map markers if visible
+        if (typeof refreshMarkers === 'function') refreshMarkers();
+        // Re-render visible feed
+        if (typeof renderPanel === 'function') renderPanel();
+      }
+    });
   }
 }
 
