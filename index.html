@@ -4121,6 +4121,19 @@ input:focus-visible { outline: none; }
   .ai-quick-prompts { gap:6px; }
   .ai-quick-prompt { padding:7px 11px; font-size:11.5px; }
 }
+
+/* ── AI-FIRST CLEANUP (Hafta 1) ───────────────────────────────────────────
+   DealEat does NOT process orders — we are an AI advisor + aggregator.
+   Hide all cart/checkout/customize UI. Code paths remain in place but
+   nothing user-visible triggers them. Full code removal in Hafta 4 polish.
+   ─────────────────────────────────────────────────────────────────────── */
+.fcard-cart-btn,
+.cart-mode,
+#cartMode,
+#topbarCartBtn,
+#topbarCartBadge,
+.modal-bg,
+#modalBg { display: none !important; }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -4151,14 +4164,9 @@ input:focus-visible { outline: none; }
     <!-- MODE TOGGLE — desktop only (hidden on mobile via .mode-toggle CSS) -->
     <div class="mode-toggle">
       <button class="mode-btn active" id="modeFeed" onclick="btabSwitch('feed')" aria-pressed="true" aria-label="Restoranlar">🏪 Restoranlar</button>
-      <button class="mode-btn" id="modeMenu" onclick="btabSwitch('menu')" aria-pressed="false" aria-label="Menü">🍽️ Menü</button>
+      <button class="mode-btn" id="modeAI" onclick="btabSwitch('ai')" aria-pressed="false" aria-label="AI Asistan">✨ AI Asistan</button>
       <button class="mode-btn" id="modeMap"  onclick="btabSwitch('map')"  aria-pressed="false" aria-label="Harita">🗺️ Harita</button>
     </div>
-
-    <!-- CART button in topbar -->
-    <button id="topbarCartBtn" onclick="btabSwitch('cart')" style="position:relative;background:var(--bg2);border:1.5px solid var(--line2);border-radius:var(--rp);padding:6px 10px;font-size:18px;cursor:pointer;display:flex;align-items:center;gap:4px;transition:all .15s;flex-shrink:0" title="Sepetim" aria-label="Alışveriş sepeti">
-      🛒<span id="topbarCartBadge" style="display:none;position:absolute;top:-4px;right:-4px;background:var(--acc);color:#fff;font-size:9px;font-weight:800;min-width:16px;height:16px;border-radius:8px;align-items:center;justify-content:center;padding:0 3px" aria-hidden="true"></span>
-    </button>
 
     <!-- AUTH: logged-out state — shows "Giriş Yap" -->
     <button class="auth-login-btn" id="authLoginBtn" onclick="openWelcomeScreen()">
@@ -4502,13 +4510,13 @@ input:focus-visible { outline: none; }
       </span>
       <span class="btab-label">Restoranlar</span>
     </button>
-    <button class="btab" id="btabMenu" onclick="btabSwitch('menu')" aria-label="Menü">
-      <span class="btab-circle" style="--tc:#2563EB;--tg:rgba(37,99,235,0.45)">
+    <button class="btab" id="btabAI" onclick="btabSwitch('ai')" aria-label="AI Ara">
+      <span class="btab-circle" style="--tc:#e11d48;--tg:rgba(225,29,72,0.45)">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+          <path d="M12 2L9.09 8.26 2 9.27l5 4.87L5.82 21 12 17.77 18.18 21 17 14.14l5-4.87-7.09-1.01L12 2z"/>
         </svg>
       </span>
-      <span class="btab-label">Menü</span>
+      <span class="btab-label">AI Ara</span>
     </button>
     <button class="btab" id="btabMap" onclick="btabSwitch('map')" aria-label="Harita">
       <span class="btab-circle" style="--tc:#16a34a;--tg:rgba(22,163,74,0.45)">
@@ -4517,14 +4525,6 @@ input:focus-visible { outline: none; }
         </svg>
       </span>
       <span class="btab-label">Harita</span>
-    </button>
-    <button class="btab" id="btabAI" onclick="btabSwitch('ai')" aria-label="AI Ara">
-      <span class="btab-circle" style="--tc:#e11d48;--tg:rgba(225,29,72,0.45)">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L9.09 8.26 2 9.27l5 4.87L5.82 21 12 17.77 18.18 21 17 14.14l5-4.87-7.09-1.01L12 2z"/>
-        </svg>
-      </span>
-      <span class="btab-label">AI Ara</span>
     </button>
     <button class="btab btab-special" id="btabSwipe" onclick="openSwipeMode('Tümü')" aria-label="Karar Ver">
       <span class="btab-circle" style="--tc:#9333ea;--tg:rgba(147,51,234,0.45)">
@@ -8011,21 +8011,26 @@ function switchMode(mode) {
   const mapSec  = document.getElementById('mapSections');
   const menuSec = document.getElementById('menuMode');
   const cartSec = document.getElementById('cartMode');
+  const aiSec   = document.getElementById('aiMode');
   const btnMap  = document.getElementById('modeMap');
-  const btnMenu = document.getElementById('modeMenu');
   const btnFeed = document.getElementById('modeFeed');
+  const btnAI   = document.getElementById('modeAI');
+  // Note: btnMenu removed in Hafta 1 cleanup (Menü tab kaldırıldı)
 
-  // Hide cart by default; show only when mode === 'cart'
+  // Reset all section visibility
   if (cartSec) cartSec.classList.remove('active');
+  if (aiSec)   aiSec.classList.remove('active');
+  if (menuSec) menuSec.classList.remove('active');
+
+  // Reset all desktop mode-toggle button states
+  [btnMap, btnFeed, btnAI].forEach(b => {
+    if (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); }
+  });
 
   if (mode === 'map') {
     app.classList.add('map-mode-active');
     mapSec.classList.remove('hidden');
-    menuSec.classList.remove('active');
-    document.getElementById('aiMode').classList.remove('active');
-    if (btnMap)  { btnMap.classList.add('active'); btnMap.setAttribute('aria-pressed', 'true'); }
-    if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
-    if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
+    if (btnMap) { btnMap.classList.add('active'); btnMap.setAttribute('aria-pressed', 'true'); }
     setTimeout(() => { if (map) { map.invalidateSize(false); } }, 80);
     setTimeout(() => {
       if (map) {
@@ -8034,45 +8039,30 @@ function switchMode(mode) {
       }
     }, 400);
   } else if (mode === 'menu') {
+    // Menu mode: legacy — Menü tab UI'dan kaldırıldı (Hafta 1) ama JS path
+    // hala destekleniyor (deep links / future re-enable için)
     app.classList.remove('map-mode-active');
     mapSec.classList.add('hidden');
-    menuSec.classList.add('active');
-    document.getElementById('aiMode').classList.remove('active');
-    if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
-    if (btnMenu) { btnMenu.classList.add('active'); btnMenu.setAttribute('aria-pressed', 'true'); }
-    if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
+    if (menuSec) menuSec.classList.add('active');
     renderMMCats();
     renderMenuMode();
   } else if (mode === 'cart') {
+    // Cart mode: deprecated in Hafta 1 cleanup but kept for graceful no-op
     app.classList.remove('map-mode-active');
     mapSec.classList.add('hidden');
-    menuSec.classList.remove('active');
-    document.getElementById('aiMode').classList.remove('active');
     if (cartSec) cartSec.classList.add('active');
-    if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
-    if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
-    if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
     renderCart();
   } else if (mode === 'ai') {
     app.classList.remove('map-mode-active');
     mapSec.classList.add('hidden');
-    menuSec.classList.remove('active');
-    if (cartSec) cartSec.classList.remove('active');
-    document.getElementById('aiMode').classList.add('active');
-    if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
-    if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
-    if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
-    setTimeout(() => document.getElementById('aiInput').focus(), 150);
+    if (aiSec) aiSec.classList.add('active');
+    if (btnAI) { btnAI.classList.add('active'); btnAI.setAttribute('aria-pressed', 'true'); }
+    setTimeout(() => document.getElementById('aiInput')?.focus(), 150);
   } else {
     // 'feed' — default discovery feed
     app.classList.remove('map-mode-active');
     mapSec.classList.remove('hidden');
-    menuSec.classList.remove('active');
-    document.getElementById('aiMode').classList.remove('active');
-    if (cartSec) cartSec.classList.remove('active');
-    if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
-    if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
-    if (btnFeed) { btnFeed.classList.add('active');   btnFeed.setAttribute('aria-pressed', 'true'); }
+    if (btnFeed) { btnFeed.classList.add('active'); btnFeed.setAttribute('aria-pressed', 'true'); }
   }
 }
 
