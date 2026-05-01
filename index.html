@@ -10010,6 +10010,15 @@ function wlcSkip() {
   closeWelcomeScreen();
 }
 
+// Welcome'dan doğrudan AI Asistan'a — yeni primary CTA
+function wlcStartWithAI() {
+  try { localStorage.setItem(WS_SHOWN_KEY, '1'); } catch(e) {}
+  closeWelcomeScreen();
+  setTimeout(() => {
+    if (typeof btabSwitch === 'function') btabSwitch('ai');
+  }, 250);
+}
+
 function wlcGoogle() {
   showShareToast('Google girişi yakında aktif olacak ✨');
 }
@@ -10847,34 +10856,31 @@ function sendAIQuery() { return aiSend(); }
       </div>
       <div class="ws-hero-content">
         <div class="ws-logo">Deal<em>Eat</em><sup>BETA</sup></div>
-        <div class="ws-tagline">İstanbul'un en ucuz yemeğini bul</div>
-        <div class="ws-sub">Trendyol fiyatlarını karşılaştır, para tasarrufu yap</div>
+        <div class="ws-tagline">İstanbul'un AI yemek danışmanı</div>
+        <div class="ws-sub">Trendyol + Getir karşılaştır · Türkçe sor · En uygunu bul</div>
       </div>
     </div>
 
-    <!-- Auth buttons -->
+    <!-- Primary CTA: AI Asistan'a doğrudan giriş -->
     <div class="ws-body">
       <div class="ws-btns">
-        <button class="ws-btn-primary" onclick="wlcShowView('signup')">
-          📧 E-posta ile Kayıt Ol
+        <button class="ws-btn-primary" onclick="wlcStartWithAI()">
+          ✨ AI Asistan'a Sor
         </button>
-        <button class="ws-btn-secondary" onclick="wlcShowView('login')">
-          🔑 Giriş Yap
+        <button class="ws-btn-secondary" onclick="wlcSkip()">
+          🏪 Restoranlara Göz At
         </button>
         <div class="ws-divider">veya</div>
-        <button class="ws-btn-google" onclick="wlcGoogle()" style="display:none">
-          <span class="ws-google-g">G</span>
-          Google ile devam et
+        <button class="ws-btn-tertiary" onclick="wlcShowView('signup')" style="background:transparent;border:1.5px solid var(--line2);color:var(--txt2);border-radius:14px;padding:11px 18px;font-size:13px;font-weight:600;cursor:pointer;width:100%;font-family:var(--font);transition:all .15s">
+          📧 Hesap oluştur (favorileri kaydet)
+        </button>
+        <button class="ws-btn-tertiary" onclick="wlcShowView('login')" style="background:transparent;border:none;color:var(--txt3);font-size:12.5px;cursor:pointer;font-family:var(--font);margin-top:4px">
+          Hesabın var mı? Giriş yap →
         </button>
         <p class="ws-privacy">
-          Kayıt olarak <a onclick="alert('Gizlilik politikası yakında eklenecek.')">Gizlilik Politikasını</a> kabul etmiş olursunuz
+          Devam ederek <a onclick="alert('Gizlilik politikası yakında eklenecek.')">Gizlilik Politikasını</a> kabul etmiş olursunuz
         </p>
       </div>
-    </div>
-
-    <!-- Skip -->
-    <div class="ws-skip-wrap">
-      <button class="ws-skip-btn" onclick="wlcSkip()">Hesap olmadan devam et →</button>
     </div>
 
   </div><!-- /#wsViewLanding -->
