@@ -10045,14 +10045,26 @@ function _aiMid() { return 'm-' + Date.now().toString(36) + '-' + Math.random().
 // Lightweight markdown: **bold**, *italic*, [text](url), \n→<br>, links auto-clickable
 function aiRenderMarkdown(text) {
   if (!text) return '';
-  let s = escHtml(text);
-  // Auto-link http(s) URLs
-  s = s.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
-  // Markdown bold/italic
+  // Step 1: Extract markdown links [text](url) BEFORE escHtml (URL & chars stay raw)
+  const _links = [];
+  let s = String(text).replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g, function(m, t, u) {
+    _links.push({ t: t, u: u });
+    return '\x01LINK' + (_links.length - 1) + '\x01';
+  });
+  // Step 2: escHtml the body (placeholders survive — \x01 not escaped)
+  s = escHtml(s);
+  // Step 3: Auto-link BARE URLs first (markdown URLs are placeholders, won't match)
+  s = s.replace(/(https?:\/\/[^\s<>"')\]]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+  // Step 4: Bold + italic
   s = s.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>');
   s = s.replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, '<em>$1</em>');
-  // Newlines
+  // Step 5: Newlines
   s = s.replace(/\n/g, '<br>');
+  // Step 6: Restore markdown links LAST (so step 3 didn't double-wrap them)
+  s = s.replace(/\x01LINK(\d+)\x01/g, function(_, idx) {
+    var lk = _links[+idx];
+    return '<a href="' + escHtml(lk.u) + '" target="_blank" rel="noopener noreferrer">' + escHtml(lk.t) + '</a>';
+  });
   return s;
 }
 
