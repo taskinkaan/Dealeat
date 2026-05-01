@@ -4134,6 +4134,27 @@ input:focus-visible { outline: none; }
 #topbarCartBadge,
 .modal-bg,
 #modalBg { display: none !important; }
+
+/* Menu item card — clickable, deep-links to platform */
+.mitem { cursor: pointer; transition: background .15s, transform .1s; }
+.mitem:hover { background: var(--bg2); }
+.mitem:active { transform: scale(.99); }
+
+/* Per-platform price chip — independently clickable */
+.mpr[data-pid] {
+  cursor: pointer;
+  transition: background .15s, border-color .15s, transform .1s;
+}
+.mpr[data-pid]:hover { background: var(--acc-s); border-color: var(--acc-b); }
+.mpr[data-pid]:active { transform: scale(.97); }
+.mpr-arrow {
+  font-size: 11px;
+  color: var(--txt3);
+  margin-left: 6px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.mpr[data-pid]:hover .mpr-arrow { color: var(--acc); }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -7634,15 +7655,60 @@ function openRest(id) {
     });
   }
 
-  // Menu item delegation — on detailPanel to survive innerHTML replacements
+  // Menu item delegation — on detailPanel to survive innerHTML replacements.
+  // Hafta 1 cleanup: openCustomize devre dışı (no order flow). Item/chip click
+  // artık platform sayfasına deep-link açıyor. Chip varsa chip'in platformu,
+  // yoksa en ucuz platform.
   const dp = document.getElementById('detailPanel');
   if (dp && !dp._mitemBound) {
     dp._mitemBound = true;
     dp.addEventListener('click', e => {
+      // 1) Per-chip click → o platforma git
+      const chip = e.target.closest('.mpr[data-pid]');
+      if (chip) {
+        const mitem = chip.closest('.mitem');
+        const rid = mitem?.dataset.rid;
+        const pid = chip.dataset.pid;
+        if (rid && pid) openItemOnPlatform(rid, pid);
+        return;
+      }
+      // 2) Item card click (chip dışı) → en ucuz platforma git
       const item = e.target.closest('.mitem');
-      if (item?.dataset.rid && item?.dataset.iid) openCustomize(item.dataset.rid, item.dataset.iid);
+      if (item?.dataset.rid && item?.dataset.iid) {
+        openItemOnCheapestPlatform(item.dataset.rid, item.dataset.iid);
+      }
     });
   }
+}
+
+// Open the restaurant's page on a specific platform (Trendyol Go / Getir Yemek).
+function openItemOnPlatform(rid, pid) {
+  const rest = findRest(rid);
+  if (!rest) return;
+  const url = platRestUrl(pid, rid);
+  if (!url) {
+    console.warn('[openItemOnPlatform] no deep-link for', pid, rid);
+    return;
+  }
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+// Find item's cheapest platform and open that platform's restaurant page.
+function openItemOnCheapestPlatform(rid, iid) {
+  const rest = findRest(rid);
+  if (!rest) return;
+  const item = findMenuItem(rest, iid);
+  if (!item || !item.p) {
+    // Fallback: rest's primary platform
+    const fallback = (rest.plats || [])[0];
+    if (fallback) openItemOnPlatform(rid, fallback);
+    return;
+  }
+  const sortedPrices = Object.entries(item.p)
+    .filter(([pid, v]) => typeof v === 'number' && v > 0 && PLAT[pid])
+    .sort((a, b) => a[1] - b[1]);
+  if (!sortedPrices.length) return;
+  openItemOnPlatform(rid, sortedPrices[0][0]);
 }
 
 function renderMenuCat(r, cat) {
@@ -7664,10 +7730,11 @@ function renderMenuCat(r, cat) {
       </div>
       <div class="mi-right">
         ${prices.filter(([pid]) => PLAT[pid]).map(([pid, price]) => `
-          <div class="mpr ${pid === cheapId ? 'best' : ''}">
+          <div class="mpr ${pid === cheapId ? 'best' : ''}" data-pid="${pid}" title="${PLAT[pid].n} sayfasında aç">
             <span class="pdot" style="background:${PLAT[pid].c}"></span>
             <span>${PLAT[pid].n}</span>
             <span style="margin-left:auto;font-weight:700">${price} TL${pid === cheapId ? ' ✓' : ''}</span>
+            <span class="mpr-arrow" aria-hidden="true">↗</span>
           </div>`).join('')}
       </div>
     </div>`;
