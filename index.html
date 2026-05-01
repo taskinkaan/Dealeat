@@ -4135,26 +4135,39 @@ input:focus-visible { outline: none; }
 .modal-bg,
 #modalBg { display: none !important; }
 
-/* Menu item card — clickable, deep-links to platform */
-.mitem { cursor: pointer; transition: background .15s, transform .1s; }
-.mitem:hover { background: var(--bg2); }
-.mitem:active { transform: scale(.99); }
-
-/* Per-platform price chip — independently clickable */
+/* Per-platform price chip — bağımsız tıklanabilir buton, ayrı linkler */
 .mpr[data-pid] {
   cursor: pointer;
-  transition: background .15s, border-color .15s, transform .1s;
+  transition: background .15s, border-color .15s, box-shadow .15s, transform .1s;
+  border: 1.5px solid var(--line2);
+  background: #fff;
+  min-height: 38px;
+  padding: 8px 12px;
+  border-radius: 10px;
 }
-.mpr[data-pid]:hover { background: var(--acc-s); border-color: var(--acc-b); }
+.mpr[data-pid]:hover {
+  background: var(--bg1);
+  border-color: var(--acc-b);
+  box-shadow: 0 2px 8px rgba(234,88,12,0.14);
+}
 .mpr[data-pid]:active { transform: scale(.97); }
+.mpr[data-pid].best {
+  border-color: var(--grn);
+  background: var(--grn-s);
+}
+.mpr[data-pid].best:hover {
+  background: rgba(22,163,74,0.16);
+  box-shadow: 0 2px 10px rgba(22,163,74,0.20);
+}
 .mpr-arrow {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--txt3);
   margin-left: 6px;
-  font-weight: 700;
+  font-weight: 800;
   flex-shrink: 0;
 }
-.mpr[data-pid]:hover .mpr-arrow { color: var(--acc); }
+.mpr[data-pid]:hover .mpr-arrow { color: var(--acc); transform: translate(2px, -2px); transition: transform .15s, color .15s; }
+.mpr[data-pid].best .mpr-arrow { color: var(--grn); }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -7656,27 +7669,19 @@ function openRest(id) {
   }
 
   // Menu item delegation — on detailPanel to survive innerHTML replacements.
-  // Hafta 1 cleanup: openCustomize devre dışı (no order flow). Item/chip click
-  // artık platform sayfasına deep-link açıyor. Chip varsa chip'in platformu,
-  // yoksa en ucuz platform.
+  // Hafta 1 cleanup: openCustomize devre dışı (no order flow). Sadece per-platform
+  // chip click → deep-link açar. Item kartı kendisi tıklanmaz (kullanıcı hangi
+  // platforma gideceğini kendisi seçer, auto-pick yok).
   const dp = document.getElementById('detailPanel');
   if (dp && !dp._mitemBound) {
     dp._mitemBound = true;
     dp.addEventListener('click', e => {
-      // 1) Per-chip click → o platforma git
       const chip = e.target.closest('.mpr[data-pid]');
-      if (chip) {
-        const mitem = chip.closest('.mitem');
-        const rid = mitem?.dataset.rid;
-        const pid = chip.dataset.pid;
-        if (rid && pid) openItemOnPlatform(rid, pid);
-        return;
-      }
-      // 2) Item card click (chip dışı) → en ucuz platforma git
-      const item = e.target.closest('.mitem');
-      if (item?.dataset.rid && item?.dataset.iid) {
-        openItemOnCheapestPlatform(item.dataset.rid, item.dataset.iid);
-      }
+      if (!chip) return;
+      const mitem = chip.closest('.mitem');
+      const rid = mitem?.dataset.rid;
+      const pid = chip.dataset.pid;
+      if (rid && pid) openItemOnPlatform(rid, pid);
     });
   }
 }
