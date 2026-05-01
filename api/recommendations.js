@@ -14,8 +14,20 @@ const anthropic = createAnthropic({
 
 const MODEL = 'claude-haiku-4-5';
 const REC_LIMIT = 5;
-const PRICE_CEIL = 300;
+const PRICE_CEIL = 350;
+const PRICE_FLOOR = 100; // gerçek bir öğün starts ~100 TL; daha azı garnitür/side risk
 const DIST_CEIL_KM = 5;
+
+// Ana yemek isim pattern — kind classifier %23 yanlış olduğu için ek güvenlik.
+// Combo zaten safe (menü/combo paket). Main için bu regex'lerden biri eşleşmeli.
+const _MAIN_NAME_RE = /\b(köfte|döner|kebap|kebab|tavuk|piliç|dana|kuzu|kıymal[ıi]|izgara|şiş|burger|hamburger|cheeseburger|pizza|makarna|mant[ıi]|tost|sandvi[çc]|sandwich|d[üu]r[üu]m|wrap|pide|lahmacun|çorba|pilav|tantuni|gözleme|sat[ıi]ç|fileto|dolma|sarma|bal[ıi]k|karides|spagetti|noodle|risotto|kumpir|nugget|hamsi)/i;
+
+function _isLikelyMainDish(it) {
+  if (!it) return false;
+  if (it.kind === 'combo') return true; // combo'lar her zaman tam öğün
+  if (it.kind === 'main' && _MAIN_NAME_RE.test(it.name || '')) return true;
+  return false;
+}
 
 const SYSTEM_PROMPT = `Sen DealEat'in akıllı öneri motorusun. Aday ürünleri kullanıcının geçmişine göre Türkçe kısa rationale ile sun. Her ürün için MAX 1 kısa cümle (8-12 kelime). Samimi ton, emoji opsiyonel. SADECE JSON döndür, başka açıklama yapma.`;
 
@@ -59,18 +71,18 @@ module.exports = async function handler(req, res) {
   const isColdStart = history.length === 0;
 
   try {
-    // 1) Backend candidate pool: gerçek ana yemek + combo (kahvaltı dahil değil
-    // çünkü 35 TL peynir/zeytin ana öneri olmamalı). Min price 50 TL ile single
-    // ingredient/garnitür item'ları da elenir.
-    const PRICE_FLOOR = 50;
-    const pool = await data.searchItems({
+    // 1) Candidate pool: ana yemek + combo. Price floor 100 TL (altı genelde
+    // garnitür/aksesuar). Sonra ek filtre _isLikelyMainDish ile classifier %23
+    // hata payına karşı isim regex'i koru ('Tavuk Topu', 'Tavuk Salam' vb. elenir).
+    const rawPool = await data.searchItems({
       kind: ['main', 'combo'],
       priceMin: PRICE_FLOOR,
       priceMax: PRICE_CEIL,
       distanceMax: userLocation ? DIST_CEIL_KM : undefined,
       userLocation,
-      limit: 30,
+      limit: 60, // daha geniş havuz, regex sonrası filtrelenecek
     });
+    const pool = rawPool.filter(_isLikelyMainDish);
 
     if (!pool.length) {
       return res.status(200).json({

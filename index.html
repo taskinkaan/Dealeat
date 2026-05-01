@@ -4135,15 +4135,28 @@ input:focus-visible { outline: none; }
 .modal-bg,
 #modalBg { display: none !important; }
 
-/* ── ANA SAYFA "✨ SANA ÖZEL" SECTION (Faz 1A) ─────────────────────────── */
-.recs-section {
-  margin: 12px 0 18px;
-  padding: 0 4px;
-  display: none; /* JS toggles based on data + view */
-  flex-direction: column;
-  gap: 10px;
+/* ── ANA SAYFA "✨ SANA ÖZEL" SECTION ────────────────────────────────────
+   User feedback: ana sayfa Yemeksepeti-tarzı restoran fotolu kartlarla kalsın,
+   item-level öneriler estetiği bozdu. Section devre dışı; öneri akışı discovery
+   bar'daki '✨ Sana Öneri Sor' butonu üzerinden AI tab'a yönlendiriyor.
+   ─────────────────────────────────────────────────────────────────────── */
+.recs-section { display: none !important; }
+.recs-section.show { display: none !important; } /* override even when JS adds .show */
+
+/* AI öneri tab — discovery bar'da spotlight */
+.dtab.dtab-ai {
+  background: linear-gradient(135deg, rgba(225,29,72,0.12), rgba(234,88,12,0.10));
+  border-color: rgba(225,29,72,0.30);
+  color: #e11d48;
+  font-weight: 700;
 }
-.recs-section.show { display: flex; }
+.dtab.dtab-ai:hover {
+  background: linear-gradient(135deg, rgba(225,29,72,0.20), rgba(234,88,12,0.16));
+  border-color: rgba(225,29,72,0.50);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(225,29,72,0.18);
+}
+.dtab.dtab-ai .dtab-badge { background: #e11d48; color: #fff; }
 .recs-header {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 12px;
@@ -4307,7 +4320,8 @@ input:focus-visible { outline: none; }
   <!-- DISCOVERY TABS -->
   <div class="disc-bar">
     <button class="dtab active" onclick="setView('restaurants',this)">🏪 Restoranlar</button>
-    <button class="dtab" onclick="setView('cheapest',this)">🍽️ En Ucuz Menü <span class="dtab-badge g">YENİ</span></button>
+    <button class="dtab dtab-ai" onclick="askAIForSuggestion()">✨ Sana Öneri Sor <span class="dtab-badge g">YENİ</span></button>
+    <button class="dtab" onclick="setView('cheapest',this)">🍽️ En Ucuz Menü</button>
     <button class="dtab" onclick="setView('nearby',this)">📍 Yakınımda</button>
     <button class="dtab" onclick="openSwipeMode('Tümü')">🎲 Karar Ver</button>
   </div>
@@ -10473,6 +10487,22 @@ async function aiSend() {
     if (btn) btn.disabled = false;
     if (inp) inp.focus();
   }
+}
+
+/* ── DISCOVERY: AI öneri butonu — AI tab'ına yönlendir + otomatik öneri sor ── */
+function askAIForSuggestion() {
+  // Önce AI tab'a geç
+  if (typeof btabSwitch === 'function') btabSwitch('ai');
+  // 250ms sonra (mode switch animasyonu bitsin) otomatik prompt gönder
+  setTimeout(() => {
+    if (typeof aiSendPrompt !== 'function') return;
+    // Lokasyon varsa kişisel öneri, yoksa generic
+    const loc = (typeof aiUserLocation === 'function') ? aiUserLocation() : null;
+    const prompt = loc
+      ? 'Yakınımda 200 TL altı 3 öneri ver, kısa ve net olsun'
+      : 'Bu akşam İstanbul\'da uygun fiyatlı 3 yemek öner';
+    aiSendPrompt(prompt);
+  }, 280);
 }
 
 /* ── SMART RECOMMENDATIONS — Ana sayfa "✨ Sana Özel" (Faz 1A) ─────────── */
