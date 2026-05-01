@@ -8022,6 +8022,7 @@ function switchMode(mode) {
     app.classList.add('map-mode-active');
     mapSec.classList.remove('hidden');
     menuSec.classList.remove('active');
+    document.getElementById('aiMode').classList.remove('active');
     if (btnMap)  { btnMap.classList.add('active'); btnMap.setAttribute('aria-pressed', 'true'); }
     if (btnMenu) { btnMenu.classList.remove('active'); btnMenu.setAttribute('aria-pressed', 'false'); }
     if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
@@ -8036,6 +8037,7 @@ function switchMode(mode) {
     app.classList.remove('map-mode-active');
     mapSec.classList.add('hidden');
     menuSec.classList.add('active');
+    document.getElementById('aiMode').classList.remove('active');
     if (btnMap)  { btnMap.classList.remove('active'); btnMap.setAttribute('aria-pressed', 'false'); }
     if (btnMenu) { btnMenu.classList.add('active'); btnMenu.setAttribute('aria-pressed', 'true'); }
     if (btnFeed) { btnFeed.classList.remove('active'); btnFeed.setAttribute('aria-pressed', 'false'); }
