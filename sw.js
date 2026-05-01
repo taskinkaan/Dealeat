@@ -1,4 +1,4 @@
-const CACHE = 'dealeat-v24';
+const CACHE = 'dealeat-v25';
 const STATIC = [
   'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css',
   'https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js',
@@ -61,6 +61,13 @@ self.addEventListener('fetch', e => {
         })
         .catch(() => caches.match(e.request).then(c => c || new Response('[]', { status: 200, headers: { 'Content-Type': 'application/json' } })))
     );
+    return;
+  }
+
+  // AI endpoints — pure network passthrough (SSE streaming, NO timeout, NO cache).
+  // Wrapping these in Promise.race or fetch().then() can break server-sent events.
+  if (url.pathname.startsWith('/api/chat') || url.pathname.startsWith('/api/recommendations')) {
+    e.respondWith(fetch(e.request).catch(() => new Response('', { status: 503 })));
     return;
   }
 

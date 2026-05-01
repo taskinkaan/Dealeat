@@ -4080,6 +4080,47 @@ input:focus-visible { outline: none; }
 .ai-dot:nth-child(2) { animation-delay:.2s; }
 .ai-dot:nth-child(3) { animation-delay:.4s; }
 @keyframes aiPulse { 0%,100%{opacity:.3;transform:scale(.8)} 50%{opacity:1;transform:scale(1)} }
+
+/* ── CHAT BUBBLE UI (AI v2) ── */
+.ai-hero-actions { display:flex; gap:8px; justify-content:center; margin-top:10px; flex-wrap:wrap; }
+.ai-new-chat { background:transparent; border:1.5px solid var(--line2); color:var(--txt2); border-radius:999px; padding:5px 12px; font-size:12px; font-weight:600; cursor:pointer; font-family:var(--font); transition:all .15s; }
+.ai-new-chat:hover { background:var(--bg2); color:var(--acc); border-color:var(--acc-b); }
+.ai-quick-prompts { display:flex; flex-wrap:wrap; gap:8px; padding:0 16px 12px; flex-shrink:0; }
+.ai-quick-prompt { background:var(--bg2); border:1px solid var(--line2); color:var(--txt); border-radius:999px; padding:8px 14px; font-size:12.5px; font-weight:600; cursor:pointer; font-family:var(--font); white-space:nowrap; transition:all .15s; }
+.ai-quick-prompt:hover { background:var(--bg3); border-color:var(--acc-b); color:var(--acc); transform:translateY(-1px); }
+.ai-quick-prompt:active { transform:scale(.97); }
+
+.ai-bubble { max-width:88%; padding:10px 14px; border-radius:16px; font-size:14px; line-height:1.45; word-wrap:break-word; animation:aiBubbleIn .22s var(--ease-out); }
+.ai-bubble strong { font-weight:700; }
+.ai-bubble a { color:inherit; text-decoration:underline; word-break:break-all; }
+.ai-bubble em { font-style:italic; }
+.ai-bubble.user { background:var(--grad); color:#fff; align-self:flex-end; border-bottom-right-radius:6px; box-shadow:var(--glow-acc); }
+.ai-bubble.assistant { background:#fff; color:var(--txt); border:1px solid var(--line); align-self:flex-start; border-bottom-left-radius:6px; box-shadow:var(--sh-xs); }
+.ai-bubble.assistant.streaming::after { content:'▍'; animation:aiCursor 1s step-end infinite; opacity:.6; margin-left:2px; }
+.ai-bubble.assistant pre { white-space:pre-wrap; word-break:break-word; font-family:inherit; margin:0; }
+@keyframes aiBubbleIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+@keyframes aiCursor { 0%,50%{opacity:.6} 51%,100%{opacity:0} }
+
+.ai-tool-chip { font-size:11px; color:var(--txt3); padding:4px 10px; background:var(--bg1); border:1px dashed var(--line2); border-radius:12px; align-self:flex-start; font-weight:500; max-width:88%; }
+.ai-tool-chip.running::before { content:'⚙ '; }
+.ai-tool-chip.done::before { content:'✓ '; color:var(--grn); }
+.ai-tool-chip.error::before { content:'✕ '; color:var(--red); }
+
+.ai-typing { display:flex; align-items:center; gap:6px; padding:10px 14px; background:#fff; border:1px solid var(--line); border-radius:16px; align-self:flex-start; max-width:80px; border-bottom-left-radius:6px; }
+.ai-typing .ai-dot { width:6px; height:6px; }
+
+.ai-error-banner { background:#fef2f2; border:1px solid #fecaca; color:#991b1b; padding:10px 14px; border-radius:12px; font-size:13px; align-self:stretch; }
+
+/* Restoran kartı — Claude'un cevabının altına şeffaf öneri eklemek için */
+.ai-rec-grid { display:grid; gap:8px; align-self:stretch; padding-top:4px; }
+
+@media (max-width: 640px) {
+  .ai-hero { padding:18px 16px 8px; }
+  .ai-hero-title { font-size:19px; }
+  .ai-bubble { max-width:92%; font-size:13.5px; }
+  .ai-quick-prompts { gap:6px; }
+  .ai-quick-prompt { padding:7px 11px; font-size:11.5px; }
+}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
@@ -4397,13 +4438,22 @@ input:focus-visible { outline: none; }
   <!-- AI MODE -->
   <div class="ai-mode" id="aiMode">
     <div class="ai-hero">
-      <div class="ai-hero-title">✨ AI Asistan</div>
-      <div class="ai-hero-sub">Ne yemek istiyorsun? Türkçe yaz, ben bulurum.</div>
+      <div class="ai-hero-title">✨ DealEat AI</div>
+      <div class="ai-hero-sub">İstanbul'da en uygun yemeği bulayım. Türkçe sor.</div>
+      <div class="ai-hero-actions">
+        <button class="ai-new-chat" onclick="aiNewChat()" title="Sohbeti temizle">↻ Yeni sohbet</button>
+      </div>
+    </div>
+    <div class="ai-quick-prompts" id="aiQuickPrompts">
+      <button class="ai-quick-prompt" onclick="aiSendPrompt('100 TL altı ana yemek?')">💰 100 TL altı yemek</button>
+      <button class="ai-quick-prompt" onclick="aiSendPrompt('Yakınımda kahvaltı önerin')">🍳 Kahvaltı yakında</button>
+      <button class="ai-quick-prompt" onclick="aiSendPrompt('80 TL altı tatlı?')">🧁 Tatlı 80 TL altı</button>
+      <button class="ai-quick-prompt" onclick="aiSendPrompt('Trendyol vs Getir burger fiyatı?')">⚖️ Karşılaştır</button>
     </div>
     <div class="ai-results-wrap" id="aiResults"></div>
     <div class="ai-input-bar">
-      <input id="aiInput" class="ai-input" type="text" placeholder="20 TL altı tavuklu bir şey…" autocomplete="off" />
-      <button class="ai-send-btn" id="aiSendBtn" onclick="sendAIQuery()">
+      <input id="aiInput" class="ai-input" type="text" placeholder="Bu akşam ne yiyim?" autocomplete="off" inputmode="search" />
+      <button class="ai-send-btn" id="aiSendBtn" onclick="aiSend()" aria-label="Gönder">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
     </div>
@@ -5290,7 +5340,16 @@ const S = {
   priceMax: 1000,
   distMax: 4.0,
   cs: null,
+  ai: {
+    messages: [],         // [{id, role:'user'|'assistant', content:string, ts:number}]
+    isStreaming: false,
+    abortController: null, // active stream's AbortController for cancellation
+  },
 };
+
+const AI_STORAGE_KEY = 'dealeat_ai_chat_v1';
+const AI_HISTORY_QUERY_KEY = 'dealeat_ai_query_history_v1'; // anonymous query log for personalization
+const AI_MAX_PERSIST_MESSAGES = 30; // cap localStorage size
 
 // ── NAVIGATION STACK ─────────────────────────────────────────────────────────
 // Tracks where the user came from so the back button can navigate correctly.
@@ -9978,94 +10037,301 @@ function wlcForgotPwd() {
   _wlcSuccess('wsLoginSuccess', 'Şifrenizi sıfırlamak için destek@dealeat.app adresine yazın 📩');
 }
 
-/* ── AI SEARCH ── */
-async function sendAIQuery() {
-  const input = document.getElementById('aiInput');
-  const btn   = document.getElementById('aiSendBtn');
-  const query = input.value.trim();
-  if (!query) return;
+/* ── AI CHAT v2 — multi-turn streaming with tool use ── */
 
-  btn.disabled = true;
-  _renderAILoading();
+// Generate short id for messages
+function _aiMid() { return 'm-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 6); }
 
-  const allItems = allMenuItems();
-  const withPrice = allItems.map(it => ({
-    ...it,
-    minP: Math.min(...Object.values(it.p || {}).filter(v => v > 0))
-  })).filter(it => it.minP > 0 && it.minP < 9999);
+// Lightweight markdown: **bold**, *italic*, [text](url), \n→<br>, links auto-clickable
+function aiRenderMarkdown(text) {
+  if (!text) return '';
+  let s = escHtml(text);
+  // Auto-link http(s) URLs
+  s = s.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+  // Markdown bold/italic
+  s = s.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, '<em>$1</em>');
+  // Newlines
+  s = s.replace(/\n/g, '<br>');
+  return s;
+}
 
-  // Keyword pre-filter
-  const keywords = query.toLowerCase().replace(/[^a-z0-9ğüşıöçĞÜŞİÖÇ\s]/g,'').split(/\s+/).filter(k => k.length > 1);
-  let candidates = withPrice;
-  if (keywords.length) {
-    const filtered = withPrice.filter(it =>
-      keywords.some(k => it.n.toLowerCase().includes(k) || it.rn.toLowerCase().includes(k))
-    );
-    if (filtered.length >= 5) candidates = filtered;
+function aiUserLocation() {
+  if (typeof userLocationSet !== 'undefined' && userLocationSet && typeof CENTER !== 'undefined' && Array.isArray(CENTER)) {
+    return { lat: CENTER[0], lng: CENTER[1] };
   }
+  return null;
+}
 
-  // Price ceiling from query ("X TL altı / under / max")
-  const priceM = query.match(/(\d+)\s*tl?\s*(alt[ıi]|under|max|kadar)/i);
-  if (priceM) candidates = candidates.filter(it => it.minP <= parseInt(priceM[1]));
+function aiQueryHistory() {
+  try {
+    const raw = localStorage.getItem(AI_HISTORY_QUERY_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch { return []; }
+}
 
-  candidates.sort((a, b) => a.minP - b.minP);
-  const top = candidates.slice(0, 80);
+function aiPushQueryHistory(q) {
+  if (!q || q.length < 2) return;
+  try {
+    const arr = aiQueryHistory();
+    arr.push(q);
+    const tail = arr.slice(-30);
+    localStorage.setItem(AI_HISTORY_QUERY_KEY, JSON.stringify(tail));
+  } catch {}
+}
 
-  if (!top.length) {
-    _renderAIResults([], [], 'Menüde eşleşen ürün bulunamadı.');
-    btn.disabled = false;
-    return;
+function aiPersist() {
+  try {
+    const tail = S.ai.messages.slice(-AI_MAX_PERSIST_MESSAGES);
+    localStorage.setItem(AI_STORAGE_KEY, JSON.stringify(tail));
+  } catch {}
+}
+
+function aiLoad() {
+  try {
+    const raw = localStorage.getItem(AI_STORAGE_KEY);
+    if (!raw) return;
+    const arr = JSON.parse(raw);
+    if (Array.isArray(arr) && arr.length) S.ai.messages = arr;
+  } catch {}
+}
+
+function aiUpdateQuickPromptVisibility() {
+  const qp = document.getElementById('aiQuickPrompts');
+  if (!qp) return;
+  qp.style.display = S.ai.messages.length === 0 ? 'flex' : 'none';
+}
+
+function aiAppendBubble(role, text) {
+  const wrap = document.getElementById('aiResults');
+  if (!wrap) return null;
+  const el = document.createElement('div');
+  el.className = 'ai-bubble ' + role;
+  el.innerHTML = aiRenderMarkdown(text || '');
+  wrap.appendChild(el);
+  wrap.scrollTop = wrap.scrollHeight;
+  return el;
+}
+
+function aiAppendToolChip(toolName, status) {
+  const wrap = document.getElementById('aiResults');
+  if (!wrap) return null;
+  const el = document.createElement('div');
+  el.className = 'ai-tool-chip ' + (status || 'running');
+  el.textContent = toolName;
+  el.dataset.tool = toolName;
+  wrap.appendChild(el);
+  wrap.scrollTop = wrap.scrollHeight;
+  return el;
+}
+
+function aiAppendTyping() {
+  const wrap = document.getElementById('aiResults');
+  if (!wrap) return null;
+  const el = document.createElement('div');
+  el.className = 'ai-typing';
+  el.id = 'aiTyping';
+  el.innerHTML = '<div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div>';
+  wrap.appendChild(el);
+  wrap.scrollTop = wrap.scrollHeight;
+  return el;
+}
+function aiRemoveTyping() {
+  const t = document.getElementById('aiTyping');
+  if (t) t.remove();
+}
+
+function aiAppendError(msg) {
+  const wrap = document.getElementById('aiResults');
+  if (!wrap) return null;
+  const el = document.createElement('div');
+  el.className = 'ai-error-banner';
+  el.textContent = '⚠ ' + (msg || 'Bir sorun oluştu, tekrar dene.');
+  wrap.appendChild(el);
+  wrap.scrollTop = wrap.scrollHeight;
+  return el;
+}
+
+function aiRender() {
+  const wrap = document.getElementById('aiResults');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  for (const m of S.ai.messages) {
+    aiAppendBubble(m.role, m.content);
   }
+  aiUpdateQuickPromptVisibility();
+}
+
+function aiNewChat() {
+  // Cancel active stream if any
+  if (S.ai.abortController) {
+    try { S.ai.abortController.abort(); } catch {}
+    S.ai.abortController = null;
+  }
+  S.ai.messages = [];
+  S.ai.isStreaming = false;
+  try { localStorage.removeItem(AI_STORAGE_KEY); } catch {}
+  aiRender();
+  const inp = document.getElementById('aiInput');
+  if (inp) inp.focus();
+}
+
+// Programmatic send (used by quick prompts)
+function aiSendPrompt(text) {
+  const inp = document.getElementById('aiInput');
+  if (inp) inp.value = text;
+  aiSend();
+}
+
+// Main entry: read input, push user message, stream assistant response
+async function aiSend() {
+  if (S.ai.isStreaming) return; // prevent double-send
+  const inp = document.getElementById('aiInput');
+  const btn = document.getElementById('aiSendBtn');
+  const text = (inp?.value || '').trim();
+  if (!text) return;
+
+  // Push user message
+  const userMsg = { id: _aiMid(), role: 'user', content: text, ts: Date.now() };
+  S.ai.messages.push(userMsg);
+  aiAppendBubble('user', text);
+  aiPushQueryHistory(text);
+  inp.value = '';
+  aiUpdateQuickPromptVisibility();
+  aiPersist();
+
+  // Show typing
+  S.ai.isStreaming = true;
+  if (btn) btn.disabled = true;
+  aiAppendTyping();
+
+  // Build request
+  const userLocation = aiUserLocation();
+  const history = aiQueryHistory();
+  const payloadMessages = S.ai.messages.map(m => ({ role: m.role, content: m.content }));
+
+  const ac = new AbortController();
+  S.ai.abortController = ac;
+
+  let assistantBubble = null;
+  let assistantText = '';
+  let lastToolChip = null;
 
   try {
     const resp = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query, candidates: top.map(it => ({ n: it.n, rn: it.rn, minP: it.minP })) })
+      body: JSON.stringify({ messages: payloadMessages, userLocation, history }),
+      signal: ac.signal,
     });
-    if (!resp.ok) throw new Error('API hatası');
-    const data = await resp.json();
-    const results = (data.items || [])
-      .map(r => ({ item: top[r.idx - 1], reason: r.reason }))
-      .filter(r => r.item);
-    _renderAIResults(results, top, data.summary || '');
-  } catch (e) {
-    _renderAIResults([], [], 'Bir hata oluştu, tekrar dene.');
+    if (!resp.ok || !resp.body) {
+      const errBody = await resp.text().catch(() => '');
+      throw new Error('API ' + resp.status + (errBody ? ': ' + errBody.slice(0, 100) : ''));
+    }
+
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = '';
+
+    aiRemoveTyping();
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      // Parse SSE: each event = lines starting with "data: " separated by blank line
+      let idx;
+      while ((idx = buf.indexOf('\n\n')) !== -1) {
+        const eventChunk = buf.slice(0, idx);
+        buf = buf.slice(idx + 2);
+        for (const line of eventChunk.split('\n')) {
+          if (!line.startsWith('data: ')) continue;
+          const dataStr = line.slice(6);
+          if (!dataStr || dataStr === '[DONE]') continue;
+          let evt;
+          try { evt = JSON.parse(dataStr); } catch { continue; }
+          // Event handlers (Vercel AI SDK v6 UI Message Stream)
+          if (evt.type === 'text-delta' && evt.delta) {
+            if (!assistantBubble) {
+              assistantBubble = aiAppendBubble('assistant', '');
+              assistantBubble.classList.add('streaming');
+            }
+            assistantText += evt.delta;
+            assistantBubble.innerHTML = aiRenderMarkdown(assistantText);
+            const wrap = document.getElementById('aiResults');
+            if (wrap) wrap.scrollTop = wrap.scrollHeight;
+          } else if (evt.type === 'text-end') {
+            if (assistantBubble) assistantBubble.classList.remove('streaming');
+            assistantBubble = null; // next text-delta starts new bubble
+          } else if (evt.type === 'tool-input-start' || evt.type === 'tool-input-available') {
+            if (assistantBubble) {
+              assistantBubble.classList.remove('streaming');
+              // Persist completed text bubble before tool chip
+              if (assistantText) {
+                S.ai.messages.push({ id: _aiMid(), role: 'assistant', content: assistantText, ts: Date.now() });
+                assistantText = '';
+              }
+              assistantBubble = null;
+            }
+            if (evt.type === 'tool-input-start') {
+              lastToolChip = aiAppendToolChip(evt.toolName || 'tool', 'running');
+            }
+          } else if (evt.type === 'tool-output-available') {
+            if (lastToolChip) lastToolChip.classList.replace('running', 'done');
+            lastToolChip = null;
+          } else if (evt.type === 'tool-output-error') {
+            if (lastToolChip) lastToolChip.classList.replace('running', 'error');
+            lastToolChip = null;
+          } else if (evt.type === 'error') {
+            const m = typeof evt.errorText === 'string' ? evt.errorText : (evt.error || 'Bilinmeyen hata');
+            aiAppendError(m);
+          }
+        }
+      }
+    }
+
+    // Flush any final assistant text
+    if (assistantText) {
+      S.ai.messages.push({ id: _aiMid(), role: 'assistant', content: assistantText, ts: Date.now() });
+    }
+    if (assistantBubble) assistantBubble.classList.remove('streaming');
+    aiPersist();
+  } catch (err) {
+    aiRemoveTyping();
+    if (err.name === 'AbortError') {
+      aiAppendError('Sohbet iptal edildi.');
+    } else {
+      console.error('[ai] send failed:', err);
+      aiAppendError(err.message || 'Bir sorun oluştu.');
+    }
+  } finally {
+    S.ai.isStreaming = false;
+    S.ai.abortController = null;
+    if (btn) btn.disabled = false;
+    if (inp) inp.focus();
   }
-  btn.disabled = false;
 }
 
-function _renderAILoading() {
-  document.getElementById('aiResults').innerHTML =
-    '<div class="ai-loading"><div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div><span>Düşünüyor…</span></div>';
+// Init: load persisted chat, wire enter key
+function aiInit() {
+  aiLoad();
+  aiRender();
+
+  const inp = document.getElementById('aiInput');
+  if (inp) {
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        aiSend();
+      }
+    });
+  }
 }
 
-function _renderAIResults(results, _top, summary) {
-  const el = document.getElementById('aiResults');
-  if (!results.length) {
-    el.innerHTML = `<div class="ai-empty">😕 ${summary || 'Sonuç bulunamadı.'}</div>`;
-    return;
-  }
-  const sumHtml = summary ? `<div class="ai-summary">💡 ${summary}</div>` : '';
-  const cards = results.map(({ item, reason }) => {
-    const rest = allRests().find(r => r.id === item.rid);
-    return `<div class="ai-card" onclick="openDpanel('${item.rid}')">
-      <div class="ai-card-left">
-        <div class="ai-card-name">${item.n}</div>
-        <div class="ai-card-rest">${item.rn}</div>
-        ${reason ? `<div class="ai-card-reason">${reason}</div>` : ''}
-      </div>
-      <div class="ai-card-price">${item.minP} TL</div>
-    </div>`;
-  }).join('');
-  el.innerHTML = sumHtml + cards;
-}
+document.addEventListener('DOMContentLoaded', aiInit);
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Enter' && document.getElementById('aiMode').classList.contains('active')) {
-    sendAIQuery();
-  }
-});
+// Backward-compat alias (in case any caller still references the old name)
+function sendAIQuery() { return aiSend(); }
 </script>
 
 <!-- ══════════════════════════════════════════════════════════════

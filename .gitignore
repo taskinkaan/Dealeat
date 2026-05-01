@@ -91,3 +91,4 @@ _temp_check.js
 # Misc
 .cache/
 .vercel
+.env*.local
