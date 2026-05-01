@@ -5338,14 +5338,29 @@ function distKm(lat, lng) {
 let RESTAURANTS = [];
 let CHAIN_IDS   = new Set();
 
+// Marmara Denizi central area — Getir coord estimation bazen restoranı denize
+// koyuyor (~6/1717). Adalar civarı (40.87, 29.10) hariç tut.
+function _isInSea(lat, lng) {
+  if (typeof lat !== 'number' || typeof lng !== 'number') return false;
+  if (lat < 40.80 || lat > 40.95) return false;
+  if (lng < 28.85 || lng > 29.05) return false;
+  // Adalar (Princes' Islands) civarı korunsun — ~2km radius
+  const dAdalar = Math.hypot(lat - 40.87, lng - 29.10);
+  return dAdalar > 0.02;
+}
+
 function _initRestaurantsFromData(data) {
-  RESTAURANTS = data.map(r => ({
+  // Filter: koordinatları Marmara Denizi'nde olan ~6 restoran (Getir coord
+  // estimation hatası) UI'dan gizlensin — yanıltıcı map marker'larına yol açar.
+  const filtered = data.filter(r => !_isInSea(r.lat, r.lng));
+
+  RESTAURANTS = filtered.map(r => ({
     ...r,
     distKm: r.lat && r.lng ? parseFloat(distKm(r.lat, r.lng).toFixed(1)) : 99,
     premium: r.premium || false,
     menu: r.menu,
   }));
-  CHAIN_IDS = new Set(data.filter(r => r.chain).map(r => r.id));
+  CHAIN_IDS = new Set(filtered.filter(r => r.chain).map(r => r.id));
   cacheRestPrices();
   // Smart Rec — load after data is ready (cache hit instant, miss async)
   if (typeof loadRecommendations === 'function') {
