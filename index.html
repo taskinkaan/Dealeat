@@ -5431,14 +5431,21 @@ function _correctedCoords(restaurant) {
   ];
 }
 
-// Marmara Denizi fallback check — district lookup başarısız olur ve eski coord
-// hala denizde ise filtrele.
+// Marmara Denizi fallback check — district lookup başarısız Getir-only restoranlar
+// için eski estimate_getir_coords çıktısı denize düşmüş ise filtrele.
+//
+// Mantık: İstanbul'un en güney sahili Maltepe/Bostancı ~40.94-40.96. Bunun altı
+// (lat<40.85) artık karadan Marmara'ya geçer — orada sadece Adalar var (40.85-40.91).
+//
+// Adalar (Heybeliada, Burgazada, Büyükada, Sedef) ~40.85-40.91 lat × 29.05-29.18 lng.
+// 4km radius (~0.04 deg) ile koruma → meşru ada restoranları gizlenmesin.
 function _isInSea(lat, lng) {
   if (typeof lat !== 'number' || typeof lng !== 'number') return false;
-  if (lat < 40.80 || lat > 40.95) return false;
-  if (lng < 28.85 || lng > 29.05) return false;
+  // Sınır: kuzey 40.85'ten az + batı-doğu 28.0-29.4 (Marmara central + Boğaz girişi)
+  if (lat >= 40.85 || lng <= 28.0 || lng >= 29.4) return false;
+  // Adalar koruma: Heybeliada/Büyükada/Burgazada civarı ~4km
   const dAdalar = Math.hypot(lat - 40.87, lng - 29.10);
-  return dAdalar > 0.02;
+  return dAdalar > 0.04;
 }
 
 function _initRestaurantsFromData(data) {
