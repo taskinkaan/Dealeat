@@ -7689,6 +7689,9 @@ function openRest(id) {
 }
 
 // Open the restaurant's page on a specific platform (Trendyol Go / Getir Yemek).
+// Note: noopener ile aç (window.opener security), AMA noreferrer kullanma —
+// Getir/Trendyol bizden geldiğini görmeli (referrer = dealeat.vercel.app),
+// yoksa direct-traffic-bot heuristic'iyle CAPTCHA + ana sayfa redirect riski.
 function openItemOnPlatform(rid, pid) {
   const rest = findRest(rid);
   if (!rest) return;
@@ -7697,7 +7700,7 @@ function openItemOnPlatform(rid, pid) {
     console.warn('[openItemOnPlatform] no deep-link for', pid, rid);
     return;
   }
-  window.open(url, '_blank', 'noopener,noreferrer');
+  window.open(url, '_blank', 'noopener');
 }
 
 // Find item's cheapest platform and open that platform's restaurant page.
