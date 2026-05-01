@@ -4623,8 +4623,10 @@ function platRestUrl(platId, restId) {
     if (slug) {
       // Slugs ending with -mah are truncated (missing district) — can't build valid URL
       if (slug.endsWith('-mah')) return PLAT.getir.url;
-      if (!slug.includes('istanbul') && !slug.includes('ankara') && !slug.includes('izmir'))
-        slug += '-istanbul';
+      // Veri analizi: 1498 slug'ın %89'u ilçe ile bitiyor (kadikoy, besiktas, vb.),
+      // sadece %11'i 'istanbul' içeriyor. Yapay '-istanbul' suffix eklemek
+      // Getir'in tanımadığı URL üretiyordu → CAPTCHA → home redirect.
+      // Slug'ı olduğu gibi kullan (scraper Getir'in kendi sitesinden çekiyor).
       return `https://getir.com/yemek/restoran/${slug}/`;
     }
     return PLAT.getir.url;
