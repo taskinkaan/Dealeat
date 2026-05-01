@@ -5386,6 +5386,29 @@ const _DISTRICT_COORDS = {
   uskudar: [41.0234, 29.0148],
 };
 
+// Bilinen mahalleler → ilçe centroid'i (slug parsing fallback için)
+const _NEIGHBORHOOD_TO_DISTRICT = {
+  // Bakırköy mahalleler (Yeşilköy/Florya/Şenlikköy/Ataköy)
+  yesilkoy: 'bakirkoy', florya: 'bakirkoy', senlikkoy: 'bakirkoy',
+  atakoy: 'bakirkoy', yenibosna: 'bahcelievler', basinkoy: 'bakirkoy',
+  yesilyurt: 'bakirkoy', cevizlibag: 'zeytinburnu',
+  // Beşiktaş mahalleler
+  ortakoy: 'besiktas', etiler: 'besiktas', levent: 'besiktas',
+  bebek: 'besiktas', arnavutkoy_mh: 'besiktas', ulus: 'besiktas',
+  gayrettepe: 'besiktas', mecidiyekoy: 'sisli',
+  // Beyoğlu
+  cihangir: 'beyoglu', galata: 'beyoglu', taksim: 'beyoglu',
+  karakoy: 'beyoglu', tunel: 'beyoglu', kuloglu: 'beyoglu',
+  // Kadıköy
+  caferaga: 'kadikoy', osmanaga: 'kadikoy', moda: 'kadikoy',
+  bostanci: 'kadikoy', caddebostan: 'kadikoy', goztepe: 'kadikoy',
+  fenerbahce: 'kadikoy', erenkoy: 'kadikoy', suadiye: 'kadikoy',
+  // Üsküdar
+  cengelkoy: 'uskudar', kuzguncuk: 'uskudar', beylerbeyi: 'uskudar',
+  // Maslak / Ayazağa (Sarıyer/Şişli border)
+  maslak: 'sariyer', ayazaga: 'sariyer', tarabya: 'sariyer',
+};
+
 const _SLUG_SKIP_TOKENS = new Set(['mah', 'istanbul', 'cad', 'pasa', 'sok', 'merkez']);
 
 function _districtFromSlug(slug) {
@@ -5395,6 +5418,10 @@ function _districtFromSlug(slug) {
     const p = parts[i];
     if (_SLUG_SKIP_TOKENS.has(p)) continue;
     if (_DISTRICT_COORDS[p]) return p;
+    // Mahalle name fallback — eğer parts'taki bir token bilinen mahalle ise
+    if (_NEIGHBORHOOD_TO_DISTRICT[p] && _DISTRICT_COORDS[_NEIGHBORHOOD_TO_DISTRICT[p]]) {
+      return _NEIGHBORHOOD_TO_DISTRICT[p];
+    }
   }
   return null;
 }
@@ -5431,20 +5458,32 @@ function _correctedCoords(restaurant) {
   ];
 }
 
-// Marmara Denizi fallback check — district lookup başarısız Getir-only restoranlar
-// için eski estimate_getir_coords çıktısı denize düşmüş ise filtrele.
+// Marmara Denizi sea check — adaptive coastline threshold.
 //
-// Mantık: İstanbul'un en güney sahili Maltepe/Bostancı ~40.94-40.96. Bunun altı
-// (lat<40.85) artık karadan Marmara'ya geçer — orada sadece Adalar var (40.85-40.91).
-//
-// Adalar (Heybeliada, Burgazada, Büyükada, Sedef) ~40.85-40.91 lat × 29.05-29.18 lng.
-// 4km radius (~0.04 deg) ile koruma → meşru ada restoranları gizlenmesin.
+// Asya sahili lng arttıkça güneye iniyor:
+//   Kadıköy (29.0) → 40.95 lat sahil
+//   Bostancı (29.10) → 40.94
+//   Maltepe (29.13) → 40.92
+//   Kartal (29.19) → 40.91
+//   Pendik (29.26) → 40.88
+// Dolayısıyla "sea threshold" lng'e göre değişir.
 function _isInSea(lat, lng) {
   if (typeof lat !== 'number' || typeof lng !== 'number') return false;
-  // Sınır: kuzey 40.85'ten az + batı-doğu 28.0-29.4 (Marmara central + Boğaz girişi)
-  if (lat >= 40.85 || lng <= 28.0 || lng >= 29.4) return false;
-  // Adalar koruma: Heybeliada/Büyükada/Burgazada civarı ~4km
-  const dAdalar = Math.hypot(lat - 40.87, lng - 29.10);
+  // Outside Marmara central horizontal range
+  if (lng <= 28.4 || lng >= 29.40) return false;
+
+  // Coastline threshold (sahil hattı) — bunun ALTINA düşen lat'lar deniz
+  let coastLat;
+  if (lng <= 29.00)      coastLat = 40.94;  // Avrupa güney sahili + Kadıköy
+  else if (lng <= 29.10) coastLat = 40.94;  // Caddebostan/Bostancı
+  else if (lng <= 29.15) coastLat = 40.92;  // Maltepe sahili
+  else if (lng <= 29.22) coastLat = 40.90;  // Kartal
+  else                   coastLat = 40.86;  // Pendik
+
+  if (lat >= coastLat) return false; // sahil veya kuzeyi → karada
+
+  // Sahil altı — deniz, ANCAK Adalar 4km radius koruma
+  const dAdalar = Math.hypot(lat - 40.876, lng - 29.128);
   return dAdalar > 0.04;
 }
 
