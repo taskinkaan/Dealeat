@@ -3,6 +3,10 @@
     "api/chat.js": {
       "maxDuration": 30,
       "memory": 1024
+    },
+    "api/recommendations.js": {
+      "maxDuration": 15,
+      "memory": 1024
     }
   }
 }

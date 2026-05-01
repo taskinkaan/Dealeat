@@ -4135,6 +4135,59 @@ input:focus-visible { outline: none; }
 .modal-bg,
 #modalBg { display: none !important; }
 
+/* ── ANA SAYFA "✨ SANA ÖZEL" SECTION (Faz 1A) ─────────────────────────── */
+.recs-section {
+  margin: 12px 0 18px;
+  padding: 0 4px;
+  display: none; /* JS toggles based on data + view */
+  flex-direction: column;
+  gap: 10px;
+}
+.recs-section.show { display: flex; }
+.recs-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 12px;
+}
+.recs-title { font-size: 15px; font-weight: 800; color: var(--txt); letter-spacing: -.2px; }
+.recs-sub { font-size: 11px; color: var(--txt3); margin-left: 8px; }
+.recs-refresh {
+  background: transparent; border: none; color: var(--txt3); font-size: 18px;
+  cursor: pointer; padding: 4px 10px; border-radius: 999px; transition: all .15s;
+  font-family: var(--font);
+}
+.recs-refresh:hover { background: var(--bg2); color: var(--acc); transform: rotate(180deg); }
+.recs-refresh:active { transform: scale(.92); }
+.recs-body {
+  display: flex; flex-direction: column; gap: 8px; padding: 0 8px;
+}
+.rec-card {
+  background: linear-gradient(135deg, #fff, var(--bg1));
+  border: 1.5px solid var(--line2);
+  border-radius: 14px; padding: 12px 14px;
+  display: flex; align-items: center; gap: 12px;
+  cursor: pointer; transition: all .15s;
+  box-shadow: var(--sh-xs);
+}
+.rec-card:hover { border-color: var(--acc-b); box-shadow: var(--sh-sm); transform: translateY(-1px); }
+.rec-card:active { transform: scale(.99); }
+.rec-card-info { flex: 1; min-width: 0; }
+.rec-card-name { font-size: 14px; font-weight: 700; color: var(--txt); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rec-card-rest { font-size: 11.5px; color: var(--txt2); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rec-card-rationale { font-size: 11px; color: var(--acc); margin-top: 5px; font-style: italic; line-height: 1.35; }
+.rec-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; flex-shrink: 0; }
+.rec-card-price { font-size: 16px; font-weight: 800; color: var(--grn); white-space: nowrap; }
+.rec-card-meta { font-size: 10px; color: var(--txt3); display: flex; gap: 4px; }
+.rec-empty {
+  text-align: center; color: var(--txt2); font-size: 13px;
+  padding: 20px 16px; background: var(--bg1);
+  border: 1px dashed var(--line2); border-radius: 12px; line-height: 1.4;
+}
+.rec-loading {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 20px; color: var(--txt3); font-size: 13px;
+}
+.rec-loading .ai-dot { width: 6px; height: 6px; }
+
 /* Per-platform price chip — bağımsız tıklanabilir buton, ayrı linkler */
 .mpr[data-pid] {
   cursor: pointer;
@@ -4267,6 +4320,18 @@ input:focus-visible { outline: none; }
 
     <!-- LEFT PANEL -->
     <div class="lpanel">
+      <!-- ✨ SANA ÖZEL — Smart Recommendations (Faz 1A) -->
+      <div id="recsSection" class="recs-section">
+        <div class="recs-header">
+          <div>
+            <span class="recs-title">✨ Sana Özel</span>
+            <span class="recs-sub" id="recsSub">AI öneri</span>
+          </div>
+          <button class="recs-refresh" id="recsRefreshBtn" onclick="loadRecommendations(true)" title="Önerileri yenile" aria-label="Yenile">↻</button>
+        </div>
+        <div class="recs-body" id="recsBody"></div>
+      </div>
+
       <!-- FILTER TOGGLE BAR -->
       <div class="filter-toggle-bar">
         <button class="filter-toggle-btn" id="filterToggleBtn" onclick="toggleFilterDrawer()">
@@ -5268,6 +5333,10 @@ function _initRestaurantsFromData(data) {
   }));
   CHAIN_IDS = new Set(data.filter(r => r.chain).map(r => r.id));
   cacheRestPrices();
+  // Smart Rec — load after data is ready (cache hit instant, miss async)
+  if (typeof loadRecommendations === 'function') {
+    setTimeout(() => loadRecommendations(false), 200);
+  }
 }
 
 // Reads restaurants.json's meta.generated_at (set by gen_static_restaurants.py)
@@ -8686,6 +8755,10 @@ function setView(view, btn) {
   S.view = view;
   document.querySelectorAll('.dtab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
+  // Smart Rec sadece "restaurants" view + Tümü kategorisi + boş query'de görünür
+  if (typeof loadRecommendations === 'function') {
+    setTimeout(() => loadRecommendations(false), 50);
+  }
   renderPanel(); refreshMarkers();
 }
 
@@ -10399,6 +10472,116 @@ async function aiSend() {
     S.ai.abortController = null;
     if (btn) btn.disabled = false;
     if (inp) inp.focus();
+  }
+}
+
+/* ── SMART RECOMMENDATIONS — Ana sayfa "✨ Sana Özel" (Faz 1A) ─────────── */
+
+const RECS_CACHE_KEY = 'dealeat_recs_cache_v1';
+const RECS_CACHE_TTL_MS = 30 * 60 * 1000; // 30 dk
+
+function _recsCacheLoad() {
+  try {
+    const raw = localStorage.getItem(RECS_CACHE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (Date.now() - (parsed.cachedAt || 0) > RECS_CACHE_TTL_MS) return null;
+    return parsed.data;
+  } catch { return null; }
+}
+
+function _recsCacheSave(data) {
+  try {
+    localStorage.setItem(RECS_CACHE_KEY, JSON.stringify({ cachedAt: Date.now(), data }));
+  } catch {}
+}
+
+function _recsRender(data) {
+  const wrap = document.getElementById('recsSection');
+  const body = document.getElementById('recsBody');
+  const sub = document.getElementById('recsSub');
+  if (!wrap || !body) return;
+
+  const recs = (data && Array.isArray(data.recommendations)) ? data.recommendations : [];
+  if (!recs.length) {
+    wrap.classList.remove('show');
+    return;
+  }
+
+  if (sub) sub.textContent = data.coldStart ? 'Bölgenden popüler' : 'Aramalarına göre';
+
+  body.innerHTML = recs.map(r => {
+    const dist = r.distanceKm != null ? `${r.distanceKm}km` : '';
+    const plats = (r.platforms || []).map(p => p === 'trendyol' ? 'Trendyol' : (p === 'getir' ? 'Getir' : p)).join('+');
+    const safeName = escHtml(r.name || '');
+    const safeRest = escHtml(r.restaurantName || '');
+    const safeRationale = escHtml(r.rationale || '');
+    const restId = escHtml(r.restaurantId || '');
+    return `<div class="rec-card" onclick="openDpanel('${restId}')" data-rid="${restId}">
+      <div class="rec-card-info">
+        <div class="rec-card-name">${safeName}</div>
+        <div class="rec-card-rest">${safeRest}</div>
+        ${safeRationale ? `<div class="rec-card-rationale">💡 ${safeRationale}</div>` : ''}
+      </div>
+      <div class="rec-card-right">
+        <div class="rec-card-price">${r.minPrice} TL</div>
+        <div class="rec-card-meta">
+          ${dist ? `<span>📍 ${dist}</span>` : ''}
+          ${plats ? `<span>· ${plats}</span>` : ''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  wrap.classList.add('show');
+}
+
+function _recsShowLoading() {
+  const wrap = document.getElementById('recsSection');
+  const body = document.getElementById('recsBody');
+  if (!wrap || !body) return;
+  body.innerHTML = '<div class="rec-loading"><div class="ai-dot"></div><div class="ai-dot"></div><div class="ai-dot"></div><span>Sana özel öneriler hazırlanıyor…</span></div>';
+  wrap.classList.add('show');
+}
+
+async function loadRecommendations(forceRefresh) {
+  // Sadece "Restoranlar" view'ında ve Tümü kategorisinde göster
+  if (S.view !== 'restaurants' || S.cat !== 'Tümü' || S.query) {
+    const w = document.getElementById('recsSection');
+    if (w) w.classList.remove('show');
+    return;
+  }
+
+  // Cache check
+  if (!forceRefresh) {
+    const cached = _recsCacheLoad();
+    if (cached) {
+      _recsRender(cached);
+      return;
+    }
+  }
+
+  _recsShowLoading();
+
+  try {
+    const userLocation = (typeof aiUserLocation === 'function') ? aiUserLocation() : null;
+    const history = (typeof aiQueryHistory === 'function') ? aiQueryHistory() : [];
+
+    const resp = await fetch('/api/recommendations', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userLocation, history }),
+    });
+
+    if (!resp.ok) throw new Error('rec API ' + resp.status);
+    const data = await resp.json();
+    _recsCacheSave(data);
+    _recsRender(data);
+  } catch (e) {
+    console.warn('[recommendations] failed:', e.message);
+    // Sessizce gizle — error banner gösterme (recs nice-to-have, blocker değil)
+    const wrap = document.getElementById('recsSection');
+    if (wrap) wrap.classList.remove('show');
   }
 }
 
