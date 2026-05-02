@@ -6272,9 +6272,18 @@ async function reverseGeocode(lat, lng) {
 // Nominatim fallback when Photon fails — but Nominatim direct browser calls 429 banlanabilir.
 async function _geocodePhoton(q) {
   const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(q + ', İstanbul')}&limit=6`;
-  const res = await fetch(url);
+  console.log('[Photon] fetch:', url);
+  let res;
+  try {
+    res = await fetch(url);
+  } catch(e) {
+    console.error('[Photon] network error:', e.message);
+    throw e;
+  }
+  console.log('[Photon] status:', res.status);
   if (!res.ok) throw new Error('photon ' + res.status);
   const data = await res.json();
+  console.log('[Photon] features:', data?.features?.length || 0, 'first:', data?.features?.[0]?.properties?.name);
   if (!data.features || !data.features.length) return [];
   return data.features.map(f => {
     const p = f.properties || {};
@@ -6311,11 +6320,12 @@ async function searchNominatim(q) {
   // Try Photon first (no rate limit, OSM-based)
   try {
     const photonResults = await _geocodePhoton(q);
+    console.log('[Search] photon returned', photonResults.length, 'results');
     if (photonResults.length) {
       if (status) status.textContent = '';
       return photonResults;
     }
-  } catch(e) { /* fall through to Nominatim */ }
+  } catch(e) { console.error('[Search] photon failed:', e.message); }
 
   // Nominatim fallback (may 429 if IP banned)
   try {
