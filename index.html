@@ -192,8 +192,12 @@ button:not(.btab):not(.feed-rcard):not([class*="qty-btn"]):active {
   font-size: 12px; font-weight: 600; color: var(--txt2);
   flex-shrink: 0; min-height: 38px;
 }
-.pfilter-info { display: flex; align-items: center; gap: 6px; flex-shrink: 1; min-width: 0; }
-.pfilter-info strong { color: var(--grn); font-weight: 800; font-size: 13px; }
+.pfilter-info { display: flex; align-items: center; gap: 6px; flex-shrink: 1; min-width: 0; flex-wrap: wrap; }
+.pfilter-info strong { font-weight: 800; font-size: 13px; }
+.pfilter-info > strong { color: var(--acc); }
+.pfilter-cmp { display: inline-flex; align-items: center; gap: 4px; color: var(--grn); font-weight: 700; }
+.pfilter-cmp strong { color: var(--grn); }
+.pfilter-sep { color: var(--txt3); margin: 0 2px; opacity: 0.6; }
 .pfilter-icon { font-size: 14px; }
 .pfilter-toggle-wrap {
   display: flex; align-items: center; gap: 7px; cursor: pointer;
@@ -4358,16 +4362,17 @@ input:focus-visible { outline: none; }
   <!-- DATA FRESHNESS BANNER — shown after prices load -->
   <div id="dataFreshBanner" style="display:none;padding:5px 14px;font-size:11px;color:var(--txt3);background:var(--bg1);border-bottom:1px solid var(--line);text-align:center"></div>
 
-  <!-- PLATFORM FILTER BAR — Trendyol coord-only view (Getir-only gizli) -->
+  <!-- PLATFORM FILTER BAR — default 400 (TY+merged), toggle ile 162 (sadece karşılaştırmalı) -->
   <div id="platformFilterBar" class="pfilter-bar">
     <span class="pfilter-info">
-      <span class="pfilter-icon">💸</span>
-      <strong id="pfilter-merged">162</strong> karşılaştırmalı restoran
+      <strong id="pfilter-shown">400</strong> doğrulanmış restoran
+      <span class="pfilter-sep">·</span>
+      <span class="pfilter-cmp">💸 <strong id="pfilter-merged">162</strong>'inde fiyat karşılaştırma</span>
     </span>
-    <label class="pfilter-toggle-wrap" title="Sadece Trendyol Go'da olan restoranları da göster">
+    <label class="pfilter-toggle-wrap" title="Sadece iki platformda da olan (karşılaştırmalı) restoranları göster">
       <input type="checkbox" id="pfilter-toggle" onchange="togglePlatformFilter(this.checked)">
       <span class="pfilter-toggle-track"><span class="pfilter-toggle-thumb"></span></span>
-      <span class="pfilter-toggle-lbl">+<span id="pfilter-single">238</span> tek platform</span>
+      <span class="pfilter-toggle-lbl">Sadece karşılaştırmalı</span>
     </label>
   </div>
 
@@ -5598,17 +5603,28 @@ async function _loadCoordOverrides() {
   }
 }
 
+// View mode state — 'all' (default, TY+merged = 400) veya 'compared' (sadece merged = 162)
+function _getViewMode() {
+  try {
+    // Migration: eski 'dealeat_show_single' key'i 'dealeat_view_mode'a çevir
+    const oldKey = localStorage.getItem('dealeat_show_single');
+    if (oldKey !== null && localStorage.getItem('dealeat_view_mode') === null) {
+      localStorage.setItem('dealeat_view_mode', oldKey === '1' ? 'all' : 'compared');
+      localStorage.removeItem('dealeat_show_single');
+    }
+    return localStorage.getItem('dealeat_view_mode') || 'all';
+  } catch(e) { return 'all'; }
+}
+
 // Platform filter: hangi restoranların göstereceğini belirler.
-// - Getir-only (sadece getir): HER ZAMAN gizle (coord güvensiz, slug parser ilçe bug'ı)
+// - Getir-only: HER ZAMAN gizle (coord güvensiz, slug parser ilçe bug)
 // - Merged (TY+GR): HER ZAMAN göster (DealEat core: fiyat karşılaştırma)
-// - Trendyol-only: TOGGLE — default gizli (karşılaştırma yok), kullanıcı isterse açar
+// - Trendyol-only: view mode'a göre — 'all' (default, göster) veya 'compared' (gizle)
 function _shouldShowByPlatform(r) {
   if (!r.plats || !r.plats.includes('trendyol')) return false; // Getir-only out
   if (r.plats.includes('getir')) return true; // Merged: always show
-  // Trendyol-only: toggle state
-  try {
-    return localStorage.getItem('dealeat_show_single') === '1';
-  } catch(e) { return false; }
+  // Trendyol-only: 'all' mode'da göster, 'compared' mode'da gizle
+  return _getViewMode() === 'all';
 }
 
 function _initRestaurantsFromData(data) {
@@ -5821,10 +5837,10 @@ function allRests() {
   return RESTAURANTS;
 }
 
-// Toggle Trendyol-only restaurants (default off — sadece merged/karşılaştırmalı)
+// Toggle "Sadece karşılaştırmalı" — checked: compared (162), unchecked: all (400)
 function togglePlatformFilter(checked) {
   try {
-    localStorage.setItem('dealeat_show_single', checked ? '1' : '0');
+    localStorage.setItem('dealeat_view_mode', checked ? 'compared' : 'all');
   } catch(e) {}
   const raw = window.__RAW_RESTAURANTS__;
   if (!raw) return;
@@ -5840,16 +5856,15 @@ function updatePlatformFilterCounts() {
   const raw = window.__RAW_RESTAURANTS__ || [];
   const merged = raw.filter(r => r.plats?.includes('trendyol') && r.plats?.includes('getir')).length;
   const tyOnly = raw.filter(r => r.plats?.includes('trendyol') && !r.plats?.includes('getir')).length;
-  const elM = document.getElementById('pfilter-merged');
-  const elS = document.getElementById('pfilter-single');
-  if (elM) elM.textContent = merged;
-  if (elS) elS.textContent = tyOnly;
-  // Sync checkbox with current state
+  const mode = _getViewMode();
+  const shown = mode === 'compared' ? merged : (merged + tyOnly);
+  const elShown  = document.getElementById('pfilter-shown');
+  const elMerged = document.getElementById('pfilter-merged');
+  if (elShown)  elShown.textContent  = shown;
+  if (elMerged) elMerged.textContent = merged;
+  // Sync checkbox: compared mode = checked
   const cb = document.getElementById('pfilter-toggle');
-  if (cb) {
-    try { cb.checked = localStorage.getItem('dealeat_show_single') === '1'; }
-    catch(e) {}
-  }
+  if (cb) cb.checked = (mode === 'compared');
 }
 
 function findRest(id) {
