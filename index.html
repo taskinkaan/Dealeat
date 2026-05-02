@@ -6271,7 +6271,7 @@ async function reverseGeocode(lat, lng) {
 // Photon-first geocoding (Komoot, OSM-based, no API key, no rate limit on browser IP).
 // Nominatim fallback when Photon fails — but Nominatim direct browser calls 429 banlanabilir.
 async function _geocodePhoton(q) {
-  const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(q + ', İstanbul')}&lang=tr&limit=6`;
+  const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(q + ', İstanbul')}&limit=6`;
   const res = await fetch(url);
   if (!res.ok) throw new Error('photon ' + res.status);
   const data = await res.json();
@@ -6548,7 +6548,7 @@ async function submitAddrForm() {
 async function _geocodeAddr(q) {
   // Photon (no rate limit on browser IP)
   try {
-    const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(q + ', İstanbul')}&lang=tr&limit=1`;
+    const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(q + ', İstanbul')}&limit=1`;
     const res = await fetch(url);
     if (res.ok) {
       const data = await res.json();
@@ -9400,7 +9400,7 @@ async function hsSubmitAddr() {
   if (results) results.innerHTML = '';
   // Photon-first
   try {
-    const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(input.value + ', İstanbul')}&lang=tr&limit=3`;
+    const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(input.value + ', İstanbul')}&limit=3`;
     const res = await fetch(url);
     if (res.ok) {
       const data = await res.json();
