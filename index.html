@@ -6268,25 +6268,62 @@ async function reverseGeocode(lat, lng) {
   }
 }
 
+// Photon-first geocoding (Komoot, OSM-based, no API key, no rate limit on browser IP).
+// Nominatim fallback when Photon fails — but Nominatim direct browser calls 429 banlanabilir.
+async function _geocodePhoton(q) {
+  const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(q + ', İstanbul')}&lang=tr&limit=6`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('photon ' + res.status);
+  const data = await res.json();
+  if (!data.features || !data.features.length) return [];
+  return data.features.map(f => {
+    const p = f.properties || {};
+    const coords = f.geometry?.coordinates || [0, 0];
+    const labelParts = [p.name, p.district || p.suburb || p.locality, p.city || p.county].filter(Boolean);
+    const fullParts = [p.name, p.street, p.district, p.city, p.state, p.country].filter(Boolean);
+    return {
+      lat: coords[1], lng: coords[0],
+      label: labelParts.slice(0, 2).join(', ') || p.name || q,
+      full: fullParts.join(', ')
+    };
+  });
+}
+
+async function _geocodeNominatim(q) {
+  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ', Türkiye')}&format=json&limit=6&accept-language=tr&addressdetails=1`;
+  const res = await fetch(url, { headers: { 'User-Agent': 'DealEat/1.0' } });
+  if (!res.ok) throw new Error('nominatim ' + res.status);
+  const results = await res.json();
+  return results.map(r => {
+    const a = r.address || {};
+    const name = [a.neighbourhood || a.suburb || a.district, a.city || a.town || a.county]
+      .filter(Boolean).join(', ') || r.display_name.split(',').slice(0, 2).join(', ');
+    return { lat: parseFloat(r.lat), lng: parseFloat(r.lon), label: name, full: r.display_name };
+  });
+}
+
 async function searchNominatim(q) {
   const status = document.getElementById('locStatus');
   const btn = document.querySelector('.loc-search-btn');
   if (btn) btn.disabled = true;
   if (status) status.textContent = 'Aranıyor...';
 
+  // Try Photon first (no rate limit, OSM-based)
   try {
-    const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ', Türkiye')}&format=json&limit=6&accept-language=tr&addressdetails=1`;
-    const res = await fetch(url, { headers: { 'User-Agent': 'DealEat/1.0' } });
-    const results = await res.json();
-    if (status) status.textContent = results.length ? '' : '❌ Sonuç bulunamadı.';
-    return results.map(r => {
-      const a = r.address || {};
-      const name = [a.neighbourhood || a.suburb || a.district, a.city || a.town || a.county]
-        .filter(Boolean).join(', ') || r.display_name.split(',').slice(0, 2).join(', ');
-      return { lat: parseFloat(r.lat), lng: parseFloat(r.lon), label: name, full: r.display_name };
-    });
+    const photonResults = await _geocodePhoton(q);
+    if (photonResults.length) {
+      if (status) status.textContent = '';
+      return photonResults;
+    }
+  } catch(e) { /* fall through to Nominatim */ }
+
+  // Nominatim fallback (may 429 if IP banned)
+  try {
+    const nomResults = await _geocodeNominatim(q);
+    if (status) status.textContent = nomResults.length ? '' : '❌ Sonuç bulunamadı.';
+    return nomResults;
   } catch(e) {
-    if (status) status.textContent = '⚠️ Arama başarısız.';
+    if (status) status.textContent = '⚠️ Arama başarısız. Birkaç dakika sonra tekrar dene veya "Haritadan Seç" kullan.';
     return [];
   } finally {
     if (btn) btn.disabled = false;
@@ -6507,8 +6544,21 @@ async function submitAddrForm() {
   }
 }
 
-// Pure geocoder — no DOM side-effects, returns {lat, lng} or null
+// Pure geocoder — Photon-first, Nominatim fallback. Returns {lat, lng} or null.
 async function _geocodeAddr(q) {
+  // Photon (no rate limit on browser IP)
+  try {
+    const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(q + ', İstanbul')}&lang=tr&limit=1`;
+    const res = await fetch(url);
+    if (res.ok) {
+      const data = await res.json();
+      const f = data.features?.[0];
+      if (f?.geometry?.coordinates) {
+        return { lat: f.geometry.coordinates[1], lng: f.geometry.coordinates[0] };
+      }
+    }
+  } catch(e) { /* fall through */ }
+  // Nominatim fallback
   try {
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ', Türkiye')}&format=json&limit=1&accept-language=tr`;
     const res = await fetch(url, { headers: { 'User-Agent': 'DealEat/1.0' } });
@@ -9348,6 +9398,26 @@ async function hsSubmitAddr() {
   if (!input?.value.trim()) return;
   if (status) status.textContent = 'Aranıyor...';
   if (results) results.innerHTML = '';
+  // Photon-first
+  try {
+    const url = `https://photon.komoot.io/api/?q=${encodeURIComponent(input.value + ', İstanbul')}&lang=tr&limit=3`;
+    const res = await fetch(url);
+    if (res.ok) {
+      const data = await res.json();
+      if (data.features && data.features.length) {
+        if (status) status.textContent = '';
+        if (results) results.innerHTML = data.features.map(f => {
+          const p = f.properties || {};
+          const c = f.geometry?.coordinates || [0, 0];
+          const nameParts = [p.name, p.district || p.suburb, p.city].filter(Boolean);
+          const name = nameParts.slice(0, 3).join(', ') || p.name || input.value;
+          return `<button onclick="hsSelectAddr(${c[1]},${c[0]},'${name.replace(/'/g,"\\'")}',this)" style="text-align:left;padding:10px 12px;background:var(--bg2);border:1px solid var(--line);border-radius:var(--rp);font-family:var(--font);font-size:13px;color:var(--txt);cursor:pointer;width:100%">${name}</button>`;
+        }).join('');
+        return;
+      }
+    }
+  } catch(e) { /* fall through */ }
+  // Nominatim fallback
   try {
     const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(input.value + ' İstanbul')}&format=json&limit=3&countrycodes=tr&accept-language=tr`;
     const data = await fetch(url, { headers: { 'User-Agent': 'DealEat/1.0' } }).then(r => r.json());
