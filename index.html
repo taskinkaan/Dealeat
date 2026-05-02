@@ -8871,7 +8871,9 @@ function renderMenuMode() {
     if (!entries.length) return '';
     const cheapId = entries[0][0];
     const cheapPrice = entries[0][1];
-    const isMultiPlat = entries.length > 1;
+    // mq=1 (quantity mismatch): farklı boyut → "En Ucuz" / "+X TL" tag yanıltıcı, gizle
+    const isQtyMismatch = item.mq === 1;
+    const isMultiPlat = entries.length > 1 && !isQtyMismatch;
     const savings = isMultiPlat ? entries[entries.length-1][1] - cheapPrice : 0;
     const rankEmoji = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : '';
 
