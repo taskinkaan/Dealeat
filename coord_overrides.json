@@ -300,19 +300,28 @@
     "q": "sakizagaci bakirkoy"
   },
   "gr_1980-den-beri-koc-bufe": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0498994,
+    "lng": 28.984135,
+    "src": "nominatim_v2",
+    "q": "Bozkurt Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Bozkurt",
+    "dist": null
   },
   "gr_27-tahir-usta-kebapcisi-mecidiyekoy": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0700421,
+    "lng": 28.9962529,
+    "src": "nominatim_v2",
+    "q": "Mecidiyeköy Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Mecidiyeköy",
+    "dist": null
   },
   "gr_58-sivas-sariyer-borekcisi-osmanaga": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9892604,
+    "lng": 29.0303888,
+    "src": "nominatim_v2",
+    "q": "Osmanağa Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Osmanağa",
+    "dist": null
   },
   "gr_7-sef-meze-merkez-mah": {
     "lat": null,
@@ -354,14 +363,20 @@
     "src": "no_district"
   },
   "gr_adile-sultan-ev-yemekleri-silivrikapi": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0054068,
+    "lng": 28.9268933,
+    "src": "nominatim_v2",
+    "q": "Silivrikapı Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Silivrikapı",
+    "dist": null
   },
   "gr_adile-sultan-ev-yemekleri-cirpici": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0002245,
+    "lng": 28.8962437,
+    "src": "nominatim_v2",
+    "q": "Çırpıcı Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Çırpıcı",
+    "dist": null
   },
   "gr_adile-sultan-ev-yemekleri-esenyurt": {
     "lat": 41.0342862,
@@ -376,9 +391,12 @@
     "q": "Cerrahpasa Mahallesi, İstanbul, Türkiye"
   },
   "gr_aile-arasi-tost-sandvic-tatli": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0342808,
+    "lng": 28.8363908,
+    "src": "nominatim_v2",
+    "q": "Kirazlı Mahallesi, Bağcılar, İstanbul, Türkiye",
+    "nbhd": "Kirazlı",
+    "dist": "Bağcılar"
   },
   "gr_akasya-etli-ekmek-lahmacun-15": {
     "lat": null,
@@ -386,14 +404,20 @@
     "src": "no_district"
   },
   "gr_alacati-kumru-burger-barbaros-hayrettin": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0182515,
+    "lng": 28.6414475,
+    "src": "nominatim_v2",
+    "q": "Barbaros Hayrettin Paşa Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Barbaros Hayrettin Paşa",
+    "dist": null
   },
   "gr_alacati-muhallebicisi-atakoy-1-kisim": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 40.977329,
+    "lng": 28.8675128,
+    "src": "nominatim_v2",
+    "q": "Ataköy 1. Kısım Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Ataköy 1. Kısım",
+    "dist": null
   },
   "gr_ali-usta-burma-kadayif-ve": {
     "lat": null,
@@ -430,9 +454,12 @@
     "q": "Ornek Mahallesi, İstanbul, Türkiye"
   },
   "gr_antakya-meshur-tostu-58-maslak": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.1099991,
+    "lng": 29.020591,
+    "src": "nominatim_v2",
+    "q": "Maslak Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_antakya-citir-tost-bahcelievler-siyavuspasa": {
     "lat": 41.0007835,
@@ -441,14 +468,20 @@
     "q": "Siyavuspasa Mahallesi, Bahçelievler, İstanbul, Türkiye"
   },
   "gr_antakya-nin-meshur-tostu-bozkurt": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0498994,
+    "lng": 28.984135,
+    "src": "nominatim_v2",
+    "q": "Bozkurt Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Bozkurt",
+    "dist": null
   },
   "gr_antakya-nin-meshur-tostu-gayrettepe": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0622256,
+    "lng": 29.0061911,
+    "src": "nominatim_v2",
+    "q": "Gayrettepe Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Gayrettepe",
+    "dist": null
   },
   "gr_antepli-ornek-kardesler-turgut-reis": {
     "lat": null,
@@ -470,7 +503,9 @@
   "gr_aristo-sandwich-salad-bar-osmanaga": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Osmanağa",
+    "dist": null
   },
   "gr_arnavutkoy-baklava-arnavutkoy-mah-besiktas": {
     "lat": 41.0683942,
@@ -505,7 +540,9 @@
   "gr_asmali-borek-baklava-pide-zuhtupasa": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zühtüpaşa",
+    "dist": null
   },
   "gr_aspendos-pastanesi-kadimehmet-efendi-mah": {
     "lat": 41.0017335,
@@ -546,7 +583,9 @@
   "gr_awesome-waffle-mecidiyekoy-mah-kagithane": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mecidiyeköy",
+    "dist": null
   },
   "gr_aydin-pastanesi-soganli-mah-bahcelievler": {
     "lat": null,
@@ -556,22 +595,30 @@
   "gr_aymis-doner-kahvalti-maltepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maltepe",
+    "dist": null
   },
   "gr_aysel-sultan-gozleme-sinanpasa-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sinanpaşa",
+    "dist": null
   },
   "gr_ayumi-sushi-bar-cevizli-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cevizli",
+    "dist": null
   },
   "gr_azra-borek-cafe-beyoglu-kaptanpasa": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kaptanpaşa",
+    "dist": "Beyoğlu"
   },
   "gr_ask-im-kumpir-waffle-ayazaga": {
     "lat": null,
@@ -581,7 +628,9 @@
   "gr_askana-manti-maslak-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_bu-bakery-unalan-mah-uskudar": {
     "lat": null,
@@ -596,17 +645,23 @@
   "gr_babazade-baklava-konaklar-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Konaklar",
+    "dist": null
   },
   "gr_babazade-maras-dondurmasi-konaklar-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Konaklar",
+    "dist": null
   },
   "gr_bacca-firin-cafe-pasta-gokevler": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gökevler",
+    "dist": null
   },
   "gr_backhaus-atakoy-7-8-9": {
     "lat": null,
@@ -626,17 +681,23 @@
   "gr_bahce-miss-doner-sariyer-maslak": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": "Sarıyer"
   },
   "gr_bahce-saray-iskembe-kelle-paca": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Necip Fazıl Kısakürek",
+    "dist": null
   },
   "gr_bak-ekmegine-fatih-sehremini-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şehremini",
+    "dist": "Fatih"
   },
   "gr_bakeryfab-bakirkoy-kartaltepe-mah-bakirkoy": {
     "lat": null,
@@ -656,52 +717,72 @@
   "gr_balbadem-pastanesi-sisli-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Esentepe",
+    "dist": null
   },
   "gr_balkaya-pastanesi-gulbahar-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gülbahar",
+    "dist": null
   },
   "gr_balkaya-pastanesi-kustepe-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kuştepe",
+    "dist": null
   },
   "gr_balkaya-pastanesi-telsizler-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Telsizler",
+    "dist": null
   },
   "gr_baltazar-kemankes-karamustafapasa-mah-beyoglu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kemankeş Karamustafapaşa",
+    "dist": null
   },
   "gr_balya-mutfak-beyoglu-firuzaga-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Firuzağa",
+    "dist": "Beyoğlu"
   },
   "gr_bambi-cafe-gayrettepe-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gayrettepe",
+    "dist": null
   },
   "gr_bambi-cafe-halaskargazi-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Halaskargazi",
+    "dist": null
   },
   "gr_bambi-cafe-mecidiyekoy-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mecidiyeköy",
+    "dist": null
   },
   "gr_bambi-cafe-bakirkoy-cevizlik-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cevizlik",
+    "dist": "Bakırköy"
   },
   "gr_baris-bufe-kahvalti-fatih-haseki": {
     "lat": null,
@@ -711,32 +792,42 @@
   "gr_bay-bread-muratreis-mah-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Muratreis",
+    "dist": null
   },
   "gr_bazlama-krali-fatih-seyyid-omer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyyid Ömer",
+    "dist": "Fatih"
   },
   "gr_bazlama-istasyonu-feneryolu-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Feneryolu",
+    "dist": null
   },
   "gr_basak-borek-15-temmuz-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "15 Temmuz",
+    "dist": null
   },
   "gr_basvekil-extra-sehremini-mah-capa": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_beak-coffee-roastery-bakery-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zuhuratbaba",
+    "dist": "Bakırköy"
   },
   "gr_beak-coffee-roastery-bakery-zeytinburnu": {
     "lat": null,
@@ -746,37 +837,51 @@
   "gr_bekir-usta-pide-borek-demirkapi": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Demirkapı",
+    "dist": null
   },
   "gr_belgizar-sutlu-tatli-restaurant-cumhuriyet": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_bella-burger-sirinevler-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şirinevler",
+    "dist": null
   },
   "gr_beslen-firin-siyavuspasa-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Siyavuşpaşa",
+    "dist": null
   },
   "gr_beyaz-firin-acibadem-mah-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Acıbadem",
+    "dist": null
   },
   "gr_beyaz-firin-caferaga-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Caferağa",
+    "dist": null
   },
   "gr_beyaz-firin-kiziltoprak-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kızıltoprak",
+    "dist": null
   },
   "gr_beylerbeyi-profiterol-bestelsiz-mah-zeytinbur": {
     "lat": null,
@@ -791,17 +896,23 @@
   "gr_beylerbeyi-profiterol-cengelkoy-mah-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Çengelköy",
+    "dist": null
   },
   "gr_beylikduzu-marmaris-bufe-guzelyurt-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güzelyurt",
+    "dist": null
   },
   "gr_beyoglu-sandvic-beyoglu-camiikebir-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Camiikebir",
+    "dist": "Beyoğlu"
   },
   "gr_beyoglu-corbacisi-ve-kebap-osmanaga": {
     "lat": null,
@@ -816,7 +927,9 @@
   "gr_beyza-kahvalti-evi-fatih-sehremini": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şehremini",
+    "dist": "Fatih"
   },
   "gr_biberoglu-bufe-haznedar-mah-gungoren": {
     "lat": null,
@@ -826,7 +939,9 @@
   "gr_big-bubble-tea-bakirkoy-osmaniye": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Osmaniye",
+    "dist": "Bakırköy"
   },
   "gr_big-chefs-altunizade-mah-uskudar": {
     "lat": null,
@@ -836,17 +951,23 @@
   "gr_big-sandwich-ardicli-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ardıçlı",
+    "dist": null
   },
   "gr_bisiss-borek-gulbahar-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gülbahar",
+    "dist": null
   },
   "gr_bk-borekcim-sumer-mah-zeytinburnu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sümer",
+    "dist": null
   },
   "gr_black-meze-kucukbakkalkoy-mah-atasehir": {
     "lat": null,
@@ -856,12 +977,16 @@
   "gr_blend-bowl-istinye-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İstinye",
+    "dist": null
   },
   "gr_blended-visnezade-mah-besiktas-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Vişnezade",
+    "dist": null
   },
   "gr_blissi-glutensiz-ve-sekersiz-tat": {
     "lat": null,
@@ -871,12 +996,16 @@
   "gr_blum-coffee-house-visnezade-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Vişnezade",
+    "dist": null
   },
   "gr_bolca-tost-esenyurt-ornek-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Örnek",
+    "dist": "Esenyurt"
   },
   "gr_boll-bowll-sisli-fulya-mah": {
     "lat": null,
@@ -886,17 +1015,23 @@
   "gr_bolpi-gurme-pide-lahmacun-fulya": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Fulya",
+    "dist": null
   },
   "gr_bolulu-hasan-usta-nisbetiye-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Nisbetiye",
+    "dist": null
   },
   "gr_bombom-bufe-zeytinlik-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zeytinlik",
+    "dist": null
   },
   "gr_bonavias-cafe-dessert-bahcesehir-2": {
     "lat": null,
@@ -906,27 +1041,37 @@
   "gr_bonissimo-bahcelievler-mah-bahcelievler-istan": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_bonissimo-akevler-mah-esenyurt-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Akevler",
+    "dist": ""
   },
   "gr_bora-arat-bufe-kamer-hatun": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kamer Hatun",
+    "dist": null
   },
   "gr_boston-d-d-bagcilar-yenimahalle": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yenimahalle",
+    "dist": "Bağcılar"
   },
   "gr_boston-donuts-altunizade-mah-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Altunizade",
+    "dist": null
   },
   "gr_boston-donuts-atakoy-2-5": {
     "lat": null,
@@ -936,7 +1081,9 @@
   "gr_boston-donuts-caferaga-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Caferağa",
+    "dist": null
   },
   "gr_boston-donuts-sisli-fulya-mah": {
     "lat": null,
@@ -946,7 +1093,9 @@
   "gr_bowl-more-maresal-cakmak-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mareşal Çakmak",
+    "dist": null
   },
   "gr_bowl-the-mood-sisli-halaskargazi": {
     "lat": null,
@@ -956,7 +1105,9 @@
   "gr_boga-durum-kasap-ali-maden": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maden",
+    "dist": null
   },
   "gr_breadbox-bagcilar-gunesli-mah-bagcilar": {
     "lat": null,
@@ -966,42 +1117,58 @@
   "gr_brekkie-croissant-cookie-osmanaga-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Osmanağa",
+    "dist": null
   },
   "gr_bret-artisan-bakery-unalan-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ünalan",
+    "dist": null
   },
   "gr_brod-mesrutiyet-mah-sisli-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Meşrutiyet",
+    "dist": null
   },
   "gr_bunny-mag-bahcelievler-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_burger-more-maslak-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_burger-king-gayrettepe-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gayrettepe",
+    "dist": null
   },
   "gr_burger-king-zeytinburnu-gokalp-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gökalp",
+    "dist": "Zeytinburnu"
   },
   "gr_burger-loca-sumer-mah-zeytinburnu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sümer",
+    "dist": null
   },
   "gr_burger-yiyelim-turgut-ozal-mah": {
     "lat": null,
@@ -1011,37 +1178,51 @@
   "gr_burger-yiyelim-yesiltepe-mah-zeytinburnu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yeşiltepe",
+    "dist": null
   },
   "gr_burger-yiyelim-zeytinlik-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zeytinlik",
+    "dist": null
   },
   "gr_burger-kartaltepe-mah-bakirkoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
   },
   "gr_burgerator-bahcelievler-mah-bahcelievler-ista": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_burgersan-kagithane-sultan-selim-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sultan Selim",
+    "dist": "Kağıthane"
   },
   "gr_burmalim-gaziantep-kadayiflari-dikilitas-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Dikilitaş",
+    "dist": null
   },
   "gr_buuzecedi-fatih-hirka-i-serif": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Hırka-i Şerif",
+    "dist": "Fatih"
   },
   "gr_by-cesur-pidem-koca-mustafapasa": {
     "lat": null,
@@ -1051,32 +1232,45 @@
   "gr_borekci-nimet-usta-kamer-hatun": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kamer Hatun",
+    "dist": null
   },
   "gr_bufe-de-bufe-sisli-duatepe": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Duatepe",
+    "dist": "Şişli"
   },
   "gr_bufe-energy-fulya-mah-sisli": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0623115,
+    "lng": 29.0069778,
+    "src": "nominatim_v2",
+    "q": "Fulya, İstanbul, Türkiye",
+    "nbhd": "Fulya",
+    "dist": null
   },
   "gr_bulent-borek-mahmutbey-mah-istoc": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_bulent-borek-bagcilar-cinar-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0368162,
+    "lng": 28.8605304,
+    "src": "nominatim_v2",
+    "q": "Çınar Mahallesi, Bağcılar, İstanbul, Türkiye",
+    "nbhd": "Çınar",
+    "dist": "Bağcılar"
   },
   "gr_cadde-ayvalik-tostcusu-kadikoy-fenerbahce": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9695548,
+    "lng": 29.0375465,
+    "src": "nominatim_v2",
+    "q": "Fenerbahçe Mahallesi, Kadıköy, İstanbul, Türkiye",
+    "nbhd": "Fenerbahçe",
+    "dist": "Kadıköy"
   },
   "gr_cadde-bufe-yahya-kemal-mah": {
     "lat": null,
@@ -1084,34 +1278,52 @@
     "src": "geocode_failed"
   },
   "gr_cadde-fastfood-cafe-istiklal-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0416191,
+    "lng": 28.9692374,
+    "src": "nominatim_v2",
+    "q": "İstiklal Mahallesi, İstanbul, Türkiye",
+    "nbhd": "İstiklal",
+    "dist": null
   },
   "gr_cafe-de-yildiz-fatih-haseki": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0092592,
+    "lng": 28.9451769,
+    "src": "nominatim_v2",
+    "q": "Haseki Sultan Mahallesi, Fatih, İstanbul, Türkiye",
+    "nbhd": "Haseki Sultan",
+    "dist": "Fatih"
   },
   "gr_can-bufe-kucuk-piyale-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0368442,
+    "lng": 28.9676137,
+    "src": "nominatim_v2",
+    "q": "Küçük Piyale Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Küçük Piyale",
+    "dist": null
   },
   "gr_caribou-coffee-bestelsiz-mah-zeytinburnu": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9994868,
+    "lng": 28.9045024,
+    "src": "nominatim_v2",
+    "q": "Beştelsiz Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Beştelsiz",
+    "dist": null
   },
   "gr_carl-s-jr-koza-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0645603,
+    "lng": 28.6652589,
+    "src": "nominatim_v2",
+    "q": "Koza Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Koza",
+    "dist": null
   },
   "gr_carmen-tatlicilik-kartaltepe-mah-bakirkoy": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0019505,
+    "lng": 28.7996932,
+    "src": "nominatim_v2",
+    "q": "Kartaltepe Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Kartaltepe",
+    "dist": null
   },
   "gr_casa-cooklife-cumhuriyet-mah-sisli": {
     "lat": null,
@@ -1119,19 +1331,28 @@
     "src": "geocode_failed"
   },
   "gr_casita-manti-etiler-mah-besiktas": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0840093,
+    "lng": 29.0366077,
+    "src": "nominatim_v2",
+    "q": "Etiler Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Etiler",
+    "dist": null
   },
   "gr_cemwich-bahcelievler-siyavuspasa-mah-bahcelie": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0007835,
+    "lng": 28.8554043,
+    "src": "nominatim_v2",
+    "q": "Siyavuşpaşa Mahallesi, Bahçelievler, İstanbul, Türkiye",
+    "nbhd": "Siyavuşpaşa",
+    "dist": "Bahçelievler"
   },
   "gr_cemwich-fatih-iskenderpasa-mah-fatih": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0153898,
+    "lng": 28.9502718,
+    "src": "nominatim_v2",
+    "q": "İskenderpaşa Mahallesi, Fatih, İstanbul, Türkiye",
+    "nbhd": "İskenderpaşa",
+    "dist": "Fatih"
   },
   "gr_cesur-pide-lahmacun-koca-mustapasa": {
     "lat": null,
@@ -1139,14 +1360,20 @@
     "src": "no_district"
   },
   "gr_cevizlibag-pilavcisi-maltepe-mah-zeytinburnu": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0277775,
+    "lng": 28.9096922,
+    "src": "nominatim_v2",
+    "q": "Maltepe Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Maltepe",
+    "dist": null
   },
   "gr_charla-acibadem-mah-uskudar-istanbul": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0037683,
+    "lng": 29.0437162,
+    "src": "nominatim_v2",
+    "q": "Acıbadem Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Acıbadem",
+    "dist": null
   },
   "gr_checkup-sehremini-mah-fatih-istanbul": {
     "lat": null,
@@ -1154,39 +1381,56 @@
     "src": "geocode_failed"
   },
   "gr_cheef-moses-merdivenkoy-mah-kadikoy": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9877529,
+    "lng": 29.0676991,
+    "src": "nominatim_v2",
+    "q": "Merdivenköy Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Merdivenköy",
+    "dist": null
   },
   "gr_chef-pera-manti-evi-cumhuriyet": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 40.9967292,
+    "lng": 28.7712054,
+    "src": "nominatim_v2",
+    "q": "Cumhuriyet Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_chicken-bros-maltepe-mah-zeytinburnu": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0277775,
+    "lng": 28.9096922,
+    "src": "nominatim_v2",
+    "q": "Maltepe Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Maltepe",
+    "dist": null
   },
   "gr_chicken-project-etiler-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Etiler",
+    "dist": null
   },
   "gr_chicken-rice-art-bahcelievler-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": "Bahçelievler"
   },
   "gr_china-magic-box-sushi-cihangir": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cihangir",
+    "dist": null
   },
   "gr_chinese-sushi-express-ferahevler-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ferahevler",
+    "dist": null
   },
   "gr_chinese-noodle-point-sisli-halaskargazi": {
     "lat": null,
@@ -1196,17 +1440,23 @@
   "gr_cihan-derya-balik-cumhuriyet-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_cihan-pastaneleri-visnezade-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Vişnezade",
+    "dist": null
   },
   "gr_cigerhane-seyitnizam-mah-zeytinburnu-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyitnizam",
+    "dist": null
   },
   "gr_coffee-bike-cerrahpasa-mah-fatih": {
     "lat": null,
@@ -1216,92 +1466,122 @@
   "gr_coffee-crafters-bakirkoy-yesilyurt-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yeşilyurt",
+    "dist": "Bakırköy"
   },
   "gr_coffee-no7-19-mayis-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "19 Mayıs",
+    "dist": null
   },
   "gr_coffy-ardicli-mah-esenyurt-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ardıçlı",
+    "dist": null
   },
   "gr_coffy-barbaros-hayrettin-pasa-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_coffy-cevizlik-mah-bakirkoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cevizlik",
+    "dist": null
   },
   "gr_coffy-fulya-19-mayis-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Fulya 19 Mayıs",
+    "dist": null
   },
   "gr_coffy-halitaga-cad-kadikoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_coffy-kartaltepe-mah-bakirkoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
   },
   "gr_coffy-koza-mah-esenyurt-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Koza",
+    "dist": null
   },
   "gr_coffy-mimar-sinan-mah-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mimar Sinan",
+    "dist": null
   },
   "gr_coffy-tuna-mah-esenler-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Tuna",
+    "dist": null
   },
   "gr_coffy-valide-i-atik-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Valide-i Atik",
+    "dist": null
   },
   "gr_coffy-yayla-mah-bahcelievler-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yayla",
+    "dist": null
   },
   "gr_coffy-omur-avm-bakirkoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_cookshop-caddebostan-mah-kadikoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Caddebostan",
+    "dist": null
   },
   "gr_cookshop-harbiye-mah-sisli-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Harbiye",
+    "dist": null
   },
   "gr_creme-salt-konaklar-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Konaklar",
+    "dist": null
   },
   "gr_crispy-fried-chicken-sirinevler-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şirinevler",
+    "dist": null
   },
   "gr_crispy-toast-sandwich-sisli-fulya": {
     "lat": null,
@@ -1311,32 +1591,44 @@
   "gr_croissant-n-more-etiler-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Etiler",
+    "dist": null
   },
   "gr_croissant-n-more-istinye-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İstinye",
+    "dist": null
   },
   "gr_cizbiz-doner-sariyer-ayazaga-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ayazağa",
+    "dist": "Sarıyer"
   },
   "gr_cizbiz-sucuk-kofte-sariyer-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ayazağa",
+    "dist": null
   },
   "gr_d-d-iskembe-zuhuratbaba-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zuhuratbaba",
+    "dist": null
   },
   "gr_dardenia-fish-sushi-maslak-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_death-by-chocolate-visnezade-mah": {
     "lat": null,
@@ -1346,27 +1638,37 @@
   "gr_dedeoglu-baklava-bozkurt-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bozkurt",
+    "dist": null
   },
   "gr_dedeoglu-baklava-mesrutiyet-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Meşrutiyet",
+    "dist": null
   },
   "gr_dega-burger-senlikkoy-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şenlikköy",
+    "dist": null
   },
   "gr_derman-pastanesi-yenidogan-mah-zeytinburnu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yenidoğan",
+    "dist": null
   },
   "gr_derya-borek-siyavuspasa-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Siyavuşpaşa",
+    "dist": null
   },
   "gr_desigram-coffee-co-esenyurt-ardicli": {
     "lat": null,
@@ -1376,57 +1678,79 @@
   "gr_desigram-coffee-co-esenyurt-koza": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Koza",
+    "dist": "Esenyurt"
   },
   "gr_develi-etiler-mah-besiktas-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Etiler",
+    "dist": null
   },
   "gr_deger-pide-ve-lahmacun-salonu": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Akşemsettin",
+    "dist": null
   },
   "gr_dianka-s-croissants-emniyet-evleri": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Emniyet Evleri",
+    "dist": null
   },
   "gr_dikilitas-pide-telsiz-mah-zeytinburnu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Telsiz",
+    "dist": null
   },
   "gr_dilek-pastanesi-restaurant-aksemsettin-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Akşemsettin",
+    "dist": null
   },
   "gr_dilemma-beyoglu-kamer-hatun-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kamer Hatun",
+    "dist": "Beyoğlu"
   },
   "gr_dilim-borek-seyitnizam-mah-zeytinburnu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyitnizam",
+    "dist": null
   },
   "gr_divan-delivery-altunizade-mah-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Altunizade",
+    "dist": null
   },
   "gr_divan-pastanesi-acibadem-mah-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Acıbadem",
+    "dist": null
   },
   "gr_divan-pastanesi-atakoy-7-8": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ataköy 7-8-9-10. Kısım",
+    "dist": null
   },
   "gr_divan-pastanesi-harbiye-mah-sisli": {
     "lat": null,
@@ -1436,27 +1760,35 @@
   "gr_dolce-fresco-mag-cake-baris": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Barış",
+    "dist": ""
   },
   "gr_domino-s-pizza-dogan-arasli": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_domino-s-pizza-sakizagaci-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sakızağacı",
+    "dist": null
   },
   "gr_domino-s-pizza-capa-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Çapa",
+    "dist": null
   },
   "gr_dopamine-coffee-shop-cerrahpasa-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cerrahpaşa",
+    "dist": null
   },
   "gr_dopamine-coffee-shop-capa-sehremini": {
     "lat": null,
@@ -1466,12 +1798,16 @@
   "gr_double-sandwich-mustafa-kemal-pasa": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mustafa Kemal Paşa",
+    "dist": null
   },
   "gr_doyum-manti-firuzaga-mah-beyoglu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Firuzağa",
+    "dist": null
   },
   "gr_doyuyo-mevlana-mah-esenyurt-istanbul": {
     "lat": null,
@@ -1486,12 +1822,16 @@
   "gr_doyuyo-osmaniye-mah-bakirkoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Osmaniye",
+    "dist": null
   },
   "gr_dogan-ekmek-zeyrek-mah-fatih": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zeyrek",
+    "dist": null
   },
   "gr_dr-sandvic-mecidiye-mah-besiktas": {
     "lat": 41.0520844,
@@ -1526,7 +1866,9 @@
   "gr_doner-agaci-mehmet-nesih-ozmen": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mehmet Nesih Özmen",
+    "dist": null
   },
   "gr_doner-agaci-sariyer-maslak-mah": {
     "lat": 41.1099991,
@@ -1561,7 +1903,9 @@
   "gr_dort-carpi-dort-lezzet-alibeykoy": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Alibeyköy",
+    "dist": null
   },
   "gr_durum-house-sisli-inonu-mah": {
     "lat": 41.0328836,
@@ -1578,7 +1922,9 @@
   "gr_durumcu-sedat-ustanin-yeri-merkez": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
   },
   "gr_durumcu-ismet-usta-esenyurt-incirtepe": {
     "lat": 41.0206769,
@@ -1619,7 +1965,9 @@
   "gr_efsane-bodrum-bazlamacisi-fatih-seyyid": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyyid Ömer",
+    "dist": "Fatih"
   },
   "gr_efsane-lahmacun-fulya-mah-sisli": {
     "lat": null,
@@ -1629,22 +1977,30 @@
   "gr_efsane-tostcu-kirazli-mah-bagcilar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kirazlı",
+    "dist": null
   },
   "gr_egeden-merkez-mah-kagithane-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
   },
   "gr_ehli-bey-iskembe-esenyurt-piri": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Piri Reis",
+    "dist": "Esenyurt"
   },
   "gr_ehli-borek-ornek-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Örnek",
+    "dist": null
   },
   "gr_ekin-pasta-firin-telsizler-mah": {
     "lat": null,
@@ -1654,12 +2010,16 @@
   "gr_eklercim-ferikoy-mah-sisli-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Feriköy",
+    "dist": null
   },
   "gr_eklercim-merkez-mah-sisli-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
   },
   "gr_ekleristan-gunesli-mah-bagcilar-istanbul": {
     "lat": null,
@@ -1679,27 +2039,37 @@
   "gr_elit-profiterol-istinye-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İstinye",
+    "dist": null
   },
   "gr_emef-bufe-osmaniye-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Osmaniye",
+    "dist": null
   },
   "gr_emirgan-sutis-visnezade-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Vişnezade",
+    "dist": null
   },
   "gr_emiroglu-baklava-uskudar-muratreis-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Muratreis",
+    "dist": "Üsküdar"
   },
   "gr_envai-karakoy-lokantasi-esentepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Esentepe",
+    "dist": null
   },
   "gr_enzo-s-fried-chicken-istinye": {
     "lat": null,
@@ -1709,57 +2079,79 @@
   "gr_erbabi-manti-bahcelievler-hurriyet-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Hürriyet",
+    "dist": "Bahçelievler"
   },
   "gr_erdem-bufe-huzur-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Huzur",
+    "dist": null
   },
   "gr_erzenler-et-lokantasi-incirtepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İncirtepe",
+    "dist": null
   },
   "gr_escarpa-coffee-zeytinlik-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zeytinlik",
+    "dist": null
   },
   "gr_espressolab-15-temmuz-mahallesi-bagcilar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "15 Temmuz",
+    "dist": null
   },
   "gr_espressolab-acibadem-mah-uskudar-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Acıbadem",
+    "dist": null
   },
   "gr_espressolab-asmalimescit-mah-beyoglu-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Asmalımescit",
+    "dist": null
   },
   "gr_espressolab-ataturk-mah-esenyurt-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Atatürk",
+    "dist": null
   },
   "gr_espressolab-bahcelievler-mah-bahcelievler-ist": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_espressolab-balabanaga-mah-fatih-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Balabanağa",
+    "dist": null
   },
   "gr_espressolab-baglar-mah-bagcilar-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bağlar",
+    "dist": null
   },
   "gr_espressolab-baglarcesme-mah-esenyurt-istanbul": {
     "lat": null,
@@ -1769,57 +2161,77 @@
   "gr_espressolab-basaksehir-2-kisim-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Başakşehir 2. Kısım",
+    "dist": null
   },
   "gr_espressolab-fevzi-cakmak-mah-esenler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Fevzi Çakmak",
+    "dist": null
   },
   "gr_espressolab-goztepe-mah-bagcilar-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Göztepe",
+    "dist": null
   },
   "gr_espressolab-gunesli-mah-bagcilar-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güneşli",
+    "dist": null
   },
   "gr_espressolab-havaalani-mah-esenler-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Havaalanı",
+    "dist": null
   },
   "gr_espressolab-kazlicesme-mah-zeytinburnu-istanb": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kazlıçeşme",
+    "dist": null
   },
   "gr_espressolab-kirazli-mah-bagcilar-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kirazlı",
+    "dist": null
   },
   "gr_espressolab-koza-mah-esenyurt-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Koza",
+    "dist": null
   },
   "gr_espressolab-mehmet-akif-ersoy-cad": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_espressolab-mehmet-nesih-ozmen-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mehmet Nesih Özmen",
+    "dist": null
   },
   "gr_espressolab-piyalepasa-mah-beyoglu-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Piyalepaşa",
+    "dist": null
   },
   "gr_espressolab-sancaktepe-mah-bagcilar-istanbul": {
     "lat": null,
@@ -1829,32 +2241,44 @@
   "gr_espressolab-sumer-mah-zeytinburnu-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sümer",
+    "dist": null
   },
   "gr_espressolab-topkapi-mah-fatih-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Topkapı",
+    "dist": null
   },
   "gr_espressolab-yesilyurt-mah-bakirkoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yeşilyurt",
+    "dist": null
   },
   "gr_espressolab-zafer-mah-esenyurt-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zafer",
+    "dist": null
   },
   "gr_espressolab-sehremini-mah-fatih-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şehremini",
+    "dist": null
   },
   "gr_espressolab-kagithane-hamidiye-mah-kagithane": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Hamidiye",
+    "dist": "Kağıthane"
   },
   "gr_esto-lahmacun-fatih-mah-esenyurt": {
     "lat": null,
@@ -1864,62 +2288,86 @@
   "gr_ethique-patisserie-boulangerie-goztepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Göztepe",
+    "dist": null
   },
   "gr_etibeyaz-doner-sinanpasa-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sinanpaşa",
+    "dist": null
   },
   "gr_etiler-marmaris-abdurrahman-nafiz-gurman": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Abdurrahman Nafiz Gürman",
+    "dist": null
   },
   "gr_etiler-marmaris-barbaros-hayrettin-pasa": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Barbaros Hayrettin Paşa",
+    "dist": null
   },
   "gr_etiler-marmaris-maslak-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_etiler-marmaris-nisbetiye-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Nisbetiye",
+    "dist": null
   },
   "gr_etiler-marmaris-zeytinlik-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zeytinlik",
+    "dist": null
   },
   "gr_etiler-marmaris-istiklal-mah-beyoglu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İstiklal",
+    "dist": null
   },
   "gr_etiler-marmaris-sisli-merkez-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şişli Merkez",
+    "dist": null
   },
   "gr_etiler-marmaris-burger-asik-veysel": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Aşık Veysel",
+    "dist": null
   },
   "gr_etiler-park-bufe-bahcelievler-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_evdeki-gibi-bagcilar-barbaros-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Barbaros",
+    "dist": "Bağcılar"
   },
   "gr_eylul-bufe-goztepe-mah-bagcilar": {
     "lat": null,
@@ -1934,22 +2382,30 @@
   "gr_faki-mehmet-efendi-zamansiz-baklavaci": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": "Esenyurt"
   },
   "gr_famoso-konak-3-tuna-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Tuna",
+    "dist": null
   },
   "gr_faruk-bistro-sandvic-esenler-menderes": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Menderes",
+    "dist": "Esenler"
   },
   "gr_faruk-gullu-feneryolu-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Feneryolu",
+    "dist": null
   },
   "gr_faruk-gullu-goztepe-mah-esenler": {
     "lat": null,
@@ -1959,47 +2415,65 @@
   "gr_faruk-gullu-numunebag-cad-bayrampasa": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_faruk-gullu-yakuplu-mah-beylikduzu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yakuplu",
+    "dist": null
   },
   "gr_faruk-gulluoglu-bagcilar-merkez-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bağcılar Merkez",
+    "dist": null
   },
   "gr_faruk-gulluoglu-cumhuriyet-mah-beylikduzu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_faruk-gulluoglu-mahmutbey-mah-bagcilar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mahmutbey",
+    "dist": null
   },
   "gr_faruk-gulluoglu-mehmet-nesih-ozmen": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mehmet Nesih Özmen",
+    "dist": null
   },
   "gr_faruk-gulluoglu-sisli-merkez-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şişli Merkez",
+    "dist": null
   },
   "gr_fast-pizza-kucuk-piyale-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0368442,
+    "lng": 28.9676137,
+    "src": "nominatim_v2",
+    "q": "Küçük Piyale, İstanbul, Türkiye",
+    "nbhd": "Küçük Piyale",
+    "dist": null
   },
   "gr_fatih-pilavcisi-aksemsettin-mah-fatih": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0188839,
+    "lng": 28.9460241,
+    "src": "nominatim_v2",
+    "q": "Akşemsettin Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Akşemsettin",
+    "dist": null
   },
   "gr_fatos-un-mutfagi-gungoren-maresal": {
     "lat": null,
@@ -2007,24 +2481,36 @@
     "src": "geocode_failed"
   },
   "gr_fermente-dikilitas-mah-besiktas-istanbul": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0554313,
+    "lng": 29.0048495,
+    "src": "nominatim_v2",
+    "q": "Dikilitaş Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Dikilitaş",
+    "dist": null
   },
   "gr_feyaz-in-cig-kofte-dunyasi": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0094787,
+    "lng": 28.9313786,
+    "src": "nominatim_v2",
+    "q": "Seyyid Ömer Mahallesi, Fatih, İstanbul, Türkiye",
+    "nbhd": "Seyyid Ömer",
+    "dist": "Fatih"
   },
   "gr_fiko-gurme-poligon-mah-sariyer": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.117034,
+    "lng": 29.0413306,
+    "src": "nominatim_v2",
+    "q": "Poligon Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Poligon",
+    "dist": null
   },
   "gr_fit-point-maslak-mah-sariyer": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.1099991,
+    "lng": 29.020591,
+    "src": "nominatim_v2",
+    "q": "Maslak Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_fitchi-house-kustepe-mah-sisli": {
     "lat": null,
@@ -2032,9 +2518,12 @@
     "src": "geocode_failed"
   },
   "gr_fitx-protein-pancakes-acai-bowls": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 40.9824138,
+    "lng": 28.8711297,
+    "src": "nominatim_v2",
+    "q": "Zuhuratbaba Mahallesi, Bakırköy, İstanbul, Türkiye",
+    "nbhd": "Zuhuratbaba",
+    "dist": "Bakırköy"
   },
   "gr_fiyonk-merkezefendi-mah-zeytinburnu-istanbul": {
     "lat": null,
@@ -2042,14 +2531,20 @@
     "src": "geocode_failed"
   },
   "gr_florya-mersin-tantuni-senlikkoy-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9811494,
+    "lng": 28.7951449,
+    "src": "nominatim_v2",
+    "q": "Şenlikköy Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Şenlikköy",
+    "dist": null
   },
   "gr_florya-midyecisi-senlikkoy-mah-bakirkoy": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9811494,
+    "lng": 28.7951449,
+    "src": "nominatim_v2",
+    "q": "Şenlikköy Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Şenlikköy",
+    "dist": null
   },
   "gr_florya-pilavcisi-bakirkoy-senlikkoy-mah": {
     "lat": null,
@@ -2057,24 +2552,36 @@
     "src": "geocode_failed"
   },
   "gr_florya-pizza-senlikkoy-mah-bakirkoy": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9811494,
+    "lng": 28.7951449,
+    "src": "nominatim_v2",
+    "q": "Şenlikköy Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Şenlikköy",
+    "dist": null
   },
   "gr_focaccia-restaurant-cafe-patisserie-bahceliev": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 40.8839106,
+    "lng": 29.2353786,
+    "src": "nominatim_v2",
+    "q": "Bahçelievler Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_frango-doner-sauce-sehremini-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0138832,
+    "lng": 28.9327162,
+    "src": "nominatim_v2",
+    "q": "Şehremini Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Şehremini",
+    "dist": null
   },
   "gr_frej-coffee-art-house-emekyemez": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0260424,
+    "lng": 28.9702513,
+    "src": "nominatim_v2",
+    "q": "Emekyemez Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Emekyemez",
+    "dist": null
   },
   "gr_fresh-sandvic-tost-bestelsiz-mah": {
     "lat": null,
@@ -2084,7 +2591,9 @@
   "gr_ficcin-asmali-mescit-mah-beyoglu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Asmalı Mescit",
+    "dist": null
   },
   "gr_findikzade-pasta-baklava-havaalani-mah": {
     "lat": null,
@@ -2094,7 +2603,9 @@
   "gr_g-burger-g-italy-baglar": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bağlar",
+    "dist": null
   },
   "gr_gp-galette-patisserie-kagithane-celiktepe": {
     "lat": null,
@@ -2104,7 +2615,9 @@
   "gr_gala-kokorec-sehremini-mah-fatih": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şehremini",
+    "dist": null
   },
   "gr_galaksi-pastanesi-nisanci-mah-eyupsultan": {
     "lat": null,
@@ -2114,7 +2627,9 @@
   "gr_game-of-burger-hot-dog": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maltepe",
+    "dist": null
   },
   "gr_ganache-patisserie-cafe-validei-atik": {
     "lat": null,
@@ -2134,7 +2649,9 @@
   "gr_gaziantepli-baklavaci-samet-usta-sultan": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sultan Selim",
+    "dist": null
   },
   "gr_gazze-falafel-molla-gurani-mah": {
     "lat": null,
@@ -2144,12 +2661,16 @@
   "gr_gloria-jean-s-coffee-aksemsettin": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Akşemsettin",
+    "dist": null
   },
   "gr_gloria-jean-s-coffee-turgut": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Turgut Özal",
+    "dist": null
   },
   "gr_gloria-jean-s-coffee-bahcelievler": {
     "lat": null,
@@ -2159,7 +2680,9 @@
   "gr_gloria-jean-s-coffees-osmaniye": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Osmaniye",
+    "dist": null
   },
   "gr_green-grains-istinye-mah-sariyer": {
     "lat": null,
@@ -2174,17 +2697,23 @@
   "gr_green-salads-bahcelievler-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_green-salads-bestelsiz-mah-zeytinburnu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Beştelsiz",
+    "dist": null
   },
   "gr_green-salads-koza-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Koza",
+    "dist": null
   },
   "gr_green-salads-ortakoy-mah-besiktas": {
     "lat": null,
@@ -2194,7 +2723,9 @@
   "gr_green-salads-topcular-mah-eyupsultan": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Topçular",
+    "dist": null
   },
   "gr_gueto-burger-co-istinye-mah": {
     "lat": null,
@@ -2204,7 +2735,9 @@
   "gr_guidos-tesvikiye-mah-sisli-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Teşvikiye",
+    "dist": null
   },
   "gr_gurme-box-altunizade-mah-uskudar": {
     "lat": null,
@@ -2214,7 +2747,9 @@
   "gr_gurme-burger-esenyurt-zafer-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zafer",
+    "dist": "Esenyurt"
   },
   "gr_gurme-karadeniz-pide-guvec-camiikebir": {
     "lat": null,
@@ -2224,7 +2759,9 @@
   "gr_gurme-makarna-salata-esenyurt-zafer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zafer",
+    "dist": "Esenyurt"
   },
   "gr_gurme-mutfak-ev-yemekleri-100": {
     "lat": null,
@@ -2244,7 +2781,9 @@
   "gr_gurme-izmir-kumrucusu-iskenderpasa-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İskenderpaşa",
+    "dist": null
   },
   "gr_golgeyele-bistro-osmaniye-mah-bakirkoy": {
     "lat": null,
@@ -2254,17 +2793,23 @@
   "gr_gonenli-ciftligi-basaksehir-2-kisim": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "2.Kısım",
+    "dist": "Başakşehir"
   },
   "gr_gorgulu-fenerbahce-mah-kadikoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Fenerbahçe",
+    "dist": null
   },
   "gr_gorgulu-pastanesi-acibadem-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Acıbadem",
+    "dist": null
   },
   "gr_gorgulu-pastanesi-goztepe-mah-kadikoy": {
     "lat": null,
@@ -2274,22 +2819,30 @@
   "gr_gozde-kebap-gaziantep-mutfagi-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_gozleme-koy-kadikoy-hasanpasa-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Hasanpaşa",
+    "dist": "Kadıköy"
   },
   "gr_gozlemeye-manti-ve-gozleme-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Selimiye",
+    "dist": "Üsküdar"
   },
   "gr_goztepe-borek-pide-cafe-goztepe": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Göztepe",
+    "dist": null
   },
   "gr_goztepe-firin-goztepe-mah-kadikoy": {
     "lat": null,
@@ -2299,32 +2852,44 @@
   "gr_gocmen-artisan-bakery-bereketzade-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bereketzade",
+    "dist": null
   },
   "gr_gocmen-artisan-bakery-tesvikiye-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Teşvikiye",
+    "dist": null
   },
   "gr_gulluoglu-atasehir-kucukbakkalkoy-mah-atasehi": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Küçükbakkalköy",
+    "dist": null
   },
   "gr_gun-bakery-sinanpasa-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sinanpaşa",
+    "dist": null
   },
   "gr_gunaydin-kofte-doner-maslak-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_gunduzoglu-baklavalari-cumhuriyet-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_gunduzoglu-baklavalari-sariyer-merkez-mah": {
     "lat": null,
@@ -2339,7 +2904,9 @@
   "gr_guneli-unlu-mamuller-gunesli-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güneşli",
+    "dist": null
   },
   "gr_guneydogu-pide-lahmacun-nisanca-mah": {
     "lat": null,
@@ -2349,7 +2916,9 @@
   "gr_gunes-kahvalti-evi-esentepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Esentepe",
+    "dist": null
   },
   "gr_gungoren-pide-borek-salonu-akincilar": {
     "lat": null,
@@ -2359,22 +2928,30 @@
   "gr_guven-tadal-unlu-mamulleri-nurtepe": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Nurtepe",
+    "dist": null
   },
   "gr_hsb-sariyer-borekcisi-dumlupinar-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Dumlupınar",
+    "dist": null
   },
   "gr_haci-olabi-molla-gurani-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Molla Gürani",
+    "dist": null
   },
   "gr_haci-sayid-esenyurt-cumhuriyet-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": "Esenyurt"
   },
   "gr_haciosman-esnaf-corbacisi-pinar-mah": {
     "lat": null,
@@ -2384,12 +2961,16 @@
   "gr_hafif-ol-diyet-yemek-servisi": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şenlikköy",
+    "dist": null
   },
   "gr_hafiz-usta-gunesli-mah-bagcilar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güneşli",
+    "dist": null
   },
   "gr_hafiz-usta-baklava-borek-lokum": {
     "lat": null,
@@ -2399,7 +2980,9 @@
   "gr_hakiki-sariyer-kosuyolu-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Koşuyolu",
+    "dist": null
   },
   "gr_hakki-karakas-manti-esentepe-mah": {
     "lat": null,
@@ -2409,42 +2992,58 @@
   "gr_hakkiogullari-corbacisi-gungoren-merkez-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": "Güngören"
   },
   "gr_hakkizade-hafiz-mustafa-1864-harbiye": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Harbiye",
+    "dist": null
   },
   "gr_halef-tatli-tesvikiye-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Teşvikiye",
+    "dist": null
   },
   "gr_hamitbey-baklava-borek-bahcelievler-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_han-restaurant-merkez-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
   },
   "gr_hanzade-baklava-sutlu-tatli-sirinevler": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şirinevler",
+    "dist": null
   },
   "gr_hanzade-kelle-paca-doner-kebap": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Üniversite",
+    "dist": null
   },
   "gr_hanimeller-gozleme-evi-beylikduzu-cumhuriyet": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": "Beylikdüzü"
   },
   "gr_harika-bi-waffle-tost-fatih": {
     "lat": null,
@@ -2454,7 +3053,9 @@
   "gr_harman-coffe-shop-besiktas-sinanpasa": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sinanpaşa",
+    "dist": "Beşiktaş"
   },
   "gr_harput-koz-pide-lahmacun-hasanpasa": {
     "lat": null,
@@ -2464,7 +3065,9 @@
   "gr_harun-ustanin-gozlemesi-kucuk-piyale": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Küçük Piyale",
+    "dist": null
   },
   "gr_has-diyar-ocakbasi-yesilkent-mah": {
     "lat": null,
@@ -2479,22 +3082,30 @@
   "gr_has-sehr-i-yar-restaurant": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sultaniye",
+    "dist": null
   },
   "gr_has-sehriyar-sultaniye-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sultaniye",
+    "dist": null
   },
   "gr_haseki-pilavcisi-fatih-cerrahpasa-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cerrahpaşa",
+    "dist": "Fatih"
   },
   "gr_haskoy-sariyer-borekcisi-piripasa-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Piripaşa",
+    "dist": ""
   },
   "gr_hatay-dokunuslu-doner-bostan-mah": {
     "lat": null,
@@ -2509,7 +3120,9 @@
   "gr_hatay-tatlicisi-ikizler-yedikule-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yedikule",
+    "dist": null
   },
   "gr_hatay-ye-doner-maresal-cakmak": {
     "lat": null,
@@ -2519,7 +3132,9 @@
   "gr_hatayli-baklavaci-nuroglu-cibali-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cibali",
+    "dist": null
   },
   "gr_hayri-usta-ev-yemekleri-visnezade": {
     "lat": null,
@@ -2529,22 +3144,30 @@
   "gr_healin-tesvikiye-mah-sisli-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Teşvikiye",
+    "dist": null
   },
   "gr_healthy-cafe-merdivenkoy-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merdivenköy",
+    "dist": null
   },
   "gr_heap-stuff-etiler-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Etiler",
+    "dist": null
   },
   "gr_heap-stuff-istinye-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İstinye",
+    "dist": null
   },
   "gr_hekim-usta-sariyer-huzur-mah": {
     "lat": null,
@@ -2579,7 +3202,9 @@
   "gr_helvaci-ali-duatepe-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Duatepe",
+    "dist": null
   },
   "gr_hero-s-pizza-mehtercesme-mah": {
     "lat": null,
@@ -2589,7 +3214,9 @@
   "gr_hero-s-pizza-telsiz-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Telsiz",
+    "dist": null
   },
   "gr_hero-s-pizza-sirinevler-mah": {
     "lat": null,
@@ -2604,27 +3231,35 @@
   "gr_hirado-eriste-noodle-cevizli-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cevizli",
+    "dist": null
   },
   "gr_hiram-tantuni-kagithane-gultepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gültepe",
+    "dist": "Kağıthane"
   },
   "gr_hiroshi-sushi-yenibosna-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yenibosna",
+    "dist": null
   },
   "gr_hisar-bufe-mecidiyekoy-mah-buyukdere": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_hivda-borek-merkez-mah-kagithane": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
   },
   "gr_hop-burger-kagithane-seyrantepe-mah": {
     "lat": 41.0968122,
@@ -2665,12 +3300,16 @@
   "gr_hunkar-kir-pidesi-borek-mimar": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mimar Sinan",
+    "dist": null
   },
   "gr_ico-s-sweet-factory-barbaros": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Barbaros Hayrettin Paşa",
+    "dist": null
   },
   "gr_izgara-box-senlikkoy-mah-bakirkoy": {
     "lat": 40.9811494,
@@ -2723,7 +3362,7 @@
   "gr_kadayifzade-maltepe-mah-cevizlibag-zeytinburn": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_kadikoy-merkez-borekcisi-caferaga-mah": {
     "lat": 40.9850403,
@@ -2746,22 +3385,30 @@
   "gr_kahvalti-manti-gozleme-evi-havaalani": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Havaalanı",
+    "dist": null
   },
   "gr_kahvalti-duragi-mustafa-kemal-pasa": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mustafa Kemal Paşa",
+    "dist": null
   },
   "gr_kahvalti-duragi-gungoren-marasel-cakmak": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maraşel Çakmak",
+    "dist": "Güngören"
   },
   "gr_kahve-dunyasi-19-mayis-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "19 Mayıs",
+    "dist": null
   },
   "gr_kahve-dunyasi-acibadem-mah-uskudar": {
     "lat": null,
@@ -2771,62 +3418,84 @@
   "gr_kahve-dunyasi-alibeykoy-mah-eyupsultan": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Alibeyköy",
+    "dist": null
   },
   "gr_kahve-dunyasi-atakoy-5-kisim": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ataköy 5.Kısım",
+    "dist": null
   },
   "gr_kahve-dunyasi-bahcelievler-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_kahve-dunyasi-bagcilar-goztepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bağcılar Göztepe",
+    "dist": null
   },
   "gr_kahve-dunyasi-basaksehir-1-kisim": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Başakşehir 1. Kısım",
+    "dist": null
   },
   "gr_kahve-dunyasi-fenerbahce-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Fenerbahçe",
+    "dist": null
   },
   "gr_kahve-dunyasi-gunesli-mah-bagcilar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güneşli",
+    "dist": null
   },
   "gr_kahve-dunyasi-guzelbahce-sk-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_kahve-dunyasi-harbiye-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Harbiye",
+    "dist": null
   },
   "gr_kahve-dunyasi-kartaltepe-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
   },
   "gr_kahve-dunyasi-tesvikiye-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Teşvikiye",
+    "dist": null
   },
   "gr_kahve-dunyasi-visnezade-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Vişnezade",
+    "dist": null
   },
   "gr_kahve-dunyasi-yenimahalle-mah-bagcilar": {
     "lat": null,
@@ -2836,12 +3505,16 @@
   "gr_kahve-dunyasi-yesilkent-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yeşilkent",
+    "dist": null
   },
   "gr_kahve-dunyasi-omer-avni-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ömer Avni",
+    "dist": null
   },
   "gr_kahve-dunyasi-algotur-dikilitas-mah": {
     "lat": null,
@@ -2851,7 +3524,7 @@
   "gr_kahve-dunyasi-algotur-tesvikiye-cad": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_kahve6-tavuk-wrap-aksaray-mah": {
     "lat": null,
@@ -2861,32 +3534,44 @@
   "gr_kanatci-ayda-zuhuratbaba-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zuhuratbaba",
+    "dist": ""
   },
   "gr_kanyon-waffle-kagithane-gultepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gültepe",
+    "dist": "Kağıthane"
   },
   "gr_kaptan-sarisakal-burger-bahcelievler-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_karadeniz-pide-rasimpasa-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Rasimpaşa",
+    "dist": null
   },
   "gr_karafirin-esentepe-mah-sisli-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Esentepe",
+    "dist": null
   },
   "gr_karafirin-hasanpasa-mah-kadikoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Hasanpaşa",
+    "dist": null
   },
   "gr_kardesler-iskembe-sancaktepe-mah-bagcilar": {
     "lat": null,
@@ -2896,57 +3581,77 @@
   "gr_katibe-hanim-ev-yemekleri-rasimpasa": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Rasimpaşa",
+    "dist": null
   },
   "gr_katibo-pilav-midye-cumhuriyet-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_katibo-cig-kofte-cumhuriyet-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_kava-coffee-la-fiancee-bakery": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Hacımimi",
+    "dist": null
   },
   "gr_kazim-bufe-yildiz-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yıldız",
+    "dist": null
   },
   "gr_kasibeyaz-agazaga-mah-vadi-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_kebap-ci-mecidiyekoy-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mecidiyeköy",
+    "dist": null
   },
   "gr_kebapci-bedri-usta-beyoglu-arap": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Arap Cami",
+    "dist": "Beyoğlu"
   },
   "gr_kebapci-kazim-maslak-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_kebapci-ibo-sisli-inonu-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İnönü",
+    "dist": "Şişli"
   },
   "gr_kebbabi-kebap-ciger-lahmacun-maltepe": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maltepe",
+    "dist": null
   },
   "gr_kebo-beyoglu-camiikebir-mah-beyoglu": {
     "lat": null,
@@ -2961,22 +3666,30 @@
   "gr_kekik-huzur-mah-sariyer-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Huzur",
+    "dist": null
   },
   "gr_kekik-maslak-mah-sariyer-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_kemal-bufe-ikitelli-osb-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İkitelli Osb",
+    "dist": null
   },
   "gr_kervan-borek-guven-mah-gungoren": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güven",
+    "dist": null
   },
   "gr_kimyon-hatay-doner-bagcilar-hurriyet": {
     "lat": null,
@@ -2986,17 +3699,23 @@
   "gr_kirecburnu-firini-kirecburnu-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kireçburnu",
+    "dist": null
   },
   "gr_klar-coffee-co-fenerbahce-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Fenerbahçe",
+    "dist": null
   },
   "gr_komagene-etsiz-cig-kofte-gunesli": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güneşli",
+    "dist": null
   },
   "gr_komagene-etsiz-cig-kofte-hurriyet": {
     "lat": null,
@@ -3006,7 +3725,9 @@
   "gr_komagene-etsiz-cig-kofte-kaptanpasa": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kaptanpaşa",
+    "dist": null
   },
   "gr_komagene-etsiz-cig-kofte-konaklar": {
     "lat": null,
@@ -3016,47 +3737,65 @@
   "gr_konak-kartaltepe-mah-bakirkoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
   },
   "gr_konak-lokantasi-zeytinburnu-maltepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maltepe",
+    "dist": "Zeytinburnu"
   },
   "gr_konak-pastahanesi-inonu-mah-kucukcekmece": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İnönü",
+    "dist": null
   },
   "gr_konak-pide-pizza-borek-menderes": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Menderes",
+    "dist": null
   },
   "gr_konoha-sushi-chinese-restaurant-maslak": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_konteyner-fast-food-gungoren-maresal": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mareşal Çakmak",
+    "dist": "Güngören"
   },
   "gr_kontrbus-coffee-co-kosuyolu-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Koşuyolu",
+    "dist": null
   },
   "gr_konya-mevlana-bahcelievler-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_konyali-ferdi-usta-mecidiye-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mecidiye",
+    "dist": null
   },
   "gr_konyalim-etli-ekmek-altintepe-mah": {
     "lat": null,
@@ -3066,47 +3805,69 @@
   "gr_kovan-firin-caglayan-mah-kagithane": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Çağlayan",
+    "dist": null
   },
   "gr_koc-doner-ferikoy-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Feriköy",
+    "dist": null
   },
   "gr_koclar-pide-ve-borek-salonu": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Hasanpaşa",
+    "dist": null
   },
   "gr_kosuyolu-manti-kosuyolu-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Koşuyolu",
+    "dist": null
   },
   "gr_kosuyolu-sariyer-borekcisi-kosuyolu-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Koşuyolu",
+    "dist": null
   },
   "gr_krispy-kreme-19-mayis-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.977008,
+    "lng": 29.0894372,
+    "src": "nominatim_v2",
+    "q": "19 Mayıs, İstanbul, Türkiye",
+    "nbhd": "19 Mayıs",
+    "dist": null
   },
   "gr_kristal-pilic-cevirme-goztepe-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9787185,
+    "lng": 29.0666827,
+    "src": "nominatim_v2",
+    "q": "Göztepe Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Göztepe",
+    "dist": null
   },
   "gr_kronotrop-fisekhane-eatery-kazlicesme-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9881118,
+    "lng": 28.9093458,
+    "src": "nominatim_v2",
+    "q": "Kazlıçeşme Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Kazlıçeşme",
+    "dist": null
   },
   "gr_kuba-pasta-cafe-restaurant-feneryolu": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 40.9820722,
+    "lng": 29.0499435,
+    "src": "nominatim_v2",
+    "q": "Feneryolu Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Feneryolu",
+    "dist": null
   },
   "gr_kulunkoglu-unlu-mamulleri-mecidiyekoy-mah": {
     "lat": null,
@@ -3114,14 +3875,20 @@
     "src": "geocode_failed"
   },
   "gr_kumrucu-ziya-guzelyurt-mah-esenyurt": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0105887,
+    "lng": 28.6655614,
+    "src": "nominatim_v2",
+    "q": "Güzelyurt Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Güzelyurt",
+    "dist": null
   },
   "gr_kuzey-bufe-aksemsettin-mah-fatih": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0188839,
+    "lng": 28.9460241,
+    "src": "nominatim_v2",
+    "q": "Akşemsettin Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Akşemsettin",
+    "dist": null
   },
   "gr_kugu-pastaneleri-caddebostan-mah-kadikoy": {
     "lat": null,
@@ -3129,24 +3896,36 @@
     "src": "geocode_failed"
   },
   "gr_kusgozu-lahmacun-sariyer-maslak-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.1099991,
+    "lng": 29.020591,
+    "src": "nominatim_v2",
+    "q": "Maslak Mahallesi, Sarıyer, İstanbul, Türkiye",
+    "nbhd": "Maslak",
+    "dist": "Sarıyer"
   },
   "gr_kofte-yiyelim-cumhuriyet-mah-beylikduzu": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9967292,
+    "lng": 28.7712054,
+    "src": "nominatim_v2",
+    "q": "Cumhuriyet Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_kofteci-muderris-usta-maslak-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.1099991,
+    "lng": 29.020591,
+    "src": "nominatim_v2",
+    "q": "Maslak Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_kofteci-muderris-usta-nisbetiye-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.071211,
+    "lng": 29.0238195,
+    "src": "nominatim_v2",
+    "q": "Nisbetiye Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Nisbetiye",
+    "dist": null
   },
   "gr_kofteci-ramiz-acibadem-mah-tepe": {
     "lat": null,
@@ -3154,84 +3933,118 @@
     "src": "no_district"
   },
   "gr_kofteci-ramiz-goztepe-mah-esenler": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9787185,
+    "lng": 29.0666827,
+    "src": "nominatim_v2",
+    "q": "Göztepe Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Göztepe",
+    "dist": null
   },
   "gr_kofteci-yasar-osmangazi-mah-esenyurt": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0415514,
+    "lng": 28.6458279,
+    "src": "nominatim_v2",
+    "q": "Osmangazi Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Osmangazi",
+    "dist": null
   },
   "gr_kofteci-yusuf-15-temmuz-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0379107,
+    "lng": 28.8195277,
+    "src": "nominatim_v2",
+    "q": "15 Temmuz Mahallesi, İstanbul, Türkiye",
+    "nbhd": "15 Temmuz",
+    "dist": null
   },
   "gr_kofteci-yusuf-baglar-mah-bagcilar": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0228866,
+    "lng": 28.8248289,
+    "src": "nominatim_v2",
+    "q": "Bağlar Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Bağlar",
+    "dist": null
   },
   "gr_kofteci-yusuf-genc-osman-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Genç Osman",
+    "dist": null
   },
   "gr_kofteci-yusuf-goztepe-mah-bagcilar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Göztepe",
+    "dist": null
   },
   "gr_kofteci-yusuf-guzelyurt-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güzelyurt",
+    "dist": null
   },
   "gr_kofteci-yusuf-zafer-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zafer",
+    "dist": null
   },
   "gr_kofteci-yusuf-zuhtupasa-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zühtüpaşa",
+    "dist": null
   },
   "gr_kofteci-yusuf-bahcelievler-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": ""
   },
   "gr_koroglu-senlikkoy-mah-florya-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_koroglu-doner-senlikoy-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şenliköy",
+    "dist": null
   },
   "gr_koroglu-kebap-senlikkoy-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şenlikköy",
+    "dist": null
   },
   "gr_koroglu-pide-lahmacun-senlikkoy-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şenlikköy",
+    "dist": null
   },
   "gr_koroglu-corba-bakirkoy-senlikoy-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şenliköy",
+    "dist": "Bakırköy"
   },
   "gr_koroglu-iskembecisi-beyoglu-mueyyedzade-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Müeyyedzade",
+    "dist": "Beyoğlu"
   },
   "gr_koyluce-acibadem-mah-kadikoy-istanbul": {
     "lat": null,
@@ -3241,32 +4054,44 @@
   "gr_kozlet-besiktas-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Nisbetiye",
+    "dist": null
   },
   "gr_kose-burger-fatih-seyyid-omer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyyid Ömer",
+    "dist": "Fatih"
   },
   "gr_kosebasi-kebap-levent-mah-besiktas": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Levent",
+    "dist": null
   },
   "gr_kosebasi-kebap-istinye-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İstinye",
+    "dist": null
   },
   "gr_kosem-bufe-ferikoy-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Feriköy",
+    "dist": null
   },
   "gr_kosem-tost-seyyid-omer-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyyid Ömer",
+    "dist": ""
   },
   "gr_koskeroglu-firuzaga-mah-beyoglu-istanbul": {
     "lat": null,
@@ -3281,7 +4106,9 @@
   "gr_koskeroglu-fatih-ayvansaray-mah-fatih": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ayvansaray",
+    "dist": "Fatih"
   },
   "gr_kirk-tabak-sehremini-mah-capa": {
     "lat": null,
@@ -3291,17 +4118,23 @@
   "gr_kirinti-unlu-mamuller-cafe-ornek": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Örnek",
+    "dist": null
   },
   "gr_la-patisserie-elegante-bahcelievler-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_la-vita-maslak-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_la-vita-patisserie-tesvikiye-mah": {
     "lat": null,
@@ -3311,7 +4144,9 @@
   "gr_lahmacun-cu-fulya-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Fulya",
+    "dist": null
   },
   "gr_lahpimadecun-eyupsultan-emniyettepe-mah-eyups": {
     "lat": null,
@@ -3321,12 +4156,16 @@
   "gr_lale-gozleme-ve-manti-evi": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yenibosna Merkez",
+    "dist": null
   },
   "gr_lale-lokantasi-piripasa-mah-beyoglu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Piripaşa",
+    "dist": null
   },
   "gr_lesloness-bakirkoy-osmaniye-mah-bakirkoy": {
     "lat": null,
@@ -3336,17 +4175,23 @@
   "gr_let-s-salad-maresal-cakmak": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mareşal Çakmak",
+    "dist": null
   },
   "gr_levent-borek-atakoy-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ataköy",
+    "dist": null
   },
   "gr_levent-borek-bostanci-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bostancı",
+    "dist": null
   },
   "gr_levent-borek-halaskargazi-mah-sisli": {
     "lat": null,
@@ -3356,42 +4201,58 @@
   "gr_levent-borek-mimar-sinan-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mimar Sinan",
+    "dist": null
   },
   "gr_leyla-anne-ev-yemekleri-esentepe": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Esentepe",
+    "dist": null
   },
   "gr_leyla-anne-ev-yemekleri-maresal": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mareşal Çakmak",
+    "dist": null
   },
   "gr_lezzet-borek-mevlana-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mevlana",
+    "dist": null
   },
   "gr_lezzet-borek-pide-esenkent-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Esenkent",
+    "dist": null
   },
   "gr_lezzet-i-erenkoy-erenkoy-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Erenköy",
+    "dist": null
   },
   "gr_limos-pizza-sirinevler-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şirinevler",
+    "dist": null
   },
   "gr_linlin-kitchen-ayazaga-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ayazağa",
+    "dist": null
   },
   "gr_little-caesars-pizza-silahsor-cad": {
     "lat": null,
@@ -3411,87 +4272,117 @@
   "gr_lokanta-bes-atakoy-mah-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Ataköy",
+    "dist": null
   },
   "gr_lu-shangdong-mutfagi-maltepe-cevizli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cevizli",
+    "dist": "Maltepe"
   },
   "gr_moc-cumhuriyet-mah-sisli-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_mado-atakoy-6-kisim-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_mado-atakoy-9-kisim-bakirkoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_mado-haseki-sultan-mah-fatih": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Haseki Sultan",
+    "dist": null
   },
   "gr_mado-maltepe-mah-zeytinburnu-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maltepe",
+    "dist": null
   },
   "gr_mado-inonu-mah-bagcilar-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İnönü",
+    "dist": null
   },
   "gr_mag-world-kagithane-seyrantepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyrantepe",
+    "dist": "Kağıthane"
   },
   "gr_mahallemin-ekmegi-artisan-bakery-goztepe": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Göztepe",
+    "dist": null
   },
   "gr_maipo-pizza-barbaros-hayrettin-pasa": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Barbaros Hayrettin Paşa",
+    "dist": null
   },
   "gr_makarizza-cafe-food-seyyid-omer": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyyid Ömer",
+    "dist": null
   },
   "gr_makarnabox-maltepe-mah-zeytinburnu-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maltepe",
+    "dist": null
   },
   "gr_mamy-s-burger-sepeti-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_manolya-pastanesi-bostanci-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bostancı",
+    "dist": null
   },
   "gr_manolya-pastanesi-senesenevler-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şenesenevler",
+    "dist": null
   },
   "gr_manolya-pastanesi-atasehir-icerenkoy-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İçerenköy",
+    "dist": "Ataşehir"
   },
   "gr_mantici-yakup-fulya-mah-besiktas": {
     "lat": null,
@@ -3511,12 +4402,16 @@
   "gr_marmaris-53-cumhuriyet-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_marmaris-bufe-1964-kartaltepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
   },
   "gr_marmaris-bufe-1964-koza-mah": {
     "lat": null,
@@ -3526,7 +4421,9 @@
   "gr_marmaris-bufe-fatih-iskenderpasa-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İskenderpaşa",
+    "dist": "Fatih"
   },
   "gr_maslak-bi-tantuni-sariyer-maslak": {
     "lat": null,
@@ -3536,17 +4433,23 @@
   "gr_master-salad-maslak-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_mawi-cafe-merkez-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
   },
   "gr_maydanoz-mutfak-cerrahpasa-mah-fatih": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cerrahpaşa",
+    "dist": null
   },
   "gr_maydanoz-mutfak-sehremini-mah-fatih": {
     "lat": null,
@@ -3556,7 +4459,9 @@
   "gr_maydonoz-doner-aksaray-mah-fatih": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Aksaray",
+    "dist": null
   },
   "gr_maydonoz-doner-bozkurt-mah-sisli": {
     "lat": null,
@@ -3566,7 +4471,9 @@
   "gr_maydonoz-doner-sancaktepe-mah-bagcilar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sancaktepe",
+    "dist": null
   },
   "gr_maydonoz-doner-caglayan-mah-kagithane": {
     "lat": null,
@@ -3581,7 +4488,9 @@
   "gr_maydonoz-doner-iskenderpasa-mah-fatih": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İskenderpaşa",
+    "dist": null
   },
   "gr_maydonoz-doner-zeytinburnu-maltepe-mah": {
     "lat": null,
@@ -3591,57 +4500,71 @@
   "gr_mcdonald-s-altunizade-mah-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Altunizade",
+    "dist": null
   },
   "gr_mcdonald-s-bahcelievler-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
   },
   "gr_mcdonald-s-ebu-ziya-cad": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_mcdonald-s-gokalp-mah-zeytinburnu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gökalp",
+    "dist": null
   },
   "gr_mcdonald-s-guven-mah-gungoren": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güven",
+    "dist": null
   },
   "gr_mcdonald-s-kennedy-cad-fatih": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_mcdonald-s-mahmutbey-mah-bagcilar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mahmutbey",
+    "dist": null
   },
   "gr_mcdonald-s-mehmet-akif-ersoy": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_mcdonald-s-sehremini-mah-fatih": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Şehremini",
+    "dist": null
   },
   "gr_mcdonalds-mccafe-mehmet-akif-ersoy": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "no_hood_in_name"
   },
   "gr_meat-burger-gurme-mutfak-maslak": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_meat-burger-gurme-mutfak-sariyer": {
     "lat": null,
@@ -3651,32 +4574,44 @@
   "gr_mecburiyet-koftecisi-maslak-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_medipoint-wellness-merdivenkoy-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merdivenköy",
+    "dist": null
   },
   "gr_mehmet-oglu-baklavalari-kagithane-seyrantepe": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyrantepe",
+    "dist": "Kağıthane"
   },
   "gr_mehmet-usta-pide-lahmacun-salonu": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Fevzi Çakmak",
+    "dist": null
   },
   "gr_mekan-bufe-sariyer-maslak-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": "Sarıyer"
   },
   "gr_melekler-lokantasi-beyoglu-firuzaga-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Firuzağa",
+    "dist": "Beyoğlu"
   },
   "gr_melisa-s-bowl-sisli-halaskargazi": {
     "lat": null,
@@ -3696,32 +4631,44 @@
   "gr_merdanem-borek-cumhuriyet-mah-esenyurt": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_merdanem-borek-cafe-esenyurt-gokevler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Gökevler",
+    "dist": "Esenyurt"
   },
   "gr_merhaba-pide-lahmacun-salonu-gungoren": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Haznedar",
+    "dist": "Güngören"
   },
   "gr_mersin-yaprak-tantuni-19-mayis": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "19 Mayıs",
+    "dist": null
   },
   "gr_mersin-yaprak-tantuni-huzur-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Huzur",
+    "dist": null
   },
   "gr_mes-sandwich-huseyinaga-mah-beyoglu": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Hüseyinağa",
+    "dist": null
   },
   "gr_mevlana-baki-pide-bagcilar-15": {
     "lat": null,
@@ -3778,12 +4725,16 @@
   "gr_meshur-rio-3-tulumba-alibeykoy": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Alibeyköy",
+    "dist": null
   },
   "gr_meshur-sariyer-borek-gurme-zafer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zafer",
+    "dist": null
   },
   "gr_meshur-sariyer-borek-ve-pide": {
     "lat": 41.1154838,
@@ -3854,22 +4805,28 @@
   "gr_meshur-sariyer-borekcisi-yenimahalle-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Yenimahalle",
+    "dist": null
   },
   "gr_meshur-sariyer-borekcisi-sehitler-cad": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "no_hood_in_name"
   },
   "gr_meshur-sariyer-borekcisi-baris-usta": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Merdivenköy",
+    "dist": ""
   },
   "gr_meshur-sariyer-borekcisi-pide-pizza": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mareşal Çakmak",
+    "dist": null
   },
   "gr_meshur-sariyer-borekcisi-zeren-cafe": {
     "lat": null,
@@ -3879,17 +4836,23 @@
   "gr_meshur-sariyer-borekcisi-bahcelievler-soganli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Soğanlı",
+    "dist": "Bahçelievler"
   },
   "gr_meshur-sariyer-borekcisi-beylikduzu-baris": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Barış",
+    "dist": "Beylikdüzü"
   },
   "gr_meshur-sariyer-borekcisi-fatih-topkapi": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Topkapı",
+    "dist": "Fatih"
   },
   "gr_meshur-sariyer-borekcisi-gungoren-gencosman": {
     "lat": null,
@@ -3919,12 +4882,16 @@
   "gr_meshur-tarihi-balkan-tulumba-alibeykoy": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Alibeyköy",
+    "dist": null
   },
   "gr_meshur-unkapani-pilavcisi-celiktepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Çeliktepe",
+    "dist": null
   },
   "gr_meshur-unkapani-pilavcisi-salih-usta": {
     "lat": null,
@@ -3934,7 +4901,9 @@
   "gr_meshur-unkapani-pilavcisi-fatih-aksemsettin": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Akşemsettin",
+    "dist": "Fatih"
   },
   "gr_meshur-unkapani-imc-pilavcisi-firat": {
     "lat": null,
@@ -3944,7 +4913,9 @@
   "gr_meshur-celiktepe-pilavcisi-celiktepe-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Çeliktepe",
+    "dist": null
   },
   "gr_meshur-istanbul-pilavcisi-bahcelievler-soganl": {
     "lat": null,
@@ -3959,12 +4930,16 @@
   "gr_mikel-coffee-fatih-aksaray-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Aksaray",
+    "dist": "Fatih"
   },
   "gr_milano-pizza-maslak-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_mis-firin-merkez-mah-sisli": {
     "lat": null,
@@ -3974,22 +4949,30 @@
   "gr_missvanilaa-profiterol-kartaltepe-mah-bakirko": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
   },
   "gr_miyabi-sushi-japanese-grill-akat": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Akat",
+    "dist": null
   },
   "gr_mochi-japon-tatlisi-cevizli-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cevizli",
+    "dist": null
   },
   "gr_moda-sandwich-sisli-mesrutiyet-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Meşrutiyet",
+    "dist": "Şişli"
   },
   "gr_mogaf-hatay-doner-bahcelievler-kocasinan": {
     "lat": null,
@@ -4034,77 +5017,107 @@
   "gr_molasera-zeytinlik-mah-bakirkoy-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Zeytinlik",
+    "dist": null
   },
   "gr_moncai-bubble-tea-osmanaga-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Osmanağa",
+    "dist": null
   },
   "gr_monomu-burger-fatih-sultan-mehmet": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Fatih Sultan Mehmet",
+    "dist": null
   },
   "gr_moonberry-coffee-sisli-cumhuriyet-mah": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": "Şişli"
   },
   "gr_more-than-waffle-kagithane-seyrantepe": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyrantepe",
+    "dist": "Kağıthane"
   },
   "gr_morn-kadikoy-osmanaga-mah-kadikoy": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Osmanağa",
+    "dist": null
   },
   "gr_morning-people-istinye-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İstinye",
+    "dist": null
   },
   "gr_mr-hamza-maslak-mah-sariyer": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
   },
   "gr_muffuletta-cumhuriyet-mah-beylikduzu-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
   },
   "gr_muffuletta-istinye-mah-sariyer-istanbul": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "İstinye",
+    "dist": null
   },
   "gr_mumuwich-bahcelievler-siyavuspasa-mah-bahceli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Siyavuşpaşa",
+    "dist": "Bahçelievler"
   },
   "gr_munchies-kumru-soganli-mah-bahcelievler": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Soğanlı",
+    "dist": null
   },
   "gr_munzur-kahvalti-ve-gozleme-salonu": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Sancaktepe",
+    "dist": null
   },
   "gr_murat-muhallebi-altunizade-mah-uskudar": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Altunizade",
+    "dist": null
   },
   "gr_murat-muhallebi-mecidiyekoy-mah-sisli": {
     "lat": null,
     "lng": null,
-    "src": "geocode_failed"
+    "src": "geocode_failed_v2",
+    "nbhd": "Mecidiyeköy",
+    "dist": null
   },
   "gr_must-bowl-maresal-cakmak-mah": {
     "lat": null,
@@ -4134,7 +5147,9 @@
   "gr_my-home-my-kitchen-guzelyurt": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Güzelyurt",
+    "dist": null
   },
   "gr_muhruhan-zeytinburnu-maltepe-mah-zeytinburnu": {
     "lat": null,
@@ -4144,12 +5159,17 @@
   "gr_mirra-kahvalti-salonu-seyyid-omer": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyyid Ömer",
+    "dist": null
   },
   "gr_nalia-karadeniz-mutfagi-mahmutbey-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0559744,
+    "lng": 28.8245305,
+    "src": "nominatim_v2",
+    "q": "Mahmutbey Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Mahmutbey",
+    "dist": null
   },
   "gr_namli-gurme-karakoy-kemankes-karamustafapasa": {
     "lat": null,
@@ -4157,19 +5177,28 @@
     "src": "no_district"
   },
   "gr_namli-sariyer-borek-guvec-bestelsiz": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9994868,
+    "lng": 28.9045024,
+    "src": "nominatim_v2",
+    "q": "Beştelsiz Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Beştelsiz",
+    "dist": null
   },
   "gr_namli-sariyer-bufe-mahmutbey-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0559744,
+    "lng": 28.8245305,
+    "src": "nominatim_v2",
+    "q": "Mahmutbey Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Mahmutbey",
+    "dist": null
   },
   "gr_nasip-pide-lahmacun-kocasinan-merkez": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0170357,
+    "lng": 28.8419751,
+    "src": "nominatim_v2",
+    "q": "Kocasinan Merkez Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Kocasinan Merkez",
+    "dist": null
   },
   "gr_naturella-waffle-esenyurt-zafer-mah": {
     "lat": null,
@@ -4177,49 +5206,76 @@
     "src": "geocode_failed"
   },
   "gr_nazar-kelle-paca-sisli-mecidiyekoy": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0700421,
+    "lng": 28.9962529,
+    "src": "nominatim_v2",
+    "q": "Mecidiyeköy Mahallesi, Şişli, İstanbul, Türkiye",
+    "nbhd": "Mecidiyeköy",
+    "dist": "Şişli"
   },
   "gr_nazar-pastanesi-mustafa-bogaz-duatepe": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0534185,
+    "lng": 28.9807907,
+    "src": "nominatim_v2",
+    "q": "Duatepe Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Duatepe",
+    "dist": null
   },
   "gr_nazar-profiterol-feneryolu-mah-kadikoy": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9820722,
+    "lng": 29.0499435,
+    "src": "nominatim_v2",
+    "q": "Feneryolu Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Feneryolu",
+    "dist": null
   },
   "gr_nepenthe-patisserie-cafe-maden-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.1817996,
+    "lng": 29.0379835,
+    "src": "nominatim_v2",
+    "q": "Maden Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Maden",
+    "dist": ""
   },
   "gr_netuna-altunizade-mah-uskudar-istanbul": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0183509,
+    "lng": 29.0442444,
+    "src": "nominatim_v2",
+    "q": "Altunizade Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Altunizade",
+    "dist": null
   },
   "gr_nevada-coffee-barbaros-hayrettin-pasa": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0182515,
+    "lng": 28.6414475,
+    "src": "nominatim_v2",
+    "q": "Barbaros Hayrettin Paşa Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Barbaros Hayrettin Paşa",
+    "dist": null
   },
   "gr_nevzat-sen-naturel-ev-lezzetleri": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 41.0138832,
+    "lng": 28.9327162,
+    "src": "nominatim_v2",
+    "q": "Şehremini Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Şehremini",
+    "dist": null
   },
   "gr_nesvenext-bahcesehir-2-kisim-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0621453,
+    "lng": 28.6875973,
+    "src": "nominatim_v2",
+    "q": "2. Kısım Mahallesi, Bahçeşehir, İstanbul, Türkiye",
+    "nbhd": "2. Kısım",
+    "dist": "Bahçeşehir"
   },
   "gr_nice-to-fit-you-senlikkoy": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 40.9811494,
+    "lng": 28.7951449,
+    "src": "nominatim_v2",
+    "q": "Şenlikköy Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Şenlikköy",
+    "dist": null
   },
   "gr_nich-cafe-fatih-seyyid-omer": {
     "lat": null,
@@ -4227,29 +5283,43 @@
     "src": "geocode_failed"
   },
   "gr_nil-cafe-restoran-fatih-koca": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 40.9996863,
+    "lng": 28.9312607,
+    "src": "nominatim_v2",
+    "q": "Koca Mustafapaşa Mahallesi, Fatih, İstanbul, Türkiye",
+    "nbhd": "Koca Mustafapaşa",
+    "dist": "Fatih"
   },
   "gr_nish-waffle-atelier-19-mayis": {
-    "lat": null,
-    "lng": null,
-    "src": "no_district"
+    "lat": 40.977008,
+    "lng": 29.0894372,
+    "src": "nominatim_v2",
+    "q": "19 Mayıs Mahallesi, İstanbul, Türkiye",
+    "nbhd": "19 Mayıs",
+    "dist": null
   },
   "gr_nisantasi-sultanahmet-izgara-mesrutiyet-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.158806,
+    "lng": 29.562439,
+    "src": "nominatim_v2",
+    "q": "Meşrutiyet Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Meşrutiyet",
+    "dist": null
   },
   "gr_no-159-coffee-acibadem-mah": {
-    "lat": null,
-    "lng": null,
-    "src": "geocode_failed"
+    "lat": 41.0037683,
+    "lng": 29.0437162,
+    "src": "nominatim_v2",
+    "q": "Acıbadem Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Acıbadem",
+    "dist": null
   },
   "gr_no-17-bakery-7-8": {
     "lat": null,
     "lng": null,
-    "src": "no_district"
+    "src": "geocode_failed_v2",
+    "nbhd": "7. 8. 9. 10.  Kısım",
+    "dist": null
   },
   "gr_nom-nom-sandvic-cevizlik-mah": {
     "lat": null,
@@ -6939,5 +8009,1415 @@
     "lat": null,
     "lng": null,
     "src": "geocode_failed"
+  },
+  "gr_180-derece-coffee-bakery-caferaga": {
+    "lat": 40.9850403,
+    "lng": 29.0248102,
+    "src": "nominatim_v2",
+    "q": "Caferağa Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Caferağa",
+    "dist": null
+  },
+  "gr_adana-akiskan-borek-kocasinan-merkez": {
+    "lat": 41.0170357,
+    "lng": 28.8419751,
+    "src": "nominatim_v2",
+    "q": "Kocasinan Merkez Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Kocasinan Merkez",
+    "dist": null
+  },
+  "gr_akarca-kumru-fatih-seyyid-omer": {
+    "lat": 41.0094787,
+    "lng": 28.9313786,
+    "src": "nominatim_v2",
+    "q": "Seyyid Ömer Mahallesi, Fatih, İstanbul, Türkiye",
+    "nbhd": "Seyyid Ömer",
+    "dist": "Fatih"
+  },
+  "gr_akyol-pasta-cafe-gursel-mah": {
+    "lat": 41.0709262,
+    "lng": 28.972669,
+    "src": "nominatim_v2",
+    "q": "Gürsel Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Gürsel",
+    "dist": null
+  },
+  "gr_alacati-tost-sisli-eskisehir-mah": {
+    "lat": 41.0452366,
+    "lng": 28.9808521,
+    "src": "nominatim_v2",
+    "q": "Eskişehir Mahallesi, Şişli, İstanbul, Türkiye",
+    "nbhd": "Eskişehir",
+    "dist": "Şişli"
+  },
+  "gr_always-fried-chicken-sirinevler-mah": {
+    "lat": 40.9956523,
+    "lng": 28.8486348,
+    "src": "nominatim_v2",
+    "q": "Şirinevler Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Şirinevler",
+    "dist": null
+  },
+  "gr_ancre-istanbul-beyoglu-cihangir-mah": {
+    "lat": 41.0330402,
+    "lng": 28.9853187,
+    "src": "nominatim_v2",
+    "q": "Cihangir Mahallesi, Beyoğlu, İstanbul, Türkiye",
+    "nbhd": "Cihangir",
+    "dist": "Beyoğlu"
+  },
+  "gr_antep-pide-lahmacun-sirinevler-mah": {
+    "lat": 40.9956523,
+    "lng": 28.8486348,
+    "src": "nominatim_v2",
+    "q": "Şirinevler Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Şirinevler",
+    "dist": null
+  },
+  "gr_ariste-peynir-atolyesi-merkez-mah": {
+    "lat": 41.1695338,
+    "lng": 29.0555158,
+    "src": "nominatim_v2",
+    "q": "Merkez Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Merkez",
+    "dist": null
+  },
+  "gr_arka-bahce-cafe-veganarya-1": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Rasimpaşa",
+    "dist": null
+  },
+  "gr_arya-hatay-usulu-soslu-doner": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Şirinevler",
+    "dist": null
+  },
+  "gr_asil-osmanli-iskembe-fevzi-cakmak": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fevzi Çakmak",
+    "dist": null
+  },
+  "gr_asil-iskender-doner-esenler-fevzicakmak": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fevziçakmak",
+    "dist": "Esenler"
+  },
+  "gr_aslanoglu-unlu-mamulleri-menderes-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Menderes",
+    "dist": null
+  },
+  "gr_asmali-konak-kebap-lahmacun-fevzi": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fevzi Çakmak",
+    "dist": null
+  },
+  "gr_asiltat-baklava-borek-haznedar-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Haznedar",
+    "dist": null
+  },
+  "gr_asir-tantuni-konaklar-mah-besiktas": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Konaklar",
+    "dist": null
+  },
+  "gr_ates-bocegi-kahvalti-sandvic-bahcelievler": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": "Bahçelievler"
+  },
+  "gr_avlu-burger-merkez-mah-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
+  },
+  "gr_asiyan-pastane-cafe-restaurant-sancaktepe": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Sancaktepe",
+    "dist": null
+  },
+  "gr_baazen-baklava-levent-mah-besiktas": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Levent",
+    "dist": null
+  },
+  "gr_babil-63-pide-lahmacun-inonu": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "İnönü",
+    "dist": null
+  },
+  "gr_bafra-pide-coskun-kuru-kozyatagi": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kozyatağı",
+    "dist": null
+  },
+  "gr_bagetta-firin-cafe-abbasaga-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Abbasağa",
+    "dist": null
+  },
+  "gr_baker-calzone-burger-bahcelievler-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Bahçelievler",
+    "dist": null
+  },
+  "gr_baklavaci-gulluoglu-kagithane-merkez-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kağıthane Merkez",
+    "dist": null
+  },
+  "gr_bakirkoy-gokkusagi-ekler-kartaltepe-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
+  },
+  "gr_baltazar-turkali-mah-besiktas-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Türkali",
+    "dist": null
+  },
+  "gr_bay-bread-zuhtupasa-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zühtüpaşa",
+    "dist": null
+  },
+  "gr_beslen-ekmek-ve-pasta-siyavuspasa": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Siyavuşpaşa",
+    "dist": null
+  },
+  "gr_best-profiterol-kartaltepe-mah-bakirkoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
+  },
+  "gr_beyzade-kunefe-cumhuriyet-mah-esenyurt": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
+  },
+  "gr_bi-gozleme-kahvalti-manti-evi": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Rasimpaşa",
+    "dist": null
+  },
+  "gr_bir-tat-pide-ve-lahmacun": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Gürsel",
+    "dist": null
+  },
+  "gr_bitto-pizza-bakirkoy-senlikkoy-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Şenlikköy",
+    "dist": "Bakırköy"
+  },
+  "gr_bliss-co-camiikebir-mah-beyoglu": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Camiikebir",
+    "dist": null
+  },
+  "gr_bliss-co-emniyetevler-mah-kagithane": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Emniyetevler",
+    "dist": null
+  },
+  "gr_bol-bol-pilav-emniyet-evleri": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Emniyet Evleri",
+    "dist": null
+  },
+  "gr_bond-coffee-co-tesvikiye-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Teşvikiye",
+    "dist": ""
+  },
+  "gr_bowl-more-abbasaga-mah-besiktas": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Abbasağa",
+    "dist": null
+  },
+  "gr_bowl-more-esentepe-mah-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Esentepe",
+    "dist": null
+  },
+  "gr_bowl-dente-maslak-mah-sariyer": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
+  },
+  "gr_bowl-master-davutpasa-mah-esenler": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Davutpaşa",
+    "dist": null
+  },
+  "gr_brewco-cafe-restaurant-esenyurt-zafer": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zafer",
+    "dist": "Esenyurt"
+  },
+  "gr_bulvar-pastanesi-esentepe-mah-besiktas": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Esentepe",
+    "dist": null
+  },
+  "gr_burger-king-buyukdere-cad-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "no_hood_in_name"
+  },
+  "gr_burger-king-katip-mustafa-celebi": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Katip Mustafa Çelebi",
+    "dist": null
+  },
+  "gr_burger-yiyelim-sehremini-mah-fatih": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Şehremini",
+    "dist": null
+  },
+  "gr_burgerzilla-esentepe-mah-sisli-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Esentepe",
+    "dist": ""
+  },
+  "gr_burgerzilla-maslak-mah-sariyer-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": ""
+  },
+  "gr_burmalim-kunefe-dondurma-dikilitas-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Dikilitaş",
+    "dist": null
+  },
+  "gr_bursa-iskender-esenler-fevzi-cakmak": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fevzi Çakmak",
+    "dist": "Esenler"
+  },
+  "gr_by-cimbo-kirazli-mah-bagcilar": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kirazlı",
+    "dist": null
+  },
+  "gr_borekci-amca-halide-edip-adivar": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Halide Edip Adıvar",
+    "dist": null
+  },
+  "gr_borekci-nimet-usta-kagithane-caglayan": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Çağlayan",
+    "dist": "Kağıthane"
+  },
+  "gr_cajun-corner-bestelsiz-mah-zeytinburnu": {
+    "lat": 40.9994868,
+    "lng": 28.9045024,
+    "src": "nominatim_v2",
+    "q": "Beştelsiz Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Beştelsiz",
+    "dist": null
+  },
+  "gr_chinastix-sushi-etiler-mah-besiktas": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Etiler",
+    "dist": null
+  },
+  "gr_coffy-caferaga-mah-kadikoy-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Caferağa",
+    "dist": null
+  },
+  "gr_cookistanbul-profiterol-baris-mah-esenyurt": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Barış",
+    "dist": null
+  },
+  "gr_costa-coffee-halaskargazi-cad-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "no_hood_in_name"
+  },
+  "gr_cup-of-joy-mesrutiyet-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Meşrutiyet",
+    "dist": null
+  },
+  "gr_cup-of-joy-beyoglu-camiikebir": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Camiikebir",
+    "dist": "Beyoğlu"
+  },
+  "gr_degirmen-inistanbul-pide-lahmacun-zeytinburnu": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Maltepe",
+    "dist": "Zeytinburnu"
+  },
+  "gr_dianka-s-croissants-camiikebir-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Camiikebir",
+    "dist": null
+  },
+  "gr_dianka-s-desserts-camiikebir-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Camiikebir",
+    "dist": null
+  },
+  "gr_diet-palace-emniyetevleri-mah-kagithane": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Emniyetevleri",
+    "dist": null
+  },
+  "gr_divan-pastanesi-fenerbahce-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fenerbahçe",
+    "dist": null
+  },
+  "gr_divan-pastanesi-istinye-mah-sariyer": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "İstinye",
+    "dist": null
+  },
+  "gr_diyet34-emniyet-evleri-mah-kagithane": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Emniyet Evleri",
+    "dist": null
+  },
+  "gr_domino-s-pizza-cihannuma-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Cihannuma",
+    "dist": null
+  },
+  "gr_donuts-coffee-house-kartaltepe-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
+  },
+  "gr_doy-box-sariyer-resitpasa-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Reşitpaşa",
+    "dist": "Sarıyer"
+  },
+  "gr_doyuyo-sinanpasa-mah-besiktas-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Sinanpaşa",
+    "dist": null
+  },
+  "gr_doga-doner-kebap-saadetdere-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Saadetdere",
+    "dist": null
+  },
+  "gr_dream-fried-chicken-besiktas-yildiz": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Yıldız",
+    "dist": "Beşiktaş"
+  },
+  "gr_duman-pide-merkez-mah-bagcilar": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
+  },
+  "gr_donerbey-huzur-mah-sariyer-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Huzur",
+    "dist": null
+  },
+  "gr_donerci-hasan-usta-alibeykoy-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Alibeyköy",
+    "dist": null
+  },
+  "gr_donerko-gungoren-sanayi-mah-gungoren": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Sanayi",
+    "dist": "Güngören"
+  },
+  "gr_durumcu-cengiz-ciger-kebap-kunefe": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Şehremini",
+    "dist": null
+  },
+  "gr_edemoglu-ekmek-pasta-talatpasa-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Talatpaşa",
+    "dist": null
+  },
+  "gr_edesler-borek-ve-pide-salonu": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fevzi Çakmak",
+    "dist": null
+  },
+  "gr_efsane-tostcu-kocasinan-merkez-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kocasinan Merkez",
+    "dist": null
+  },
+  "gr_ekinciler-sisli-merkez-mah-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": "Şişli"
+  },
+  "gr_eksihane-artisan-bakery-hasanpasa-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Hasanpaşa",
+    "dist": null
+  },
+  "gr_elif-pastaneleri-seyyid-omer-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Seyyid Ömer",
+    "dist": null
+  },
+  "gr_elvan-pastanesi-kaptanpasa-mah-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kaptanpaşa",
+    "dist": null
+  },
+  "gr_emine-ana-gozleme-evi-kahvalti": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": "Bağcılar"
+  },
+  "gr_es-sucuk-cum-camiikebir-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Camiikebir",
+    "dist": null
+  },
+  "gr_esnaf-isi-kahvalti-beyoglu-huseyinaga": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Hüseyinağa",
+    "dist": "Beyoğlu"
+  },
+  "gr_espressolab-gulbahar-mah-sisli-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Gülbahar",
+    "dist": null
+  },
+  "gr_espressolab-mecidiyekoy-mah-sisli-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Mecidiyeköy",
+    "dist": null
+  },
+  "gr_espressolab-zuhratbaba-mah-bakirkoy-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zuhratbaba",
+    "dist": null
+  },
+  "gr_etap-pastanesi-mecidiyekoy-mah-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Mecidiyeköy",
+    "dist": null
+  },
+  "gr_etobur-bahcelievler-sirinevler-mah-bahcelievl": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Şirinevler",
+    "dist": "Bahçelievler"
+  },
+  "gr_everything-bagel-caferaga-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Caferağa",
+    "dist": null
+  },
+  "gr_esrefoglu-soguk-baklava-beylikduzu-baris": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Barış",
+    "dist": "Beylikdüzü"
+  },
+  "gr_family-kitchen-ev-yemekleri-davutpasa": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Davutpaşa",
+    "dist": null
+  },
+  "gr_faruk-bufe-cumhuriyet-mah-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": null
+  },
+  "gr_faruk-gullu-atakoy-9-10": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Ataköy 9-10. Kısım",
+    "dist": null
+  },
+  "gr_fiorenzo-pizza-resitpasa-mah-sariyer": {
+    "lat": 41.1068809,
+    "lng": 29.0411147,
+    "src": "nominatim_v2",
+    "q": "Reşitpaşa Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Reşitpaşa",
+    "dist": null
+  },
+  "gr_fit-pasta-cafe-esenyurt-barbaros": {
+    "lat": 41.0182515,
+    "lng": 28.6414475,
+    "src": "nominatim_v2",
+    "q": "Barbaros Hayrettin Paşa Mahallesi, Esenyurt, İstanbul, Türkiye",
+    "nbhd": "Barbaros Hayrettin Paşa",
+    "dist": "Esenyurt"
+  },
+  "gr_flan-bakery-visnezade-mah-besiktas": {
+    "lat": 41.0416345,
+    "lng": 28.9982257,
+    "src": "nominatim_v2",
+    "q": "Vişnezade Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Vişnezade",
+    "dist": null
+  },
+  "gr_focaccia-atakoy-mah-bakirkoy-istanbul": {
+    "lat": 40.9863878,
+    "lng": 28.8464657,
+    "src": "nominatim_v2",
+    "q": "Ataköy Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Ataköy",
+    "dist": null
+  },
+  "gr_foodlab-acibadem-acibadem-mah-kadikoy": {
+    "lat": 41.0037683,
+    "lng": 29.0437162,
+    "src": "nominatim_v2",
+    "q": "Acıbadem Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Acıbadem",
+    "dist": null
+  },
+  "gr_fragrante-kazlicesme-mah-zeytinburnu-istanbul": {
+    "lat": 40.9881118,
+    "lng": 28.9093458,
+    "src": "nominatim_v2",
+    "q": "Kazlıçeşme Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Kazlıçeşme",
+    "dist": null
+  },
+  "gr_galata-kahvalticisi-maresal-cakmak-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Mareşal Çakmak",
+    "dist": null
+  },
+  "gr_gaziantepli-baklavacioglu-fatih-sehremini-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Şehremini",
+    "dist": "Fatih"
+  },
+  "gr_gaziantepli-tatlici-eyup-usta-zafer": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zafer",
+    "dist": null
+  },
+  "gr_gedikli-kofte-grill-mueyyetzade-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Müeyyetzade",
+    "dist": null
+  },
+  "gr_gelateria-bonacci-cumhuriyet-mah-bomonti": {
+    "lat": null,
+    "lng": null,
+    "src": "no_hood_in_name"
+  },
+  "gr_gina-bowl-fatih-sultan-mehmet": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fatih Sultan Mehmet",
+    "dist": null
+  },
+  "gr_granny-s-waffles-kumpir-ayazaga": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Ayazağa",
+    "dist": null
+  },
+  "gr_gurme-box-zafer-mah-esenyurt": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zafer",
+    "dist": null
+  },
+  "gr_gurme-ciger-aksemseddin-mah-esenyurt": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Akşemseddin",
+    "dist": null
+  },
+  "gr_gurme-kurabiye-bakirkoy-kartaltepe-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": "Bakırköy"
+  },
+  "gr_gurme-mutfak-ev-yemekleri-duatepe": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Duatepe",
+    "dist": null
+  },
+  "gr_gurme-mutfak-ev-yemekleri-veliefendi": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Veliefendi",
+    "dist": null
+  },
+  "gr_goreme-muhallebicisi-ferikoy-mah-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Feriköy",
+    "dist": null
+  },
+  "gr_gozde-firin-cafe-bakirkoy-kartaltepe": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": "Bakırköy"
+  },
+  "gr_gozde-malatya-pide-lahmacun-doner": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Tuna",
+    "dist": null
+  },
+  "gr_guloglu-pide-salonu-guven-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Güven",
+    "dist": null
+  },
+  "gr_hacioglu-aziz-mahmut-hudayi-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Aziz Mahmut Hüdayi",
+    "dist": null
+  },
+  "gr_halk-baklava-gungoren-merkez-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": "Güngören"
+  },
+  "gr_hammur-merdivenkoy-mah-kadikoy-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merdivenköy",
+    "dist": null
+  },
+  "gr_has-antepli-kebap-ayazaga-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Ayazağa",
+    "dist": null
+  },
+  "gr_hazar-kanat-gunesli-mah-bagcilar": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Güneşli",
+    "dist": null
+  },
+  "gr_helvaci-ali-1900-zafer-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zafer",
+    "dist": null
+  },
+  "gr_hera-pisi-pancake-kartaltepe-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kartaltepe",
+    "dist": null
+  },
+  "gr_hiroshi-sushi-yesilkoy-mah-bakirkoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Yeşilköy",
+    "dist": null
+  },
+  "gr_hoora-tantuni-zuhuratbaba-mah-bakirkoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zuhuratbaba",
+    "dist": null
+  },
+  "gr_hrn-taksim-hamburger-sakizagaci-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Sakızağacı",
+    "dist": null
+  },
+  "gr_island-sandwich-alibeykoy-mah-eyupsultan": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Alibeyköy",
+    "dist": null
+  },
+  "gr_isirgan-sandvic-rasimpasa-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Rasimpaşa",
+    "dist": null
+  },
+  "gr_kaffee-schutz-kosuyolu-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Koşuyolu",
+    "dist": null
+  },
+  "gr_kahvalti-evim-esenyurt-barbaros-hayrettin": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Barbaros Hayrettin Paşa",
+    "dist": "Esenyurt"
+  },
+  "gr_kahvalti-sevdasi-esenyurt-fatih-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fatih",
+    "dist": "Esenyurt"
+  },
+  "gr_kahve-dunyasi-kosuyolu-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Koşuyolu",
+    "dist": null
+  },
+  "gr_kahve-dunyasi-algotur-merkez-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
+  },
+  "gr_kapama-doner-gencosman-mah-gungoren": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Gençosman",
+    "dist": null
+  },
+  "gr_kar-bufe-arap-cami-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Arap Cami",
+    "dist": null
+  },
+  "gr_karagozler-et-izgara-talatpasa-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Talatpaşa",
+    "dist": null
+  },
+  "gr_karakoy-gulluoglu-kemankes-karamustafapasa-ma": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kemankeş Karamustafapaşa",
+    "dist": null
+  },
+  "gr_kemer-pilav-esenler-kemer-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kemer",
+    "dist": null
+  },
+  "gr_kovan-sariyer-borekcisi-salacak-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Salacak",
+    "dist": null
+  },
+  "gr_krispy-kreme-ortakoy-mah-besiktas": {
+    "lat": 41.0546272,
+    "lng": 29.0281901,
+    "src": "nominatim_v2",
+    "q": "Ortaköy Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Ortaköy",
+    "dist": null
+  },
+  "gr_kumrum-sariyer-ayazaga-mah-sariyer": {
+    "lat": 41.1157496,
+    "lng": 28.9985596,
+    "src": "nominatim_v2",
+    "q": "Ayazağa Mahallesi, Sarıyer, İstanbul, Türkiye",
+    "nbhd": "Ayazağa",
+    "dist": "Sarıyer"
+  },
+  "gr_kusgozu-lahmacun-levent-mah-besiktas": {
+    "lat": 41.0815723,
+    "lng": 29.0169502,
+    "src": "nominatim_v2",
+    "q": "Levent Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Levent",
+    "dist": null
+  },
+  "gr_kofteci-yusuf-alibeykoy-mah-eyupsultan": {
+    "lat": 41.077272,
+    "lng": 28.946901,
+    "src": "nominatim_v2",
+    "q": "Alibeyköy Mahallesi, İstanbul, Türkiye",
+    "nbhd": "Alibeyköy",
+    "dist": null
+  },
+  "gr_kirinti-34-bufe-besiktas-cihannuma": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Cihannüma",
+    "dist": "Beşiktaş"
+  },
+  "gr_kisa-kurek-firin-esenler-nine": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Nine Hatun",
+    "dist": "Esenler"
+  },
+  "gr_la-vie-praline-visnezade-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Vişnezade",
+    "dist": null
+  },
+  "gr_lattas-cafe-bistro-sahkulu-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Şahkulu",
+    "dist": null
+  },
+  "gr_levent-borek-acibadem-mah-uskudar": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Acıbadem",
+    "dist": null
+  },
+  "gr_lezzette-lezzet-bakirkoy-zeytinlik-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zeytinlik",
+    "dist": "Bakırköy"
+  },
+  "gr_lider-kokorec-zuhtupasa-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zühtüpaşa",
+    "dist": null
+  },
+  "gr_loya-unlu-mamulleri-kocasinan-merkez": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kocasinan Merkez",
+    "dist": null
+  },
+  "gr_lucky-ramen-sariyer-resitpasa-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Reşitpaşa",
+    "dist": "Sarıyer"
+  },
+  "gr_lucky-sushi-resitpasa-mah-sariyer": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Reşitpaşa",
+    "dist": null
+  },
+  "gr_mado-rasimpasa-mah-kadikoy-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Rasimpaşa",
+    "dist": null
+  },
+  "gr_mado-dondurma-goztepe-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Göztepe",
+    "dist": null
+  },
+  "gr_maggie-s-bakery-goztepe-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Göztepe",
+    "dist": null
+  },
+  "gr_magnolian-fulya-mah-sisli-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fulya",
+    "dist": null
+  },
+  "gr_makarnoz-esenyurt-pinar-mah-esenyurt": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Pınar",
+    "dist": "Esenyurt"
+  },
+  "gr_makary-esenyurt-fatih-mah-esenyurt": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fatih",
+    "dist": "Esenyurt"
+  },
+  "gr_manti-time-19-mayis-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "19 Mayıs",
+    "dist": null
+  },
+  "gr_mancurya-ferahevler-mah-sariyer-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Ferahevler",
+    "dist": null
+  },
+  "gr_marehome-made-besiktas-dikilitas-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Dikilitaş",
+    "dist": "Beşiktaş"
+  },
+  "gr_marmaris-bufe-1964-maslak-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Maslak",
+    "dist": null
+  },
+  "gr_may-lahmacun-pide-tava-sirinevler": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Şirinevler",
+    "dist": null
+  },
+  "gr_mcdonald-s-acibadem-cad-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "no_hood_in_name"
+  },
+  "gr_mcdonald-s-barbaros-hayrettin-pasa": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Barbaros Hayrettin Paşa",
+    "dist": null
+  },
+  "gr_mcdonald-s-goztepe-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Göztepe",
+    "dist": null
+  },
+  "gr_mcdonald-s-selman-i-pak": {
+    "lat": null,
+    "lng": null,
+    "src": "no_hood_in_name"
+  },
+  "gr_mcdonalds-mccafe-kaptanpasa-mah-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kaptanpaşa",
+    "dist": null
+  },
+  "gr_mcdonalds-mccafe-mahmutbey-mah-bagcilar": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Mahmutbey",
+    "dist": null
+  },
+  "gr_melisa-s-bowl-salad-nispetiye": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Nispetiye",
+    "dist": null
+  },
+  "gr_mengenli-hafize-ana-ev-yemekleri": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fulya",
+    "dist": null
+  },
+  "gr_merkezefendi-tasfirin-pide-lahmacun-merkezefe": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkezefendi",
+    "dist": null
+  },
+  "gr_metin-usta-hamsikoy-sutlaci-esenyurt": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Cumhuriyet",
+    "dist": "Esenyurt"
+  },
+  "gr_meshur-bagcilar-meydan-pilavcisi-bagcilar": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Yenigün",
+    "dist": "Bağcılar"
+  },
+  "gr_meshur-moda-tostcusu-caferaga-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Caferağa",
+    "dist": null
+  },
+  "gr_meshur-pasa-tost-merkez-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
+  },
+  "gr_meshur-sariyer-borekcisi-camiikebir-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Camiikebir",
+    "dist": null
+  },
+  "gr_meshur-sariyer-borekcisi-cihangir-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Cihangir",
+    "dist": null
+  },
+  "gr_meshur-sariyer-borekcisi-bakirkoy-zuhuratbaba": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Zuhuratbaba",
+    "dist": "Bakırköy"
+  },
+  "gr_mikel-coffee-zeytinburnu-kazlicesme-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Kazlıçeşme",
+    "dist": "Zeytinburnu"
+  },
+  "gr_mila-kumru-bagcilar-fevzi-cakmak": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fevzi Çakmak",
+    "dist": "Bağcılar"
+  },
+  "gr_moc-coffee-roastery-bakirkoy-atakoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Ataköy 2 5 6. Kısım",
+    "dist": "Bakırköy"
+  },
+  "gr_moda-da-nata-yildiz-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Yıldız",
+    "dist": null
+  },
+  "gr_molino-cucina-fatih-sultan-mehmet": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Fatih Sultan Mehmet",
+    "dist": null
+  },
+  "gr_momwich-kadikoy-hasanpasa-mah-kadikoy": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Hasanpaşa",
+    "dist": "Kadıköy"
+  },
+  "gr_montag-coffee-roasters-caferaga-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Caferağa",
+    "dist": null
+  },
+  "gr_morgul-cevizlik-mah-bakirkoy-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Cevizlik",
+    "dist": null
+  },
+  "gr_moys-istanbul-sisli-bozkurt-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Bozkurt",
+    "dist": "Şişli"
+  },
+  "gr_mr-north-gurme-sarkuteri-meze": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Karadolap",
+    "dist": "Eyüpsultan"
+  },
+  "gr_muskat-pinar-mah-esenyurt-istanbul": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Pınar",
+    "dist": null
+  },
+  "gr_musterek-meze-bozkurt-mah-sisli": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Bozkurt",
+    "dist": null
+  },
+  "gr_mirra-gurme-kahvalti-sehremini-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Şehremini",
+    "dist": null
+  },
+  "gr_mistik-marmaris-bufe-merkez-mah": {
+    "lat": null,
+    "lng": null,
+    "src": "geocode_failed_v2",
+    "nbhd": "Merkez",
+    "dist": null
   }
 }

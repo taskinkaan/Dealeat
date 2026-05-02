@@ -5616,15 +5616,32 @@ function _getViewMode() {
   } catch(e) { return 'all'; }
 }
 
+// Doğrulanmış coord'a sahip mi? (Trendyol API real coord VEYA Nominatim başarılı)
+function _hasVerifiedCoord(r) {
+  if (!r.plats) return false;
+  // Trendyol coord = real (API'den geliyor)
+  if (r.plats.includes('trendyol')) return true;
+  // GR-only: coord_overrides.json'da Nominatim başarılı (v1 veya v2)
+  const ov = (_COORD_OVERRIDES || {})[r.id];
+  if (!ov || ov.lat == null) return false;
+  return ov.src === 'nominatim' || ov.src === 'nominatim_v2';
+}
+
 // Platform filter: hangi restoranların göstereceğini belirler.
-// - Getir-only: HER ZAMAN gizle (coord güvensiz, slug parser ilçe bug)
 // - Merged (TY+GR): HER ZAMAN göster (DealEat core: fiyat karşılaştırma)
-// - Trendyol-only: view mode'a göre — 'all' (default, göster) veya 'compared' (gizle)
+// - TY-only: 'all' mode'da göster, 'compared' mode'da gizle
+// - GR-only: sadece Nominatim başarılı olanlar (v1/v2), 'compared' mode'da gizli
 function _shouldShowByPlatform(r) {
-  if (!r.plats || !r.plats.includes('trendyol')) return false; // Getir-only out
-  if (r.plats.includes('getir')) return true; // Merged: always show
-  // Trendyol-only: 'all' mode'da göster, 'compared' mode'da gizle
-  return _getViewMode() === 'all';
+  if (!r.plats) return false;
+  const mode = _getViewMode();
+  // Merged: her iki platform → her zaman göster
+  if (r.plats.includes('trendyol') && r.plats.includes('getir')) return true;
+  // 'compared' mode: sadece merged göster, hepsini gizle
+  if (mode === 'compared') return false;
+  // 'all' mode: TY-only göster, GR-only sadece doğrulanmış coord ile
+  if (r.plats.includes('trendyol')) return true;
+  // GR-only: nominatim başarılı mı?
+  return _hasVerifiedCoord(r);
 }
 
 function _initRestaurantsFromData(data) {
@@ -5666,6 +5683,8 @@ function _initRestaurantsFromData(data) {
         if (typeof refreshMarkers === 'function') refreshMarkers();
         // Re-render visible feed
         if (typeof renderPanel === 'function') renderPanel();
+        // Update filter bar counts (GR-only verified count change)
+        if (typeof updatePlatformFilterCounts === 'function') updatePlatformFilterCounts();
       }
     });
   }
@@ -5854,10 +5873,18 @@ function togglePlatformFilter(checked) {
 // Filter bar üstündeki sayıları güncelle (sticky bar)
 function updatePlatformFilterCounts() {
   const raw = window.__RAW_RESTAURANTS__ || [];
+  const overrides = _COORD_OVERRIDES || {};
   const merged = raw.filter(r => r.plats?.includes('trendyol') && r.plats?.includes('getir')).length;
   const tyOnly = raw.filter(r => r.plats?.includes('trendyol') && !r.plats?.includes('getir')).length;
+  // GR-only with verified Nominatim coord (v1 or v2)
+  const grVerified = raw.filter(r => {
+    if (!r.plats?.includes('getir') || r.plats?.includes('trendyol')) return false;
+    const ov = overrides[r.id];
+    return ov && ov.lat != null && (ov.src === 'nominatim' || ov.src === 'nominatim_v2');
+  }).length;
+
   const mode = _getViewMode();
-  const shown = mode === 'compared' ? merged : (merged + tyOnly);
+  const shown = mode === 'compared' ? merged : (merged + tyOnly + grVerified);
   const elShown  = document.getElementById('pfilter-shown');
   const elMerged = document.getElementById('pfilter-merged');
   if (elShown)  elShown.textContent  = shown;
