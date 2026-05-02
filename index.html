@@ -5388,25 +5388,50 @@ const _DISTRICT_COORDS = {
 
 // Bilinen mahalleler → ilçe centroid'i (slug parsing fallback için)
 const _NEIGHBORHOOD_TO_DISTRICT = {
-  // Bakırköy mahalleler (Yeşilköy/Florya/Şenlikköy/Ataköy)
+  // Bakırköy
   yesilkoy: 'bakirkoy', florya: 'bakirkoy', senlikkoy: 'bakirkoy',
-  atakoy: 'bakirkoy', yenibosna: 'bahcelievler', basinkoy: 'bakirkoy',
-  yesilyurt: 'bakirkoy', cevizlibag: 'zeytinburnu',
-  // Beşiktaş mahalleler
+  atakoy: 'bakirkoy', basinkoy: 'bakirkoy', yesilyurt: 'bakirkoy',
+  kartaltepe: 'bakirkoy', zuhuratbaba: 'bakirkoy', cevizlik: 'bakirkoy',
+  // Bahçelievler
+  yenibosna: 'bahcelievler', sirinevler: 'bahcelievler', kocasinan: 'bahcelievler',
+  // Bağcılar
+  gunesli: 'bagcilar', kirazli: 'bagcilar', mahmutbey: 'bagcilar',
+  // Bayrampaşa
+  siyavuspasa: 'bayrampasa',
+  // Zeytinburnu
+  cevizlibag: 'zeytinburnu',
+  // Beşiktaş
   ortakoy: 'besiktas', etiler: 'besiktas', levent: 'besiktas',
-  bebek: 'besiktas', arnavutkoy_mh: 'besiktas', ulus: 'besiktas',
-  gayrettepe: 'besiktas', mecidiyekoy: 'sisli',
+  bebek: 'besiktas', ulus: 'besiktas', gayrettepe: 'besiktas',
+  nisbetiye: 'besiktas', abbasaga: 'besiktas', visnezade: 'besiktas',
+  turkali: 'besiktas', dikilitas: 'besiktas', sinanpasa: 'besiktas',
+  // Şişli
+  mecidiyekoy: 'sisli', esentepe: 'sisli', duatepe: 'sisli',
+  tesvikiye: 'sisli', mesrutiyet: 'sisli', halaskargazi: 'sisli',
   // Beyoğlu
   cihangir: 'beyoglu', galata: 'beyoglu', taksim: 'beyoglu',
   karakoy: 'beyoglu', tunel: 'beyoglu', kuloglu: 'beyoglu',
+  piyale: 'beyoglu', camiikebir: 'beyoglu', kemankes: 'beyoglu',
+  // Fatih
+  aksemsettin: 'fatih', silivrikapi: 'fatih', cerrahpasa: 'fatih',
+  capa: 'fatih', sehremini: 'fatih',
+  // Kağıthane
+  caglayan: 'kagithane',
+  // Eyüp
+  alibeykoy: 'eyup',
   // Kadıköy
   caferaga: 'kadikoy', osmanaga: 'kadikoy', moda: 'kadikoy',
   bostanci: 'kadikoy', caddebostan: 'kadikoy', goztepe: 'kadikoy',
   fenerbahce: 'kadikoy', erenkoy: 'kadikoy', suadiye: 'kadikoy',
+  feneryolu: 'kadikoy', hasanpasa: 'kadikoy', acibadem: 'kadikoy',
   // Üsküdar
   cengelkoy: 'uskudar', kuzguncuk: 'uskudar', beylerbeyi: 'uskudar',
-  // Maslak / Ayazağa (Sarıyer/Şişli border)
+  hudayi: 'uskudar', altunizade: 'uskudar', muratreis: 'uskudar',
+  // Maltepe
+  cevizli: 'maltepe', altayceşme: 'maltepe', altaycesme: 'maltepe',
+  // Sarıyer
   maslak: 'sariyer', ayazaga: 'sariyer', tarabya: 'sariyer',
+  istinye: 'sariyer', emirgan: 'sariyer', yenikoy: 'sariyer',
 };
 
 const _SLUG_SKIP_TOKENS = new Set(['mah', 'istanbul', 'cad', 'pasa', 'sok', 'merkez']);
