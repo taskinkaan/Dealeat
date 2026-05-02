@@ -183,6 +183,49 @@ button:not(.btab):not(.feed-rcard):not([class*="qty-btn"]):active {
 .loc-pill strong { color: var(--txt); }
 
 /* DISCOVERY TABS */
+/* PLATFORM FILTER BAR — Trendyol coord-only / merged view */
+.pfilter-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 8px 16px;
+  background: linear-gradient(90deg, rgba(34,197,94,0.07), var(--bg1) 60%);
+  border-bottom: 1px solid var(--line);
+  font-size: 12px; font-weight: 600; color: var(--txt2);
+  flex-shrink: 0; min-height: 38px;
+}
+.pfilter-info { display: flex; align-items: center; gap: 6px; flex-shrink: 1; min-width: 0; }
+.pfilter-info strong { color: var(--grn); font-weight: 800; font-size: 13px; }
+.pfilter-icon { font-size: 14px; }
+.pfilter-toggle-wrap {
+  display: flex; align-items: center; gap: 7px; cursor: pointer;
+  font-size: 11px; color: var(--txt3); user-select: none; flex-shrink: 0;
+}
+.pfilter-toggle-wrap input { position: absolute; opacity: 0; pointer-events: none; }
+.pfilter-toggle-track {
+  position: relative; width: 32px; height: 18px;
+  background: var(--bg2); border: 1px solid var(--line);
+  border-radius: 10px; transition: background 0.18s, border-color 0.18s;
+}
+.pfilter-toggle-thumb {
+  position: absolute; top: 1px; left: 1px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 0.18s, background 0.18s;
+}
+.pfilter-toggle-wrap input:checked + .pfilter-toggle-track {
+  background: var(--acc); border-color: var(--acc);
+}
+.pfilter-toggle-wrap input:checked + .pfilter-toggle-track .pfilter-toggle-thumb {
+  transform: translateX(14px);
+}
+.pfilter-toggle-lbl strong { color: var(--txt2); font-weight: 800; }
+/* Hide on AI mode — only relevant for restaurants list */
+body.ai-active .pfilter-bar { display: none; }
+@media (max-width: 480px) {
+  .pfilter-bar { padding: 7px 12px; font-size: 11px; }
+  .pfilter-info strong { font-size: 12px; }
+  .pfilter-toggle-lbl { font-size: 10px; }
+}
+
 .disc-bar {
   height: 44px; max-height: 44px; display: flex; align-items: center; gap: 0;
   overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
@@ -2408,6 +2451,7 @@ input[type=range]#distMax { accent-color: var(--grn); }
 .rc-badge-far  { background: rgba(245,158,11,0.13); color: #b45309; border: 1px solid rgba(245,158,11,0.3); }
 .rc-badge-solo { background: rgba(107,114,128,0.12); color: #6b7280; border: 1px solid rgba(107,114,128,0.25); }
 .rc-badge-thin { background: rgba(239,68,68,0.10); color: #dc2626; border: 1px solid rgba(239,68,68,0.25); }
+.rc-badge-cmp  { background: rgba(34,197,94,0.13); color: #15803d; border: 1px solid rgba(34,197,94,0.3); }
 .feed-rcard-badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
 
 /* ══════════════════════════════════════════════════════════════
@@ -4314,6 +4358,19 @@ input:focus-visible { outline: none; }
   <!-- DATA FRESHNESS BANNER — shown after prices load -->
   <div id="dataFreshBanner" style="display:none;padding:5px 14px;font-size:11px;color:var(--txt3);background:var(--bg1);border-bottom:1px solid var(--line);text-align:center"></div>
 
+  <!-- PLATFORM FILTER BAR — Trendyol coord-only view (Getir-only gizli) -->
+  <div id="platformFilterBar" class="pfilter-bar">
+    <span class="pfilter-info">
+      <span class="pfilter-icon">💸</span>
+      <strong id="pfilter-merged">162</strong> karşılaştırmalı restoran
+    </span>
+    <label class="pfilter-toggle-wrap" title="Sadece Trendyol Go'da olan restoranları da göster">
+      <input type="checkbox" id="pfilter-toggle" onchange="togglePlatformFilter(this.checked)">
+      <span class="pfilter-toggle-track"><span class="pfilter-toggle-thumb"></span></span>
+      <span class="pfilter-toggle-lbl">+<span id="pfilter-single">238</span> tek platform</span>
+    </label>
+  </div>
+
   <!-- MAP MODE SECTIONS -->
   <div class="map-sections" id="mapSections">
 
@@ -5541,6 +5598,19 @@ async function _loadCoordOverrides() {
   }
 }
 
+// Platform filter: hangi restoranların göstereceğini belirler.
+// - Getir-only (sadece getir): HER ZAMAN gizle (coord güvensiz, slug parser ilçe bug'ı)
+// - Merged (TY+GR): HER ZAMAN göster (DealEat core: fiyat karşılaştırma)
+// - Trendyol-only: TOGGLE — default gizli (karşılaştırma yok), kullanıcı isterse açar
+function _shouldShowByPlatform(r) {
+  if (!r.plats || !r.plats.includes('trendyol')) return false; // Getir-only out
+  if (r.plats.includes('getir')) return true; // Merged: always show
+  // Trendyol-only: toggle state
+  try {
+    return localStorage.getItem('dealeat_show_single') === '1';
+  } catch(e) { return false; }
+}
+
 function _initRestaurantsFromData(data) {
   // 1) Coord düzeltme: priority Trendyol > Nominatim override > District snap > Eski tahmin
   const corrected = data.map(r => {
@@ -5548,7 +5618,10 @@ function _initRestaurantsFromData(data) {
     return { ...r, lat, lng };
   });
   // 2) Marmara Denizi fallback: hala denize düşenler gizle
-  const filtered = corrected.filter(r => !_isInSea(r.lat, r.lng));
+  // 3) Platform filter: GR-only her zaman gizli, TY-only toggle
+  const filtered = corrected
+    .filter(r => !_isInSea(r.lat, r.lng))
+    .filter(_shouldShowByPlatform);
 
   RESTAURANTS = filtered.map(r => ({
     ...r,
@@ -5746,6 +5819,37 @@ function setTopbarBack(from, label) {
 
 function allRests() {
   return RESTAURANTS;
+}
+
+// Toggle Trendyol-only restaurants (default off — sadece merged/karşılaştırmalı)
+function togglePlatformFilter(checked) {
+  try {
+    localStorage.setItem('dealeat_show_single', checked ? '1' : '0');
+  } catch(e) {}
+  const raw = window.__RAW_RESTAURANTS__;
+  if (!raw) return;
+  _initRestaurantsFromData(raw);
+  if (typeof renderPanel === 'function') renderPanel();
+  if (typeof refreshMarkers === 'function') refreshMarkers();
+  if (typeof renderCatBar === 'function') renderCatBar();
+  updatePlatformFilterCounts();
+}
+
+// Filter bar üstündeki sayıları güncelle (sticky bar)
+function updatePlatformFilterCounts() {
+  const raw = window.__RAW_RESTAURANTS__ || [];
+  const merged = raw.filter(r => r.plats?.includes('trendyol') && r.plats?.includes('getir')).length;
+  const tyOnly = raw.filter(r => r.plats?.includes('trendyol') && !r.plats?.includes('getir')).length;
+  const elM = document.getElementById('pfilter-merged');
+  const elS = document.getElementById('pfilter-single');
+  if (elM) elM.textContent = merged;
+  if (elS) elS.textContent = tyOnly;
+  // Sync checkbox with current state
+  const cb = document.getElementById('pfilter-toggle');
+  if (cb) {
+    try { cb.checked = localStorage.getItem('dealeat_show_single') === '1'; }
+    catch(e) {}
+  }
 }
 
 function findRest(id) {
@@ -7821,7 +7925,8 @@ function renderPanel() {
     const badgeFar  = r._distLabel === 'uzak' ? `<span class="rc-badge rc-badge-far">Uzak</span>` : '';
     const badgeSolo = r.plats.length === 1 ? `<span class="rc-badge rc-badge-solo">Tek platform</span>` : '';
     const badgeThin = itemCount < 20 && itemCount > 0 ? `<span class="rc-badge rc-badge-thin">Sınırlı menü</span>` : '';
-    const badges = (badgeFar || badgeSolo || badgeThin) ? `<div class="feed-rcard-badges">${badgeFar}${badgeSolo}${badgeThin}</div>` : '';
+    const badgeCmp  = r.plats.length > 1 ? `<span class="rc-badge rc-badge-cmp">💸 Karşılaştır</span>` : '';
+    const badges = (badgeCmp || badgeFar || badgeSolo || badgeThin) ? `<div class="feed-rcard-badges">${badgeCmp}${badgeFar}${badgeSolo}${badgeThin}</div>` : '';
     const delivParts = [];
     if (r.min_order)    delivParts.push(`Min ${r.min_order} TL`);
     if (r.delivery_fee) delivParts.push(`${r.delivery_fee} TL teslimat`);
@@ -8410,6 +8515,9 @@ function switchMode(mode) {
   if (cartSec) cartSec.classList.remove('active');
   if (aiSec)   aiSec.classList.remove('active');
   if (menuSec) menuSec.classList.remove('active');
+  // Body class for global mode-aware CSS (e.g. hide platform filter bar in AI mode)
+  document.body.classList.toggle('ai-active', mode === 'ai');
+  document.body.classList.toggle('map-active', mode === 'map');
 
   // Reset all desktop mode-toggle button states
   [btnMap, btnFeed, btnAI].forEach(b => {
@@ -9070,8 +9178,10 @@ async function _bootstrapApp() {
     if (payload && !Array.isArray(payload) && payload.meta) {
       window.__DEALEAT_META__ = payload.meta;
     }
+    window.__RAW_RESTAURANTS__ = list; // cache for platform filter toggle
     _initRestaurantsFromData(list);
     _applyFreshnessBanner();
+    if (typeof updatePlatformFilterCounts === 'function') updatePlatformFilterCounts();
   } catch(e) {
     console.error('[DealEat] restaurants.json yüklenemedi:', e);
     // Show error — user can still retry

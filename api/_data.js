@@ -19,6 +19,19 @@ function _baseUrl() {
   return 'https://dealeat.vercel.app';
 }
 
+// Filter: Getir-only restoranları çıkar (coord güvensiz, slug parser ilçe bug'ı).
+// Backend AI tool'ları sadece Trendyol coord'lu restoranlarla çalışır (Trendyol-only + merged).
+// Frontend kullanıcısının "tek platformlu da göster" toggle'ı backend'i ETKILEMEZ — burada
+// her zaman tüm Trendyol coord'lu restoranlar görünür çünkü AI scope'u dar olmamalı.
+function _filterByPlatform(data) {
+  if (!data) return data;
+  const list = data.restaurants || data;
+  if (!Array.isArray(list)) return data;
+  const filtered = list.filter(r => r.plats && r.plats.includes('trendyol'));
+  if (Array.isArray(data)) return filtered;
+  return { ...data, restaurants: filtered };
+}
+
 async function loadRestaurants() {
   // Quick TTL guard
   const age = Date.now() - _cacheLoadedAt;
@@ -35,7 +48,7 @@ async function loadRestaurants() {
   try {
     if (fs.existsSync(localPath)) {
       const raw = fs.readFileSync(localPath, 'utf8');
-      const data = JSON.parse(raw);
+      const data = _filterByPlatform(JSON.parse(raw));
       _cache = data;
       _cacheGen = data?.meta?.generated_at || null;
       _cacheLoadedAt = Date.now();
@@ -64,7 +77,7 @@ async function loadRestaurants() {
 
   const resp = await fetch(`${base}/restaurants.json`, { cache: 'no-store' });
   if (!resp.ok) throw new Error(`restaurants.json fetch ${resp.status}`);
-  const data = await resp.json();
+  const data = _filterByPlatform(await resp.json());
   _cache = data;
   _cacheGen = currentGen || data?.meta?.generated_at || null;
   _cacheLoadedAt = Date.now();
