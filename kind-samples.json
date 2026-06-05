@@ -1,103 +1,465 @@
 {
-  "main": [
+  "other": [
     {
-      "n": "110. Mix Pilav",
-      "rest": "Chinastix & Sushi (Etiler Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Pilav",
-      "p": 365,
-      "platform": "getir"
-    },
-    {
-      "n": "Tavuk Söğüş Salata",
-      "rest": "Zeynel Muhallebicisi (Yeniköy Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Salata",
-      "p": 570,
-      "platform": "getir"
-    },
-    {
-      "n": "Kaşarlı Köfte & Patates Püresi",
-      "rest": "Gurme Mutfak Ev Yemekleri (Veliefendi Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Etli Yemek",
-      "p": 422,
-      "platform": "getir"
-    },
-    {
-      "n": "Pirinç Pilavı (1.5 Porsiyon)",
-      "rest": " Unkapanı Pilavcısı (Zuhuratbaba)",
-      "rcat": "Döner,Tavuk",
-      "mcat": "Pilav",
-      "p": 190,
-      "platform": "getir"
-    },
-    {
-      "n": "Penne Arrabbiata",
-      "rest": "Express Chef (Fenerbahçe Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Makarna",
-      "p": 545,
-      "platform": "getir"
-    },
-    {
-      "n": "Çoban Salata",
-      "rest": "Özgüllüm Pide Börek Cafe (İnönü Mah.)",
-      "rcat": "Börek",
-      "mcat": "Salata",
-      "p": 275,
-      "platform": "getir"
-    },
-    {
-      "n": "Tavuk Döner Dürüm",
-      "rest": "Etiler Marmaris (Zeytinlik)",
-      "rcat": "Burger,Tost & Sandviç,Sokak Lezzetleri",
-      "mcat": "Tavuk Dönerler",
-      "p": 164,
+      "n": "Algida Carte d'Or Mini Cup Çikolata Karnavalı",
+      "rest": "Arby's (Meşrutiyet)",
+      "rcat": "Burger",
+      "mcat": "Tatlılar & Dondurmalar",
+      "p": 65,
       "platform": "trendyol"
     },
     {
-      "n": "Kıymalı Boşnak Böreği (500 g)",
-      "rest": "Kuhinja Boşnak Böreği (Büyükşehir Mah.)",
+      "n": "Sando Çırpılmış Yumurta & Avokado",
+      "rest": "Oldays Breakfast Club (Cumhuriyet Mah.)",
       "rcat": "Yemek",
-      "mcat": "Kiloluk Börek",
+      "mcat": "Sando",
       "p": 575,
       "platform": "getir"
     },
     {
-      "n": "Pizza Dallas (Küçük)",
-      "rest": "Pizza Bulls (Gökalp)",
-      "rcat": "Pizza",
-      "mcat": "Küçük Boy Pizzalar",
-      "p": 320,
+      "n": "Algida Carte d'Or Çikolata Rüyası Cup (110 ml.)",
+      "rest": "Subway (Zafer)",
+      "rcat": "Tost & Sandviç",
+      "mcat": "Dondurmalar",
+      "p": 65,
       "platform": "trendyol"
     },
     {
-      "n": "Crazy Philadelphia Roll (8 Pcs)",
+      "n": "City Roll (8 Adet)",
+      "rest": "City Sushi & Wok (Meşrutiyet Mah.)",
+      "rcat": "Sushi",
+      "mcat": "Classic Roll",
+      "p": 616,
+      "platform": "getir"
+    },
+    {
+      "n": "Sokak Simiti",
+      "rest": "Nalia Karadeniz Mutfağı (Mahmutbey Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kendi Kahvaltını Oluştur",
+      "p": 58,
+      "platform": "getir"
+    },
+    {
+      "n": "Tatlı Ekşi Soslu Etli Sebzeli Erişte",
+      "rest": "Hirado Erişte & Noodle (Cevizli Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Hiradoo Tatlı Ekşi Soslu Erişte",
+      "p": 819,
+      "platform": "getir"
+    },
+    {
+      "n": "Etli Udon Noodle",
       "rest": "Lucky Sushi, Zeytinburnu (Sümer Mah.)",
       "rcat": "Sushi",
-      "mcat": "Special Roll",
-      "p": 487,
+      "mcat": "Udon",
+      "p": 549,
       "platform": "getir"
     },
     {
-      "n": "Cheddarlı Islak Hamburger",
-      "rest": "Park Büfe (Yeşilyurt Mah.)",
+      "n": "Muzlu Rulo",
+      "rest": "Uğur Pastanesi (Cumhuriyet Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Pasta (1 Kişilik)",
+      "p": 200,
+      "platform": "getir"
+    },
+    {
+      "n": "Beyaz Peynir (2 Dilim)",
+      "rest": "Aysel Sultan Gözleme (Sinanpaşa Mah.)",
       "rcat": "Yemek",
-      "mcat": "Burger",
-      "p": 190,
+      "mcat": "Ekstra Lezzet",
+      "p": 185,
       "platform": "getir"
     },
     {
-      "n": "Pizzetta &Tavuk & Patates & Ayran (200 ml) & Boyama Defteri",
-      "rest": "Domino's Pizza (Doğan Araslı Cad.)",
+      "n": "Kuzu Kaburga",
+      "rest": "Dilay Marmara (Göztepe Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kebap & Izgara",
+      "p": 1006,
+      "platform": "getir"
+    },
+    {
+      "n": "Kalpli Çikolata (Büyük Boy)",
+      "rest": "Sekizkardeşler Pastanesi (Yenidoğan Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Hediyelik Çikolata",
+      "p": 2500,
+      "platform": "getir"
+    },
+    {
+      "n": "Ground Beef Sweet Potato Bowl",
+      "rest": "Bowl Department (Halaskargazi Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Beef & Fish Bowl",
+      "p": 620,
+      "platform": "getir"
+    },
+    {
+      "n": "Peynirli Boyoz",
+      "rest": "Meşhur Sarıyer Börekçisi (Mimar Sinan Sok.)",
+      "rcat": "Börek",
+      "mcat": "Boyoz",
+      "p": 80,
+      "platform": "getir"
+    },
+    {
+      "n": "Mexicana Non Bread",
+      "rest": "Goldenfingers Burger & Cheesesteak (Mahmutbey)",
+      "rcat": "Burger",
+      "mcat": "Non Bread Steaks",
+      "p": 768,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Terriaki Roll (8 Adet)",
+      "rest": "Sushiwind (Yeşilköy Mah.)",
+      "rcat": "Sushi",
+      "mcat": "Cooked Rolls",
+      "p": 690,
+      "platform": "getir"
+    },
+    {
+      "n": "Fıstıklı Şöbiyet (500 g)",
+      "rest": "Balkaya Pastanesi (Gülbahar Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Kiloluluk Baklava",
+      "p": 800,
+      "platform": "getir"
+    },
+    {
+      "n": "Dubai Çikolatası (200 g)",
+      "rest": "Yağcıoğlu Pastane & Restoran (Halkalı Merkez Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Çikolatalar",
+      "p": 590,
+      "platform": "getir"
+    },
+    {
+      "n": "Fıstıklı Tel Kadayıf (500 g)",
+      "rest": "Seyidoğlu (Nine Hatun Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kiloluk Tatlı (500 g)",
+      "p": 999,
+      "platform": "getir"
+    },
+    {
+      "n": "V Pesto (Orta)",
+      "rest": "Pizza V (Rumelihisarı Mah.)",
       "rcat": "Pizza",
-      "mcat": "Çocuk Menüleri",
-      "p": 290,
+      "mcat": "Vejeteryan Pizza (Orta)",
+      "p": 665,
       "platform": "getir"
     },
     {
-      "n": "Vegan Köfteli Wrap",
+      "n": "Teriyaki Soslu Sebzeli Soba Noodle",
+      "rest": "Chinastix & Sushi Maslak 1453 (Maslak Mah.)",
+      "rcat": "Sushi",
+      "mcat": "Soba Noodle (Glütensiz)",
+      "p": 575,
+      "platform": "getir"
+    },
+    {
+      "n": "Ispanak Kavurma",
+      "rest": "Adile Sultan Ev Yemekleri (Rasimpaşa)",
+      "rcat": "Ev Yemekleri,Köfte,Tavuk",
+      "mcat": "Sebzeli Yemekler",
+      "p": 295,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Yoğurtlu Patlıcan (250 g)",
+      "rest": "Namlı Gurme Karaköy (Kemankeş Karamustafapaşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Soğuk Meze",
+      "p": 292,
+      "platform": "getir"
+    },
+    {
+      "n": "Dinamit Karides Roll (8 Adet)",
+      "rest": "Kyoto Sushi, Fatih (Zeyrek Mah.)",
+      "rcat": "Sushi",
+      "mcat": "Özel Sushiler",
+      "p": 499,
+      "platform": "getir"
+    },
+    {
+      "n": "Eker Tavukgöğsü (150 g)",
+      "rest": "Oses Çiğ Köfte, Esenyurt (Zafer Mah.)",
+      "rcat": "Çiğ Köfte",
+      "mcat": "Eker Tatlı",
+      "p": 70,
+      "platform": "getir"
+    },
+    {
+      "n": "Meşhur Antep Katmer",
+      "rest": "Antephan Künefe (Kazım Karabekir Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Künefe",
+      "p": 772,
+      "platform": "getir"
+    },
+    {
+      "n": "Humus (500 g)",
+      "rest": "Tahin (Hisarüstü Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kiloluk Ürün",
+      "p": 550,
+      "platform": "getir"
+    },
+    {
+      "n": "Mango Rise (330 ml)",
+      "rest": "Tetmix (Mecidiyeköy Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Signatures",
+      "p": 420,
+      "platform": "getir"
+    },
+    {
+      "n": "Sosisli Patso",
+      "rest": "Sarbi Lezzet (Kazlıçeşme)",
+      "rcat": "Burger",
+      "mcat": "Sıcak Sandviçler",
+      "p": 290,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Profiterollu & Fıstıklı & Çikolatalı Pasta (15-20 Kişilik)",
+      "rest": "Balbadem Pastanesi (Esentepe Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Pasta (No.3)",
+      "p": 3975,
+      "platform": "getir"
+    },
+    {
+      "n": "Fındıklı Karamelize Beyaz Çikolata (125 g)",
+      "rest": "Oses Çiğ Köfte (Battalgazi Mah.)",
+      "rcat": "Çiğ Köfte",
+      "mcat": "Eker Tatlı",
+      "p": 70,
+      "platform": "getir"
+    }
+  ],
+  "main": [
+    {
+      "n": "Köri Soslu Tavuklu Pilav",
+      "rest": "Tarihi Karaköy Pilavcısı (Sinanpaşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Pilav",
+      "p": 400,
+      "platform": "getir"
+    },
+    {
+      "n": "Fargo ( Az Acılı )",
+      "rest": "Express Wich (Haznedar)",
+      "rcat": "Tost & Sandviç,Börek,Pastane & Fırın",
+      "mcat": "Sandviçler",
+      "p": 325,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Baz Kavurmalı kaşarlı Tost",
+      "rest": "Sandwich'ci Seyit  (Ardıçlı)",
+      "rcat": "Kahvaltı,Tost & Sandviç",
+      "mcat": "Bazlama Tostlar",
+      "p": 303,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Hamburger",
+      "rest": "Saloon Burger (Silivrikapı)",
+      "rcat": "Burger",
+      "mcat": "Burgerler",
+      "p": 275,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Urfa Dürüm",
+      "rest": "Ali Haydar Usta (Deftardar Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Dürüm",
+      "p": 350,
+      "platform": "getir"
+    },
+    {
+      "n": "Karışık Tost (Kaşar & Sucuk)",
+      "rest": "Suadiye Marmaris Ortaköy, Beşiktaş (Mecidiye Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tostlar",
+      "p": 259,
+      "platform": "getir"
+    },
+    {
+      "n": "Üç Peynirli Pide (Açık)",
+      "rest": "Pide City (Şişli Merkez Mah.)",
+      "rcat": "Pide",
+      "mcat": "Spesiyal Pide",
+      "p": 475,
+      "platform": "getir"
+    },
+    {
+      "n": "Maş Fasulyesi Salatası",
+      "rest": "Hafif Ol Diyet Yemek Servisi (Şenlikköy Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Salata",
+      "p": 510,
+      "platform": "getir"
+    },
+    {
+      "n": "Kıymalı Kol Böreği (750 gr)",
+      "rest": "Bülent Börekçilik (Mimar Hayrettin)",
+      "rcat": "Börek",
+      "mcat": "Kiloluk Börekler (Pişirilmiş)",
+      "p": 672,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Green Sandviç",
+      "rest": "Munchies Sandviç (Bozkurt)",
+      "rcat": "Kahvaltı,Tost & Sandviç",
+      "mcat": "Sandviç",
+      "p": 310,
+      "platform": "getir"
+    },
+    {
+      "n": "Karışık Izgara Tavuk",
+      "rest": "Köroğlu Çorba, Bakırköy (Şenliköy Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Izgaralar",
+      "p": 1100,
+      "platform": "getir"
+    },
+    {
+      "n": "Kıymalı Pide",
+      "rest": "Bağdat İskender & Kebap 1987 (Merkez Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Fırından",
+      "p": 400,
+      "platform": "getir"
+    },
+    {
+      "n": "Hawaiian Pizza (Orta Boy) (27 cm)",
+      "rest": "Maipo Pizza (Barbaros Hayrettin Paşa Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Pizza (Orta Boy)",
+      "p": 480,
+      "platform": "getir"
+    },
+    {
+      "n": "Pizza Gamer (Büyük)",
+      "rest": "Pizza Bulls (Osmanağa Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Dünya Lezzetleri Pizza (Büyük)",
+      "p": 600,
+      "platform": "getir"
+    },
+    {
+      "n": "Çıtır Tavuk",
+      "rest": "Juno (Harbiye Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Aperitif",
+      "p": 630,
+      "platform": "getir"
+    },
+    {
+      "n": "Tavuklu Vietnamese Roll",
+      "rest": "Shelly (Levent Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Vietnamese Roll",
+      "p": 880,
+      "platform": "getir"
+    },
+    {
+      "n": "Soğanlı Kebap",
+      "rest": "Birbey Restaurant (Koca Mustafapaşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kebap",
+      "p": 423,
+      "platform": "getir"
+    },
+    {
+      "n": "Tako (Et Döner)",
+      "rest": "Bereket Döner (Bahçelievler Mah.)",
+      "rcat": "Döner",
+      "mcat": "Tako Menü",
+      "p": 355,
+      "platform": "getir"
+    },
+    {
+      "n": "Lahmacun Arası Et Döner",
+      "rest": "Dönerci Hasan Usta (Alibeyköy Mah.)",
+      "rcat": "Döner",
+      "mcat": "Specialler",
+      "p": 3904,
+      "platform": "getir"
+    },
+    {
+      "n": "Gurme Tavuk Burger",
+      "rest": "Burger Yiyelim (Kağıthane Merkez Mah.)",
+      "rcat": "Burger",
+      "mcat": "Tavuk Burger",
+      "p": 310,
+      "platform": "getir"
+    },
+    {
+      "n": "Ayvalık Tostu",
+      "rest": "Güneş Park Döner & Kumrucu Uğur Usta (Güneşli Mah.)",
+      "rcat": "Döner",
+      "mcat": "Tost",
+      "p": 289,
+      "platform": "getir"
+    },
+    {
+      "n": "Sucuklu Kantin Tostu",
+      "rest": "Benden Büfe  (Zuhuratbaba)",
+      "rcat": "Kahvaltı,Tost & Sandviç,Sokak Lezzetleri",
+      "mcat": "Sıcak Sandviç",
+      "p": 178,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Barbekü Soslu Tavuk",
+      "rest": "Francesco Ristorante (19 Mayıs Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tava Tavuk",
+      "p": 605,
+      "platform": "getir"
+    },
+    {
+      "n": "Bazlama Tost",
+      "rest": "Yağcıoğlu Pastane & Restoran (Kartaltepe Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Tostlar",
+      "p": 460,
+      "platform": "getir"
+    },
+    {
+      "n": "Çıtır Tavuk Kinoa Tabbule",
+      "rest": "Big Bowl (Akat Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Salata Menü",
+      "p": 360,
+      "platform": "getir"
+    },
+    {
+      "n": "Tavuklu Pilav (Az)",
+      "rest": "Meşhur Pilavcı Kemal Usta (Sancaktepe Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Pilav",
+      "p": 140,
+      "platform": "getir"
+    },
+    {
+      "n": "Bol Tavuklu Pilav",
+      "rest": "Sürmene Pilavcısı, Esenyurt (Piri Reis Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Pilav",
+      "p": 280,
+      "platform": "getir"
+    },
+    {
+      "n": "Köfteli Wrap",
       "rest": "Express Chef (Fenerbahçe Mah.)",
       "rcat": "Yemek",
       "mcat": "Wrap",
@@ -105,1507 +467,1339 @@
       "platform": "getir"
     },
     {
-      "n": "Izgara Köfte",
-      "rest": "Beşiktaş Yöresel Ev Yemekleri & Tavuk (Türkali Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Izgara",
-      "p": 495,
-      "platform": "getir"
-    },
-    {
-      "n": "Tutto Pollo",
-      "rest": "Tuttobene Sandvich (Rasimpaşa Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Sandviç",
-      "p": 410,
-      "platform": "getir"
-    },
-    {
-      "n": "2 Orta Boy Pan Cazip Pizza",
-      "rest": "Domino's Pizza (Sakızağacı Mah.)",
-      "rcat": "Pizza",
-      "mcat": "Pan Pizzalı Menüler",
-      "p": 590,
-      "platform": "getir"
-    },
-    {
-      "n": "Toskana Tostu",
-      "rest": "Potter Büfe, Esenyurt (Saadetdere Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Tost",
-      "p": 245,
-      "platform": "getir"
-    },
-    {
-      "n": "Yayla Çorbası",
-      "rest": "Göreme Muhallebicisi (Feriköy Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Çorba",
-      "p": 140,
-      "platform": "getir"
-    },
-    {
-      "n": "Tavuklu Mantarlı Sandviç",
-      "rest": "Starbucks® (Koza Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Sandviç",
-      "p": 335,
-      "platform": "getir"
-    },
-    {
-      "n": "Doritos'lu Çiğ Köfte Dürüm",
-      "rest": "Komagene Etsiz Çiğ Köfte (Siyavuşpaşa Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Dürüm",
-      "p": 130,
-      "platform": "getir"
-    },
-    {
-      "n": "Çıtır Tavuk",
-      "rest": "Pizza Bulls (Reşitpaşa)",
-      "rcat": "Pizza",
-      "mcat": "Yan Lezzet",
-      "p": 240,
-      "platform": "getir"
-    },
-    {
-      "n": "Et Döner Jumbo Dürüm",
-      "rest": "Hot Döner (Hasanpaşa Mah.)",
+      "n": "Tavuk Döner (1 kg)",
+      "rest": "Beleş Döner (Bağlarçeşme Mah.)",
       "rcat": "Döner",
-      "mcat": "Et Döner Dürüm",
-      "p": 460,
+      "mcat": "Kiloluk Lezzet (Pişirilmiş)",
+      "p": 1230,
       "platform": "getir"
     },
     {
-      "n": "Vegetariana Pizza (Orta Boy) (27 cm)",
-      "rest": "Maipo Pizza (Barbaros Hayrettin Paşa Mah.)",
-      "rcat": "Pizza",
-      "mcat": "Pizza (Orta Boy)",
-      "p": 423,
-      "platform": "getir"
-    },
-    {
-      "n": "Kaşarlı Tavuk Döner Dürüm",
-      "rest": "On Numara Döner (İstiklal Mah.)",
+      "n": "Mercimek Çorbası (Yarım)",
+      "rest": "Uslubey İzmir Kuzu Kokoreç (İçerenköy Mah.)",
       "rcat": "Döner",
-      "mcat": "Döner",
-      "p": 225,
-      "platform": "getir"
-    },
-    {
-      "n": "Favori Double Dürüm",
-      "rest": "Komagene Etsiz Çiğ Köfte (Merkez)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Dürümler",
-      "p": 145,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Alinazik Kebap (Et Şişten)",
-      "rest": "As Mevlana Pide, Fatih (Koca Mustafapaşa Mah.)",
-      "rcat": "Pide",
-      "mcat": "Kebaplar & Izgara",
-      "p": 610,
-      "platform": "getir"
-    },
-    {
-      "n": "Mix Pirinç Bowl",
-      "rest": "Tahıl.Co Bowl (Yenidoğan Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Bowl",
-      "p": 435,
-      "platform": "getir"
-    },
-    {
-      "n": "Peynirli Kol Böreği (1 kg.)",
-      "rest": "Arı Börek (Teşvikiye)",
-      "rcat": "Kahvaltı,Börek",
-      "mcat": "Kiloluk Börekler (Pişirilmiş)",
-      "p": 1091,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Tiba Roll (8 Adet)",
-      "rest": "Sushibacks Asian Food (Maltepe Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Cooked Roll",
-      "p": 660,
-      "platform": "getir"
-    },
-    {
-      "n": "Tuzlama Çorbası",
-      "rest": "Kervancı İşkembe Salonu  (Yenikent)",
-      "rcat": "Ev Yemekleri,Sokak Lezzetleri,Çorba",
       "mcat": "Çorba",
-      "p": 350,
-      "platform": "getir"
-    }
-  ],
-  "other": [
-    {
-      "n": "Crispy Crunchy Philadelphia (8 pcs)",
-      "rest": "Lucky Sushi (Reşitpaşa Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Crunchy Roll",
-      "p": 474,
-      "platform": "getir"
-    },
-    {
-      "n": "Falafel",
-      "rest": "Snap Salad & Bowl (Acıbadem)",
-      "rcat": "Salata & Sağlık",
-      "mcat": "İlaveler",
-      "p": 120,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Çilekli Bitter Çikolatalı Triano (250 g)",
-      "rest": "Ümit Pasta Kafe (Göztepe Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Kiloluk Petifür Lezzet",
-      "p": 400,
-      "platform": "getir"
-    },
-    {
-      "n": "Gaziantep Fıstıklı  Kadayıf (500 g)",
-      "rest": "Nevzat Şen Naturel Ev Lezzetleri (Şehremini Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kiloluk Tatlı (500 g)",
-      "p": 800,
-      "platform": "getir"
-    },
-    {
-      "n": "Saray Katmanı",
-      "rest": "Ağa Türk Mutfağı (Mimar Sinan Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Cedri Grolet & Fransız Tatlıları",
-      "p": 290,
-      "platform": "getir"
-    },
-    {
-      "n": "Kıymalı Yeşil Mercimek",
-      "rest": "Adile Sultan Ev Yemekleri, Esenyurt (Cumhuriyet Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Etli Sebzeli Yemek",
-      "p": 295,
-      "platform": "getir"
-    },
-    {
-      "n": "Etibol (Büyük)",
-      "rest": "Little Caesars Pizza (Ataköy 7-8-9-10. Kısım)",
-      "rcat": "Pizza",
-      "mcat": "Büyük Boy Pizzalar",
-      "p": 690,
-      "platform": "trendyol"
-    },
-    {
-      "n": "9 Rakamı Gümüş Pleksi",
-      "rest": "Konak Pastahanesi (İnönü Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Pleksi & Yazılı Pasta Süsü",
-      "p": 54,
-      "platform": "getir"
-    },
-    {
-      "n": "Peynirli Omlet",
-      "rest": "Ruveyda (Gümüşsuyu)",
-      "rcat": "Kahvaltı,Tost & Sandviç,Mantı & Makarna",
-      "mcat": "Omletler & Yumurtalılar",
-      "p": 330,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Tavukburger®",
-      "rest": "Popeyes (Zeytinlik)",
-      "rcat": "Tavuk",
-      "mcat": "Sandviç ve Salatalar",
-      "p": 240,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Portakallı",
-      "rest": "Taşçı Fırın (Haznedar Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Adet Lezzet",
-      "p": 120,
-      "platform": "getir"
-    },
-    {
-      "n": "Çilekli Rulo Pasta",
-      "rest": "Starbucks® (Hasan Halife Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Dönemsel Ürünler ⭐",
-      "p": 290,
-      "platform": "getir"
-    },
-    {
-      "n": "Frambuazlı Pasta (2-3 Kişilik)",
-      "rest": "Balkaya Pastanesi (Gülbahar Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Pasta (2-3 Kişilik)",
-      "p": 750,
-      "platform": "getir"
-    },
-    {
-      "n": "Macaron (2 Adet)",
-      "rest": "İnci Gurme Profiterol Beyoğlu (Gümüşsuyu Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Macarons",
-      "p": 313,
-      "platform": "getir"
-    },
-    {
-      "n": "Glutensiz Granola Bowl",
-      "rest": "Medipoint Wellness (Merdivenköy Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Glutensiz Ürün",
-      "p": 550,
-      "platform": "getir"
-    },
-    {
-      "n": "Dana Etli Bowl",
-      "rest": "Sushico (Ünalan Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Poke & Bowl",
-      "p": 1040,
-      "platform": "getir"
-    },
-    {
-      "n": "Algida Mini Nogger (60 ml)",
-      "rest": "Grannys Waffles & Kumpir, Üsküdar (Selimiye Mah.)",
-      "rcat": "Waffle",
-      "mcat": "Dondurmalar",
-      "p": 90,
-      "platform": "getir"
-    },
-    {
-      "n": "Cheese Steak & Mush",
-      "rest": "Eat Your Greens (Cumhuriyet Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Wraps",
-      "p": 625,
-      "platform": "getir"
-    },
-    {
-      "n": "Peynir Helvası (500 g)",
-      "rest": "Carmen Tatlıcılık (Ataköy 7 8 9 10. Kısım Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Kiloluk Lezzet",
-      "p": 450,
-      "platform": "getir"
-    },
-    {
-      "n": "Sarımsak Soslu Sucukbol (Orta)",
-      "rest": "Little Caesars Pizza (Zuhuratbaba Mah.)",
-      "rcat": "Pizza",
-      "mcat": "Orta Boy Pizza",
-      "p": 550,
-      "platform": "getir"
-    },
-    {
-      "n": "Cevizli Kelebek (500 g)",
-      "rest": "Zaim Baklava (Mustafa Kemal Paşa Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Baklava ( 500 g)",
-      "p": 772,
-      "platform": "getir"
-    },
-    {
-      "n": "Suzuki Maki (6 Pcs.)",
-      "rest": "Konoha Sushi & Chinese Restaurant (Maslak Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Maki",
-      "p": 360,
-      "platform": "getir"
-    },
-    {
-      "n": "151. California Roll (4 Adet)",
-      "rest": "Chinastix & Sushi (Etiler Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Uramaki Inside Out (4 Parça)",
-      "p": 275,
-      "platform": "getir"
-    },
-    {
-      "n": "Süt Pembe",
-      "rest": "Zeynel Muhallebicisi (Yeniköy Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Muhallebi",
-      "p": 335,
-      "platform": "getir"
-    },
-    {
-      "n": "Iced Lemon Vanilla Latte",
-      "rest": "Starbucks® (Rauf Orbay Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Dönemsel Ürünler ⭐",
-      "p": 300,
-      "platform": "getir"
-    },
-    {
-      "n": "Zeytinyağlı Enginar (300 g)",
-      "rest": "Lezzet Lokantası (Osmaniye Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Zeytinyağlı Lezzet",
-      "p": 181,
-      "platform": "getir"
-    },
-    {
-      "n": "Çilekli Milföy Pasta (Adet)",
-      "rest": "Aum Pasta & Cafe (Acıbadem Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Pasta (Dilim)",
-      "p": 470,
-      "platform": "getir"
-    },
-    {
-      "n": "Double Antep Fıstıklı Nar Aromalı Lokum (350 g)",
-      "rest": "Balbadem Pastanesi (Esentepe Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Pişmaniye & Helva & Lokum",
-      "p": 330,
-      "platform": "getir"
-    },
-    {
-      "n": "(Şişte Alinazik)",
-      "rest": "Şükrübey Lahmacun Pide Salonu (Siyavuşpaşa Mah.)",
-      "rcat": "Pide",
-      "mcat": "Kebap Çeşitleri",
-      "p": 550,
-      "platform": "getir"
-    },
-    {
-      "n": "Mushroom Chicken",
-      "rest": "Eastnbull Steak & Burger (Nisbetiye Mah.)",
-      "rcat": "Burger",
-      "mcat": "Izgara Tavuk",
-      "p": 575,
+      "p": 200,
       "platform": "getir"
     }
   ],
   "combo": [
     {
-      "n": "Tavuk Jumbo Dürüm Menü",
-      "rest": "Hot Döner (Zafer Mah.)",
+      "n": "Drago Burrito Medium Menü (180 g)",
+      "rest": "Hey Döner, Esenyurt (İnönü Mah.)",
       "rcat": "Döner",
-      "mcat": "Tavuk Döner Dürüm Menü",
-      "p": 490,
+      "mcat": "Hey Burrito Menü",
+      "p": 625,
       "platform": "getir"
     },
     {
-      "n": "Cheese Bros Burger Menü",
-      "rest": "Chicken Bros (Mimar Hayrettin Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Burger Menü",
-      "p": 300,
-      "platform": "getir"
-    },
-    {
-      "n": "3'lü Tenders Menü",
-      "rest": "TK Tavuk Chicken Burger (Fevzi Çakmak Mah.)",
-      "rcat": "Burger",
-      "mcat": "Tavuk Menü",
-      "p": 310,
-      "platform": "getir"
-    },
-    {
-      "n": "2'li Orta Boy Akdeniz & Funghi Pizza Mega Menü 4",
-      "rest": "Maipo Pizza (Barbaros Hayrettin Paşa Mah.)",
-      "rcat": "Pizza",
-      "mcat": "Doyuran Menü",
-      "p": 1611,
-      "platform": "getir"
-    },
-    {
-      "n": "Etiler Marmaris Burger Menü",
-      "rest": "Etiler Marmaris (Şişli Merkez Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Menü",
-      "p": 520,
-      "platform": "getir"
-    },
-    {
-      "n": "Tam Ekmek (110 gr.) & Çıtır Miks Menü",
-      "rest": "Paşa Döner (Ferahevler)",
-      "rcat": "Döner",
-      "mcat": "Ekmek Seven Menüleri",
-      "p": 550,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Avantaj Menü 1",
-      "rest": "Chinese & Sushi Express (Caferağa Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Avantaj Menü",
-      "p": 510,
-      "platform": "getir"
-    },
-    {
-      "n": "3'lü Tavuk Döner Dürüm Menü (L)",
-      "rest": "Bereket Döner (İskenderpaşa Mah.)",
-      "rcat": "Döner",
-      "mcat": "Tavuk Döner Dürüm Menü",
-      "p": 1145,
-      "platform": "getir"
-    },
-    {
-      "n": "Et Döner Dürüm Menü (M)",
-      "rest": "Bereket Döner (Güzelyurt Mah.)",
-      "rcat": "Döner",
-      "mcat": "Et Döner Dürüm Menü",
-      "p": 640,
-      "platform": "getir"
-    },
-    {
-      "n": "Çocuk Menü 2",
-      "rest": "Sushi X (Pınartepe Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Menü",
+      "n": "Kaçmaz Menü 2",
+      "rest": "Kahve Dünyası (Ömer Avni Mah.)",
+      "rcat": "Kahve",
+      "mcat": "Kaçmaz Menü",
       "p": 975,
       "platform": "getir"
     },
     {
-      "n": "Triplex Burger Menü",
-      "rest": "Burger Yiyelim (Şehremini)",
+      "n": "Mini Sandviç Menü",
+      "rest": "Cheef Moses (Merdivenköy Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Çocuk Menü",
+      "p": 270,
+      "platform": "getir"
+    },
+    {
+      "n": "BigMaç Menü",
+      "rest": "McDonald's (Şehremini Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Cazip Teklif",
+      "p": 840,
+      "platform": "getir"
+    },
+    {
+      "n": "2'li Zoom Burger Menü",
+      "rest": "Burgerzoom (Merkez Mah.)",
       "rcat": "Burger",
-      "mcat": "Et Burger Menüleri",
-      "p": 755,
+      "mcat": "Avantajlı Menü",
+      "p": 1555,
+      "platform": "getir"
+    },
+    {
+      "n": "Cajun Burrito Menü",
+      "rest": "Cajun Corner (Hırka-i Şerif Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Cajun Roll Menü",
+      "p": 515,
+      "platform": "getir"
+    },
+    {
+      "n": "Balya Burger Menü",
+      "rest": "Balia (Bahçelievler Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Burger",
+      "p": 336,
+      "platform": "getir"
+    },
+    {
+      "n": "Coca-Cola Avantajlı Menü",
+      "rest": "Cajun Corner (Acıbadem Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Avantajlı Menü",
+      "p": 800,
+      "platform": "getir"
+    },
+    {
+      "n": "Texas Burger Menü",
+      "rest": "Baltazar (Türkali Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Fırsat Menü",
+      "p": 799,
+      "platform": "getir"
+    },
+    {
+      "n": "2'li Lahmacun Menü",
+      "rest": "Günaydın Köfte & Döner (Maslak Mah.)",
+      "rcat": "Döner",
+      "mcat": "Lahmacun Menü",
+      "p": 460,
+      "platform": "getir"
+    },
+    {
+      "n": "4'lü Pilav Üstü Döner Menü",
+      "rest": "Günaydın Köfte & Döner (Ataköy Mah.)",
+      "rcat": "Döner",
+      "mcat": "Döner Menü",
+      "p": 2200,
+      "platform": "getir"
+    },
+    {
+      "n": "Cajun Roll Menü",
+      "rest": "Cajun Corner (Beştelsiz Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Cajun Roll Menü",
+      "p": 520,
+      "platform": "getir"
+    },
+    {
+      "n": "Mogaf Burger Menü",
+      "rest": "Mogaf Hatay Döner (Mecidiyeköy)",
+      "rcat": "Döner,Tavuk",
+      "mcat": "Burger Menüler",
+      "p": 425,
       "platform": "trendyol"
     },
     {
-      "n": "Tavuk Döner XLarge Dürüm Menü",
-      "rest": "Maydonoz Döner (Maslak)",
+      "n": "Iced Spanish Cream Matcha Latte",
+      "rest": "Starbucks® (Tütüncü Mehmet Efendi Cad.)",
+      "rcat": "Yemek",
+      "mcat": "Kampanya",
+      "p": 180,
+      "platform": "getir"
+    },
+    {
+      "n": "But Kanat Menü (500 g)",
+      "rest": "Beyzade Manngall (Hürriyet Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Ramazan'a Özel",
+      "p": 425,
+      "platform": "getir"
+    },
+    {
+      "n": "Dörtlü Tavuk Jumbo Dürüm Menü",
+      "rest": "Hot Döner (Zafer Mah.)",
       "rcat": "Döner",
-      "mcat": "1 Kişilik Menüler",
-      "p": 430,
-      "platform": "trendyol"
+      "mcat": "Dörtlü Tavuk Döner Menü",
+      "p": 1280,
+      "platform": "getir"
+    },
+    {
+      "n": "Patatesli Tek Köfte Burger Menü",
+      "rest": "Köfteci Yusuf (Sanayi)",
+      "rcat": "Burger,Döner,Köfte",
+      "mcat": "Ekmek Arası Menü",
+      "p": 325,
+      "platform": "getir"
+    },
+    {
+      "n": "Cajun Smoky Burger Menü",
+      "rest": "Cajun Corner (Beştelsiz Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Cajun Gurme Burger Menü",
+      "p": 570,
+      "platform": "getir"
+    },
+    {
+      "n": "Dürüm Menü",
+      "rest": "Komagene Etsiz Çiğ Köfte (Cerrahpaşa Mah.)",
+      "rcat": "Çiğ Köfte",
+      "mcat": "Dürümlü Menü",
+      "p": 145,
+      "platform": "getir"
     },
     {
       "n": "Kaçmaz Menü",
-      "rest": "Kahve Dünyası (Acıbadem Mah.)",
+      "rest": "Doyuyo (Ataköy 1. Kısım Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kaçmaz Menü",
+      "p": 600,
+      "platform": "getir"
+    },
+    {
+      "n": "Bol Bol Menü - Büyük",
+      "rest": "Terra Pizza (Beştelsiz Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Pepsili Menü",
+      "p": 670,
+      "platform": "getir"
+    },
+    {
+      "n": "2'li Efsane İçecekli Menü",
+      "rest": "Le Monde Du Tacos (Yenibosna Merkez Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kampanyalı Menü",
+      "p": 760,
+      "platform": "getir"
+    },
+    {
+      "n": "Kaçmaz Menü",
+      "rest": "Kahve Dünyası (Teşvikiye Mah.)",
       "rcat": "Kahve",
       "mcat": "Kaçmaz Menü",
       "p": 425,
       "platform": "getir"
     },
     {
-      "n": "Dürüm Menü",
-      "rest": "Komagene Etsiz Çiğ Köfte (Davutpaşa Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Dürümlü Menü",
-      "p": 145,
-      "platform": "getir"
-    },
-    {
-      "n": "Marmaris Steak Burger Menü (120 g)",
-      "rest": "Suadiye Marmaris Ortaköy, Beşiktaş (Mecidiye Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Menüler",
-      "p": 706,
-      "platform": "getir"
-    },
-    {
-      "n": "Large Tavuk Döner Dürüm Menü Fırsatı",
-      "rest": "Bereket Döner (Piri Reis Mah.)",
-      "rcat": "Döner",
-      "mcat": "Ayın İndirimi",
-      "p": 405,
-      "platform": "getir"
-    },
-    {
-      "n": "Islak & Ayvalık Menü",
-      "rest": "Sedat Büfe (Emniyettepe Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Çoklu Menü",
-      "p": 596,
-      "platform": "getir"
-    },
-    {
-      "n": "Favori Mega Çiğ Köfte Dürüm Menü",
-      "rest": "Komagene Etsiz Çiğ Köfte (İncirtepe Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Dürümlü Menü",
-      "p": 155,
-      "platform": "getir"
-    },
-    {
-      "n": "HD İskender Çifte Lezzet Menüsü",
-      "rest": "HD İskender (Akşemsettin Mah.)",
+      "n": "Tavuk Sote & Pilav & Cacık & Günün Tatlısı",
+      "rest": "Saray Lokantası (Kamer Hatun Mah.)",
       "rcat": "Yemek",
       "mcat": "Menü",
-      "p": 1090,
+      "p": 412,
       "platform": "getir"
     },
     {
-      "n": "Barbekü Burger Menü",
-      "rest": "Royco Burger, Kağıthane (Seyrantepe Mah.)",
+      "n": "6'lı Kanat Menü",
+      "rest": "Tavuk Yiyelim (Fevzi Çakmak Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kemikli Tavuk Menü",
+      "p": 545,
+      "platform": "getir"
+    },
+    {
+      "n": "2'li Petra Klasiği Hamburger Menü",
+      "rest": "Petra Burger  (Nuripaşa)",
       "rcat": "Burger",
-      "mcat": "Menü",
-      "p": 750,
-      "platform": "getir"
-    },
-    {
-      "n": "Smoky Chicken Sandviç Menü",
-      "rest": "Arby's, Bakırköy (Osmaniye Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Menü",
-      "p": 410,
-      "platform": "getir"
-    },
-    {
-      "n": "Clock Ofis Box Menü",
-      "rest": "Blum Coffee House (Vişnezade Mah.)",
-      "rcat": "Kahve",
-      "mcat": "GetirYemek'e Özel Menü",
-      "p": 1290,
-      "platform": "getir"
-    },
-    {
-      "n": "263- Start Menü 3",
-      "rest": "Sushi Yaki (Küçükbakkalköy Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Ekstra İndirimli Menüler",
-      "p": 1170,
-      "platform": "getir"
-    },
-    {
-      "n": "Islak Hamburger Menü",
-      "rest": "Yeditepe Büfe (Fikirtepe Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Menü",
-      "p": 425,
-      "platform": "getir"
-    },
-    {
-      "n": "Düşük Kalorili Fit Menü",
-      "rest": "Adile Sultan Ev Yemekleri, Bağcılar (Mahmutbey Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Günlük Menü",
-      "p": 355,
-      "platform": "getir"
-    },
-    {
-      "n": "Çılgın Ortalar Menü",
-      "rest": "Pasaport Pizza (Merkezefendi Mah.)",
-      "rcat": "Pizza",
-      "mcat": "Ayın Kampanyaları",
-      "p": 1060,
-      "platform": "getir"
-    },
-    {
-      "n": "Mogaf Tavuk Burrito Menü",
-      "rest": "Mogaf Hatay Döner (Çınar)",
-      "rcat": "Döner",
-      "mcat": "Burrito Menüler",
-      "p": 525,
+      "mcat": "2 Kişilik Doyurucu Menüler",
+      "p": 788,
       "platform": "trendyol"
     },
     {
-      "n": "Menü 2",
-      "rest": "Focus Burger & Gurme Mutfak, (Merkez Mah.)",
-      "rcat": "Burger",
+      "n": "Mogaf Bomba Köfte Burrito Menü",
+      "rest": "Mogaf Hatay Döner (Kocasinan Merkez)",
+      "rcat": "Döner,Burger",
+      "mcat": "Burrito Menüler",
+      "p": 675,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Ayvalık Tostu Menü",
+      "rest": "Sarıoğlu Büfe, Bahçelievler (Siyavuşpaşa Mah.)",
+      "rcat": "Yemek",
       "mcat": "Menü",
-      "p": 1150,
+      "p": 400,
       "platform": "getir"
     },
     {
-      "n": "Cool Menü",
-      "rest": "Pasaport Pizza (Aşık Veysel Mah.)",
-      "rcat": "Pizza",
-      "mcat": "Ayın Kampanyaları",
-      "p": 650,
-      "platform": "getir"
+      "n": "Kovada Dana Köfte (750 gr.) Menü",
+      "rest": "Pişiyo (Haznedar)",
+      "rcat": "Köfte,Tavuk,Sokak Lezzetleri",
+      "mcat": "KOVADA MENÜLER",
+      "p": 1250,
+      "platform": "trendyol"
     },
     {
-      "n": "Çiğ Köfte Menü (600 g)",
-      "rest": "Komagene Etsiz Çiğ Köfte (Cihannüma Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Çiğ Köfte Porsiyon Menü",
-      "p": 535,
+      "n": "Schnitzel Menü",
+      "rest": "Tavuk Dünyası (Kağıthane Merkez Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Menü",
+      "p": 595,
       "platform": "getir"
     }
   ],
-  "extra": [
+  "drink": [
     {
-      "n": "12'Li Soğan Halkası",
-      "rest": "Kebo (Merkez)",
-      "rcat": "Döner",
-      "mcat": "Çıtırlar",
-      "p": 130,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Porsiyon Patates",
-      "rest": "Köfteci Yusuf (Mecidiye)",
-      "rcat": "Burger,Döner,Köfte",
-      "mcat": "Atıştırmalıklar",
-      "p": 90,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Soğan Halkası (6 Adet)",
-      "rest": "Baker Calzone Burger (Bahçelievler Mah.)",
-      "rcat": "Burger",
-      "mcat": "Yan Lezzet",
-      "p": 75,
-      "platform": "getir"
-    },
-    {
-      "n": "Çoban Salata",
-      "rest": "Bağdatlı Ocakbaşı Orhan Usta (Merkez Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Salata",
-      "p": 220,
-      "platform": "getir"
-    },
-    {
-      "n": "Soğan Halkası (8 Adet)",
-      "rest": "Limos Pizza (Sinanpaşa Mah.)",
-      "rcat": "Pizza",
-      "mcat": "Yan Lezzet",
-      "p": 160,
-      "platform": "getir"
-    },
-    {
-      "n": "Glazed Halka Donut",
-      "rest": "Boston Donuts (Altunizade Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Donut",
-      "p": 150,
-      "platform": "getir"
-    },
-    {
-      "n": "Yeşil Salata",
-      "rest": "Çapa Mevlana Pide (Şehremini Mah.)",
-      "rcat": "Pide",
-      "mcat": "Salata",
+      "n": "Oddly Limonata",
+      "rest": "Starbucks (Maslak)",
+      "rcat": "Kahve & İçecek",
+      "mcat": "Şişelenmiş İçecek",
       "p": 125,
       "platform": "getir"
     },
     {
-      "n": "Tırtıklı Patates (Jumbo)",
-      "rest": "Arby's (Meşrutiyet)",
-      "rcat": "Burger",
-      "mcat": "Atıştırmalık Lezzetler",
-      "p": 80,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Soğan Halkası (8 Adet)",
-      "rest": "Burger Loca (Sümer Mah.)",
-      "rcat": "Burger",
-      "mcat": "Yan Lezzet",
-      "p": 100,
-      "platform": "getir"
-    },
-    {
-      "n": "Tırtıklı Patates (Büyük)",
-      "rest": "Arby's (Beştelsiz)",
-      "rcat": "Burger",
-      "mcat": "Atıştırmalık Lezzetler",
-      "p": 75,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Soğan Halkası (9'lu)",
-      "rest": "Baazen Tantuni (Büyükşehir Mah.)",
+      "n": "Coca Cola Zero Sugar (1 L)",
+      "rest": "Hey Döner, Esenyurt (İnönü Mah.)",
       "rcat": "Döner",
-      "mcat": "Tıkabasa Menü",
+      "mcat": "İçecek",
       "p": 120,
       "platform": "getir"
     },
     {
-      "n": "Yeşillik (Büyük)",
-      "rest": "Komagene Etsiz Çiğ Köfte (Yakuplu)",
+      "n": "Beyoğlu Gazoz (250 ml)",
+      "rest": "Hangry21 (Acıbadem Mah.)",
+      "rcat": "Yemek",
+      "mcat": "İçecek",
+      "p": 106,
+      "platform": "getir"
+    },
+    {
+      "n": "Özerhisar Ayran ( 24,5 cl.)",
+      "rest": "Sarıhan Gurme (Gökalp)",
+      "rcat": "Ev Yemekleri,Çorba,Pide & Lahmacun",
+      "mcat": "İçecekler",
+      "p": 90,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Fanta (330 Ml)",
+      "rest": "Meşhur Unkapanı İ.M.Ç. Pilavcısı (Huzur)",
+      "rcat": "Sokak Lezzetleri",
+      "mcat": "İçecekler",
+      "p": 105,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Şalgam Suyu (300 ml)",
+      "rest": "Oses Çiğ Köfte (Ataköy 7-8-9-10. Kısım)",
       "rcat": "Çiğ Köfte",
-      "mcat": "Ekstralar",
-      "p": 60,
+      "mcat": "İçecek",
+      "p": 50,
+      "platform": "getir"
+    },
+    {
+      "n": "Fruko ( 33 cl )",
+      "rest": "Pişizade (Acıbadem)",
+      "rcat": "Kahvaltı,Tost & Sandviç",
+      "mcat": "İçecekler",
+      "p": 89,
       "platform": "trendyol"
     },
     {
-      "n": "Simit Tabağı (Tek kişilik)",
-      "rest": "Selimiye Muhallebicisi & Restaurant (Maltepe Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltı",
-      "p": 180,
-      "platform": "getir"
-    },
-    {
-      "n": "Patates Kızartması",
-      "rest": "Sezon Cafe (Şehremini Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Yan Lezzet",
-      "p": 124,
-      "platform": "getir"
-    },
-    {
-      "n": "Mevsim Salatası",
-      "rest": "İnan Balık (Beylikdüzüosb Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Salatalar",
-      "p": 250,
-      "platform": "getir"
-    },
-    {
-      "n": "Söğüş Tabağı (1 Kişilik)",
-      "rest": "Bülent Börekçilik (Hürriyet)",
-      "rcat": "Börek",
-      "mcat": "salatalar",
-      "p": 80,
-      "platform": "trendyol"
-    },
-    {
-      "n": "El Yapımı Soğan Halkası (6 Adet)",
-      "rest": "Burgericos (Kozyatağı Mah.)",
+      "n": "Soda (200 ml)",
+      "rest": "Taksim Hamburger (Ortaköy Mah.)",
       "rcat": "Burger",
-      "mcat": "Yan Lezzet",
-      "p": 200,
+      "mcat": "İçecek",
+      "p": 45,
       "platform": "getir"
     },
     {
-      "n": "Çoban Salata",
-      "rest": "Dürümcü Öz Kankalar (Bağcılar Merkez Mah.)",
+      "n": "Soğuk Çikolata",
+      "rest": "Viyana Kahvesi (Koşuyolu Mah.)",
+      "rcat": "Kahve",
+      "mcat": "Soğuk İçecek",
+      "p": 435,
+      "platform": "getir"
+    },
+    {
+      "n": "Fuse Tea Şeftali Kutu",
+      "rest": "Krispy Kreme (19 Mayıs)",
+      "rcat": "Tatlı",
+      "mcat": "İçecekler",
+      "p": 105,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Coca Cola Zero Sugar (330 ml)",
+      "rest": "Mix Kumpir & Waffle (Mareşal Çakmak)",
+      "rcat": "Sokak Lezzetleri,Tatlı",
+      "mcat": "İçecek",
+      "p": 90,
+      "platform": "getir"
+    },
+    {
+      "n": "Vanilla Cream Frappuccino®",
+      "rest": "Starbucks® (Koza Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Frappuccino",
+      "p": 300,
+      "platform": "getir"
+    },
+    {
+      "n": "Doğanay Şalgam (30 cl.) (Acılı)",
+      "rest": "Bereket Döner (Kirazlıtepe)",
       "rcat": "Döner",
-      "mcat": "Yan Lezzet",
-      "p": 80,
+      "mcat": "İçecek",
+      "p": 70,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Su (500 ml)",
+      "rest": "Meydan Çiftlik Döner (Sinanpaşa Mah.)",
+      "rcat": "Döner",
+      "mcat": "İçecek",
+      "p": 30,
       "platform": "getir"
     },
     {
-      "n": "Mevsim Salata",
-      "rest": "Fasuli Lokantaları (Molla Gürani Mah.)",
+      "n": "Özer Hisar Ayran (250 ml)",
+      "rest": "Chicken Project (Feneryolu Mah.)",
       "rcat": "Yemek",
-      "mcat": "Salata",
-      "p": 163,
+      "mcat": "İçecek",
+      "p": 90,
       "platform": "getir"
     },
     {
-      "n": "Klasik Patates Kızartması (Orta)",
-      "rest": "Tavuk Dünyası (Halaskargazi Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Başlangıç",
-      "p": 160,
+      "n": "Sütaş Ayran (170 ml)",
+      "rest": "Frango Döner & Sauce (Şehremini Mah.)",
+      "rcat": "Döner",
+      "mcat": "İçecek",
+      "p": 32,
       "platform": "getir"
     },
     {
-      "n": "Soğan Halkası (8 li)",
-      "rest": "Usta Dönerci (Topçular)",
-      "rcat": "Döner,Kebap,Salata & Sağlık",
-      "mcat": "Çıtır Lezzetler",
+      "n": "Capri-Sun (200 ml)",
+      "rest": "Makarnova (Emniyet Evleri)",
+      "rcat": "Mantı & Makarna",
+      "mcat": "İçecekler",
       "p": 80,
       "platform": "trendyol"
     },
     {
-      "n": "Mini Kahvaltı Tabağı",
-      "rest": "Sarıyer Ev Yemekleri (Emirgan Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltı",
-      "p": 249,
+      "n": "meyve suyu Şeftali (200 ml)",
+      "rest": "Ehli Börek (Örnek Mah.)",
+      "rcat": "Börek",
+      "mcat": "İçecek",
+      "p": 40,
       "platform": "getir"
     },
     {
-      "n": "Elma Dilim Patates Kızartması (150 g)",
-      "rest": "Green Piece Salad & Bowl (Meşrutiyet Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık Lezzet",
-      "p": 246,
+      "n": "Zerdeçal Latte",
+      "rest": "Kahve Dünyası (Acıbadem Mah.)",
+      "rcat": "Kahve",
+      "mcat": "Espresso Bazlı Kahve",
+      "p": 195,
       "platform": "getir"
     },
     {
-      "n": "Atıştırmalık Tabağı",
-      "rest": "Etiler Marmaris (Abdurrahman Nafiz Gürman Mah.)",
+      "n": "Orman Meyveli Ekinezyalı Limonata",
+      "rest": "Blissi Şekersiz & Glutensiz (Merkez)",
+      "rcat": "Tatlı",
+      "mcat": "Soğuk İçecekler",
+      "p": 215,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Maden Suyu (200 ml)",
+      "rest": "Pilavcı Recep Usta (Mustafa Kemalpaşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "İçecek",
+      "p": 35,
+      "platform": "getir"
+    },
+    {
+      "n": "Su (0.5 Lt.)",
+      "rest": "Güzel Fırın Ekmek Pasta (Gürsel)",
+      "rcat": "Pastane & Fırın,Tatlı,Kahvaltı",
+      "mcat": "İçecekler",
+      "p": 25,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Acısız Şalgam Suyu (300 ml)",
+      "rest": "Paçacı Yaşar, Esenyurt (Turgur Özal Mah.)",
+      "rcat": "Yemek",
+      "mcat": "İçecek",
+      "p": 80,
+      "platform": "getir"
+    },
+    {
+      "n": "Cool Lime Refresha®",
+      "rest": "Starbucks® (Mehmet Akif Ersoy Cad.)",
+      "rcat": "Yemek",
+      "mcat": "Buzlu İçecek",
+      "p": 295,
+      "platform": "getir"
+    },
+    {
+      "n": "Sprite (330 ml)",
+      "rest": "BAP Salad & Pasta (Fikirtepe Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "İçecek",
+      "p": 120,
+      "platform": "getir"
+    },
+    {
+      "n": "White Chocolate Mocha",
+      "rest": "Starbucks® (Ortaklar Cad.)",
+      "rcat": "Yemek",
+      "mcat": "Sıcak Kahve",
+      "p": 295,
+      "platform": "getir"
+    },
+    {
+      "n": "Iced Caffè Mocha",
+      "rest": "Starbucks® (Koza Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Buzlu ve Soğuk Kahve",
+      "p": 280,
+      "platform": "getir"
+    },
+    {
+      "n": "Ayran (1 L)",
+      "rest": "Şanlı Urfa Et Lokantası, Şişli (İnönü Mah.)",
+      "rcat": "Yemek",
+      "mcat": "İçecek",
+      "p": 150,
+      "platform": "getir"
+    },
+    {
+      "n": "GJ's Iced Americano",
+      "rest": "Gloria Jeans Coffees (Merkez)",
+      "rcat": "Kahve & İçecek",
+      "mcat": "Soğuk Kahveler",
+      "p": 230,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Uludağ Premium Su (330 ml)",
+      "rest": "Espressolab (Sümer Mah.)",
+      "rcat": "Yemek",
+      "mcat": "İçecek",
+      "p": 70,
+      "platform": "getir"
+    }
+  ],
+  "dessert": [
+    {
+      "n": "Ev Baklavası",
+      "rest": "Tuğbiş Mantı Evi (Acıbadem Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlı",
+      "p": 210,
+      "platform": "getir"
+    },
+    {
+      "n": "Frambuazlı Cheesecake (No. 3) (10 - 12 Kişilik)",
+      "rest": "Seyran Pasta & Restaurant (Silivrikapı Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Pasta (No. 3) (10 - 12 Kişilik)",
+      "p": 2530,
+      "platform": "getir"
+    },
+    {
+      "n": "Kadayıf (250 g)",
+      "rest": "Sirkeci Baba Cadde Pastanesi (Yahya Kahya Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Şerbetli Tatlılar",
+      "p": 315,
+      "platform": "getir"
+    },
+    {
+      "n": "Spoonful Cup",
+      "rest": "Bowl & More (Esentepe Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlı",
+      "p": 359,
+      "platform": "getir"
+    },
+    {
+      "n": "Hasbahçe Pasta (4 - 6 Kişilik)",
+      "rest": "Un Sanatı (Kocamustafapaşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Pasta (4 - 6 Kişilik)",
+      "p": 1250,
+      "platform": "getir"
+    },
+    {
+      "n": "Magnum Mini Badem (58 ml)",
+      "rest": "Choys Fried Chicken (Vişnezade Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Dondurma",
+      "p": 100,
+      "platform": "getir"
+    },
+    {
+      "n": "Tiramisu",
+      "rest": "Pasta Sanatı (Bahçelievler Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Sütlü Tatlı & Nolia",
+      "p": 287,
+      "platform": "getir"
+    },
+    {
+      "n": "White Chocolate Brownie",
+      "rest": "Granny's Waffles & Kumpir, Kadıköy (Dumlupınar Mah.)",
+      "rcat": "Waffle",
+      "mcat": "Pasta & Tatlı",
+      "p": 440,
+      "platform": "getir"
+    },
+    {
+      "n": "Keşkül",
+      "rest": "Hira Kebap (Hasanpaşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlı",
+      "p": 112,
+      "platform": "getir"
+    },
+    {
+      "n": "Krem Şokola",
+      "rest": "Göreme Muhallebicisi (Feriköy Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlı",
+      "p": 260,
+      "platform": "getir"
+    },
+    {
+      "n": "Dolgulu Üçgen Cookie",
+      "rest": "Starbucks® (Yıldız Posta Cad.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlı",
+      "p": 275,
+      "platform": "getir"
+    },
+    {
+      "n": "Parfe Frambuaz Çikolata(1 Kişilik)",
+      "rest": "Elif Fırın (Çeliktepe)",
+      "rcat": "Pastane & Fırın,Börek",
+      "mcat": "parfe ve tek pastalar",
+      "p": 315,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Sufle",
+      "rest": "Pizza Bulls (Cumhuriyet Mah. - Bomonti)",
+      "rcat": "Pizza",
+      "mcat": "Tatlı",
+      "p": 140,
+      "platform": "getir"
+    },
+    {
+      "n": "Sütlü Çikolatalı Dondurma (500 g)",
+      "rest": "Kahve Dünyası (Güneşli Mah.)",
+      "rcat": "Kahve",
+      "mcat": "Dondurma",
+      "p": 660,
+      "platform": "getir"
+    },
+    {
+      "n": "Meyve Aromalı Karışık Sarma Lokum (650 g)",
+      "rest": "Faruk Güllü (Zafer Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Çikolata & Lokum & Şekerleme",
+      "p": 654,
+      "platform": "getir"
+    },
+    {
+      "n": "Brownie Cheesecake",
+      "rest": "Starbucks® (Otakçılar Cad.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlı",
+      "p": 320,
+      "platform": "getir"
+    },
+    {
+      "n": "Hamsiköy Sütlaç",
+      "rest": "Haz Kebap & Lahmacun (Büyükşehir Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlı",
+      "p": 323,
+      "platform": "getir"
+    },
+    {
+      "n": "Fıstıklı Maraş Dondurma (500 g)",
+      "rest": "Konak Pastahanesi (İnönü Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Dondurma",
+      "p": 500,
+      "platform": "getir"
+    },
+    {
+      "n": "Fıstıklı Özel Kare Baklava (500 g)",
+      "rest": "Faruk Güllüoğlu (Cumhuriyet Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Şerbetli Tatlılar",
+      "p": 1350,
+      "platform": "getir"
+    },
+    {
+      "n": "Çikolata Soslu Antep Fıstıklı İspanyol Usulü Cheesecake (Dilim)",
+      "rest": "İnci Gurme Profiterol Beyoğlu (Gümüşsuyu Mah.)",
+      "rcat": "Yemek",
+      "mcat": "İnci Yeni Lezzetler",
+      "p": 666,
+      "platform": "getir"
+    },
+    {
+      "n": "Kuş Yuvası Fıstıklı (Porsiyon)",
+      "rest": "Faruk Güllüoğlu (Bağcılar Merkez Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Şerbetli Tatlılar",
+      "p": 390,
+      "platform": "getir"
+    },
+    {
+      "n": "Antep Fıstıklı Profiterol (6 Top)",
+      "rest": "İnci Gurme Profiterol Beyoğlu (Gümüşsuyu Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Profiteroller",
+      "p": 933,
+      "platform": "getir"
+    },
+    {
+      "n": "Kaymaklı Künefe",
+      "rest": "Tadın'da Pide & Kebap (Halıcıoğlu Mah.)",
+      "rcat": "Pide",
+      "mcat": "Tatlı",
+      "p": 330,
+      "platform": "getir"
+    },
+    {
+      "n": "Karamelli Dondurma (500 g)",
+      "rest": "Görgülü Pastanesi (Göztepe Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Dondurma",
+      "p": 700,
+      "platform": "getir"
+    },
+    {
+      "n": "Burma Kadayıf (750 g)",
+      "rest": "Kadayıfzade (THE QADAYIF) (Acıbadem Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Kiloluk Tatlı",
+      "p": 1650,
+      "platform": "getir"
+    },
+    {
+      "n": "Bol Çikolatalı Cevizli Brownie",
+      "rest": "Adile Sultan Ev Yemekleri, Esenyurt (Cumhuriyet Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlı",
+      "p": 295,
+      "platform": "getir"
+    },
+    {
+      "n": "Dondurmalı Çikolatalı Sufle",
+      "rest": "Burger King, Fatih (Molla Gürani Mah. - Fındıkzade)",
+      "rcat": "Burger",
+      "mcat": "Tatlı",
+      "p": 100,
+      "platform": "getir"
+    },
+    {
+      "n": "Fıstıklı Midye Baklava (250 g)",
+      "rest": "Seyidoğlu (Nine Hatun Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Şerbetli Tatlı (250 g)",
+      "p": 700,
+      "platform": "getir"
+    },
+    {
+      "n": "Tiramisu",
+      "rest": "Vadi Sokak Lezzetleri, Kağıthane (Seyrantepe Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlı",
+      "p": 330,
+      "platform": "getir"
+    },
+    {
+      "n": "Muzlu Rulo Pasta",
+      "rest": "Ümit Pasta Kafe (Göztepe Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Adet Pasta",
+      "p": 300,
+      "platform": "getir"
+    }
+  ],
+  "side": [
+    {
+      "n": "Original Tenders (Adet)",
+      "rest": "Doyuyo! (Kuştepe)",
+      "rcat": "Tavuk",
+      "mcat": "Atıştırmalıklar",
+      "p": 125,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Yılbaşı Onigiri",
+      "rest": "Pokemate Bowls & Sushi (Teşvikiye Mah.)",
+      "rcat": "Sushi",
+      "mcat": "Başlangıç",
+      "p": 195,
+      "platform": "getir"
+    },
+    {
+      "n": "Arnavut Ciğeri (250 g)",
+      "rest": "Kırıntı Unlu Mamuller & Cafe (Örnek Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Meze",
+      "p": 420,
+      "platform": "getir"
+    },
+    {
+      "n": "Falafel Balls (6 Adet)",
+      "rest": "Eat Your Greens (Etiler Mah.)",
       "rcat": "Yemek",
       "mcat": "Yan Lezzet",
       "p": 260,
       "platform": "getir"
     },
     {
-      "n": "Lavaş (Adet)",
-      "rest": "Kahta Çiğ Köfte (Mehterçeşme Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Yan Lezzet",
-      "p": 15,
-      "platform": "getir"
-    },
-    {
-      "n": "Çikolata Kreması (50 g)",
-      "rest": "Pişi Pankek Mutfak, Esenyurt (Güzelyurt Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Yan Lezzet",
-      "p": 90,
-      "platform": "getir"
-    },
-    {
-      "n": "Lavaş (2 Adet)",
-      "rest": "Oses Çiğ Köfte (Akşemsettin Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Yan Lezzet",
-      "p": 15,
-      "platform": "getir"
-    },
-    {
-      "n": "Soğan Halkası (10 Adet)",
-      "rest": "Han Restaurant (Merkez Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Yan Lezzet",
-      "p": 248,
-      "platform": "getir"
-    },
-    {
-      "n": "Humus Topu (4 Adet)",
-      "rest": "Bereket Döner (Alibeyköy Mah.)",
-      "rcat": "Döner",
-      "mcat": "Yan Lezzet",
-      "p": 120,
-      "platform": "getir"
-    },
-    {
-      "n": "Peynir Kroket (6 Adet)",
-      "rest": "Hamburgercim, Bağcılar (Merkez Mah.)",
-      "rcat": "Burger",
-      "mcat": "Yan Lezzet",
-      "p": 210,
-      "platform": "getir"
-    }
-  ],
-  "dessert": [
-    {
-      "n": "Zereşk Üzümlü Bitter Çikolatalı Kakao Topları (Şeker İlavesiz)",
-      "rest": "Adile Sultan Ev Yemekleri (Güzelyurt Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Tatlı",
-      "p": 195,
-      "platform": "getir"
-    },
-    {
-      "n": "Üzümlü Kek",
-      "rest": "Güneli Fırın (Hürriyet)",
-      "rcat": "Pastane & Fırın",
-      "mcat": "Atıştırmalık Lezzetler",
-      "p": 70,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Beyaz Çikolatalı Ekler (Adet)",
-      "rest": "Daily Special (Yenidoğan Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Ekler",
-      "p": 60,
-      "platform": "getir"
-    },
-    {
-      "n": "Belçika Çikolatalı Pasta",
-      "rest": "Starbucks® (Muvakkıthane Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Tatlı",
-      "p": 325,
-      "platform": "getir"
-    },
-    {
-      "n": "Fırın Sütlaç",
-      "rest": "Kuhinja Boşnak Böreği (Büyükşehir Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Tatlı (Porsiyon)",
-      "p": 270,
-      "platform": "getir"
-    },
-    {
-      "n": "Fırın Sütlaç",
-      "rest": "Hafize Sultan Ev Yemekleri, Bahçelievler (Hürriyet Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Tatlı",
-      "p": 219,
-      "platform": "getir"
-    },
-    {
-      "n": "San Sebastian Cheesecake",
-      "rest": "McDonald's (Feneryolu)",
-      "rcat": "Burger",
-      "mcat": "Tatlılar",
-      "p": 185,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Muz & Fındıklı Pasta (6-8 Kişilik)",
-      "rest": "Çıtır Fırıncı (Şehremini)",
-      "rcat": "Pastane & Fırın",
-      "mcat": "6-8 Kişilik Pastalar",
-      "p": 1500,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Kadayıflı Muhallebi",
-      "rest": "Seyidoğlu (Bahçelievler Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Sütlü Tatlı",
-      "p": 276,
-      "platform": "getir"
-    },
-    {
-      "n": "Işıklı,Müzikli ve Püskürtmeli Orta Boy Kar Küresi(eyfel kulesi)",
-      "rest": "Balbadem Pastanesi (Esentepe Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Sevgililer Günü Özel",
-      "p": 1060,
-      "platform": "getir"
-    },
-    {
-      "n": "Siyah Kutu Madlen Çikolata (500 g)",
-      "rest": "Seyran Pasta & Restaurant (Silivrikapı Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Çikolata",
-      "p": 1435,
-      "platform": "getir"
-    },
-    {
-      "n": "Fıstıklı Soğuk Baklava (4 Porsiyon) (16 Dilim)",
-      "rest": "Gaziantepli Fıstıkçıoğlu Baklavaları, Bahçelievler (Kocasinan Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Soğuk Kadayıf & Baklavalar",
-      "p": 1050,
-      "platform": "getir"
-    },
-    {
-      "n": "Damla Çikolatalı Fındıklı Cookie",
-      "rest": "Fermente (Dikilitaş Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Tatlı",
-      "p": 195,
-      "platform": "getir"
-    },
-    {
-      "n": "Algida Carte d'Or Mini Cup Meyve Rüyası (110 ml)",
-      "rest": "Pizza Getto (Emniyet Evleri Mah.)",
+      "n": "Focaccia",
+      "rest": "Merletto Pizza (Merkez Mah.)",
       "rcat": "Pizza",
-      "mcat": "Dondurma",
-      "p": 45,
+      "mcat": "Başlangıç",
+      "p": 540,
       "platform": "getir"
     },
     {
-      "n": "Çilekli Mag",
-      "rest": "Balbadem Pastanesi (Esentepe Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Sütlü Tatlı",
-      "p": 375,
-      "platform": "getir"
-    },
-    {
-      "n": "Çikolatalı Ekler (6 Adet)",
-      "rest": "Beylerbeyi Profiterol (Göztepe Mah.)",
+      "n": "Trüflü Edamame & Truffle Edamame",
+      "rest": "Noodle Magic Box (Cihangir Mah.)",
       "rcat": "Yemek",
-      "mcat": "Tatlı",
-      "p": 380,
+      "mcat": "Başlangıç",
+      "p": 300,
       "platform": "getir"
     },
     {
-      "n": "Vişneli Cheesecake",
-      "rest": "Starbucks® (Kazlıçeşme Mah. Yedi Mavi)",
-      "rcat": "Yemek",
-      "mcat": "Dönemsel Ürünler ⭐",
-      "p": 310,
-      "platform": "getir"
-    },
-    {
-      "n": "Vişneli Cheesecake",
+      "n": "Zbarz Limonlu Protein Bar",
       "rest": "Starbucks® (Adnan Kahveci Blv.)",
       "rcat": "Kahve",
-      "mcat": "Dönemsel Ürünler ⭐",
-      "p": 310,
+      "mcat": "Atıştırmalık",
+      "p": 140,
       "platform": "getir"
     },
     {
-      "n": "Fıstıklı Çikolatalı Pasta",
-      "rest": "Un Sanatı (Mimar Sinan Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Dilim Pasta",
-      "p": 350,
-      "platform": "getir"
-    },
-    {
-      "n": "Çikolata & Sade Dondurma (500 g)",
-      "rest": "Seyidoğlu Baklava & Pasta Cafe (Esenler - Kazım Karabekir Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Dondurma",
-      "p": 489,
-      "platform": "getir"
-    },
-    {
-      "n": "White Chocolate Brownie",
-      "rest": "Grannys Waffle & Kumpir (19 Mayıs Mah.)",
-      "rcat": "Waffle",
-      "mcat": "Pasta & Tatlı",
-      "p": 420,
-      "platform": "getir"
-    },
-    {
-      "n": "İzmir Bomba",
-      "rest": "Adile Sultan Ev Yemekleri (Türkali)",
-      "rcat": "Ev Yemekleri,Köfte,Tavuk",
-      "mcat": "Tatlılar",
-      "p": 155,
+      "n": "Çilek Kurusu",
+      "rest": "Espressolab (Caferağa)",
+      "rcat": "Kahve & İçecek",
+      "mcat": "Atıştırmalıklar",
+      "p": 223,
       "platform": "trendyol"
     },
     {
-      "n": "Un Kurabiyesi (Adet)",
-      "rest": "Göztepe Fırın (Göztepe Mah.)",
+      "n": "Mozzarella Sticks",
+      "rest": "Atm Burger (Osmanağa Mah.)",
+      "rcat": "Burger",
+      "mcat": "Yan Lezzet",
+      "p": 220,
+      "platform": "getir"
+    },
+    {
+      "n": "Chicken McNuggets® (9 Parça)",
+      "rest": "McDonald's (Feneryolu)",
+      "rcat": "Burger",
+      "mcat": "Atıştırmalıklar",
+      "p": 220,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Starbucks® Beyaz Çikolatalı Dolgulu Külah Gofret",
+      "rest": "Starbucks® (Tütüncü Mehmet Efendi Cad.)",
       "rcat": "Yemek",
-      "mcat": "Kurabiye",
-      "p": 175,
+      "mcat": "Atıştırmalık",
+      "p": 160,
       "platform": "getir"
     },
     {
-      "n": "Keçi Sütlü Kavunlu Dondurma (250 g)",
-      "rest": "Beylerbeyi Profiterol Rasimpaşa, Kadıköy (Rasimpaşa Mah.)",
+      "n": "Shrimp Kokteyl (8 pcs)",
+      "rest": "Sushi X (Pınartepe Mah.)",
+      "rcat": "Sushi",
+      "mcat": "Yan Lezzet",
+      "p": 680,
+      "platform": "getir"
+    },
+    {
+      "n": "Mini Shortbread Cookie",
+      "rest": "Starbucks® (Tütüncü Mehmet Efendi Cad.)",
       "rcat": "Yemek",
-      "mcat": "Dondurma",
-      "p": 325,
+      "mcat": "Atıştırmalık",
+      "p": 265,
       "platform": "getir"
     },
     {
-      "n": "Frutibon Çilekli (100 g)",
-      "rest": "Kahve Dünyası (Büyükşehir Mah.)",
-      "rcat": "Kahve",
-      "mcat": "Çikolata",
-      "p": 238,
-      "platform": "getir"
-    },
-    {
-      "n": "Cookie",
-      "rest": "Vico Sandwiches & More (Caferağa Mah.)",
+      "n": "Gavurdağı Salata",
+      "rest": "Egeden (Merkez Mah.)",
       "rcat": "Yemek",
-      "mcat": "Tatlılar",
-      "p": 225,
+      "mcat": "Taze Organik Salata",
+      "p": 600,
       "platform": "getir"
     },
     {
-      "n": "Bitter Çikolatalı Fındıklı Tablet Çikolata (150 g)",
-      "rest": "Kahve Dünyası (Büyükşehir Mah.)",
-      "rcat": "Kahve",
-      "mcat": "Tablet Çikolata",
-      "p": 281,
-      "platform": "getir"
-    },
-    {
-      "n": "Supangle",
-      "rest": "Köşem Büfe (Feriköy Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Tatlı",
-      "p": 175,
-      "platform": "getir"
-    },
-    {
-      "n": "Tuzlu Kuru Pasta (500 g)",
-      "rest": "Tatlıbak Esenyurt 2 (Turgut Özal Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Kuru Pasta",
-      "p": 297,
-      "platform": "getir"
-    },
-    {
-      "n": "Algida Maraş Usulü Sade Cup Dondurma (100 ml)",
-      "rest": "Oses Çiğ Köfte (Nine Hatun Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Dondurma",
-      "p": 60,
-      "platform": "getir"
-    }
-  ],
-  "drink": [
-    {
-      "n": "Ayran (1 L)",
-      "rest": "Maipo Pizza (Barbaros Hayrettin Paşa Mah.)",
+      "n": "Özel Sarımsak Soslu Parmesanlı Klasik Çubuk",
+      "rest": "Papa John's Pizza (Yurt Sk.)",
       "rcat": "Pizza",
-      "mcat": "İçecek",
+      "mcat": "Başlangıç",
       "p": 150,
       "platform": "getir"
     },
     {
-      "n": "Iced White Chocolate Mocha",
-      "rest": "Starbucks Reserve (Harbiye)",
+      "n": "Midye Tempura (200 g)",
+      "rest": "I Love Fish (Nişantaşı Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Atıştırmalık",
+      "p": 450,
+      "platform": "getir"
+    },
+    {
+      "n": "Mini Cookies",
+      "rest": "Starbucks® (Barbaros Hayrettin Paşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Atıştırmalık",
+      "p": 265,
+      "platform": "getir"
+    },
+    {
+      "n": "Ev Yapımı Gün Tabağı",
+      "rest": "Aile Arası (Kirazlı)",
+      "rcat": "Tost & Sandviç",
+      "mcat": "Gün Tabağı",
+      "p": 450,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Mozzarella Sticks (8 Adet)",
+      "rest": "Cheff Pizza, Fatih (Şehremini Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Yan Lezzet",
+      "p": 252,
+      "platform": "getir"
+    },
+    {
+      "n": "Chicken McNuggets® (9 Parça)",
+      "rest": "McDonald's (Maslak)",
+      "rcat": "Burger",
+      "mcat": "Atıştırmalıklar",
+      "p": 220,
+      "platform": "trendyol"
+    },
+    {
+      "n": "İncirli ve Cevizli Tatlı Atıştırmalık",
+      "rest": "Starbucks (Zeytinlik)",
       "rcat": "Kahve & İçecek",
-      "mcat": "Buzlu ve Soğuk Kahveler",
-      "p": 295,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Eker Ayran (295 ml)",
-      "rest": "Oses Çiğ Köfte (Ferit Selim Paşa Cad. - Yayla Mah )",
-      "rcat": "Çiğ Köfte",
-      "mcat": "İçecek",
-      "p": 50,
-      "platform": "getir"
-    },
-    {
-      "n": "Sprite (1 L.)",
-      "rest": "Usta Dönerci (Topçular)",
-      "rcat": "Döner,Kebap,Salata & Sağlık",
-      "mcat": "İçecekler",
-      "p": 75,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Meyve Suyu (200 ml)",
-      "rest": "Koçlar Pide ve Börek Salonu (Hasanpaşa Mah.)",
-      "rcat": "Börek",
-      "mcat": "İçecek",
-      "p": 50,
-      "platform": "getir"
-    },
-    {
-      "n": "Pepsi (330 ml)",
-      "rest": "Sedat Büfe (Emniyettepe Mah.)",
-      "rcat": "Yemek",
-      "mcat": "İçecek",
-      "p": 96,
-      "platform": "getir"
-    },
-    {
-      "n": "Ayran (245 ml)",
-      "rest": "Zula (İnönü Mah.)",
-      "rcat": "Yemek",
-      "mcat": "İçecek",
-      "p": 165,
-      "platform": "getir"
-    },
-    {
-      "n": "Cappy Portakal (330 ml)",
-      "rest": "As Mevlana Pide, Fatih (Koca Mustafapaşa Mah.)",
-      "rcat": "Pide",
-      "mcat": "İçecek",
-      "p": 95,
-      "platform": "getir"
-    },
-    {
-      "n": "Fanta (1 L)",
-      "rest": "Kasaptan Burger & Pizza (Sümer Mah.)",
-      "rcat": "Burger",
-      "mcat": "İçecek",
-      "p": 125,
-      "platform": "getir"
-    },
-    {
-      "n": "Coca Cola (330 ml)",
-      "rest": "Haznedar İskender (Bahçelievler Mah.)",
-      "rcat": "Yemek",
-      "mcat": "İçecek",
-      "p": 90,
-      "platform": "getir"
-    },
-    {
-      "n": "Fuse Tea Şeftali (1 L)",
-      "rest": "The Garage Boss Pizza Burger (Maden Mah.)",
-      "rcat": "Burger",
-      "mcat": "İçecek",
-      "p": 105,
-      "platform": "getir"
-    },
-    {
-      "n": "Niğde Gazozu (250 ml)",
-      "rest": "Döner Bank (Mehmet Nesih Özmen Mah.)",
-      "rcat": "Döner",
-      "mcat": "İçecek",
-      "p": 60,
-      "platform": "getir"
-    },
-    {
-      "n": "Fanta (330 ml)",
-      "rest": "İstan Bowl (Paşa Mah.)",
-      "rcat": "Yemek",
-      "mcat": "İçecek",
-      "p": 100,
-      "platform": "getir"
-    },
-    {
-      "n": "Su (500 ml)",
-      "rest": "Maydonoz Döner (Şirinevler Mah.)",
-      "rcat": "Döner",
-      "mcat": "İçecek",
-      "p": 30,
-      "platform": "getir"
-    },
-    {
-      "n": "Sprite (330 ml)",
-      "rest": "Lale Lokantası (Piripaşa Mah.)",
-      "rcat": "Yemek",
-      "mcat": "İçecek",
-      "p": 110,
-      "platform": "getir"
-    },
-    {
-      "n": "Hibiscus",
-      "rest": "Coffy (Yayla Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Soğuk İçecek",
-      "p": 190,
-      "platform": "getir"
-    },
-    {
-      "n": "White Chocolate Cream Frappuccino®",
-      "rest": "Starbucks (Maslak)",
-      "rcat": "Kahve & İçecek",
-      "mcat": "Frappuccinolar",
-      "p": 300,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Coca Cola Zero Sugar (330 ml)",
-      "rest": "Oses Çiğ Köfte (Bahçelievler Merkez Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "İçecek",
-      "p": 75,
-      "platform": "getir"
-    },
-    {
-      "n": "Iced Flat White",
-      "rest": "Dopamine Coffee Shop Çapa (Şehremini Mah.)",
-      "rcat": "Kahve",
-      "mcat": "Soğuk Kahve",
-      "p": 230,
-      "platform": "getir"
-    },
-    {
-      "n": "Iced Matcha Latte",
-      "rest": "Starbucks® (Eski Büyükdere Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Buzlu Çay",
-      "p": 280,
-      "platform": "getir"
-    },
-    {
-      "n": "Lipton İce Tea Limon (1 L.)",
-      "rest": "Komagene Etsiz Çiğ Köfte (Yakuplu)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "İçecekler",
-      "p": 100,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Soda (200 ml)",
-      "rest": "Pasta Sanatı (Cumhuriyet Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Soğuk İçecek",
-      "p": 65,
-      "platform": "getir"
-    },
-    {
-      "n": "Coca-Cola Şekersiz (33 cl.)",
-      "rest": "Eyüp Sultan Börekçisi (Şehremini)",
-      "rcat": "Pastane & Fırın,Börek",
-      "mcat": "İçecekler",
-      "p": 142,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Coca-Cola Light (1 L.)",
-      "rest": "Burger King (Cevizlik)",
-      "rcat": "Burger",
-      "mcat": "İçecekler",
-      "p": 75,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Soda (200 ml)",
-      "rest": "Beyranistan Çorba & Kebap & Katmer (Cumhuriyet Mah.)",
-      "rcat": "Yemek",
-      "mcat": "İçecekler",
-      "p": 75,
-      "platform": "getir"
-    },
-    {
-      "n": "Berry Hibiscus",
-      "rest": "Doyuyo! (Osmaniye)",
-      "rcat": "Tavuk",
-      "mcat": "İçecekler",
-      "p": 165,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Su (750 ml)",
-      "rest": "Ali Ocakbaşı (Gümüşsuyu Mah.)",
-      "rcat": "Yemek",
-      "mcat": "İçecek",
+      "mcat": "Atıştırmalık",
       "p": 70,
       "platform": "getir"
     },
     {
-      "n": "Tropicana Vişne (330 ml)",
-      "rest": "Kavurmacı Hüsnü (Bağlar Mah.)",
-      "rcat": "Yemek",
-      "mcat": "İçecekler",
-      "p": 84,
+      "n": "Füme Somon Salata",
+      "rest": "Bap Salad & Pasta (Erenköy Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Salata & Bowl",
+      "p": 905,
       "platform": "getir"
     },
     {
-      "n": "Mixology x Çilek",
-      "rest": "McDonald's (Sinanpaşa)",
-      "rcat": "Burger",
-      "mcat": "İçecekler",
-      "p": 60,
+      "n": "Mini Brownies",
+      "rest": "Starbucks® (Kazlıçeşme Mah. Yedi Mavi)",
+      "rcat": "Yemek",
+      "mcat": "Atıştırmalık",
+      "p": 265,
+      "platform": "getir"
+    },
+    {
+      "n": "Muhammara (330 g)",
+      "rest": "Şef Meze (Merkez)",
+      "rcat": "Meze",
+      "mcat": "Meze",
+      "p": 239,
+      "platform": "getir"
+    },
+    {
+      "n": "Menemen",
+      "rest": "Sarıhan Restaurant, Fatih (Haseki Sultan Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Yan Lezzet",
+      "p": 330,
+      "platform": "getir"
+    },
+    {
+      "n": "Mini Cookies",
+      "rest": "Starbucks® (Eski Büyükdere Cad.)",
+      "rcat": "Yemek",
+      "mcat": "Atıştırmalık",
+      "p": 265,
+      "platform": "getir"
+    },
+    {
+      "n": "Karides Cipsi",
+      "rest": "Kyoto Sushi, Fatih (Zeyrek Mah.)",
+      "rcat": "Sushi",
+      "mcat": "Başlangıçlar",
+      "p": 140,
+      "platform": "getir"
+    },
+    {
+      "n": "Ezme",
+      "rest": "Halil İbrahim Sofrası (Bağlar Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Yan Lezzet",
+      "p": 240,
+      "platform": "getir"
+    },
+    {
+      "n": "Çikolatalı Glutensiz Kurabiye",
+      "rest": "Starbucks® (Kazlıçeşme Mah. Yedi Mavi)",
+      "rcat": "Yemek",
+      "mcat": "Atıştırmalık",
+      "p": 155,
+      "platform": "getir"
+    },
+    {
+      "n": "Moms Granola Yerfıstıklı",
+      "rest": "Espressolab (Cumhuriyet)",
+      "rcat": "Kahve & İçecek",
+      "mcat": "Atıştırmalıklar",
+      "p": 121,
+      "platform": "trendyol"
+    }
+  ],
+  "retail": [
+    {
+      "n": "Single Origin Colombia Kapsül Kahve",
+      "rest": "Starbucks® (Asmalı Mescit Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
+      "p": 539,
+      "platform": "getir"
+    },
+    {
+      "n": "Sütlü Nuriye (1 kg)",
+      "rest": "Faruk Güllüoğlu (Şişli Merkez Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Şerbetli Tatlılar",
+      "p": 1660,
+      "platform": "getir"
+    },
+    {
+      "n": "Çikolata Soslu Browni İnci (260 gr.)",
+      "rest": "İnci Gurme Profiterol Beyoğlu (Gümüşsuyu Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlılar",
+      "p": 363,
+      "platform": "getir"
+    },
+    {
+      "n": "Starbucks® Kapsül - Blonde Espresso Roast",
+      "rest": "Starbucks (Cihannüma)",
+      "rcat": "Kahve & İçecek",
+      "mcat": "Kahve Çekirdekleri, VIA'lar ve Kapsüller",
+      "p": 539,
       "platform": "trendyol"
     },
     {
-      "n": "Fuse Tea Limon (330 ml)",
-      "rest": "Tella Kebap (Mahmutbey Mah.)",
+      "n": "Çikolatalı Baklava (1 kg)",
+      "rest": "Hatay Tatlıcısı İkizler (Yedikule Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Kiloluk Tatlı (1 kg)",
+      "p": 1400,
+      "platform": "getir"
+    },
+    {
+      "n": "Starbucks® Kapsül - Smooth Caramel",
+      "rest": "Starbucks® (Yıldız Posta Cad.)",
       "rcat": "Yemek",
-      "mcat": "İçecek",
-      "p": 105,
+      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
+      "p": 539,
+      "platform": "getir"
+    },
+    {
+      "n": "Mado Fıstıklı Tel Kadayıf (1 kg)",
+      "rest": "Mado (Maltepe Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Şerbetli Tatlı",
+      "p": 2470,
+      "platform": "getir"
+    },
+    {
+      "n": "Antep Fıstıklı Profiterol (250 gr.)",
+      "rest": "İnce Profiterol (Fulya Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Profiteroller",
+      "p": 571,
+      "platform": "getir"
+    },
+    {
+      "n": "Salep Teneke (400 gr.)",
+      "rest": "Kahve Dünyası (Abdurrahman Nafiz Gürman)",
+      "rcat": "Tatlı,Kahve & İçecek",
+      "mcat": "Paket Kahveler",
+      "p": 275,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Banma Fıstıklı Ekler (250 gr.)",
+      "rest": "İnci Gurme Profiterol Beyoğlu (Gümüşsuyu Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlılar",
+      "p": 541,
+      "platform": "getir"
+    },
+    {
+      "n": "Starbucks® 250g Autumn Blend 2025",
+      "rest": "Starbucks® (Doğan Araslı Blv.)",
+      "rcat": "Yemek",
+      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
+      "p": 804,
+      "platform": "getir"
+    },
+    {
+      "n": "Papua Yeni Gine Yöresel Filtre Kahve (200 g)",
+      "rest": "Kahve Dünyası (Güneşli Mah.)",
+      "rcat": "Kahve",
+      "mcat": "Paket Kahve",
+      "p": 338,
+      "platform": "getir"
+    },
+    {
+      "n": "Köfteci Yusuf Kuzu Şiş (1 kg)",
+      "rest": "Köfteci Yusuf (Gençosman)",
+      "rcat": "Burger,Döner,Köfte",
+      "mcat": "Çiğ Ürün",
+      "p": 1200,
+      "platform": "getir"
+    },
+    {
+      "n": "Special Fıstıklı Bademli Çikolata (1 kg)",
+      "rest": "Ada Pastanesi (Üçevler Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Kiloluk Tatlı (1 kg)",
+      "p": 1250,
+      "platform": "getir"
+    },
+    {
+      "n": "Sumatra (250 g)",
+      "rest": "Starbucks® (Adnan Kahveci Blv.)",
+      "rcat": "Kahve",
+      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
+      "p": 804,
+      "platform": "getir"
+    },
+    {
+      "n": "Fıstıklı Baklava (Tepsi) (2,6 kg.)",
+      "rest": "Asıltat Baklava ve Börek (Yenidoğan)",
+      "rcat": "Tatlı,Pastane & Fırın,Börek",
+      "mcat": "Tepside Tatlılar",
+      "p": 4300,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Antep Özel Minik Baklava 1 Kg",
+      "rest": "Özata Baklava Merkez Fabrika Satış Şube (Barbaros Hayrettin Paşa)",
+      "rcat": "Tatlı,Pastane & Fırın",
+      "mcat": "Kiloluk Tatlılar",
+      "p": 999,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Bitter Kuvertür Çikolata (1 kg)",
+      "rest": "Kahve Dünyası (Bahçelievler Mah.)",
+      "rcat": "Kahve",
+      "mcat": "Çikolata",
+      "p": 1625,
+      "platform": "getir"
+    },
+    {
+      "n": "Kapsül Kahve Selection",
+      "rest": "Kahve Dünyası (Ataköy 5.Kısım Mah.)",
+      "rcat": "Kahve",
+      "mcat": "Kapsül Kahve",
+      "p": 300,
+      "platform": "getir"
+    },
+    {
+      "n": "Kuru Baklava Cevizli (250 gr.)",
+      "rest": "İnce Profiterol (Fulya Mah.)",
+      "rcat": "Yemek",
+      "mcat": "İnci Yeni Lezzetler",
+      "p": 784,
+      "platform": "getir"
+    },
+    {
+      "n": "Tahinli Bademli Kurabiye (400 g)",
+      "rest": "Seyran Pasta & Restaurant (Koza Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Paketli Lezzet",
+      "p": 425,
+      "platform": "getir"
+    },
+    {
+      "n": "Muz Püreli Rulo Pasta (1 kg)",
+      "rest": "Gaziantepli Fıstıkçıoğlu Baklavaları, Bahçelievler (Kocasinan Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Pasta",
+      "p": 1000,
+      "platform": "getir"
+    },
+    {
+      "n": "Çikolata Soslu Antep Fıstıklı Browni İnci (260 gr.)",
+      "rest": "İnce Profiterol (Fulya Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tatlılar",
+      "p": 480,
+      "platform": "getir"
+    },
+    {
+      "n": "House Blend (250 g)",
+      "rest": "Starbucks Reserve™ (Kemankeş Karamustafa Paşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
+      "p": 804,
+      "platform": "getir"
+    },
+    {
+      "n": "Alman Çavdar (500 Gr.)",
+      "rest": "Tarihi Nişantaşı Fırını  (Gayrettepe)",
+      "rcat": "Pastane & Fırın",
+      "mcat": "Ekşi Mayalı Ekmekler",
+      "p": 200,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Karışık Ekler (1 kg)",
+      "rest": "Gaziantepli Fıstıkçıoğlu Baklavaları, Bahçelievler (Kocasinan Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Ekler",
+      "p": 800,
+      "platform": "getir"
+    },
+    {
+      "n": "Starbucks® Espresso Roast (250 g)",
+      "rest": "Starbucks® (Altunizade Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
+      "p": 804,
+      "platform": "getir"
+    },
+    {
+      "n": "Türk Kahvesi (1 kg)",
+      "rest": "Espressolab (Kazlıçeşme Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Paket Kahve",
+      "p": 1620,
+      "platform": "getir"
+    },
+    {
+      "n": "Sade Galeta & Kırıkkrak (500 gr.)",
+      "rest": "Tarihi Harbiye Fırını  (Bozkurt)",
+      "rcat": "Pastane & Fırın,Tatlı",
+      "mcat": "Kiloluk Galetalar",
+      "p": 250,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Çıtır Acıbadem (180 g)",
+      "rest": "Orhan Pastaneleri (Esentepe Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Paket Lezzet",
+      "p": 260,
       "platform": "getir"
     }
   ],
   "sauce": [
     {
-      "n": "Mayonez",
-      "rest": "Bi Döner (Haseki Sultan Mah.)",
+      "n": "Barbekü Sos",
+      "rest": "Usta Dönerci (Zafer Mah.)",
       "rcat": "Döner",
-      "mcat": "Yan Lezzet",
-      "p": 15,
-      "platform": "getir"
-    },
-    {
-      "n": "Ketçap",
-      "rest": "Burger Yiyelim (Zeytinlik)",
-      "rcat": "Burger",
-      "mcat": "Soslar",
-      "p": 10,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Mayonez",
-      "rest": "Hey Burger (Barbaros Hayrettinpaşa Mah.)",
-      "rcat": "Burger",
       "mcat": "Sos",
-      "p": 15,
-      "platform": "getir"
-    },
-    {
-      "n": "Arby’s® Termal Taşıma Çantası",
-      "rest": "Arby's (Merkez)",
-      "rcat": "Burger",
-      "mcat": "Taşıma Çantası",
-      "p": 20,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Antep Turşusu",
-      "rest": "Zerafet Restaurant (Nisbetiye Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Yan Lezzet",
-      "p": 300,
-      "platform": "getir"
-    },
-    {
-      "n": "Blackened Ranch Sos",
-      "rest": "Popeyes (Zafer)",
-      "rcat": "Burger,Tavuk",
-      "mcat": "Soslar",
       "p": 10,
-      "platform": "trendyol"
+      "platform": "getir"
     },
     {
-      "n": "Wasabi",
-      "rest": "Konoha Sushi & Chinese Restaurant (Maslak Mah.)",
+      "n": "Spicy Mayonnaise",
+      "rest": "Kaen Sushi (Koşuyolu Mah.)",
       "rcat": "Sushi",
       "mcat": "Sos",
-      "p": 15,
+      "p": 25,
       "platform": "getir"
     },
     {
-      "n": "Çatal Çörek (Adet)",
-      "rest": "Sarı Ekin Simit Evi Pasta & Cafe, Bakırköy (Kartaltepe Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Diğer Lezzet",
-      "p": 38,
-      "platform": "getir"
-    },
-    {
-      "n": "Jalapeno Acı Biber Turşu (25 gr.)",
-      "rest": "Little Caesars Pizza (Ataköy 7-8-9-10. Kısım)",
-      "rcat": "Pizza",
-      "mcat": "Soslar",
-      "p": 40,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Heinz Ketçap",
-      "rest": "Burger & More (Maslak Mah.)",
-      "rcat": "Burger",
-      "mcat": "Sos",
-      "p": 28,
-      "platform": "getir"
-    },
-    {
-      "n": "Avokado Sos",
-      "rest": "Burgericos (Kozyatağı Mah.)",
-      "rcat": "Burger",
-      "mcat": "Sos",
-      "p": 30,
-      "platform": "getir"
-    },
-    {
-      "n": "Çiğ Köfte Sosu (18 g)",
-      "rest": "Komagene Etsiz Çiğ Köfte (Davutpaşa Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Ekstra Lezzet",
-      "p": 10,
-      "platform": "getir"
-    },
-    {
-      "n": "Acı Sos",
-      "rest": "Kebo (Merkez)",
+      "n": "Barbekü Sos",
+      "rest": "Hatay Dokunuşlu Döner (Bostan Mah.)",
       "rcat": "Döner",
       "mcat": "Soslar",
       "p": 15,
-      "platform": "trendyol"
+      "platform": "getir"
+    },
+    {
+      "n": "Sweet Chili Sos",
+      "rest": "Bigye, Esenyurt (Koza Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Şefin Gurme Sosları",
+      "p": 26,
+      "platform": "getir"
     },
     {
       "n": "Sarımsaklı Mayonez",
-      "rest": "Doyuyo! (Osmanağa)",
-      "rcat": "Burger,Tavuk",
-      "mcat": "Sos Çeşitleri",
-      "p": 42,
+      "rest": "Bereket Döner (Kirazlıtepe)",
+      "rcat": "Döner",
+      "mcat": "Soslar",
+      "p": 15,
       "platform": "trendyol"
     },
     {
-      "n": "Chipotle Sos",
-      "rest": "Gabriel’s Burger, Sarıyer (Maslak Mah.)",
-      "rcat": "Burger",
+      "n": "Çatal",
+      "rest": "Üstat Pastanesi (Piyalepaşa)",
+      "rcat": "Pastane & Fırın",
+      "mcat": "Tatlılar",
+      "p": 50,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Acı Sos",
+      "rest": "Pizzalive (Fatih Cad.)",
+      "rcat": "Pizza",
       "mcat": "Sos",
-      "p": 42,
+      "p": 13,
       "platform": "getir"
     },
     {
-      "n": "Ev Yapımı Chipotle sos",
-      "rest": "Eat Your Greens (İstinye Mah.)",
+      "n": "Barbekü Sos",
+      "rest": "One Tacos (Sultan Selim Mah.)",
       "rcat": "Yemek",
-      "mcat": "Sos",
-      "p": 75,
-      "platform": "getir"
-    },
-    {
-      "n": "Hot Cheesy Baharatı",
-      "rest": "Burger King (Güneşli)",
-      "rcat": "Burger",
-      "mcat": "Patates Baharatları",
-      "p": 10,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Acı sos",
-      "rest": "Eastnbull Steak & Burger (Nisbetiye Mah.)",
-      "rcat": "Burger",
       "mcat": "Sos",
       "p": 20,
       "platform": "getir"
     },
     {
-      "n": "Mini Tereyağı (Adet)",
-      "rest": "Meşhur Sarıyer Börekçisi (Şehitler Cad.)",
-      "rcat": "Börek",
-      "mcat": "Yan Lezzet",
-      "p": 14,
+      "n": "Acılı Barbekü Sos",
+      "rest": "Popeyes (Merkez)",
+      "rcat": "Burger,Tavuk",
+      "mcat": "Soslar",
+      "p": 10,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Çatal",
+      "rest": "Opera Pastanesi (Gayrettepe Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Diğer Lezzet",
+      "p": 35,
       "platform": "getir"
     },
     {
-      "n": "Dinamite Sos",
+      "n": "Belçika Vegan Türüflü Mayonez",
+      "rest": "Belçika Burger Esenyurt (Zafer Mah.)",
+      "rcat": "Burger",
+      "mcat": "Belçika Soslar",
+      "p": 37,
+      "platform": "getir"
+    },
+    {
+      "n": "Poşet",
+      "rest": "Hacıbey Mersin Tantuni (Merdivenköy Mah.)",
+      "rcat": "Döner",
+      "mcat": "Poşet",
+      "p": 0,
+      "platform": "getir"
+    },
+    {
+      "n": "Sarımsak Sos",
+      "rest": "Sushico (Ünalan Mah.)",
+      "rcat": "Sushi",
+      "mcat": "Sos",
+      "p": 20,
+      "platform": "getir"
+    },
+    {
+      "n": "Sriracha Hot Sos",
       "rest": "Crazy Sushi (Orta Mah.)",
       "rcat": "Sushi",
       "mcat": "Crazy Sos",
@@ -1613,305 +1807,459 @@
       "platform": "getir"
     },
     {
-      "n": "Poşet",
-      "rest": "Sirkeci Baba Cadde Pastanesi (Yahya Kahya Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Poşet",
-      "p": 0,
-      "platform": "getir"
+      "n": "X-Large Cheddar Sos (80 gr)",
+      "rest": "Domino's Pizza (Fatih)",
+      "rcat": "Pizza,Burger,Tavuk",
+      "mcat": "Soslar",
+      "p": 100,
+      "platform": "trendyol"
     },
     {
-      "n": "Poşet",
-      "rest": "Yazıcıoğlu Restaurant, Büyükçekmece (Dizdariye Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Poşet",
-      "p": 1,
-      "platform": "getir"
-    },
-    {
-      "n": "Bardakta Turşu Suyu",
-      "rest": "Komagene Etsiz Çiğ Köfte (Kınalı Cad.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "İçecek",
-      "p": 25,
-      "platform": "getir"
-    },
-    {
-      "n": "Stick Çiğ Köfte Sos",
-      "rest": "Oses Çiğ Köfte (Sanayi Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Sos",
-      "p": 12,
-      "platform": "getir"
-    },
-    {
-      "n": "Çok Acı Sos (18 g)",
-      "rest": "Komagene Etsiz Çiğ Köfte (Dikilitaş Mah.)",
-      "rcat": "Çiğ Köfte",
-      "mcat": "Ekstra Lezzet",
-      "p": 10,
-      "platform": "getir"
-    },
-    {
-      "n": "Sweet Truffle Mayo",
-      "rest": "Sweet Fried Chicken, Fatih (Şehremini Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Sos",
-      "p": 25,
-      "platform": "getir"
-    },
-    {
-      "n": "Sarımsak Sos",
+      "n": "Pankek (10 Adet)",
       "rest": "Sushico (Ferahevler Mah.)",
+      "rcat": "Sushi",
+      "mcat": "Sos",
+      "p": 90,
+      "platform": "getir"
+    },
+    {
+      "n": "Popeyes® Termal Taşıma Çantası",
+      "rest": "Popeyes (Beştelsiz)",
+      "rcat": "Burger,Tavuk",
+      "mcat": "Taşıma Çantası",
+      "p": 20,
+      "platform": "trendyol"
+    },
+    {
+      "n": "BBQ Kenar Sosu",
+      "rest": "Papa John's Pizza (Molla Gürani Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Sos",
+      "p": 22,
+      "platform": "getir"
+    },
+    {
+      "n": "Barbekü Baharatı",
+      "rest": "Burger King (Dikilitaş)",
+      "rcat": "Burger",
+      "mcat": "Patates Baharatları",
+      "p": 10,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Acı Sos (20 gr.)",
+      "rest": "Köfteci Yusuf (Huzur)",
+      "rcat": "Burger,Döner,Köfte",
+      "mcat": "Soslar",
+      "p": 7,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Arby’s® Termal Taşıma Çantası",
+      "rest": "Arby's (Menderes)",
+      "rcat": "Burger",
+      "mcat": "Taşıma Çantası",
+      "p": 20,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Hardal Sos",
+      "rest": "Milano Pizza (Maslak Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Sos",
+      "p": 20,
+      "platform": "getir"
+    },
+    {
+      "n": "Karışık Turşu",
+      "rest": "Çorba Üssü (Mimar Sinan Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Yan Lezzet",
+      "p": 150,
+      "platform": "getir"
+    },
+    {
+      "n": "Sriracha Sos",
+      "rest": "China Magic Box Sushi (Cihangir Mah.)",
       "rcat": "Sushi",
       "mcat": "Sos",
       "p": 20,
       "platform": "getir"
     },
     {
-      "n": "Sweet Chili Sos",
-      "rest": "Eat Your Greens (İstinye Mah.)",
-      "rcat": "Yemek",
+      "n": "3'lü Sos",
+      "rest": "Terra Pizza (Yeşilkent)",
+      "rcat": "Pizza",
       "mcat": "Sos",
       "p": 65,
       "platform": "getir"
     },
     {
-      "n": "Kukidu Sos",
-      "rest": "Kudo Kudo & Kukidu, Fatih (Şehremini Mah.)",
-      "rcat": "Yemek",
+      "n": "Barbekü Sos",
+      "rest": "Saloon Burger (Osmanağa)",
+      "rcat": "Burger",
       "mcat": "Soslar",
-      "p": 14,
+      "p": 10,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Özel Ev Yapımı Sarımsaklı Mayonez",
+      "rest": "Hey Döner, Zeytinburnu (Beştelsiz Mah.)",
+      "rcat": "Döner",
+      "mcat": "Sos",
+      "p": 10,
       "platform": "getir"
     },
     {
-      "n": "Ketçap",
-      "rest": "Kudo Kudo & Kukidu, Fatih (Şehremini Mah.)",
-      "rcat": "Yemek",
+      "n": "Barbekü Sos",
+      "rest": "Saloon Burger (Kuştepe)",
+      "rcat": "Burger",
       "mcat": "Soslar",
+      "p": 10,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Acı Sos",
+      "rest": "Chicken Bros (Maltepe Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Sos",
+      "p": 11,
+      "platform": "getir"
+    },
+    {
+      "n": "Çiğ Köfte Sosu (18 g)",
+      "rest": "Komagene Etsiz Çiğ Köfte (Nisbetiye Mah.)",
+      "rcat": "Çiğ Köfte",
+      "mcat": "Ekstra Lezzet",
       "p": 10,
       "platform": "getir"
     }
   ],
-  "bakery": [
+  "extra": [
     {
-      "n": "Simit",
-      "rest": "Beslen Fırın (Siyavuşpaşa Mah.)",
+      "n": "Özel Soslu Söğüş",
+      "rest": "Mersin Yaprak Tantuni (19 Mayıs Mah.)",
+      "rcat": "Döner",
+      "mcat": "Diğer Lezzet",
+      "p": 60,
+      "platform": "getir"
+    },
+    {
+      "n": "Homemade Soğan Halkası (3 Adet)",
+      "rest": "Cajun Corner (Hırka-i Şerif Mah.)",
       "rcat": "Yemek",
-      "mcat": "Kahvaltılıklar",
-      "p": 43,
+      "mcat": "Yan Lezzet",
+      "p": 65,
       "platform": "getir"
     },
     {
-      "n": "Kıymalı Pide",
-      "rest": "Çınaraltı Kebap, Zeytinburnu (Maltepe Mah.)",
+      "n": "Jalapeno Biberi",
+      "rest": "Mogaf Hatay Döner (Mecidiyeköy)",
+      "rcat": "Döner,Tavuk",
+      "mcat": "Ekstra Lezzetler",
+      "p": 30,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Pat Bulls",
+      "rest": "Pizza Bulls (Bağcılar Merkez Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Yan Lezzet",
+      "p": 100,
+      "platform": "getir"
+    },
+    {
+      "n": "Parmak Patates Kızartması",
+      "rest": "Dürümle (Osmaniye Mah.- Marmara Forum)",
+      "rcat": "Döner",
+      "mcat": "Yan Lezzet",
+      "p": 100,
+      "platform": "getir"
+    },
+    {
+      "n": "Patates Kızartması",
+      "rest": "Güneş Kahvaltı Evi (Maslak)",
+      "rcat": "Kahvaltı",
+      "mcat": "Kahvaltı",
+      "p": 100,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Extra Garnitür",
+      "rest": "Mersin Yaprak Tantuni, Kadıköy (Rasimpaşa Mah.)",
+      "rcat": "Döner",
+      "mcat": "Diğer Lezzet",
+      "p": 48,
+      "platform": "getir"
+    },
+    {
+      "n": "Elmalı Pancarlı Kinoa Salatası",
+      "rest": "Gurme Mutfak Ev Yemekleri (Maslak)",
+      "rcat": "Ev Yemekleri,Çorba,Tatlı",
+      "mcat": "Yan Lezzet",
+      "p": 245,
+      "platform": "getir"
+    },
+    {
+      "n": "Mevsim Salata",
+      "rest": "Sarıoğlu Kebap (Merkez Mah.)",
       "rcat": "Yemek",
-      "mcat": "Fırından Lezzet",
-      "p": 475,
+      "mcat": "Salata",
+      "p": 150,
       "platform": "getir"
     },
     {
-      "n": "Patatesli Kol Böreği (1 kg)",
-      "rest": "Edeşler Börek ve Pide Salonu (Fevzi Çakmak Mah.)",
-      "rcat": "Börek",
-      "mcat": "Börek",
-      "p": 950,
+      "n": "Elma Dilim Patates (300 g)",
+      "rest": "Butik Ev Yemekleri (Barbaros Hayrettin Paşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Ek Ürün",
+      "p": 175,
       "platform": "getir"
     },
     {
-      "n": "Simit",
-      "rest": "Edeşler Börek ve Pide Salonu (Fevzi Çakmak Mah.)",
-      "rcat": "Börek",
-      "mcat": "Fırından",
-      "p": 35,
+      "n": "Cacık",
+      "rest": "Kehribar Cızbız Köfte ve Ev Yemekleri (Gökalp Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Yan Lezzet",
+      "p": 112,
       "platform": "getir"
     },
     {
-      "n": "Peynirli Su Böreği (Porsiyon)",
-      "rest": "Kadıköy Merkez Börekçisi (Caferağa Mah.)",
-      "rcat": "Börek",
-      "mcat": "Börek",
+      "n": "Muhteşem 3’lü-Az (Küçük Boy Patates, Az Yoğurt, Az Piyaz)",
+      "rest": "Köfteci Yusuf (Göztepe Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Atıştırmalıklar",
+      "p": 170,
+      "platform": "getir"
+    },
+    {
+      "n": "Yoğurt",
+      "rest": "Doya Doya Ev Yemekleri, Esenyurt (Barbaros Hayrettin Paşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Yan Lezzet",
+      "p": 70,
+      "platform": "getir"
+    },
+    {
+      "n": "Soğan Halkası (8 Adet)",
+      "rest": "Double Sandwich (Zafer Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Yan Lezzet",
+      "p": 150,
+      "platform": "getir"
+    },
+    {
+      "n": "Portakallı Cips (150 g)",
+      "rest": "Selimiye Muhallebicisi & Restaurant (Maltepe Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Diğer Lezzet",
+      "p": 200,
+      "platform": "getir"
+    },
+    {
+      "n": "Patates Bomba",
+      "rest": "Burger Yiyelim (Mimar Sinan Mah.)",
+      "rcat": "Burger",
+      "mcat": "Atıştırmalık",
+      "p": 150,
+      "platform": "getir"
+    },
+    {
+      "n": "Mevsim Salata",
+      "rest": "Dönerci Ali Usta (Şirinevler Mah.)",
+      "rcat": "Döner",
+      "mcat": "Salata",
+      "p": 105,
+      "platform": "getir"
+    },
+    {
+      "n": "Elmalı Pancarlı Kinoa Salatası",
+      "rest": "Adile Sultan Ev Yemekleri (Güzelyurt)",
+      "rcat": "Ev Yemekleri,Köfte,Tavuk",
+      "mcat": "Yan Lezzet",
+      "p": 245,
+      "platform": "getir"
+    },
+    {
+      "n": "Soğan Halkası (6 Adet)",
+      "rest": "Hey Döner, Zeytinburnu (Beştelsiz Mah.)",
+      "rcat": "Döner",
+      "mcat": "Yan Lezzet",
+      "p": 60,
+      "platform": "getir"
+    },
+    {
+      "n": "Patates Kızartması (Büyük)",
+      "rest": "McDonald's (Kennedy Cad.)",
+      "rcat": "Yemek",
+      "mcat": "Atıştırmalık",
+      "p": 95,
+      "platform": "getir"
+    },
+    {
+      "n": "Orta Boy Gurme Patates",
+      "rest": "Saloon Burger (Kuştepe)",
+      "rcat": "Burger",
+      "mcat": "Atıştırmalıklar",
+      "p": 80,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Soğan Halkası (8 Adet)",
+      "rest": "Kudo Kudo & Kukidu (Fatih Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Yan Lezzetler",
+      "p": 80,
+      "platform": "getir"
+    },
+    {
+      "n": "Ekstra Jalapone Biber",
+      "rest": "Ercan Steakhouse (Maltepe Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Ekstralar",
+      "p": 30,
+      "platform": "getir"
+    },
+    {
+      "n": "Patates Kızartması (250 g)",
+      "rest": "Hero's Pizza (Güneşli Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Yan Lezzet",
+      "p": 180,
+      "platform": "getir"
+    },
+    {
+      "n": "Zeytin Salatası",
+      "rest": "Lokanta Beş (Ataköy Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Zeytinyağlı & Salata",
       "p": 250,
       "platform": "getir"
     },
     {
+      "n": "Küçük Boy Patates (150 gr.)",
+      "rest": "Domino's Pizza (Fatih)",
+      "rcat": "Pizza,Burger,Tavuk",
+      "mcat": "Patatesler & Cipsler",
+      "p": 75,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Beş Baharatlı Patates Kızartması (Orta)",
+      "rest": "Tavuk Dünyası (Barbaros Hayrettin Paşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Başlangıç",
+      "p": 160,
+      "platform": "getir"
+    },
+    {
+      "n": "15'li Soğan Halkası",
+      "rest": "Hey Burger (İnönü Mah.)",
+      "rcat": "Burger",
+      "mcat": "Yan Lezzet",
+      "p": 99,
+      "platform": "getir"
+    },
+    {
+      "n": "Parmesanlı Roka Salatası",
+      "rest": "The House Cafe (Ünalan Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Yan Lezzet",
+      "p": 325,
+      "platform": "getir"
+    },
+    {
+      "n": "Domates Söğüş",
+      "rest": "Hebun Çorba Evi (Hasanpaşa)",
+      "rcat": "Ev Yemekleri,Çorba",
+      "mcat": "Salata Çeşitleri",
+      "p": 200,
+      "platform": "trendyol"
+    }
+  ],
+  "bakery": [
+    {
+      "n": "Tereyağlı Simit",
+      "rest": "Sarıyer Börekçisi (Yeşilkent)",
+      "rcat": "Pastane & Fırın,Börek,Pide & Lahmacun",
+      "mcat": "Simit Çeşitleri",
+      "p": 80,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Bülent Börek Ispanaklı (500 g)",
+      "rest": "Bülent Börek (Haseki Sultan Mah.)",
+      "rcat": "Börek",
+      "mcat": "Börek",
+      "p": 448,
+      "platform": "getir"
+    },
+    {
+      "n": "Kavılca Ekmek",
+      "rest": "Fırın Anatolia (Caferağa)",
+      "rcat": "Tatlı,Pastane & Fırın",
+      "mcat": "Ekmekler",
+      "p": 305,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Peynirli Simit",
+      "rest": "Starbucks® (Yıldız Posta Cad.)",
+      "rcat": "Yemek",
+      "mcat": "Kahvaltı & Fırın Lezzeti",
+      "p": 150,
+      "platform": "getir"
+    },
+    {
+      "n": "Yarım Ekmek Tavuk",
+      "rest": "Başvekil Extra (Şehremini Mah. - Çapa)",
+      "rcat": "Yemek",
+      "mcat": "Sıcak Sandviç",
+      "p": 285,
+      "platform": "getir"
+    },
+    {
+      "n": "Üç Çeyrek Ekmek Sucuk",
+      "rest": "Uslubey İzmir Kuzu Kokoreç (İçerenköy Mah.)",
+      "rcat": "Döner",
+      "mcat": "Sucuk & Köfte",
+      "p": 530,
+      "platform": "getir"
+    },
+    {
+      "n": "Bol Peynirli Ekmek & Cinnamon Roll & Algida",
+      "rest": "Domino's Pizza (Sakızağacı Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Gece'nin Favorileri",
+      "p": 345,
+      "platform": "getir"
+    },
+    {
+      "n": "Tam Ekmek Tavuk Döner",
+      "rest": "Sarıoğlu Büfe, Bahçelievler (Siyavuşpaşa Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tavuk Döner",
+      "p": 240,
+      "platform": "getir"
+    },
+    {
       "n": "Tam Porsiyon Ekmek Arası Sucuk Menü",
-      "rest": "Köfteci Yusuf (Fatih)",
-      "rcat": "Burger,Döner,Köfte",
+      "rest": "Köfteci Yusuf (Zafer Mah.)",
+      "rcat": "Yemek",
       "mcat": "Ekmek Arası Menü",
       "p": 340,
       "platform": "getir"
     },
     {
-      "n": "Dondurulmuş Peynirli Poğaça (5 Adet)",
-      "rest": "Kahve Dünyası (Güneşli Mah.)",
-      "rcat": "Kahve",
-      "mcat": "Dondurulmuş Ürün",
-      "p": 360,
-      "platform": "getir"
-    },
-    {
-      "n": "Avantajlı Ekmek Arası Köfte",
-      "rest": "Şişmanoğulları Izgara Evi (Osmaniye Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Menü",
-      "p": 675,
-      "platform": "getir"
-    },
-    {
-      "n": "Simit Bretzel",
-      "rest": "Backhaus (Esentepe Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Poğaça & Açma & Simit",
-      "p": 138,
-      "platform": "getir"
-    },
-    {
-      "n": "Tam Ekmek Tavuk Döner Menü",
-      "rest": "Etibeyaz Döner (Bahçelievler - Yayla Mah.)",
-      "rcat": "Döner",
-      "mcat": "Ekonomik Menü",
-      "p": 446,
-      "platform": "getir"
-    },
-    {
-      "n": "Yarım Ekmek (55 g) & Çıtır Miks Menü",
-      "rest": "Paşa Döner (Nuripaşa Mah.)",
-      "rcat": "Döner",
-      "mcat": "Ekmek Seven Menüler",
-      "p": 430,
-      "platform": "getir"
-    },
-    {
-      "n": "Kaşarlı Açma (100 g)",
-      "rest": "İnci Börek (Kocasinan Merkez Mah.)",
-      "rcat": "Börek",
-      "mcat": "Simit & Poğaça & Açma",
-      "p": 50,
-      "platform": "getir"
-    },
-    {
-      "n": "Tavuk Yarım Ekmek 100",
-      "rest": "Bambi Cafe (Hobyar)",
-      "rcat": "Tost & Sandviç,Köfte,Döner",
-      "mcat": "Tavuk Döner",
-      "p": 150,
+      "n": "Beyaz Peynirli Çiğ Börek (3 Adet)",
+      "rest": "Pişi Pişi Pankek (Çeliktepe)",
+      "rcat": "Kahvaltı,Börek,Tatlı",
+      "mcat": "Çiğ Börekler",
+      "p": 405,
       "platform": "trendyol"
     },
     {
-      "n": "Kürt Böreği (Porsiyon) (4 Dilim)",
-      "rest": "İrten Börek (Cumhuriyet Mah.)",
-      "rcat": "Börek",
-      "mcat": "Börek",
-      "p": 246,
-      "platform": "getir"
-    },
-    {
-      "n": "Sosisli Poğaça",
-      "rest": "Aum Pasta & Cafe (Acıbadem Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Poğaça",
-      "p": 80,
-      "platform": "getir"
-    },
-    {
-      "n": "Sade Kruvasan",
-      "rest": "Heap Stuff (İstinye Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kruvasan",
-      "p": 320,
-      "platform": "getir"
-    },
-    {
-      "n": "Dereotlu Poğaça",
-      "rest": "Starbucks® (Yıldırım Oğuz Göker Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltı & Fırın Lezzeti",
-      "p": 115,
-      "platform": "getir"
-    },
-    {
-      "n": "Kıymalı Kaşarlı Pide",
-      "rest": "Nazar İşkembe Kebap (Kartaltepe Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Fırından Lezzet",
-      "p": 470,
-      "platform": "getir"
-    },
-    {
-      "n": "Tam Ekmek Arası Patso",
-      "rest": "Dönerci Hasan Usta (Alibeyköy Mah.)",
-      "rcat": "Döner",
-      "mcat": "Ekmek Arası Patso Lezzet",
-      "p": 200,
-      "platform": "getir"
-    },
-    {
-      "n": "Fındık Dilimli Kek",
-      "rest": "Kahve Dünyası (Bahçelievler Mah.)",
-      "rcat": "Kahve",
-      "mcat": "Unlu Mamul",
-      "p": 140,
-      "platform": "getir"
-    },
-    {
-      "n": "Ekşi Mayalı Baget Ekmek",
-      "rest": "Göçmen Artisan Bakery (Teşvikiye Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Ekmek",
-      "p": 140,
-      "platform": "getir"
-    },
-    {
-      "n": "Üç Peynirli Avokadolu Açma Sandviç",
-      "rest": "Espressolab (Sümer Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Fırın Sandviç",
-      "p": 356,
-      "platform": "getir"
-    },
-    {
-      "n": "Kıymalı Pide",
-      "rest": "Maşa Gaziantep Mutfağı 1990 (Kartaltepe Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Fırından Lezzet",
-      "p": 410,
-      "platform": "getir"
-    },
-    {
-      "n": "Tam Ekmek Tavuk Ciğer",
-      "rest": "Dönerci Abim Benim (Telsiz Mah.)",
-      "rcat": "Döner",
-      "mcat": "Ciğer",
-      "p": 270,
-      "platform": "getir"
-    },
-    {
-      "n": "Dereotlu Poğaça",
-      "rest": "Meşhur Sarıyer Börekçisi (Bahçelievler)",
-      "rcat": "Börek",
-      "mcat": "Poğaçalar",
-      "p": 45,
-      "platform": "getir"
-    },
-    {
-      "n": "Tavuk Baget  Haşlama",
-      "rest": "Hebun Çorba Evi (Huzur Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Çorba",
-      "p": 320,
-      "platform": "getir"
-    },
-    {
-      "n": "Baget Ekmeğine Kaşarlı Köfte",
-      "rest": "Bebek Susam (Sultan Selim Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Sandviç",
-      "p": 450,
-      "platform": "getir"
-    },
-    {
-      "n": "Çavdarlı Lokma Galeta",
+      "n": "Keten Tohumlu Lokma Galete",
       "rest": "Balbadem Pastanesi (Esentepe Mah.)",
       "rcat": "Tatlı",
       "mcat": "Galeta",
@@ -1919,669 +2267,249 @@
       "platform": "getir"
     },
     {
-      "n": "Pastırmalı Kaşarlı Pide",
-      "rest": "Mevlana Pide, Beylikdüzü (Cumhuriyet Mah.)",
-      "rcat": "Pide",
-      "mcat": "Fırından Lezzet",
-      "p": 550,
-      "platform": "getir"
-    },
-    {
-      "n": "Patatesli Poğaça",
-      "rest": "Sarıyer Börekçisi (Zafer)",
+      "n": "Kürt Böreği (Porsiyon)",
+      "rest": "Meşhur Sarıyer Börekçisi (Merkez)",
       "rcat": "Börek",
-      "mcat": "Poğaçalar",
-      "p": 30,
-      "platform": "trendyol"
-    }
-  ],
-  "side": [
-    {
-      "n": "Köy Yoğurdu (Tek Kişilik)",
-      "rest": "Meşhur Unkapanı Pilavcısı, Fatih (Akşemsettin Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Yan Lezzet",
-      "p": 160,
-      "platform": "getir"
-    },
-    {
-      "n": "Mini Shortbread Cookie",
-      "rest": "Starbucks® (Kazlıçeşme Mah. Yedi Mavi)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 265,
-      "platform": "getir"
-    },
-    {
-      "n": "Zbarz Limonlu Protein Bar",
-      "rest": "Starbucks® (Yıldız Posta Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 140,
-      "platform": "getir"
-    },
-    {
-      "n": "Pembe Sultan (250 g)",
-      "rest": "Mezzini Meze (Acıbadem Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Meze",
-      "p": 365,
-      "platform": "getir"
-    },
-    {
-      "n": "Pol's Çilek",
-      "rest": "Starbucks® (Koza Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 155,
-      "platform": "getir"
-    },
-    {
-      "n": "Zbarz Limonlu Protein Bar",
-      "rest": "Starbucks Reserve™ (Pınar Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 140,
-      "platform": "getir"
-    },
-    {
-      "n": "Fırında Kaşarlı Patlıcan",
-      "rest": "Kekik (Dikilitaş Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Meze",
-      "p": 350,
-      "platform": "getir"
-    },
-    {
-      "n": "Mini Shortbread Cookie",
-      "rest": "Starbucks® (Doğan Araslı Blv.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 265,
-      "platform": "getir"
-    },
-    {
-      "n": "Fried Falafel / Kızarmış Falafel Salata",
-      "rest": "Soul Bowl (Paşa)",
-      "rcat": "Tavuk,Salata & Sağlık,Dünya Mutfağı & Cafe",
-      "mcat": "Salads / Salata",
-      "p": 520,
-      "platform": "getir"
-    },
-    {
-      "n": "Mütebbel (250 g)",
-      "rest": "Mezzini Meze (Acıbadem Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Meze",
-      "p": 390,
-      "platform": "getir"
-    },
-    {
-      "n": "Siyez Unlu Fırın Mücver",
-      "rest": "Adile Sultan Ev Yemekleri (Maslak)",
-      "rcat": "Ev Yemekleri,Köfte,Tavuk",
-      "mcat": "Yan Lezzet",
-      "p": 295,
-      "platform": "getir"
-    },
-    {
-      "n": "Crispy Chicken (Porsiyon)",
-      "rest": "Gina Bowl (Ergenekon)",
-      "rcat": "Salata & Sağlık,Meze",
-      "mcat": "Yan Lezzet",
-      "p": 249,
-      "platform": "getir"
-    },
-    {
-      "n": "Kızartma Tabağı",
-      "rest": "Benden Büfe  (Zuhuratbaba)",
-      "rcat": "Kahvaltı,Tost & Sandviç,Sokak Lezzetleri",
-      "mcat": "Atıştırmalık",
-      "p": 282,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Chili Garlic Edamame",
-      "rest": "Sushico (Kazlıçeşme Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Başlangıç",
-      "p": 398,
-      "platform": "getir"
-    },
-    {
-      "n": "Humus Balls",
-      "rest": "Le Penne Mantı & Makarna (Akat Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 135,
-      "platform": "getir"
-    },
-    {
-      "n": "Köpoğlu",
-      "rest": "Zerafet Restaurant (Nisbetiye Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Meze",
-      "p": 280,
-      "platform": "getir"
-    },
-    {
-      "n": "Starbucks Mini Tuzlu Kruvasan",
-      "rest": "Starbucks® (Muvakkıthane Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 265,
-      "platform": "getir"
-    },
-    {
-      "n": "Kanat (4 Adet)",
-      "rest": "Kudo Kudo (Koza)",
-      "rcat": "Tavuk",
-      "mcat": "Tekli Tavuklar",
-      "p": 295,
-      "platform": "getir"
-    },
-    {
-      "n": "Atom (330 g)",
-      "rest": "7 Şef Meze (Merkez Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Meze",
-      "p": 229,
-      "platform": "getir"
-    },
-    {
-      "n": "Pankek & Söğüş & Beyaz Peynir",
-      "rest": "Pişi Pankek Mutfak (Vatan)",
-      "rcat": "Kahvaltı,Börek,Pastane & Fırın",
-      "mcat": "Pankek",
-      "p": 460,
-      "platform": "trendyol"
-    },
-    {
-      "n": "6'lı Meze Tabağı",
-      "rest": "Tahıl.Co Bowl (Yenidoğan Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Meze",
-      "p": 1600,
-      "platform": "getir"
-    },
-    {
-      "n": "Starbucks® Fındıklı Çikolatalı Gofret",
-      "rest": "Starbucks® (Mimar Sinan Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 145,
-      "platform": "getir"
-    },
-    {
-      "n": "Kayısılı ve Çikolatalı Tatlı Atıştırmalık",
-      "rest": "Starbucks® (Asmalı Mescit Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 70,
-      "platform": "getir"
-    },
-    {
-      "n": "Çin salatası",
-      "rest": "Lucky Ramen, Sarıyer (Reşitpaşa Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Salads",
-      "p": 300,
-      "platform": "getir"
-    },
-    {
-      "n": "Glutensiz Bitter Çikolatalı Brownie",
-      "rest": "Starbucks® (Muvakkıthane Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
+      "mcat": "Börek",
       "p": 180,
       "platform": "getir"
     },
     {
-      "n": "Çikolatalı Glutensiz Kurabiye",
-      "rest": "Starbucks® (Esentepe Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 155,
-      "platform": "getir"
-    },
-    {
-      "n": "Fit Brownie (40 g)",
-      "rest": "Espressolab (Şehremini Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 235,
-      "platform": "getir"
-    },
-    {
-      "n": "Çıtır Soğan (12'li)",
-      "rest": "McDonald's (Kennedy Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 120,
-      "platform": "getir"
-    },
-    {
-      "n": "16. Edamame",
-      "rest": "Çin Büfe & Sushi (Kuloğlu Mah.)",
-      "rcat": "Sushi",
-      "mcat": "Başlangıç",
-      "p": 270,
-      "platform": "getir"
-    },
-    {
-      "n": "Mini Shortbread Cookie",
-      "rest": "Starbucks® (Sultan Selim Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Atıştırmalık",
-      "p": 265,
-      "platform": "getir"
-    }
-  ],
-  "retail": [
-    {
-      "n": "Starbucks® Espresso Roast (250 g)",
-      "rest": "Starbucks® (Vatan Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
-      "p": 804,
-      "platform": "getir"
-    },
-    {
-      "n": "Midye (1 kg)",
-      "rest": "Şayan Baklava (Konaklar Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Tatlı (1 kg)",
-      "p": 2450,
-      "platform": "getir"
-    },
-    {
-      "n": "Tartolet Çilekli (500 gr.)",
-      "rest": "Güneli Fırın (15 Temmuz)",
-      "rcat": "Pastane & Fırın",
-      "mcat": "Tortelet & Ekler",
-      "p": 520,
+      "n": "Yarım Ekmek Kaşarlı Tost",
+      "rest": "Salkım Kahvaltı & Cafe (Feneryolu)",
+      "rcat": "Kahvaltı,Tatlı,Börek",
+      "mcat": "Tostlar",
+      "p": 300,
       "platform": "trendyol"
     },
     {
-      "n": "Algötür Vanilya Aromalı Filtre Kahve (200 gr.)",
-      "rest": "Kahve Dünyası (Yıldız)",
-      "rcat": "Tatlı,Kahve & İçecek",
-      "mcat": "Paket Kahveler",
-      "p": 313,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Çörekotlu Kokteyl",
-      "rest": "Tarihi Safranbolu Fırını (Göztepe Mah.)",
+      "n": "Dana Füme Etli Baget Sandviç",
+      "rest": "Starbucks Reserve™ (Koşuyolu Mah.)",
       "rcat": "Yemek",
-      "mcat": "Paket Lezzet",
-      "p": 255,
-      "platform": "getir"
-    },
-    {
-      "n": "Veranda Blend® (250 g)",
-      "rest": "Starbucks® (Güneşli Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
-      "p": 804,
-      "platform": "getir"
-    },
-    {
-      "n": "Decaf Espresso Roast Kapsül Kahve",
-      "rest": "Starbucks® (Ortaklar Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
-      "p": 539,
-      "platform": "getir"
-    },
-    {
-      "n": "Şöbiyet (500 gr)",
-      "rest": "İnci Fırın (Haseki Sultan)",
-      "rcat": "Pastane & Fırın,Tatlı",
-      "mcat": "Şerbetli Tatlılar",
-      "p": 699,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Çilekli Tartolet (1 kg)",
-      "rest": "Sekizkardeşler Pastanesi (Yenidoğan Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Kiloluk Ekler & Tartolet",
-      "p": 900,
-      "platform": "getir"
-    },
-    {
-      "n": "Decaf Espresso Roast Kapsül Kahve",
-      "rest": "Starbucks® (Barbaros Hayrettin Paşa Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
-      "p": 539,
-      "platform": "getir"
-    },
-    {
-      "n": "Nutella Soslu Profiterol (250 gr.)",
-      "rest": "İnci Gurme Profiterol Beyoğlu (Gümüşsuyu Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Profiteroller",
-      "p": 541,
-      "platform": "getir"
-    },
-    {
-      "n": "Yoğurt (150 gr.)",
-      "rest": "Leyna Falafel (Ergenekon)",
-      "rcat": "Dünya Mutfağı & Cafe",
-      "mcat": "Soğuk Seçenekler",
-      "p": 64,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Kanat (1 kg)",
-      "rest": "Bağcılar Dürüm Dünyası (Merkez Mah.)",
-      "rcat": "Döner",
-      "mcat": "Kiloluk Lezzet (Pişirilmiş)",
-      "p": 750,
-      "platform": "getir"
-    },
-    {
-      "n": "Starbucks Blonde® Espresso Roast (250 g)",
-      "rest": "Starbucks® (15 Temmuz Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
-      "p": 804,
-      "platform": "getir"
-    },
-    {
-      "n": "Fıstıklı Açık Şöbiyet (1 kg)",
-      "rest": "Emiroğlu Baklava, Üsküdar (Muratreis Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Şerbetli Tatlılar",
-      "p": 3500,
-      "platform": "getir"
-    },
-    {
-      "n": "Yaprak Kanat (1.5 kg)",
-      "rest": "Güney Et Mangal & Ocakbaşı (Hürriyet Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kiloluk Izgara",
-      "p": 1400,
-      "platform": "getir"
-    },
-    {
-      "n": "Köfteci Yusuf Dana Nuar (500 g)",
-      "rest": "Köfteci Yusuf (Zafer Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Çiğ Ürün",
-      "p": 575,
-      "platform": "getir"
-    },
-    {
-      "n": "Damla Sakız Aromalı Türk Kahvesi (250 g)(Teneke Kutu)",
-      "rest": "Kahve Dünyası (Bağcılar Göztepe Mah.)",
-      "rcat": "Kahve",
-      "mcat": "Paket Kahve",
-      "p": 363,
-      "platform": "getir"
-    },
-    {
-      "n": "1 Porsiyon Döner (130 g)",
-      "rest": "Köfteci Yusuf (Bağlar Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Porsiyon",
+      "mcat": "Sandviç",
       "p": 340,
       "platform": "getir"
     },
     {
-      "n": "Meyveli Sultan (1 kg)",
-      "rest": "Helvacı Ali 1900 (Zafer Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kiloluk Helva",
-      "p": 1000,
-      "platform": "getir"
-    },
-    {
-      "n": "Köfteci Yusuf Kuzu Şiş (1 kg)",
-      "rest": "Köfteci Yusuf (Fatih)",
-      "rcat": "Burger,Döner,Köfte",
-      "mcat": "Çiğ Ürün",
-      "p": 1350,
-      "platform": "getir"
-    },
-    {
-      "n": "Portakallı Mini Marki (1 kg)",
-      "rest": "Sevgim Pasta & Çikolata (Telsiz Mah.)",
-      "rcat": "Tatlı",
-      "mcat": "Kiloluk Tatlı",
-      "p": 882,
-      "platform": "getir"
-    },
-    {
-      "n": "Veranda Blend® (250 g)",
-      "rest": "Starbucks® (Vatan Cad.)",
-      "rcat": "Yemek",
-      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
-      "p": 804,
-      "platform": "getir"
-    },
-    {
-      "n": "Fındık Aromalı Filtre Kahve (250 g)",
-      "rest": "Kahve Dünyası Algötür (Teşvikiye Cad.)",
-      "rcat": "Kahve",
-      "mcat": "Paket Kahve",
-      "p": 356,
-      "platform": "getir"
-    },
-    {
-      "n": "Sütlü Kuvertür Çikolata (1 kg)",
-      "rest": "Kahve Dünyası (Acıbadem Mah.)",
-      "rcat": "Kahve",
-      "mcat": "Çikolata",
-      "p": 1375,
-      "platform": "getir"
-    },
-    {
-      "n": "Pike Place® Roast (250 g)",
-      "rest": "Starbucks® (Kağıthane Merkez Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahve Çekirdeği, VIA & Kapsül",
-      "p": 804,
-      "platform": "getir"
-    },
-    {
-      "n": "Fındıklı Kaymaklı Tahinli Ekmek Kadayıfı (250 gr.)",
-      "rest": "İnci Gurme Profiterol Beyoğlu (Gümüşsuyu Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Tatlılar",
-      "p": 498,
-      "platform": "getir"
-    },
-    {
-      "n": "Şekerpare (1 kg)",
-      "rest": "Rudo Cafe (Bahçelievler Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Şerbetli Tatlı",
-      "p": 840,
-      "platform": "getir"
-    },
-    {
-      "n": "Karışık Tatlı&Tuzlu Kurabiye (500 gr.)",
-      "rest": "Alaturka İstanbul (Rasimpaşa)",
-      "rcat": "Pastane & Fırın",
-      "mcat": "Tatlılar",
-      "p": 510,
+      "n": "Patatesli Börek (Porsiyon)",
+      "rest": "Yüzyıl Börek Salonu (Oruçreis)",
+      "rcat": "Börek",
+      "mcat": "Börekler",
+      "p": 200,
       "platform": "trendyol"
     },
     {
-      "n": "Çakıltaşlı Profiterol (250 gr.)",
-      "rest": "İnce Profiterol (Fulya Mah.)",
+      "n": "Yarım Ekmek Karışık Tost",
+      "rest": "Avrupa Marmaris (Büyükdere Mah.)",
       "rcat": "Yemek",
-      "mcat": "Profiteroller",
-      "p": 541,
+      "mcat": "Tost",
+      "p": 240,
+      "platform": "getir"
+    },
+    {
+      "n": "Bıçak Arası Pide",
+      "rest": "Yeni Meşes İşkembe (Cumhuriyet Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Fırından Lezzet",
+      "p": 530,
+      "platform": "getir"
+    },
+    {
+      "n": "Tam Ekmek Arası Arnavut Ciğeri",
+      "rest": "Kervancı İşkembe Salonu  (Yenikent)",
+      "rcat": "Ev Yemekleri,Sokak Lezzetleri,Çorba",
+      "mcat": "Ekmek Arası Lezzet",
+      "p": 860,
+      "platform": "getir"
+    },
+    {
+      "n": "Simit (Adet)",
+      "rest": "Meşhur Sarıyer Börekçisi (Çınar)",
+      "rcat": "Pide & Lahmacun,Pastane & Fırın,Börek",
+      "mcat": "Poğaça & Açma & Simit",
+      "p": 40,
+      "platform": "getir"
+    },
+    {
+      "n": "2 Adet Bol Peynirli Ekmek",
+      "rest": "Domino's Pizza (Çapa Mah.)",
+      "rcat": "Pizza",
+      "mcat": "Gece'nin Favorileri",
+      "p": 310,
+      "platform": "getir"
+    },
+    {
+      "n": "Zeytinli Açma",
+      "rest": "İstanbul Tarihi Simitçisi (Osmanağa)",
+      "rcat": "Pastane & Fırın",
+      "mcat": "Açma Çeşitleri",
+      "p": 75,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Tahıllı Peynirli Poğaça",
+      "rest": "Starbucks® (Oğuz Sk.)",
+      "rcat": "Yemek",
+      "mcat": "Kahvaltı & Fırın Lezzeti",
+      "p": 115,
+      "platform": "getir"
+    },
+    {
+      "n": "Dört Dörtlük Yarım Porsiyon Ekmek Arası Sucuk Menü",
+      "rest": "Köfteci Yusuf (Bağlar Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Ekmek Arası Menü",
+      "p": 430,
+      "platform": "getir"
+    },
+    {
+      "n": "Çavdar Sandviç Ekmek (Adet)",
+      "rest": "Güzel Fırın Ekmek Pasta (Gürsel)",
+      "rcat": "Pastane & Fırın,Tatlı,Kahvaltı",
+      "mcat": "Ekmekler",
+      "p": 32,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Küt Böreği 1 dilim",
+      "rest": "İnci Börek  (Kocasinan Merkez)",
+      "rcat": "Pastane & Fırın,Börek",
+      "mcat": "Börek",
+      "p": 45,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Yarım Ekmek Kavurmalı & Kaşarlı Tost",
+      "rest": "Sarıoğlu Büfe (Yenibosna Merkez Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Tost",
+      "p": 250,
+      "platform": "getir"
+    },
+    {
+      "n": "Çıtır Baget Etli Menü",
+      "rest": "Arby's, Bakırköy (Osmaniye Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Menü",
+      "p": 430,
+      "platform": "getir"
+    },
+    {
+      "n": "Karabuğdaylı Simit",
+      "rest": "Taş Değirmenli Fırın (Feriköy Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kahvaltılık",
+      "p": 100,
+      "platform": "getir"
+    },
+    {
+      "n": "Tam Ekmek (110 g) & Çıtır Miks Menü",
+      "rest": "Paşa Döner (Telsiz Mah.)",
+      "rcat": "Döner",
+      "mcat": "Ekmek Seven Menüler",
+      "p": 550,
+      "platform": "getir"
+    },
+    {
+      "n": "Hindi Fümeli Rokalı Baget Sandviç",
+      "rest": "Starbucks® (Bağlar Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Sandviç",
+      "p": 320,
       "platform": "getir"
     }
   ],
   "breakfast": [
     {
-      "n": "Klasik Kahvaltı Tabağı",
-      "rest": "Nice To Fit You (Şenlikköy Mah.)",
-      "rcat": "Yemek",
+      "n": "Patatesli Üsküdar Sarma",
+      "rest": "Balbadem Pastanesi (Esentepe Mah.)",
+      "rcat": "Tatlı",
       "mcat": "Kahvaltılık",
-      "p": 680,
+      "p": 100,
       "platform": "getir"
     },
     {
-      "n": "Salam (6 Dilim)",
-      "rest": "Selimiye Muhallebicisi & Restaurant (Maltepe Mah.)",
-      "rcat": "Yemek",
+      "n": "Tereyağ",
+      "rest": "180 Derece Coffee Bakery (Caferağa Mah.)",
+      "rcat": "Kahve",
       "mcat": "Kahvaltı",
-      "p": 150,
+      "p": 85,
       "platform": "getir"
     },
     {
-      "n": "Etli Karışık Yumurta",
-      "rest": "Göztepe Menemen Kahvaltı (Feneryolu)",
-      "rcat": "Kahvaltı,Tost & Sandviç",
-      "mcat": "Yumurtalar",
-      "p": 620,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Kahvaltı Tabağı",
-      "rest": "Saray Muhallebicisi 1935 (Ayazağa Mah.)",
+      "n": "Mantarlı Menemen",
+      "rest": "Otlangaç Kahvaltı & Cafe (Sinanpaşa Mah.)",
       "rcat": "Yemek",
-      "mcat": "Kahvaltı",
-      "p": 345,
+      "mcat": "Menemen",
+      "p": 390,
       "platform": "getir"
     },
     {
-      "n": "Kaşar Peynirli Omlet",
-      "rest": "Zeynel Muhallebicisi (Yeniköy Mah.)",
+      "n": "Peynirli Omlet",
+      "rest": "Namlı Gurme Karaköy (Kemankeş Karamustafapaşa Mah.)",
       "rcat": "Yemek",
-      "mcat": "Omlet",
-      "p": 360,
-      "platform": "getir"
-    },
-    {
-      "n": "Karışık Menemen",
-      "rest": "Kovan Fırın (Çağlayan Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltı",
-      "p": 455,
-      "platform": "getir"
-    },
-    {
-      "n": "Hızlı Kahvaltı Tabağı",
-      "rest": "Levent Börek (Ataköy Mah.)",
-      "rcat": "Börek",
-      "mcat": "Kahvaltı",
-      "p": 295,
+      "mcat": "Yumurta",
+      "p": 366,
       "platform": "getir"
     },
     {
       "n": "Siyah Zeytin",
-      "rest": "Saray Muhallebicisi 1935 (Ataköy Mah.)",
+      "rest": "Saray Muhallebicisi 1935 (Kuloğlu Mah.)",
       "rcat": "Yemek",
       "mcat": "Kahvaltı",
       "p": 100,
       "platform": "getir"
     },
     {
-      "n": "Hızlı Kahvaltı Tabağı (Tek Kişilik)",
-      "rest": "Selimiye Muhallebicisi & Restaurant (Maltepe Mah.)",
+      "n": "Kaşarlı Omlet",
+      "rest": "Faruk Güllü (Zafer Mah.)",
       "rcat": "Yemek",
       "mcat": "Kahvaltı",
-      "p": 320,
-      "platform": "getir"
-    },
-    {
-      "n": "Üçken Peynir",
-      "rest": "Eyüp Sultan Börekçisi (Şehremini)",
-      "rcat": "Börek",
-      "mcat": "Kahvaltı",
-      "p": 22,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Sıcak Sepet 2",
-      "rest": "Pişi Pankek (Mevlana)",
-      "rcat": "Kahvaltı,Sokak Lezzetleri,Börek",
-      "mcat": "Kahvaltı",
-      "p": 365,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Sucuklu Menemen",
-      "rest": "Sezon Cafe (Şehremini Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Menemen",
-      "p": 229,
-      "platform": "getir"
-    },
-    {
-      "n": "Meyveli ve Yoğurtlu Parfe",
-      "rest": "Starbucks® (Hasan Halife Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltı & Fırın Lezzeti",
-      "p": 275,
-      "platform": "getir"
-    },
-    {
-      "n": "Kaşar Peynirli Omlet",
-      "rest": "Konteyner Fast Food, Güngören (Mareşal Çakmak Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltı",
-      "p": 300,
-      "platform": "getir"
-    },
-    {
-      "n": "Domates Soslu Sucuklu Poşe Yumurta",
-      "rest": "Beyaz Fırın (Etiler)",
-      "rcat": "Tatlı,Pastane & Fırın",
-      "mcat": "Yumurtalar",
-      "p": 790,
-      "platform": "trendyol"
-    },
-    {
-      "n": "Karışık Sandviç",
-      "rest": "Tarihi Eyüp Sultan Börek & Pide & Cafe (Şehremini Mah. - Çapa)",
-      "rcat": "Börek",
-      "mcat": "Kahvaltı",
-      "p": 200,
-      "platform": "getir"
-    },
-    {
-      "n": "3 Lezzetli Focaccia",
-      "rest": "Starbucks® (Şişli Merkez Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltı & Fırın Lezzeti",
-      "p": 265,
-      "platform": "getir"
-    },
-    {
-      "n": "Banana Bread",
-      "rest": "Nice To Fit You (Şenlikköy Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltılık",
       "p": 310,
       "platform": "getir"
     },
     {
-      "n": "Haşlanmış Yumurta (1 Adet)",
-      "rest": "Pişiköy (Osmanağa Mah.)",
-      "rcat": "Yemek",
+      "n": "Tereyağ",
+      "rest": "Güneş Kahvaltı Evi (Mareşal Çakmak)",
+      "rcat": "Kahvaltı",
       "mcat": "Kahvaltı",
-      "p": 50,
-      "platform": "getir"
+      "p": 60,
+      "platform": "trendyol"
     },
     {
-      "n": "Kaşar Peynirli Menemen",
-      "rest": "Aysel Sultan Gözleme (Sinanpaşa Mah.)",
+      "n": "Soğanlı Menemen",
+      "rest": "Yeni Meşes İşkembe (Cumhuriyet Mah.)",
       "rcat": "Yemek",
-      "mcat": "Menemen",
-      "p": 525,
+      "mcat": "Kahvaltılık",
+      "p": 300,
       "platform": "getir"
     },
     {
-      "n": "Egg & Halloumi Muffin",
+      "n": "Kahvaltı Sandviç",
+      "rest": "Meşhur Sarıyer Börekçisi (Cevizlik)",
+      "rcat": "Pastane & Fırın",
+      "mcat": "Kahvaltılıklar",
+      "p": 225,
+      "platform": "trendyol"
+    },
+    {
+      "n": "PİZZA DİLİMİ",
+      "rest": "Pasta Duqqani ve Simit Durağı (İncirtepe)",
+      "rcat": "Tatlı,Pastane & Fırın,Börek",
+      "mcat": "Kahvaltılıklar",
+      "p": 99,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Kaşarlı Menemen",
+      "rest": "Simit Sarayı (Mesih Paşa)",
+      "rcat": "Pastane & Fırın,Kahvaltı,Börek",
+      "mcat": "Kahvaltılıklar",
+      "p": 330,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Egg & Sucuk Muffın",
       "rest": "180 Derece Coffee Bakery (Caferağa Mah.)",
       "rcat": "Kahve",
       "mcat": "Kahvaltı",
@@ -2589,76 +2517,148 @@
       "platform": "getir"
     },
     {
-      "n": "Ezine Peyniri",
-      "rest": "Beyaz Fırın (Teşvikiye Mah.)",
+      "n": "Keçi Peynirli Omlet",
+      "rest": "Mado (İnönü Mah.)",
       "rcat": "Yemek",
-      "mcat": "Kahvaltılık",
+      "mcat": "Kahvaltı",
+      "p": 483,
+      "platform": "getir"
+    },
+    {
+      "n": "Sucuklu Kaşarlı Menemen",
+      "rest": "Aum Pasta & Cafe (Acıbadem Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Menemen",
+      "p": 535,
+      "platform": "getir"
+    },
+    {
+      "n": "Salamlı Sandviç",
+      "rest": "Undan Fırın (Valide-i Atik)",
+      "rcat": "Kahvaltı,Pastane & Fırın",
+      "mcat": "Kahvaltılıklar",
       "p": 210,
-      "platform": "getir"
-    },
-    {
-      "n": "Haşlanmış Yumurta",
-      "rest": "Tostçu Avni 2, Eyüpsultan (Topçular Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltı",
-      "p": 25,
-      "platform": "getir"
-    },
-    {
-      "n": "İtalyan Pizza",
-      "rest": "Elif Fırın (Çeliktepe)",
-      "rcat": "Pastane & Fırın,Börek",
-      "mcat": "Kahvaltılık",
-      "p": 130,
-      "platform": "getir"
-    },
-    {
-      "n": "Vişne Reçeli",
-      "rest": "Göreme Muhallebicisi (Feriköy Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Kahvaltı",
-      "p": 150,
-      "platform": "getir"
-    },
-    {
-      "n": "Salamlı Kaşarlı Omlet",
-      "rest": "Kahve 6 Kahvaltı & Cafe (Aksaray)",
-      "rcat": "Dünya Mutfağı & Cafe,Kahvaltı,Tavuk",
-      "mcat": "Omletler",
-      "p": 236,
       "platform": "trendyol"
     },
     {
       "n": "Sahanda Sucuklu Yumurta",
+      "rest": "Karafırın (Hasanpaşa)",
+      "rcat": "Pastane & Fırın,Kahvaltı,Börek",
+      "mcat": "Yumurtalar",
+      "p": 393,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Mantarlı Omlet",
+      "rest": "Dianka's Croissants (Emniyet Evleri Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Omlet",
+      "p": 435,
+      "platform": "getir"
+    },
+    {
+      "n": "Çikolatalı Kruvasan",
+      "rest": "Starbucks® (İncirli Cad.)",
+      "rcat": "Yemek",
+      "mcat": "Kahvaltı & Fırın Lezzeti",
+      "p": 170,
+      "platform": "getir"
+    },
+    {
+      "n": "Acele Kahvaltı",
+      "rest": "Seyran Pasta & Restaurant (Koza Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Kahvaltılık",
+      "p": 500,
+      "platform": "getir"
+    },
+    {
+      "n": "Meyveli ve Yoğurtlu Parfe",
+      "rest": "Starbucks® (Güneşli Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kahvaltı & Fırın Lezzeti",
+      "p": 275,
+      "platform": "getir"
+    },
+    {
+      "n": "Pratik Kahvaltı Tabağı",
+      "rest": "The House Cafe Corner (Teşvikiye Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kahvaltılık",
+      "p": 625,
+      "platform": "getir"
+    },
+    {
+      "n": "Güçlü Kahvaltı",
+      "rest": "Seyran Pasta & Restaurant (Koza Mah.)",
+      "rcat": "Tatlı",
+      "mcat": "Kahvaltılık",
+      "p": 500,
+      "platform": "getir"
+    },
+    {
+      "n": "Sıcak Kahvaltı",
       "rest": "Aum Pasta & Cafe (Acıbadem Mah.)",
       "rcat": "Tatlı",
       "mcat": "Kahvaltı",
-      "p": 410,
+      "p": 975,
       "platform": "getir"
     },
     {
-      "n": "Bal & Kaymak",
-      "rest": "Saray Muhallebicisi 1935 (Ataköy Mah.)",
+      "n": "Bal Kaymak",
+      "rest": "Beyaz Fırın (Etiler)",
+      "rcat": "Tatlı,Pastane & Fırın",
+      "mcat": "Kahvaltılıklar",
+      "p": 380,
+      "platform": "trendyol"
+    },
+    {
+      "n": "Kavurmalı Kaşarlı Dürümde Omlet",
+      "rest": "Büfe Energy (Fulya Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kahvaltılık",
+      "p": 495,
+      "platform": "getir"
+    },
+    {
+      "n": "Croissant & Nutella",
+      "rest": "Shelly (Levent Mah.)",
       "rcat": "Yemek",
       "mcat": "Kahvaltı",
-      "p": 240,
+      "p": 455,
       "platform": "getir"
     },
     {
-      "n": "Taze Kaşar (Dilim)",
-      "rest": "Kovan Fırın (Çağlayan Mah.)",
+      "n": "Sucuklu Menemen",
+      "rest": "Etiler Marmaris (Aşık Veysel)",
+      "rcat": "Burger,Tost & Sandviç",
+      "mcat": "Kahvaltı",
+      "p": 305,
+      "platform": "getir"
+    },
+    {
+      "n": "Menemen",
+      "rest": "Hafif Ol Diyet Yemek Servisi (Şenlikköy Mah.)",
+      "rcat": "Yemek",
+      "mcat": "Kahvaltılık",
+      "p": 380,
+      "platform": "getir"
+    },
+    {
+      "n": "Kahvaltı Tabağı",
+      "rest": "Saray Muhallebicisi 1935 (Ataköy 1. Kısım Mah.)",
       "rcat": "Yemek",
       "mcat": "Kahvaltı",
-      "p": 90,
+      "p": 345,
       "platform": "getir"
     },
     {
-      "n": "Sahanda Yumurta",
-      "rest": "Lale Lokantası (Piripaşa Mah.)",
-      "rcat": "Yemek",
-      "mcat": "Yumurta",
-      "p": 220,
-      "platform": "getir"
+      "n": "Klasik Kahvaltı Tabağı",
+      "rest": "Molasera (Ataköy 1. Kısım)",
+      "rcat": "Tavuk,Kahvaltı,Dünya Mutfağı & Cafe",
+      "mcat": "Kahvaltılıklar",
+      "p": 396,
+      "platform": "trendyol"
     }
   ]
 }
