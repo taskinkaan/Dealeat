@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#3b2415" />
+  <title>Menü</title>
+  <meta name="description" content="Dijital menü" />
+
+  <!-- =================================================================== -->
+  <!--  DÜZENLEME REHBERİ                                                  -->
+  <!--  • Kafenin adı / bilgileri: aşağıdaki  CAFE  nesnesini düzenle.     -->
+  <!--  • Menü içeriği: aşağıdaki  MENU  listesini düzenle.                -->
+  <!--  Başka hiçbir yere dokunman gerekmiyor.                             -->
+  <!-- =================================================================== -->
+
+  <style>
+    :root{
+      --bg:#1c130d;
+      --bg-card:#2a1d12;
+      --bg-soft:#33271b;
+      --accent:#d9a566;
+      --accent-soft:#e8c79a;
+      --text:#f5ece1;
+      --text-dim:#b9a890;
+      --line:rgba(217,165,102,.18);
+      --radius:18px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      padding-bottom:env(safe-area-inset-bottom);
+    }
+    .wrap{max-width:680px;margin:0 auto}
+
+    /* ---- Header ---- */
+    header{
+      position:relative;
+      padding:48px 22px 30px;
+      text-align:center;
+      background:
+        radial-gradient(120% 90% at 50% -10%, rgba(217,165,102,.22), transparent 60%),
+        linear-gradient(180deg,#241710,#1c130d);
+      border-bottom:1px solid var(--line);
+    }
+    .logo{
+      width:74px;height:74px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 16px;
+      background:linear-gradient(145deg,var(--accent),#b07d3f);
+      color:#1c130d;font-size:34px;font-weight:800;
+      box-shadow:0 8px 26px rgba(217,165,102,.28);
+    }
+    header h1{
+      font-size:30px;letter-spacing:.5px;font-weight:800;
+      background:linear-gradient(180deg,#fff,var(--accent-soft));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    header .tagline{color:var(--text-dim);font-size:14px;margin-top:6px;letter-spacing:.4px}
+    .badge{
+      display:inline-flex;gap:6px;align-items:center;
+      margin-top:16px;padding:7px 14px;border-radius:999px;
+      background:var(--bg-soft);border:1px solid var(--line);
+      font-size:12px;color:var(--accent-soft);letter-spacing:.3px;
+    }
+
+    /* ---- Sticky category nav ---- */
+    nav{
+      position:sticky;top:0;z-index:20;
+      background:rgba(28,19,13,.92);
+      backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-scroll{
+      display:flex;gap:8px;overflow-x:auto;padding:12px 16px;
+      scrollbar-width:none;
+    }
+    .nav-scroll::-webkit-scrollbar{display:none}
+    .nav-scroll a{
+      flex:0 0 auto;text-decoration:none;
+      padding:8px 15px;border-radius:999px;font-size:13.5px;font-weight:600;
+      color:var(--text-dim);background:var(--bg-card);border:1px solid var(--line);
+      white-space:nowrap;transition:.2s;
+    }
+    .nav-scroll a.active{color:#1c130d;background:var(--accent);border-color:var(--accent)}
+
+    /* ---- Menu ---- */
+    main{padding:26px 16px 40px}
+    .cat{margin-bottom:34px;scroll-margin-top:62px}
+    .cat-title{
+      display:flex;align-items:center;gap:12px;margin-bottom:16px;
+      font-size:20px;font-weight:800;color:var(--accent-soft);letter-spacing:.4px;
+    }
+    .cat-title::after{content:"";flex:1;height:1px;background:var(--line)}
+    .cat-icon{font-size:22px}
+
+    .item{
+      display:flex;gap:14px;align-items:flex-start;
+      padding:15px 16px;margin-bottom:11px;
+      background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
+    }
+    .item-body{flex:1;min-width:0}
+    .item-head{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+    .item-name{font-size:15.5px;font-weight:700}
+    .item-name .tag{
+      font-size:10px;font-weight:700;letter-spacing:.5px;vertical-align:middle;
+      margin-left:7px;padding:2px 7px;border-radius:6px;
+      background:rgba(217,165,102,.16);color:var(--accent-soft);
+    }
+    .item-desc{font-size:13px;color:var(--text-dim);margin-top:4px}
+    .item-price{font-size:15px;font-weight:800;color:var(--accent);white-space:nowrap}
+
+    /* ---- Footer ---- */
+    footer{
+      padding:30px 22px 40px;text-align:center;
+      border-top:1px solid var(--line);
+      background:linear-gradient(180deg,#1c130d,#160f09);
+    }
+    footer h3{font-size:17px;margin-bottom:14px;color:var(--accent-soft)}
+    .info{display:flex;flex-direction:column;gap:11px;align-items:center;font-size:14px;color:var(--text-dim)}
+    .info a{color:var(--text);text-decoration:none;display:inline-flex;gap:9px;align-items:center}
+    .socials{display:flex;gap:12px;justify-content:center;margin-top:20px}
+    .socials a{
+      width:44px;height:44px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;font-size:19px;
+      background:var(--bg-card);border:1px solid var(--line);color:var(--accent-soft);
+      text-decoration:none;transition:.2s;
+    }
+    .socials a:active{background:var(--accent);color:#1c130d}
+    .credit{margin-top:26px;font-size:11.5px;color:#6b5d4c}
+
+    @media(min-width:560px){ header h1{font-size:34px} }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logo" id="logo">☕</div>
+    <h1 id="cafeName">Kafe Adı</h1>
+    <p class="tagline" id="tagline">Lezzetin buluşma noktası</p>
+    <span class="badge">📱 Dijital Menü</span>
+  </header>
+
+  <nav><div class="nav-scroll" id="nav"></div></nav>
+
+  <main id="menu"></main>
+
+  <footer>
+    <h3>Bize Ulaşın</h3>
+    <div class="info" id="contact"></div>
+    <div class="socials" id="socials"></div>
+    <p class="credit">© <span id="year"></span> <span class="cn"></span> · Dijital menü</p>
+  </footer>
+
+</div>
+
+<script>
+/* =====================================================================
+   1) KAFE BİLGİLERİ  — buraya kafenin gerçek bilgilerini yaz
+   ===================================================================== */
+const CAFE = {
+  name: "Kafe Adı",                       // Kafenin adı
+  emoji: "☕",                            // Logo yerine geçen emoji (logo görseli eklenince değiştirilebilir)
+  tagline: "Lezzetin buluşma noktası",    // Kısa slogan
+  address: "Adres satırı, İlçe / İl",     // Açık adres
+  mapsUrl: "https://share.google/MaviZbNp0RbqlbKPt", // Google Haritalar linki
+  phone: "+90 555 555 55 55",             // Telefon (boş bırakılırsa gizlenir)
+  hours: "Her gün 08:00 – 23:00",         // Çalışma saatleri
+  instagram: "",                          // örn: "kafeadi"  (boş = gizli)
+  whatsapp: ""                            // örn: "905555555555" (boş = gizli)
+};
+
+/* =====================================================================
+   2) MENÜ  — kategoriler ve ürünler
+      Her ürün:  { name, desc, price, tag }
+      • desc ve tag isteğe bağlıdır (boş bırakılabilir / silinebilir)
+      • tag örnekleri: "YENİ", "POPÜLER", "VEGAN"
+   ===================================================================== */
+const MENU = [
+  {
+    category: "Sıcak İçecekler",
+    icon: "☕",
+    items: [
+      { name: "Türk Kahvesi",   desc: "Geleneksel, közde",        price: 65 },
+      { name: "Espresso",       desc: "Tek shot",                 price: 60 },
+      { name: "Americano",      desc: "",                         price: 75 },
+      { name: "Latte",          desc: "Sütlü, kremsi",            price: 90, tag: "POPÜLER" },
+      { name: "Cappuccino",     desc: "",                         price: 90 },
+      { name: "Sıcak Çikolata",  desc: "Belçika çikolatası",      price: 95 }
+    ]
+  },
+  {
+    category: "Soğuk İçecekler",
+    icon: "🧊",
+    items: [
+      { name: "Ice Latte",       desc: "Buzlu sütlü kahve",       price: 95 },
+      { name: "Cold Brew",       desc: "12 saat demlenmiş",       price: 100, tag: "YENİ" },
+      { name: "Limonata",        desc: "Taze sıkılmış",           price: 80 },
+      { name: "Milkshake",       desc: "Çikolata / vanilya / çilek", price: 110 }
+    ]
+  },
+  {
+    category: "Tatlılar",
+    icon: "🍰",
+    items: [
+      { name: "Cheesecake",      desc: "Frambuazlı",              price: 120, tag: "POPÜLER" },
+      { name: "Brownie",         desc: "Sıcak, dondurma topu ile", price: 115 },
+      { name: "San Sebastian",   desc: "",                        price: 130 },
+      { name: "Tiramisu",        desc: "Ev yapımı",               price: 125 }
+    ]
+  },
+  {
+    category: "Atıştırmalıklar",
+    icon: "🥪",
+    items: [
+      { name: "Tost",            desc: "Kaşarlı",                 price: 90 },
+      { name: "Sandviç",         desc: "Tavuklu / ton balıklı",   price: 130 },
+      { name: "Patates Kızartması", desc: "",                     price: 85 }
+    ]
+  }
+];
+
+/* =====================================================================
+   Aşağısı otomatik çalışır — değiştirmene gerek yok.
+   ===================================================================== */
+(function(){
+  document.title = CAFE.name + " · Menü";
+  document.getElementById("cafeName").textContent = CAFE.name;
+  document.getElementById("tagline").textContent = CAFE.tagline;
+  document.getElementById("logo").textContent = CAFE.emoji;
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.querySelectorAll(".cn").forEach(e => e.textContent = CAFE.name);
+
+  const fmt = p => "₺" + Number(p).toLocaleString("tr-TR");
+  const slug = s => s.toLowerCase().replace(/[^a-z0-9ığüşöç]+/gi,"-");
+
+  // Nav + menu
+  const nav = document.getElementById("nav");
+  const menu = document.getElementById("menu");
+  MENU.forEach((cat, i) => {
+    const id = "cat-" + slug(cat.category);
+
+    const a = document.createElement("a");
+    a.href = "#" + id; a.textContent = cat.category;
+    a.dataset.target = id;
+    if(i === 0) a.classList.add("active");
+    nav.appendChild(a);
+
+    const sec = document.createElement("section");
+    sec.className = "cat"; sec.id = id;
+    sec.innerHTML = `<h2 class="cat-title"><span class="cat-icon">${cat.icon||"🍽️"}</span>${cat.category}</h2>`;
+    cat.items.forEach(it => {
+      const tag = it.tag ? `<span class="tag">${it.tag}</span>` : "";
+      const desc = it.desc ? `<div class="item-desc">${it.desc}</div>` : "";
+      const el = document.createElement("div");
+      el.className = "item";
+      el.innerHTML = `
+        <div class="item-body">
+          <div class="item-head">
+            <div class="item-name">${it.name}${tag}</div>
+            <div class="item-price">${fmt(it.price)}</div>
+          </div>
+          ${desc}
+        </div>`;
+      sec.appendChild(el);
+    });
+    menu.appendChild(sec);
+  });
+
+  // Contact
+  const contact = document.getElementById("contact");
+  if(CAFE.address){
+    contact.innerHTML += `<a href="${CAFE.mapsUrl||"#"}" target="_blank" rel="noopener">📍 ${CAFE.address}</a>`;
+  }
+  if(CAFE.phone){
+    contact.innerHTML += `<a href="tel:${CAFE.phone.replace(/\s/g,"")}">📞 ${CAFE.phone}</a>`;
+  }
+  if(CAFE.hours){
+    contact.innerHTML += `<span>🕒 ${CAFE.hours}</span>`;
+  }
+
+  const socials = document.getElementById("socials");
+  if(CAFE.instagram){
+    socials.innerHTML += `<a href="https://instagram.com/${CAFE.instagram}" target="_blank" rel="noopener" aria-label="Instagram">📷</a>`;
+  }
+  if(CAFE.whatsapp){
+    socials.innerHTML += `<a href="https://wa.me/${CAFE.whatsapp}" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>`;
+  }
+  if(CAFE.mapsUrl){
+    socials.innerHTML += `<a href="${CAFE.mapsUrl}" target="_blank" rel="noopener" aria-label="Harita">🗺️</a>`;
+  }
+
+  // Scroll-spy: aktif kategori sekmesini güncelle
+  const links = [...nav.querySelectorAll("a")];
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if(en.isIntersecting){
+        links.forEach(l => l.classList.toggle("active", l.dataset.target === en.target.id));
+        const act = links.find(l => l.dataset.target === en.target.id);
+        if(act) act.scrollIntoView({inline:"center", block:"nearest", behavior:"smooth"});
+      }
+    });
+  }, { rootMargin:"-55% 0px -40% 0px" });
+  document.querySelectorAll(".cat").forEach(s => obs.observe(s));
+})();
+</script>
+</body>
+</html>

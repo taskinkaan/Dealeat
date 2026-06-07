@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Menü Oluştur</title>
+  <style>
+    :root{--bg:#1c130d;--card:#2a1d12;--accent:#d9a566;--text:#f5ece1;--dim:#b9a890;--line:rgba(217,165,102,.18)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+    .panel{width:100%;max-width:420px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;text-align:center}
+    h1{font-size:21px;margin-bottom:6px;color:var(--accent)}
+    p.sub{color:var(--dim);font-size:13.5px;margin-bottom:20px}
+    label{display:block;text-align:left;font-size:12.5px;color:var(--dim);margin:0 0 6px 2px}
+    input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#160f09;color:var(--text);font-size:14px;margin-bottom:16px}
+    input:focus{outline:none;border-color:var(--accent)}
+    /* Yazdırılacak kart */
+    #card{background:#fff;color:#1c130d;border-radius:16px;padding:26px 22px;margin:8px 0 18px}
+    #card .ct{font-size:19px;font-weight:800;margin-bottom:4px}
+    #card .cs{font-size:12.5px;color:#7a6a55;margin-bottom:16px;letter-spacing:.5px;text-transform:uppercase}
+    #qr{display:flex;justify-content:center;min-height:200px;align-items:center}
+    #qr img,#qr canvas{border-radius:8px}
+    #card .cf{font-size:13px;color:#3b2415;margin-top:16px;font-weight:600}
+    .btns{display:flex;gap:10px}
+    button{flex:1;padding:13px;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer}
+    .primary{background:var(--accent);color:#1c130d}
+    .ghost{background:#160f09;color:var(--text);border:1px solid var(--line)}
+    .hint{font-size:11.5px;color:#6b5d4c;margin-top:16px;line-height:1.5}
+    @media print{
+      body{background:#fff;padding:0}
+      .panel{box-shadow:none;border:none;background:#fff;max-width:none}
+      h1,p.sub,label,input,.btns,.hint{display:none!important}
+      #card{border:2px dashed #c9b48f}
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h1>📱 QR Menü Oluştur</h1>
+    <p class="sub">Menü linkini gir, QR kodu oluştur, yazdır ve masalara koy.</p>
+
+    <label for="url">Menü adresi (URL)</label>
+    <input id="url" type="text" placeholder="https://siteniz.com/cafe-menu/" />
+    <label for="cname">Kafe adı (kartta görünür)</label>
+    <input id="cname" type="text" placeholder="Kafe Adı" />
+
+    <div id="card">
+      <div class="ct" id="cardName">Kafe Adı</div>
+      <div class="cs">Dijital Menü</div>
+      <div id="qr"></div>
+      <div class="cf">📷 Menü için kodu okutun</div>
+    </div>
+
+    <div class="btns">
+      <button class="primary" onclick="window.print()">🖨️ Yazdır</button>
+      <button class="ghost" id="dl">⬇️ PNG indir</button>
+    </div>
+    <p class="hint">İpucu: Telefon kamerasını QR koda tutarak menüyü test edebilirsiniz. Yazdırınca sadece kart basılır.</p>
+  </div>
+
+  <!-- Hafif, istemci taraflı QR üretici -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script>
+    const urlIn = document.getElementById("url");
+    const nameIn = document.getElementById("cname");
+    const qrBox = document.getElementById("qr");
+    const cardName = document.getElementById("cardName");
+
+    // Varsayılan: bu sayfanın bulunduğu klasör (menü index.html aynı klasörde)
+    urlIn.value = location.href.replace(/qr\.html.*$/, "");
+
+    let qr;
+    function render(){
+      qrBox.innerHTML = "";
+      const val = urlIn.value.trim() || location.origin;
+      qr = new QRCode(qrBox, { text: val, width: 200, height: 200, colorDark:"#1c130d", colorLight:"#ffffff", correctLevel: QRCode.CorrectLevel.M });
+      cardName.textContent = nameIn.value.trim() || "Kafe Adı";
+    }
+    urlIn.addEventListener("input", render);
+    nameIn.addEventListener("input", render);
+    render();
+
+    document.getElementById("dl").addEventListener("click", () => {
+      const cv = qrBox.querySelector("canvas");
+      const img = qrBox.querySelector("img");
+      const src = cv ? cv.toDataURL("image/png") : (img ? img.src : null);
+      if(!src) return;
+      const a = document.createElement("a");
+      a.href = src; a.download = "qr-menu.png"; a.click();
+    });
+  </script>
+</body>
+</html>
